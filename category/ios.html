@@ -20,7 +20,7 @@
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/my-super-post.html">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h1>
+                    <h1 class="entry-title"><a href="/.html">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2014-06-29T14:00:00">
                 Sun 29 June 2014
@@ -39,12 +39,12 @@
 <li>Dynamic Core Animation behaviors</li>
 </ul>
 <h2>Spring animations</h2>
-<p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中提供了API:  </p>
+<p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
 <div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">animateWithDuration</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">duration</span> <span class="n">delay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">delay</span> <span class="n">usingSpringWithDamping</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">dampingRatio</span> <span class="n">initialSpringVelocity</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">velocity</span> <span class="n">options</span><span class="o">:</span><span class="p">(</span><span class="n">UIViewAnimationOptions</span><span class="p">)</span><span class="n">options</span> <span class="n">animations</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="n">animations</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">BOOL</span> <span class="n">finished</span><span class="p">))</span><span class="n">completion</span>
 </pre></div>
 
 
-<p>这是iOS7中就有的API，它和UIKit提供的普通animation API很类似，增加的两个参数：<code>dampingRatio</code>就是弹性系数，范伟在0-1之间，通常取接近1的值；<code>velocity</code>就是动画的初始速度，这个参数可以用下图来理解：<br />
+<p>这是iOS7中就有的API，它和UIKit提供的普通animation API很类似，增加的两个参数：<code>dampingRatio</code>就是弹性系数，范围在0-1之间，通常取接近1的值；<code>velocity</code>就是动画的初始速度，这个参数可以用下图来理解：<br />
 <img alt="spring icon" src="./imgs/20140629/spring.png" /><br />
 横坐标是动画的事件，纵坐标是动画中变化的属性值。那么可以看到，普通的UIView animation的动画过程是比较平滑的；而spring的话，刚开始的“速率”就快多了。<br />
 Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉出设置页面，就带有spring效果。而且从这个API的设计接口来看，估计以后UIView 的普通animation API是会被spring所取代了。所以，在自定义控件的动画中，要注意使用spring动画，以符合iOS的风格</p>
@@ -83,9 +83,10 @@ Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉�
 <p>这是个很古老的东西，它有一个path的属性，可以构建各种路径，从而方便定制UI。它的使用也很简单，和<code>CALayer</code>的用法类似。</p>
 <h2>Dynamic Core Animation behaviors</h2>
 <p>主要通过实现<code>CAAction</code>协议来实现动画。UIView animation的机制：<br />
-<img alt="UIView Animation" src="./imgs/20140629/dynamic_core_animation.png" />
+<img alt="UIView Animation" src="./imgs/20140629/dynamic_core_animation.png" /><br />
 UIView会去查找是否实现<code>CAAction</code>协议，没有实现的话就会调用：<br />
-<code>[super actionForLayer:layer key:event]</code>。因此，如果实现了<code>CAAction</code>协议就可以定制动画。</p>                </article>
+<code>[super actionForLayer:layer key:event]</code>。因此，如果实现了<code>CAAction</code>协议就可以定制动画。</p>
+<p><a href="https://github.com/scorpiozj/blogproject/tree/master/WWDC2014_221">项目地址</a></p>                </article>
 <p class="paginator">
     Page 1 / 1
 </p>
