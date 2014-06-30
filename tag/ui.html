@@ -31,11 +31,13 @@
         </address>
 <p>In <a href="/category/ios.html">iOS</a>. </p>
 <p>tags: <a href="/tag/wwdc-2014.html">wwdc 2014</a><a href="/tag/ui.html">ui</a><a href="/tag/ios.html">ios</a></p>
-</footer><!-- /.post-info --><p>本场主要分4个议题： 
-<em> Spring animations
-</em> Vibrancy and blur
-<em> Shape layers
-</em> Dynamic Core Animation behaviors</p>
+</footer><!-- /.post-info --><p>本场主要分4个议题： </p>
+<ul>
+<li>Spring animations</li>
+<li>Vibrancy and blur</li>
+<li>Shape layers</li>
+<li>Dynamic Core Animation behaviors</li>
+</ul>
 <h2>Spring animations</h2>
 <p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中提供了API:  </p>
 <div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">animateWithDuration</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">duration</span> <span class="n">delay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">delay</span> <span class="n">usingSpringWithDamping</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">dampingRatio</span> <span class="n">initialSpringVelocity</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">velocity</span> <span class="n">options</span><span class="o">:</span><span class="p">(</span><span class="n">UIViewAnimationOptions</span><span class="p">)</span><span class="n">options</span> <span class="n">animations</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="n">animations</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">BOOL</span> <span class="n">finished</span><span class="p">))</span><span class="n">completion</span>
