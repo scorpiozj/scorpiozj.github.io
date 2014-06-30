@@ -83,7 +83,7 @@ Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉�
 <p>这是个很古老的东西，它有一个path的属性，可以构建各种路径，从而方便定制UI。它的使用也很简单，和<code>CALayer</code>的用法类似。</p>
 <h2>Dynamic Core Animation behaviors</h2>
 <p>主要通过实现<code>CAAction</code>协议来实现动画。UIView animation的机制：<br />
-<img alt="UIView Animation" src="./imgs/20140629/dynamic_core_animation.png" /><br />
+<img alt="UIView Animation" src="./imgs/20140629/dynamic_core_animation.png" />  <br />
 UIView会去查找是否实现<code>CAAction</code>协议，没有实现的话就会调用：<br />
 <code>[super actionForLayer:layer key:event]</code>。因此，如果实现了<code>CAAction</code>协议就可以定制动画。</p>
 <p><a href="https://github.com/scorpiozj/blogproject/tree/master/WWDC2014_221">项目地址</a></p>                </article>
