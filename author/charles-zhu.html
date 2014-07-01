@@ -15,70 +15,12 @@
                 <h1><a href="/">Scorpiozj: To be Independent </a></h1>
                 <nav><ul>
                     <li><a href="/category/ios.html">iOS</a></li>
-                    <li><a href="/category/unfinished.html">Unfinished</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/notes-app-design-handbook.html">Notes: App Design handbook</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2014-07-01T08:00:00">
-                Tue 01 July 2014
-        </abbr>
-
-        <address class="vcard author">
-                By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a>
-        </address>
-<p>In <a href="/category/unfinished.html">Unfinished</a>. </p>
-<p>tags: <a href="/tag/deisgn.html">deisgn</a><a href="/tag/app.html">app</a></p>
-</footer><!-- /.post-info --><p>Author: charles zhu 
-Summary: notes for book: Programtic Tha App Design Handbook</p>
-<h2>场景(Context)</h2>
-<p>使用的场合<br />
-使用的工具：iphone/ipad, etc<br />
-——影响到设计和交互</p>
-<h2>想法（Idea）</h2>
-<p>想法很重要，但execution更重要<br />
-validate：<br />
-1. 自己每天会使用吗<br />
-2. 有同类的竞争app吗<br />
-3. 朋友会买吗  </p>
-<h2>执行（Execution）</h2>
-<p>深有体会，做过了，才知道有多不容易  </p>
-<h2>设备的特性</h2>
-<p>诸如摄像头，陀螺仪，加速器等</p>
-<h2>已经有类似的app</h2>
-<p>很难避免独一无二的创意
-充分发掘现有app的缺陷：方便操作？crash？容易使用？关注下评论<br />
-不要担心，有人认为有竞争者的产品才证明了市场有赚头－－有理   </p>
-<h3>设计 design</h3>
-<p>图标和截图，图片比文字更具备描述力
-有些app单凭设计就可取胜</p>
-<h3>方便使用 ease of use</h3>
-<p>intuitive，不要显示的告诉用户需要如何操作<br />
-要一目了然</p>
-<h3>质量 code quality</h3>
-<p>尽量少crash</p>
-<h3>评论 review</h3>
-<p>了解不足，和新需求</p>
-<h3>营销 marketing</h3>
-<p>重要性不言而喻</p>
-<h2>伟大梦想，立足现实 DREAM BIG, IMPLEMENT SMALL</h2>
-<p>类似头脑风暴相处很多功能和特性，但是从最简单／最吸引人的地方开始动工，逐渐构建起宏图。  </p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark"
-                           title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">WWDC2014-211 Notes designing_intuitive_user_experiences</a></h1>
-                </header>
-
-                <div class="entry-content">
+                    <h1 class="entry-title"><a href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html">WWDC2014-211 Notes designing_intuitive_user_experiences</a></h1>
 <footer class="post-info">
         <abbr class="published" title="2014-06-30T14:20:00">
                 Mon 30 June 2014
@@ -89,7 +31,7 @@ validate：<br />
         </address>
 <p>In <a href="/category/ios.html">iOS</a>. </p>
 <p>tags: <a href="/tag/wwdc-2014.html">wwdc 2014</a><a href="/tag/ui.html">ui</a><a href="/tag/ios.html">ios</a><a href="/tag/ux.html">ux</a></p>
-</footer><!-- /.post-info -->                <p>Author: Charles Zhu
+</footer><!-- /.post-info --><p>Author: Charles Zhu
 Summary: Notes for 211</p>
 <h1>intuitive</h1>
 <p>字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  </p>
@@ -98,10 +40,33 @@ Summary: Notes for 211</p>
 记住设计不是为自己(已知者)设计，是为其他人设计</p>
 <p>以下按5部分，进行阐述  </p>
 <h2>platform savvy</h2>
-<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体 ...</p>
-                <a class="readmore" href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
+<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体／大小，滑动触发的距离等等。<br />
+这里强调的是设计要和系统保持一致性。类似的包括手势操作：tap, pan, swipe, pinch, long press, rotate，控件：button／switch等。比如，tab的选中和非选中状态设置。<br />
+同时也说明为什么要保持这种一致性：因为是我们对真实世界体验的表现——显然有点是自夸自家的设计了<br />
+当然，演讲者也说明打破惯例（break convention）也不是不可以，这时就需要告诉用户如何使用了——有点像引导操作，但不一样。</p>
+<h2>easy to navigate</h2>
+<p>经典的导航式结构，主要还是围绕以下3个方面来解释：
+<em> Tells you where you are
+</em> Shows you where else you can go
+<em> Explain what's there
+印象深的是“maximize continuty”：以photo中点击小图查看大图的导航为例，可以明确大图是来自哪一张小图。<br />
+这里居然还“批判”了抽屉式导航（视频里叫 hamburger）:
+</em> 页面的内容在app中不可见，需要通过左上方（一般都是放置在左上方）的按钮点开后显示
+<em> 通过该页面进行app内容切换的场景很少
+</em> 页面切换耗费比较多：要比nav＋tab式多点一次，以及2倍的等待切换动画完成
+当然hamburger也不是不能用（毕竟辩证法说明了万事没有绝对），但是在使用之前还是需要围绕最初的3个方面进行甄别</p>
+<h2>clear</h2>
+<p>清晰-&gt;达意。 比如，tab选中后tintcolor显示出来就很明确告诉用户当前是在哪里。演讲者还侧重谈了如何撰写文字/设计icon</p>
+<h2>simple</h2>
+<p>80/20法则，80%的用户只会使用app提供的20%功能</p>
+<h2>focused</h2>
+<p>简单的说，就是app的目的是什么，那么所有的操作都为然着这个目的而来。</p>
+<p>设计真是门艺术——大家都能判断出体验的好坏，但却不能据此进行改良。这部分内容不仅对designer，对开发／产品人员，也大有裨益——虽然我的体会不是很深。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
 
             <li><article class="hentry">
                 <header>
