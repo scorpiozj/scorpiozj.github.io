@@ -15,12 +15,67 @@
                 <h1><a href="/">Scorpiozj: To be Independent </a></h1>
                 <nav><ul>
                     <li><a href="/category/ios.html">iOS</a></li>
+                    <li><a href="/category/unfinished.html">Unfinished</a></li>
                 </ul></nav>
         </header><!-- /#banner -->
 
             <aside id="featured" class="body">
                 <article>
-                    <h1 class="entry-title"><a href="/.html">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h1>
+                    <h1 class="entry-title"><a href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html">WWDC2014-211 Notes designing_intuitive_user_experiences</a></h1>
+<footer class="post-info">
+        <abbr class="published" title="2014-06-30T14:20:00">
+                Mon 30 June 2014
+        </abbr>
+
+        <address class="vcard author">
+                By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a>
+        </address>
+<p>In <a href="/category/ios.html">iOS</a>. </p>
+<p>tags: <a href="/tag/wwdc-2014.html">wwdc 2014</a><a href="/tag/ui.html">ui</a><a href="/tag/ios.html">ios</a><a href="/tag/ux.html">ux</a></p>
+</footer><!-- /.post-info --><p>Author: Charles Zhu
+Summary: Notes for 211</p>
+<h1>intuitive</h1>
+<p>字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  </p>
+<p>开篇就举了设计 <em>“笔”</em> 的例子：长度，宽度等元素</p>
+<p>Being ituitive is not intuitive<br />
+记住设计不是为自己(已知者)设计，是为其他人设计</p>
+<p>以下按5部分，进行阐述  </p>
+<h2>platform savvy</h2>
+<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体／大小，滑动触发的距离等等。<br />
+这里强调的是设计要和系统保持一致性。类似的包括手势操作：tap, pan, swipe, pinch, long press, rotate，控件：button／switch等。比如，tab的选中和非选中状态设置。<br />
+同时也说明为什么要保持这种一致性：因为是我们对真实世界体验的表现——显然有点是自夸自家的设计了<br />
+当然，演讲者也说明打破惯例（break convention）也不是不可以，这时就需要告诉用户如何使用了——有点像引导操作，但不一样。</p>
+<h2>easy to navigate</h2>
+<p>经典的导航式结构，主要还是围绕以下3个方面来解释：
+<em> Tells you where you are
+</em> Shows you where else you can go
+<em> Explain what's there
+印象深的是“maximize continuty”：以photo中点击小图查看大图的导航为例，可以明确大图是来自哪一张小图。<br />
+这里居然还“批判”了抽屉式导航（视频里叫 hamburger）:
+</em> 页面的内容在app中不可见，需要通过左上方（一般都是放置在左上方）的按钮点开后显示
+<em> 通过该页面进行app内容切换的场景很少
+</em> 页面切换耗费比较多：要比nav＋tab式多点一次，以及2倍的等待切换动画完成
+当然hamburger也不是不能用（毕竟辩证法说明了万事没有绝对），但是在使用之前还是需要围绕最初的3个方面进行甄别</p>
+<h2>clear</h2>
+<p>清晰-&gt;达意。 比如，tab选中后tintcolor显示出来就很明确告诉用户当前是在哪里。演讲者还侧重谈了如何撰写文字/设计icon</p>
+<h2>simple</h2>
+<p>80/20法则，80%的用户只会使用app提供的20%功能</p>
+<h2>focused</h2>
+<p>简单的说，就是app的目的是什么，那么所有的操作都为然着这个目的而来。</p>
+<p>设计真是门艺术——大家都能判断出体验的好坏，但却不能据此进行改良。这部分内容不仅对designer，对开发／产品人员，也大有裨益——虽然我的体会不是很深。</p>                </article>
+            </aside><!-- /#featured -->
+                <section id="content" class="body">
+                    <h1>Other articles</h1>
+                    <hr />
+                    <ol id="posts-list" class="hfeed">
+
+            <li><article class="hentry">
+                <header>
+                    <h1><a href="/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark"
+                           title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h1>
+                </header>
+
+                <div class="entry-content">
 <footer class="post-info">
         <abbr class="published" title="2014-06-29T14:00:00">
                 Sun 29 June 2014
@@ -31,7 +86,9 @@
         </address>
 <p>In <a href="/category/ios.html">iOS</a>. </p>
 <p>tags: <a href="/tag/wwdc-2014.html">wwdc 2014</a><a href="/tag/ui.html">ui</a><a href="/tag/ios.html">ios</a></p>
-</footer><!-- /.post-info --><p>本场主要分4个议题： </p>
+</footer><!-- /.post-info -->                <p>Author: Charles Zhu
+Summary: notes for 221</p>
+<p>本场主要分4个议题： </p>
 <ul>
 <li>Spring animations</li>
 <li>Vibrancy and blur</li>
@@ -40,58 +97,14 @@
 </ul>
 <h2>Spring animations</h2>
 <p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
-<div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">animateWithDuration</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">duration</span> <span class="n">delay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">delay</span> <span class="n">usingSpringWithDamping</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">dampingRatio</span> <span class="n">initialSpringVelocity</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">velocity</span> <span class="n">options</span><span class="o">:</span><span class="p">(</span><span class="n">UIViewAnimationOptions</span><span class="p">)</span><span class="n">options</span> <span class="n">animations</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="n">animations</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">BOOL</span> <span class="n">finished</span><span class="p">))</span><span class="n">completion</span>
-</pre></div>
-
-
-<p>这是iOS7中就有的API，它和UIKit提供的普通animation API很类似，增加的两个参数：<code>dampingRatio</code>就是弹性系数，范围在0-1之间，通常取接近1的值；<code>velocity</code>就是动画的初始速度，这个参数可以用下图来理解：<br />
-<img alt="spring icon" src="./imgs/20140629/spring.png" /><br />
-横坐标是动画的事件，纵坐标是动画中变化的属性值。那么可以看到，普通的UIView animation的动画过程是比较平滑的；而spring的话，刚开始的“速率”就快多了。<br />
-Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉出设置页面，就带有spring效果。而且从这个API的设计接口来看，估计以后UIView 的普通animation API是会被spring所取代了。所以，在自定义控件的动画中，要注意使用spring动画，以符合iOS的风格</p>
-<h2>Vibrancy and blur</h2>
-<p>iOS7中有用于创建blur view的API：  </p>
-<div class="highlight"><pre><span class="o">-</span><span class="n">drawViewHierarchyInRect</span><span class="o">:</span><span class="n">afterScreenUpdates</span><span class="o">:</span><span class="p">,</span> 
-</pre></div>
-
-
-<p>通过该API可以将当前view的状态以UIImage绘制出来：</p>
-<div class="highlight"><pre><span class="c1">//https://developer.apple.com/library/ios/qa/qa1817/_index.html</span>
-  <span class="o">-</span> <span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="n">snapshot</span><span class="o">:</span><span class="p">(</span><span class="n">UIView</span> <span class="o">*</span><span class="p">)</span><span class="n">view</span>
- <span class="p">{</span>
-     <span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">YES</span><span class="p">,</span>  <span class="mi">0</span><span class="p">);</span>
-    <span class="p">[</span><span class="n">view</span> <span class="n">drawViewHierarchyInRect</span><span class="o">:</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span> <span class="n">afterScreenUpdates</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
-    <span class="n">UIImage</span> <span class="o">*</span><span class="n">image</span> <span class="o">=</span> <span class="n">UIGraphicsGetImageFromCurrentImageContext</span><span class="p">();</span>
-    <span class="n">UIGraphicsEndImageContext</span><span class="p">();</span>
-    <span class="k">return</span> <span class="n">image</span><span class="p">;</span>
-<span class="p">}</span>
-</pre></div>
-
-
-<p>而去年的wwdc中有对UIImage进行blur的例子，两者结合就可以对UIView进行blur化。这种方式用官方语言描述就是：fast&amp;&amp;static. 而如今Apple提供了直接的API——<code>UIVisualEffectView</code>，使用方式很简单，就是先创建一个effect，然后再提供给view进行初始化,然后把它添加到要blur的view上。</p>
-<div class="highlight"><pre><span class="n">UIVisualEffect</span> <span class="o">*</span><span class="n">blurEffect</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIBlurEffect</span> <span class="n">effectWithStyle</span><span class="o">:</span><span class="n">UIBlurEffectStyleLight</span><span class="p">];</span>
-
-    <span class="n">UIVisualEffectView</span> <span class="o">*</span><span class="n">visualEffectView</span> <span class="o">=</span> <span class="p">[[</span><span class="n">UIVisualEffectView</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithEffect</span><span class="o">:</span><span class="n">blurEffect</span><span class="p">];</span>
-
-    <span class="n">visualEffectView</span><span class="p">.</span><span class="n">frame</span> <span class="o">=</span> <span class="n">imageView</span><span class="p">.</span><span class="n">bounds</span>
-
-    <span class="p">[</span><span class="n">imageView</span> <span class="n">addSubview</span><span class="o">:</span><span class="n">visualEffectView</span><span class="p">];</span>
-</pre></div>
-
-
-<p>可见，这里<code>UIVisualEffectView</code>变成了类似mask的东西。此外，该view提供blur和vibrancy两种效果。</p>
-<h2>Shape layers</h2>
-<p>这是个很古老的东西，它有一个path的属性，可以构建各种路径，从而方便定制UI。它的使用也很简单，和<code>CALayer</code>的用法类似。</p>
-<h2>Dynamic Core Animation behaviors</h2>
-<p>主要通过实现<code>CAAction</code>协议来实现动画。UIView animation的机制：<br />
-<img alt="UIView Animation" src="./imgs/20140629/dynamic_core_animation.png" />  <br />
-UIView会去查找是否实现<code>CAAction</code>协议，没有实现的话就会调用：<br />
-<code>[super actionForLayer:layer key:event]</code>。因此，如果实现了<code>CAAction</code>协议就可以定制动画。</p>
-<p><a href="https://github.com/scorpiozj/blogproject/tree/master/WWDC2014_221">项目地址</a></p>                </article>
+<div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">animateWithDuration</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">duration</span> <span class="n">delay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">delay</span> <span class="n">usingSpringWithDamping</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">dampingRatio</span> <span class="n">initialSpringVelocity</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">velocity</span> <span class="n">options</span><span class="o">:</span><span class="p">(</span><span class="n">UIViewAnimationOptions</span><span class="p">)</span><span class="n">options</span> <span class="n">animations</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="n">animations</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">BOOL</span> <span class="n">finished ...</span></pre></div>
+                <a class="readmore" href="/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html">read more</a>
+                </div><!-- /.entry-content -->
+            </article></li>
+            </ol><!-- /#posts-list -->
 <p class="paginator">
     Page 1 / 1
 </p>
-            </aside><!-- /#featured -->
-            </ol><!-- /#posts-list -->
             </section><!-- /#content -->
         <section id="extras" class="body">
                 <div class="blogroll">
