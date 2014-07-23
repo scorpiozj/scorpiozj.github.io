@@ -33,6 +33,8 @@
 	      <a href="/category/design.html ">design</a>
 	    <li >
 	      <a href="/category/ios.html ">iOS</a>
+	    <li >
+	      <a href="/category/linux.html ">Linux</a>
 	</ul>
       </div>
     </div> <!-- End of fluid row-->
@@ -50,8 +52,114 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="/mvvmmo-shi-chu-tan.html"><h1>MVVM模式初探</h1></a>
+            <a href="/centos65-an-zhuang-eclipse.html"><h1>CentOS6.5 安装eclipse</h1></a>
         </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Wed 23 July 2014 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/linux.html">Linux</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/linux.html">linux</a> <a href="/tag/eclipse.html">eclipse</a> <a href="/tag/jdk.html">jdk</a> </p>
+<p>
+</p>
+      </div>
+      <div class="article-content span8">
+	<p>Author: Charles Zhu<br />
+Summary: install eclipse on centos6.5</p>
+<p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
+<h3>eclipse 下载</h3>
+<p>直接在<a href="https://www.eclipse.org/downloads/">官网</a>下载，选择合适的版本：网站会识别操作系统，主要注意是32位还是64位<br />
+下载后，解压打开，双击eclipse的可执行程序，发现不能启动。弹出的提示说系统的jvm是1.6，而最新luna版需要1.7或以上。</p>
+<h3>jdk安装</h3>
+<p>主要参考了<a href="http://www.cnblogs.com/zhoulf/archive/2013/02/04/2891608.html">这篇文章</a>，具体过程就不多说了，注意操作要在su账号下。</p>
+<h4>source /etc/profile 不生效</h4>
+<p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
+<ol>
+<li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
+<li>退出su，查看$PATH，发现添加的没有生效</li>
+<li>再次进入su，查看$PATH，发现添加的没有生效</li>
+</ol>
+<p>目测应该是和linux系统启动的知识有关，果然在<a href="http://www.cnblogs.com/BigIdiot/archive/2012/03/26/2417547.html">这里</a>找到了答案，简单的说：</p>
+<ol>
+<li>/etc/profile:在登录时,操作系统定制用户环境时使用的第一个文件,此 文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。</li>
+<li>/etc/environment:在登录时操作系统使用的第二个文件,系统在 读取你自己的profile前,设置环境文件的环境变量。</li>
+<li>~/.bash_profile:在登录时用到的第三个文件是.profile文 件,每个用户都可使用该文件输入专用于自己使用的shell信息,当用 户登录时,该 文件仅仅执行一次!默认情况下,他设置一些环境变游戏量,执 行用户的.bashrc文件。/etc/bashrc:为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该 文件被读取.</li>
+<li>~/.bashrc:该文件包含专用于你的bash shell的bash信 息,当登录时以及每次打开新的shell时,该该文件被读取。</li>
+</ol>
+<p>所以，如果修改/etc/profile的话，需要重启系统。</p>
+<p>这样，最终整个过程完成了。</p> 
+	<a class="btn btn-mini xsmall" href="/centos65-an-zhuang-eclipse.html">
+          <i class="icon-comment"></i> Comment </a>
+	<hr />
+      </div>
+      
+    </div>
+    
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="/designcode-tutorial1-bi-ji.html"><h1>design+code tutorial1 笔记</h1></a>
+      </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Thu 17 July 2014 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/ios.html">iOS</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/ios.html">iOS</a> <a href="/tag/design.html">design</a> <a href="/tag/sketch.html">sketch</a> </p>
+<p>
+</p>
+      </div>
+      <div class="summary span8">
+	<p>Author: Charles Zhu<br />
+Summary: design笔记</p>
+<ol>
+<li>
+<p>背景<br />
+添加2个overlay层渲染，分别斜对角线性和圆渐变</p>
+</li>
+<li>
+<p>iOS7模板文件
+normal #FAC3FF 10%</p>
+</li>
+<li>
+<p>base shape
+normal #FAC3FF 10%
+添加圆形，斜对角渐变</p>
+</li>
+<li></li>
+</ol> 
+	<a class="btn btn-mini xsmall" href="/designcode-tutorial1-bi-ji.html">
+          <i class="icon-plus-sign"></i> Read More </a>
+	<hr />
+      </div>
+      
+    </div>
+      
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="/mvvmmo-shi-chu-tan.html"><h1>MVVM模式初探</h1></a>
+      </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
@@ -66,7 +174,7 @@ Filed under <a href="/category/ios.html">iOS</a>
 <p>
 </p>
       </div>
-      <div class="article-content span8">
+      <div class="summary span8">
 	<p>Author: Charles Zhu<br />
 Summary: 设计模式</p>
 <h2>MVC的无奈</h2>
@@ -75,36 +183,14 @@ Summary: 设计模式</p>
 <h3>视图</h3>
 <p>毋庸置疑，视图的作用很重要，但在设计中，视图是否需要和控制器，数据模型同等的地位呢？要知道绝大多数情况下，视图是不会重用的，往往“耦合”在视图控制器中，所以往往代码中有几个view controller，就能知道程序会有几个页面。此外，视图中的UI元素也是直接作为变量存在在控制器代码中，因为只有这样才方便刷新。很显然，视图控制器就可以代表视图本身。  </p>
 <h3>控制器</h3>
-<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况，这种不考虑）。这部分我们可以通过创建个工具类生成个类方法来实现。可是，当处理大型工程的适合，你会发现这个工具类里的方法或者需要的参数会越来越多或复杂。到最后，工具类会包含所有数据模型类的转换处理方法。这样就显得臃肿，而且在需要转换某个模型类数据的适合，代码提示会给出很多种选择，需要你去甄别。<br />
-从上所知，控制器包含了“太多”处理数据的流程——也叫展现逻辑(presentation logic)， 下面我们可以看到MVVM如何解决这一部分的问题。</p>
-<h2>MVVM</h2>
-<p>在知道MVVM后，我google了一下，发现这个概念是微软提出的。好吧，设计思想是跨平台，放之四海而皆行的真理。首先来看看MVVM的架构：<br />
-<img alt="MVVM scheme" src="./imgs/20140717/mvvm.png" /><br />
-上图中，视图和视图控制器作为整体连结在一起，通过视图模型(viewmodel)和数据模型发生关系：</p>
-<ul>
-<li>如果数据有了变化，那么通过viewmodel将“变化”通知给视图控制器</li>
-<li>用户操作需要更新持久化数据时，也是通过viewmodel来起作用</li>
-</ul>
-<p>很显然，viewmodel的出现把与数据模型息息相关的处理部分从视图控制器中移除，这样控制器就得到了“解脱”。虽然多了viewmodel，可是不会增加太多任务，而且重要的是viewmodel很容易进行测试——稍有经验的人都知道视图控制器的测试问题可以成为一个永恒的话题。此外，使用MVC的过程迁移到MVVM并不会太难，——迁移的过程恰好也是梳理的过程，并且整理的更直观。</p>
-<h2>动态响应</h2>
-<p>假设有个app只要简单的直接显示人的姓和名，不需要展现逻辑，是否也不需要viewmodel了呢？继续看上图，你会发现model到viewmodel方向是notify。在app中，一切的变化都可以归结为状态的变化：比如输入字符，用户每输入一个字符，程序都会收到一次相应。又比如，刷新数据，数据接受完毕后，才会去显示。所以，当数据模型变化后，我们会通过一系列机制来“刷新”视图：代理，通知，KVO等等。而viewmodel也需要有这种特性：当数据有个变化后，能够感知，从而可以告诉视图控制器刷新界面。这种响应，通过KVO或者通知都能实现，而在业界现在首推 <a href="https://github.com/ReactiveCocoa/ReactiveViewModel">ReactiveViewModel</a>(提到ReactiveCocoa，可以从函数式响应变成开始聊个不停，但这里对ReactiveCocoa本身不做探讨，因为实践中尚未使用)，需要深入的可以去github上看看。使用过cocoa上controller object的，应该对这部分很感兴趣。</p>
-<h2>总结</h2>
-<p>使用MVVM的好处：</p>
-<ul>
-<li>简化了控制器内容</li>
-<li>归并了工具类</li>
-<li>便于测试</li>
-<li>易于动态映射</li>
-</ul>
-<p>本文是阅读了<a href="http://www.objc.io/issue-13/mvvm.html">Model-View-ViewModel for iOS</a>有感而发, 文中的图片也来源于此。<br />
-其中文末给出的参考文章和示例代码，值得一看。</p> 
+<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> 
 	<a class="btn btn-mini xsmall" href="/mvvmmo-shi-chu-tan.html">
-          <i class="icon-comment"></i> Comment </a>
+          <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
       
     </div>
-    
+      
 
  
         

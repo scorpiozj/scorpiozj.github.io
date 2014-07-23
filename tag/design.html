@@ -31,7 +31,7 @@
 	<ul class="nav nav-pills pull-right">
 	    <li >
 	      <a href="/category/design.html ">design</a>
-	    <li  class="active" >
+	    <li >
 	      <a href="/category/ios.html ">iOS</a>
 	    <li >
 	      <a href="/category/linux.html ">Linux</a>
@@ -46,98 +46,66 @@
     <div class="row-fluid">
 
         <div class="span10">
-    <div class='article'>
-      <div class="row-fluid">
-           <div class="content-title span9">
-             <h1>WWDC2014-223 Notes Protyping</h1b>
-           </div>
-      </div>
+        
+
+        
+
+    <div class='row-fluid''>
+        <div class="article-title span9">
+            <a href="/designcode-tutorial1-bi-ji.html"><h1>design+code tutorial1 笔记</h1></a>
+        </div>
+    </div>
     <div class="row-fluid">
       <div class="span2">
-<p>Thu 03 July 2014 </p>
+<p>Thu 17 July 2014 </p>
 
 <p style="text-align: left;">
 Filed under <a href="/category/ios.html">iOS</a>
 </p>
 <p style="text-align: left;">
  
-    Tags <a href="/tag/wwdc-2014.html">wwdc 2014</a> <a href="/tag/ui.html">ui</a> <a href="/tag/ios.html">ios</a> </p>
+    Tags <a href="/tag/ios.html">iOS</a> <a href="/tag/design.html">design</a> <a href="/tag/sketch.html">sketch</a> </p>
 <p>
 </p>
       </div>
-      
-      <div class="span8">
-	<p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br />
-这一讲的内容分为下面几个部分：</p>
+      <div class="article-content span8">
+	<p>Author: Charles Zhu<br />
+Summary: design笔记</p>
 <ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br />
-<img alt="relations icon" src="./imgs/20140703/how-relations.png" /><br />
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we fake</li>
-<li>Where will they use it<br />
-make的目的是为了给人看，那么就需要判断fake app中看上去更真实（和最终产品的样貌一致的部分），以及哪些部分进行fake（指的是不是仅仅用几张屏幕截图来组成fake app，而是分割成不同的组成部分），比如文字，图标，图片等。当然，我们要确保用户会在iphone/ipad的设备上使用。</li>
-</ul>
-<h3>Show</h3>
-<p>还是3个问题:   </p>
-<ul>
-<li>Do you know how to ____?</li>
-<li>is it easy to ____?</li>
 <li>
-<p>How can we make this better?
-这里的空格就是表示fake app所承载的功能，就是问用户：  </p>
+<p>背景<br />
+添加2个overlay层渲染，分别斜对角线性和圆渐变</p>
 </li>
 <li>
-<p>我这个是用来做某某事的，你知道怎么做吗</p>
+<p>iOS7模板文件
+normal #FAC3FF 10%</p>
 </li>
-<li>这样做操作简单吗</li>
-<li>怎么能做更好？  </li>
-</ul>
-<p>当然，如果设计考虑到了"Ituitive"的话，用户对fake app的功能应该一目了然。</p>
-<h3>Learn</h3>
-<p>这一部分就是闭环反馈系统的关键了，正反馈吸收，负反馈反思。同时看看有没有碰撞起火花，产生新的灵感</p>
-<ul>
-<li>What's working</li>
-<li>what's not working</li>
-<li>what other ideas does this give us?</li>
-</ul>
-<h2>工具</h2>
-<p>主要演示了用keynote进行protype的方法。keynote（或ppt）的动画功能还是一流的，每个人或多或少知道些。在这个过程中，演讲者使用了一个寻找好吃的toast的app为例，演示了如何进行上述环节的过程。这一部分，需要亲自看，体会才能更深</p>
-<h2>制作演示程序</h2>
-<p>使用xcode和core animation制作成可以在device上运行的app。示例的例子在官网上可以下载：<a href="https://developer.apple.com/library/prerelease/ios/samplecode/ToastModern/">ToastModern</a></p>
-<h2>总结</h2>
-<ul>
-<li>如何protype是最大的收获，但是这一过程需要多练。  </li>
-<li>各种工具的灵活使用：谁知道keynote也可以protype呢？</li>
-<li>制作fake app的技巧： 不局限于coding实现</li>
-</ul>
+<li>
+<p>base shape
+normal #FAC3FF 10%
+添加圆形，斜对角渐变</p>
+</li>
+<li></li>
+</ol> 
+	<a class="btn btn-mini xsmall" href="/designcode-tutorial1-bi-ji.html">
+          <i class="icon-comment"></i> Comment </a>
 	<hr />
       </div>
+      
     </div>
-    <div class="span10">
-      <h3>Comments</h3>
     
-    </div>  
-    </div>
+<div class="pagination">
+<ul>
+    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+
+    <li class="active"><a href="/tag/design.html">1</a></li>
+
+    <li class="next disabled"><a href="#">&rarr; Next</a></li>
+
+</ul>
+</div>
+ 
+  
         </div>
         
         
