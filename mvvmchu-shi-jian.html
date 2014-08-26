@@ -31,7 +31,7 @@
 	<ul class="nav nav-pills pull-right">
 	    <li >
 	      <a href="/category/design.html ">design</a>
-	    <li >
+	    <li  class="active" >
 	      <a href="/category/ios.html ">iOS</a>
 	    <li >
 	      <a href="/category/linux.html ">Linux</a>
@@ -46,15 +46,12 @@
     <div class="row-fluid">
 
         <div class="span10">
-        
-
-        
-
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/mvvmchu-shi-jian.html"><h1>MVVM初实践</h1></a>
-        </div>
-    </div>
+    <div class='article'>
+      <div class="row-fluid">
+           <div class="content-title span9">
+             <h1>MVVM初实践</h1b>
+           </div>
+      </div>
     <div class="row-fluid">
       <div class="span2">
 <p>Mon 25 August 2014 </p>
@@ -68,7 +65,8 @@ Filed under <a href="/category/ios.html">iOS</a>
 <p>
 </p>
       </div>
-      <div class="article-content span8">
+      
+      <div class="span8">
 	<p>Author: Charles Zhu<br />
 Summary: a sample project practising MVVM</p>
 <p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br />
@@ -123,67 +121,15 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
 <h3>Cell的点击</h3>
 <p>由于有文件和文件夹的区别，cell无法在storyboard中创建2个push的segue，所以先利用对于文件夹的点击在<code>UITableView</code>的点击delegate事件中进行操作，而文件的点击则通过<code>performSegueWithIdentifier</code>来实现。</p>
 <h3>总结</h3>
-<p>总体来说，实践基本按循MVVM的原则来进行，控制器中的内容变得很清爽，基本上只包含对view的控制，和VM的通信则是通过响应式的方式实现的。同时VM中包含了很多数据处理的内容，基本上逻辑的部分都转移到了VM中进行。在这种情况下，一个controller就要配一个VM，不知道会不会又造成VM的臃肿？</p> 
-	<a class="btn btn-mini xsmall" href="/mvvmchu-shi-jian.html">
-          <i class="icon-comment"></i> Comment </a>
+<p>总体来说，实践基本按循MVVM的原则来进行，控制器中的内容变得很清爽，基本上只包含对view的控制，和VM的通信则是通过响应式的方式实现的。同时VM中包含了很多数据处理的内容，基本上逻辑的部分都转移到了VM中进行。在这种情况下，一个controller就要配一个VM，不知道会不会又造成VM的臃肿？</p>
 	<hr />
       </div>
-      
     </div>
+    <div class="span10">
+      <h3>Comments</h3>
     
-
- 
-        
-
-
-
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/mvvmmo-shi-chu-tan.html"><h1>MVVM模式初探</h1></a>
-      </div>
+    </div>  
     </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 17 July 2014 </p>
-
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios.html">iOS</a> <a href="/tag/mvvm.html">mvvm</a> <a href="/tag/mvc.html">mvc</a> <a href="/tag/pattern.html">pattern</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
-Summary: 设计模式</p>
-<h2>MVC的无奈</h2>
-<p><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html">MVC</a>结构是学习iOS开发的人最先学习的一种开发模式，apple提倡以MVC为中心的开发模式。因为它很好的解构了应用场景中相关而又各自独立的部分：视图，视图控制器和数据模型。在MVC的世界里，控制器负责将模型中的数据以内容的形式展现到视图中，同时也把视图上产生的数据变化传递给模型从而将这种变化持久化。于是，在稍微复杂的app中，控制器中的内容会很庞大：网络操作，数据存储，手势响应等等。几乎可以确定，如果app需要添加新功能，超过一半的新增代码是添加在控制器中，这样不可避免的造成控制器的冗余以及大段无法重用的重复代码。<br />
-在开始MVVM时，我们可以稍稍考虑下现有MVC的问题。</p>
-<h3>视图</h3>
-<p>毋庸置疑，视图的作用很重要，但在设计中，视图是否需要和控制器，数据模型同等的地位呢？要知道绝大多数情况下，视图是不会重用的，往往“耦合”在视图控制器中，所以往往代码中有几个view controller，就能知道程序会有几个页面。此外，视图中的UI元素也是直接作为变量存在在控制器代码中，因为只有这样才方便刷新。很显然，视图控制器就可以代表视图本身。  </p>
-<h3>控制器</h3>
-<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> 
-	<a class="btn btn-mini xsmall" href="/mvvmmo-shi-chu-tan.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/tag/mvvm.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>
- 
-  
         </div>
         
         

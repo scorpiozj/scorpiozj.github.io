@@ -52,8 +52,95 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="/centos65-an-zhuang-eclipse.html"><h1>CentOS6.5 安装eclipse</h1></a>
+            <a href="/mvvmchu-shi-jian.html"><h1>MVVM初实践</h1></a>
         </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Mon 25 August 2014 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/ios.html">iOS</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/mvvm.html">MVVM</a> </p>
+<p>
+</p>
+      </div>
+      <div class="article-content span8">
+	<p>Author: Charles Zhu<br />
+Summary: a sample project practising MVVM</p>
+<p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br />
+考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br />
+另外需要说明的，这里的网盘其实是一个带有系统的SD卡，自身带有AP，可以无线连接访问。同时，提供了API接口获取相关的数据。</p>
+<h3>MVVM 的角色分配</h3>
+<p>视图无疑是用<code>UITableView</code>, 控制器自然选择<code>UITableViewController</code>,自然这里需要建立一个<code>ViewModel</code>来监视一切变化并把这种变化传递给控制器。</p>
+<h3>已知的VM任务</h3>
+<ol>
+<li>获取文件夹列表
+ VM需要知道当前所在的路径。另外获取到的数据需要重组：比如去掉隐藏文件，进行排序等。这个操作可以封装在某个数据访问层。</li>
+<li>cell的点击操作
+对于文件，需要把文件内容显示出来(为了方便，这里只对图片文件显示)。  </li>
+</ol>
+<h3>控制器的任务</h3>
+<p>显示页面，以及点击cell时的页面切换。</p>
+<h3>VM的内容</h3>
+<ol>
+<li><code>UITableView</code>的 <code>dataSource</code>
+dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上的文件名也要通过VM来获取</li>
+<li>数据获取的时机
+一般是在VM的信号didBecomeActiveSignal中去注册相应的事件。当事件完成后（获取列表任务），发送更新signal去通知控制器更新页面，因此在控制器中也要注册更新signal收到时相应的事件。整个伪代码逻辑：  <div class="highlight"><pre><span class="c1">//ViewController</span>
+    <span class="err">@</span><span class="n">weakify</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="n">subscribeNext</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">@</span><span class="n">strongify</span><span class="p">(</span><span class="n">self</span><span class="p">);</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="n">reloadData</span><span class="p">];</span>
+<span class="p">}];</span>
+
+<span class="c1">//ViewModel</span>
+<span class="n">self</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="o">=</span> <span class="p">[[</span> <span class="n">RACSubject</span> <span class="n">subject</span><span class="p">]</span> <span class="n">setNameWithFormat</span><span class="o">:</span><span class="s">@&quot;%@_MasterVC&quot;</span><span class="p">,</span><span class="n">self</span><span class="p">.</span><span class="n">directory</span><span class="p">];</span>
+<span class="n">self</span><span class="p">.</span><span class="n">flashCommand</span> <span class="o">=</span> <span class="p">[[</span><span class="n">RACCommand</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithSignalBlock</span><span class="o">:^</span><span class="n">RACSignal</span> <span class="o">*</span><span class="p">(</span><span class="kt">id</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">RACSignal</span> <span class="n">defer</span><span class="o">:^</span><span class="n">RACSignal</span> <span class="o">*</span><span class="p">{</span>
+        <span class="c1">//get content list</span>
+
+        <span class="c1">//finish data fetching and send signal</span>
+
+        <span class="p">[(</span><span class="n">RACSubject</span> <span class="o">*</span><span class="p">)</span><span class="n">self</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="n">sendNext</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">}];</span>
+<span class="p">}];</span>
+
+<span class="err">@</span><span class="n">weakify</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">didBecomeActiveSignal</span> <span class="n">subscribeNext</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="err">@</span><span class="n">strongify</span><span class="p">(</span><span class="n">self</span><span class="p">);</span>
+<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">flashCommand</span> <span class="n">execute</span><span class="o">:</span><span class="p">[</span><span class="n">NSNull</span> <span class="n">null</span><span class="p">]];</span>
+<span class="p">}];</span>
+</pre></div>
+
+
+</li>
+</ol>
+<h3>Cell的点击</h3>
+<p>由于有文件和文件夹的区别，cell无法在storyboard中创建2个push的segue，所以先利用对于文件夹的点击在<code>UITableView</code>的点击delegate事件中进行操作，而文件的点击则通过<code>performSegueWithIdentifier</code>来实现。</p>
+<h3>总结</h3>
+<p>总体来说，实践基本按循MVVM的原则来进行，控制器中的内容变得很清爽，基本上只包含对view的控制，和VM的通信则是通过响应式的方式实现的。同时VM中包含了很多数据处理的内容，基本上逻辑的部分都转移到了VM中进行。在这种情况下，一个controller就要配一个VM，不知道会不会又造成VM的臃肿？</p> 
+	<a class="btn btn-mini xsmall" href="/mvvmchu-shi-jian.html">
+          <i class="icon-comment"></i> Comment </a>
+	<hr />
+      </div>
+      
+    </div>
+    
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="/centos65-an-zhuang-eclipse.html"><h1>CentOS6.5 安装eclipse</h1></a>
+      </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
@@ -68,7 +155,7 @@ Filed under <a href="/category/linux.html">Linux</a>
 <p>
 </p>
       </div>
-      <div class="article-content span8">
+      <div class="summary span8">
 	<p>Author: Charles Zhu<br />
 Summary: install eclipse on centos6.5</p>
 <p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
@@ -81,25 +168,14 @@ Summary: install eclipse on centos6.5</p>
 <p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
 <ol>
 <li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看$PATH，发现添加的没有生效</li>
-<li>再次进入su，查看$PATH，发现添加的没有生效</li>
-</ol>
-<p>目测应该是和linux系统启动的知识有关，果然在<a href="http://www.cnblogs.com/BigIdiot/archive/2012/03/26/2417547.html">这里</a>找到了答案，简单的说：</p>
-<ol>
-<li>/etc/profile:在登录时,操作系统定制用户环境时使用的第一个文件,此 文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。</li>
-<li>/etc/environment:在登录时操作系统使用的第二个文件,系统在 读取你自己的profile前,设置环境文件的环境变量。</li>
-<li>~/.bash_profile:在登录时用到的第三个文件是.profile文 件,每个用户都可使用该文件输入专用于自己使用的shell信息,当用 户登录时,该 文件仅仅执行一次!默认情况下,他设置一些环境变游戏量,执 行用户的.bashrc文件。/etc/bashrc:为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该 文件被读取.</li>
-<li>~/.bashrc:该文件包含专用于你的bash shell的bash信 息,当登录时以及每次打开新的shell时,该该文件被读取。</li>
-</ol>
-<p>所以，如果修改/etc/profile的话，需要重启系统。</p>
-<p>这样，最终整个过程完成了。</p> 
+<li>退出su，查看 ...</li></ol> 
 	<a class="btn btn-mini xsmall" href="/centos65-an-zhuang-eclipse.html">
-          <i class="icon-comment"></i> Comment </a>
+          <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
       
     </div>
-    
+      
 
  
         
