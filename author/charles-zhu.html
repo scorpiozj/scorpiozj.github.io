@@ -54,8 +54,190 @@
 
     <div class='row-fluid''>
         <div class="article-title span9">
-            <a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html"><h1>git bisect查找xcode6工程在iOS7下不全屏的问题</h1></a>
+            <a href="/app-extension-study-1.html"><h1>App Extension Study 1</h1></a>
         </div>
+    </div>
+    <div class="row-fluid">
+      <div class="span2">
+<p>Thu 16 October 2014 </p>
+
+<p style="text-align: left;">
+Filed under <a href="/category/ios.html">iOS</a>
+</p>
+<p style="text-align: left;">
+ 
+    Tags <a href="/tag/ios8.html">ios8</a> <a href="/tag/appextension.html">AppExtension</a> </p>
+<p>
+</p>
+      </div>
+      <div class="article-content span8">
+	<p>Author: Charles Zhu<br />
+Summary: ios8 app extension</p>
+<h2>Intro</h2>
+<p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
+<h2>App Extension</h2>
+<p>有很多关于App Extension的介绍，所以就不详细介绍，这里侧重介绍Extension的生命周期以及和其他app的通信。</p>
+<h3>术语</h3>
+<ul>
+<li>host app: 用户在某个app中启用了extension，该app就叫host app</li>
+<li>containing app: extension不能单独作为target存在，必须依附在某个具有普通app的工程内，该app就是containing app。一个containing app可以有多个extension。</li>
+<li>app extension: </li>
+</ul>
+<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension，那么就可以在app(此即host app)中调用extension</p>
+<h3>生命周期</h3>
+<p><img alt="extension_life_cycle" src="./imgs/20141016/extension_cycle.png" /><br />
+extension是由用户选择启动，然后作为一个单独的“程序”运行，直到运行结束，系统kill该extension，至此结束extension的使命。需要说明的是，无法在containing app中启用extension。<br />
+尽管extension通常是在host app中启动，但是extension的运行过程却不受 host/containing app 的“干预”——不能在host或containing app 中影响extention的运行。但是系统提供了某种机制使得三者之间可以共享部分数据。</p>
+<h3>通信</h3>
+<h4>与host app 通信</h4>
+<p><img alt="with_host" src="./imgs/20141016/communicat_only_with_host.png" /><br />
+两者关系干净利落：一个请求，一个响应，没有其他藕断丝连。iOS8中<code>UIViewController</code>包含了<code>extensionContext</code>的新属性。请求的所有信息都包含在该context属性中。<br />
+该图的虚线表明extension和containing没有直接的通信。 </p>
+<h4>与containing app 通信</h4>
+<p>从某种意义上，extension是“依附”着containing app的，既然不能直接通信，那么必然有迂回的方式。<br />
+<img alt="with_containing" src="./imgs/20141016/communicat_indirectly_with_containing.png" /><br />
+上图中显示extension可以通过 OpenURL的方式打开自己的contaning app。更为重要的是，两者直接有一个shared resources区域来交换数据信息。</p>
+<h4>其他注意事项</h4>
+<p>由extension的工程必须包含arm64或x86_64框架，另外extension :  </p>
+<ul>
+<li>不能访问相机和麦克风</li>
+<li>不能执行长时间的后台任务，如果要上传／下载的话，需要使用 <code>NSURLSession</code></li>
+<li>不能访问 <code>UIApplication</code> 对象</li>
+<li>不能接受通过 <em>AirDrop</em> 传送的数据</li>
+</ul>
+<h2>创建App Extesnion</h2>
+<p>使用Xcode6创建一个application，然后在new一个target，这时模板选项里会出现 "Application Extension"，选择任一添加。这样运行安装app后，连带之前的扩展也一并安装了。  </p>
+<h3>extension的工程文件</h3>
+<p><img alt="extension_template" src="./imgs/20141016/extension_template.png" /><br />
+extension的组成很简单：</p>
+<ul>
+<li>ViewController: extension的主要实现部分</li>
+<li>storyboard: extension的UI界面入口</li>
+<li>Info.plist: 老朋友了，主要关注<code>NSExtension</code>键值。以后对一些限制，比如文件类型都在这里添加</li>
+<li>entitlements: optional，如果要启用share resource，就需要开启app group，那么会自动生产该文件。</li>
+</ul>
+<h3>extension的常见处理流程</h3>
+<p>如前所说，请求的extenison的所有信息可以通过<code>UIViewController</code>的<code>extensionContext</code>获取。至于相关信息怎么获取，下面分门别类细说。  </p>
+<h3>debug</h3>
+<p>选中extesnion的scheme，然后debug，Xcode6会让你选择某个host app，然后进入该host app。在host app启用extension后，就可以debug了。</p>
+<h3>distribution</h3>
+<p>提交containing app即可——没有实践过，itunes connect是否要设置，暂时不详  </p>
+<h2>处理常见场景</h2>
+<p>在开始实践extension之前，有必要直到一些常见问题如何处理。</p>
+<h3>使用嵌入式框架共享代码</h3>
+<p>constaining和extension可以通过该方式共享代码，需要注意的是extension中不是所有API都可以使用，并且要包含64位的架构。这两点是文档中Apple反复提及的，一旦有违反这样的情况而进行提交的会直接被打回。<br />
+添加完库后，要将target的"Require Only App-Extension-Safe API"设置为"YES"。  </p>
+<h3>shared resources</h3>
+<p>前面说过extension和containing可以共享数据。这时分别对containing 和extension target启用"App Group"。Xcode6会自动获取group名，当然也可以自行添加。共享数据的读写是通过老朋友<code>NSUserDefault</code>:</p>
+<div class="highlight"><pre><span class="c1">// Create and share access to an NSUserDefaults object.</span>
+<span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithSuiteName</span><span class="o">:</span><span class="s">@&quot;com.example.domain.MyShareExtension&quot;</span><span class="p">];</span>
+<span class="c1">// Use the shared user defaults object to update the user&#39;s account.</span>
+<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="n">theAccountName</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;lastAccountName&quot;</span><span class="p">];</span>
+</pre></div>
+
+
+<p>对共享区域的数据，extesnion和containing都有读写权限，所以某一方进行读写后要及时同步数据。  </p>
+<h3>访问网页</h3>
+<p>Share和Action类型的extension可以通过safari访问某个页面，执行你设定的js脚本，然后把执行的结果返回给extension。注意可以在extension执行前就执行脚本访问web页面，也可以在extension执行完毕后访问或修改web页面(该情形只在iOS有效)。<br />
+步骤：  </p>
+<ol>
+<li>创建js文件，文件中要有一个名为<code>ExtensionPreprocessingJS</code>的全局对象</li>
+<li>修改plist：将<code>NSExtensionActivationRule</code>的属性<code>NSExtensionActivationSupportsWebPageWithMaxCount</code>设置为非零的值</li>
+<li>当extension开始后，使用 <code>NSItemProvider</code>获取js运行的结果</li>
+<li>iOS中如果要传递给js文件参数， 也通过 <code>NSItemProvider</code></li>
+</ol>
+<p>为了让safari响应extension的js文件，需要添加：</p>
+<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>NSExtensionJavaScriptPreprocessingFile<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;string&gt;</span>MyJavaScriptFile<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!-- Do not include the &quot;.js&quot; filename extension --&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+</pre></div>
+
+
+<h4>js文件的写法</h4>
+<p>sample: </p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">MyExtensionJavaScriptClass</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{};</span>
+<span class="n">MyExtensionJavaScriptClass</span><span class="p">.</span><span class="n">prototype</span> <span class="o">=</span> <span class="p">{</span>
+<span class="nl">run:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// Pass the baseURI of the webpage to the extension.</span>
+      <span class="n">arguments</span><span class="p">.</span><span class="n">completionFunction</span><span class="p">({</span><span class="s">&quot;baseURI&quot;</span><span class="o">:</span> <span class="n">document</span><span class="p">.</span><span class="n">baseURI</span><span class="p">});</span>
+  <span class="p">},</span>
+  <span class="c1">// Note that the finalize function is only available in iOS.</span>
+  <span class="nl">finalize:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
+<span class="c1">// arguments contains the value the extension provides in [NSExtensionContext completeRequestReturningItems:completion:].</span>
+  <span class="c1">// In this example, the extension provides a color as a returning item.</span>
+  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">&quot;bgColor&quot;</span><span class="p">];</span>
+  <span class="p">}</span>
+<span class="p">};</span>
+<span class="c1">// The JavaScript file must contain a global object named &quot;ExtensionPreprocessingJS&quot;. </span>
+<span class="n">var</span> <span class="n">ExtensionPreprocessingJS</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MyExtensionJavaScriptClass</span><span class="p">;</span>
+</pre></div>
+
+
+<p>解释和说明：  </p>
+<ol>
+<li>当safari加载了js后，立即执行<code>run</code>函数，执行的结果通过<code>completionFunction</code>返回给extension</li>
+<li><code>finalize</code>函数是extension执行<code>completeRequestReturningItems:completion:</code>后执行，extesnion传递的参数在arguments中</li>
+</ol>
+<p>对应的extension中： </p>
+<ol>
+<li>
+<p>获取run执行的结果：</p>
+<p>[imageProvider loadItemForTypeIdentifier:kUTTypePropertyList options:nil
+completionHandler:^(NSDictionary <em>item, NSError </em>error) {
+NSDictionary <em>results = (NSDictionary </em>)item;
+NSString *baseURI = [[results objectForKey:NSExtensionJavaScriptPreprocessingResultsKey] objectForKey:@"baseURI"];
+}];</p>
+</li>
+<li>
+<p>传递给finalize：</p>
+<p>NSExtensionItem <em>extensionItem = [[NSExtensionItem alloc] init];
+extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtensionJavaScriptFinalizeArgumentKey: @{@"bgColor":@"red"}} typeIdentifier:(NSString </em>)kUTTypePropertyList]];
+[[self extensionContext] completeRequestReturningItems:@[extensionItem]
+  completion:nil];</p>
+</li>
+</ol>
+<h3>上传和下载</h3>
+<p>使用<code>NSURLSession</code>，经过测试，<code>upload task session</code> 不能在extension中使用。</p>
+<h3>声明Share/Action extension支持的数据类型</h3>
+<p>sample：  </p>
+<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
+<span class="nt">&lt;dict&gt;</span>
+    <span class="nt">&lt;key&gt;</span>NSExtensionActivationRule<span class="nt">&lt;/key&gt;</span>
+    <span class="nt">&lt;dict&gt;</span>
+        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsImageWithMaxCount<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;integer&gt;</span>10<span class="nt">&lt;/integer&gt;</span>
+        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsMovieWithMaxCount<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
+        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsWebURLWithMaxCount<span class="nt">&lt;/key&gt;</span>
+        <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
+    <span class="nt">&lt;/dict&gt;</span>
+<span class="nt">&lt;/dict&gt;</span>
+</pre></div>
+
+
+<p>不支持的数据类型设置值为0或者移除该键。 </p>
+<h3>适配iOS8前的containing app</h3>
+<p>使用了嵌入式框架后，也能继续兼容iOS8之前的系统。这就要使用<code>dlopen</code>，该命令可以在编译时条件链接和加载库。注意要在objc使用<code>dlopen</code>。在containing执行的时候，检测系统只有是iOS8及以后的系统，才加载库。 </p>
+<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p> 
+	<a class="btn btn-mini xsmall" href="/app-extension-study-1.html">
+          <i class="icon-comment"></i> Comment </a>
+	<hr />
+      </div>
+      
+    </div>
+    
+
+ 
+        
+
+
+
+    <div class='row-fluid'>
+      <div class='article-title span9'> 
+        <a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html"><h1>git bisect查找xcode6工程在iOS7下不全屏的问题</h1></a>
+      </div>
     </div>
     <div class="row-fluid">
       <div class="span2">
@@ -70,7 +252,7 @@ Filed under <a href="/category/ios.html">iOS</a>
 <p>
 </p>
       </div>
-      <div class="article-content span8">
+      <div class="summary span8">
 	<p>Author: Charles Zhu<br />
 Summary: launch screen,xcode6,git</p>
 <h2>xcode6工程在iOS7下未全屏</h2>
@@ -80,27 +262,14 @@ Summary: launch screen,xcode6,git</p>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
 <span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master）为错误版本</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">good</span> <span class="n">A</span><span class="o">-</span><span class="n">commit</span> <span class="c1">//提供一个运行正确的版本，下面开始查找</span>
-
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">reset</span> <span class="c1">//当确认错误的提交后，需要清理战场，回到HEAD</span>
-</pre></div>
-
-
-<h2>LaunchScreen.xib</h2>
-<p>经过bisect的检查，发现是将工程的 Deployment target设置为iOS7引起的。因为Xcode6中模板工程默认使用LaunchScreen.xib，而且size class是对iOS8才有效，所以猜想应该是LaunchScreen引起的。重新运行了下工程，发现在iOS7下的确启动画面没有显示。而目前iOS7的用户还是占了大多数，很显然不可能只适配iOS8，所以工程还是得使用LaunchImage。</p>
-<h2>启用LaunchImage</h2>
-<p>启用很简单，在target的general设置中找到 <code>App Icons and Launch Images</code>， 然后点击 <code>Use Asset Catalog</code>，接下来按提示操作就可以了。  </p>
-<p>就目前的测试和google搜索情况来看，这种iOS7的不全屏显示问题只能通过这种方式解决。从app的launch过程（下图）可以看出，启动图片的加载是在<code>Load the main UI file</code>进行的，此时还无法通过代码和程序进行“交互”。<br />
-<img alt="app launch process" src="./imgs/20141016/app_launch_process.png" /><br />
-(图片来自 <a href="https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/StrategiesforHandlingAppStateTransitions/StrategiesforHandlingAppStateTransitions.html#//apple_ref/doc/uid/TP40007072-CH8-SW1">App Programming Guide</a>)</p> 
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> 
 	<a class="btn btn-mini xsmall" href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">
-          <i class="icon-comment"></i> Comment </a>
+          <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>
       
     </div>
-    
+      
 
  
         
@@ -454,65 +623,6 @@ Summary: some tutorials of sketch</p>
 <p>原文在此：<a href="http://brilliantsketch.com/make-long-shadow-effect-sketch/">shadow effect</a> <br />
 该示例主要讲解了模糊 ...</p> 
 	<a class="btn btn-mini xsmall" href="/sketch-tutorials-study-1.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
-
- 
-        
-
-
-
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/wwdc2014-223-notes-protyping.html"><h1>WWDC2014-223 Notes Protyping</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 03 July 2014 </p>
-
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/wwdc-2014.html">wwdc 2014</a> <a href="/tag/ui.html">ui</a> <a href="/tag/ios.html">ios</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br />
-这一讲的内容分为下面几个部分：</p>
-<ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br />
-<img alt="relations icon" src="./imgs/20140703/how-relations.png" /><br />
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we ...</li></ul> 
-	<a class="btn btn-mini xsmall" href="/wwdc2014-223-notes-protyping.html">
           <i class="icon-plus-sign"></i> Read More </a>
 	<hr />
       </div>

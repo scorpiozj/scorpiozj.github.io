@@ -31,7 +31,7 @@
 	<ul class="nav nav-pills pull-right">
 	    <li >
 	      <a href="/category/design.html ">Design</a>
-	    <li >
+	    <li  class="active" >
 	      <a href="/category/ios.html ">iOS</a>
 	    <li >
 	      <a href="/category/linux.html ">Linux</a>
@@ -48,15 +48,12 @@
     <div class="row-fluid">
 
         <div class="span10">
-        
-
-        
-
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/app-extension-study-1.html"><h1>App Extension Study 1</h1></a>
-        </div>
-    </div>
+    <div class='article'>
+      <div class="row-fluid">
+           <div class="content-title span9">
+             <h1>App Extension Study 1</h1b>
+           </div>
+      </div>
     <div class="row-fluid">
       <div class="span2">
 <p>Thu 16 October 2014 </p>
@@ -70,7 +67,8 @@ Filed under <a href="/category/ios.html">iOS</a>
 <p>
 </p>
       </div>
-      <div class="article-content span8">
+      
+      <div class="span8">
 	<p>Author: Charles Zhu<br />
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
@@ -220,68 +218,15 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
 <p>不支持的数据类型设置值为0或者移除该键。 </p>
 <h3>适配iOS8前的containing app</h3>
 <p>使用了嵌入式框架后，也能继续兼容iOS8之前的系统。这就要使用<code>dlopen</code>，该命令可以在编译时条件链接和加载库。注意要在objc使用<code>dlopen</code>。在containing执行的时候，检测系统只有是iOS8及以后的系统，才加载库。 </p>
-<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p> 
-	<a class="btn btn-mini xsmall" href="/app-extension-study-1.html">
-          <i class="icon-comment"></i> Comment </a>
+<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p>
 	<hr />
       </div>
-      
     </div>
+    <div class="span10">
+      <h3>Comments</h3>
     
-
- 
-        
-
-
-
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html"><h1>git bisect查找xcode6工程在iOS7下不全屏的问题</h1></a>
-      </div>
+    </div>  
     </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 16 October 2014 </p>
-
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios8.html">ios8</a> <a href="/tag/git.html">git</a> <a href="/tag/launch-screen.html">launch screen</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
-Summary: launch screen,xcode6,git</p>
-<h2>xcode6工程在iOS7下未全屏</h2>
-<p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
-<h2>git bisect</h2>
-<p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br />
-bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> 
-	<a class="btn btn-mini xsmall" href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/tag/ios8.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
-</ul>
-</div>
- 
-  
         </div>
         
         
