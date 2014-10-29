@@ -1,77 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>To be Independent</title>
-    <meta name="description" content="">
-    <meta name="author" content="Charles Zhu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
-    <![endif]-->
 
-    <!-- Le styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
-    <link href="/theme/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+        <title>To be Independent - ux</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
 </head>
 
-<body>
-<header class="blog-header">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span9">
-	<a href="" class="brand">To be Independent</a>
-      </div>
+<body id="index" class="home">
 
-      <div class="span3" id="blog-nav">
-	<ul class="nav nav-pills pull-right">
-	    <li >
-	      <a href="/category/design.html ">Design</a>
-	    <li >
-	      <a href="/category/ios.html ">iOS</a>
-	    <li >
-	      <a href="/category/linux.html ">Linux</a>
-	    <li >
-	      <a href="/category/versions.html ">versions</a>
-	</ul>
-      </div>
-    </div> <!-- End of fluid row-->
-  </div>   <!-- End of Container-->
-</header>
-    
-<div class="container">
-    <div class="content">
-    <div class="row-fluid">
 
-        <div class="span10">
-        
+    <div class="container">
 
-        
+        <div class="row">
 
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html"><h1>WWDC2014-211 Notes designing_intuitive_user_experiences</h1></a>
-        </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Mon 30 June 2014 </p>
+          <header id="banner" class="body">
+                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/wwdc-2014.html">wwdc 2014</a> <a href="/tag/ui.html">ui</a> <a href="/tag/ios.html">ios</a> <a href="/tag/ux.html">ux</a> </p>
-<p>
-</p>
-      </div>
-      <div class="article-content span8">
-	<p>Author: Charles Zhu<br />
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content">
+
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">WWDC2014-211 Notes designing_intuitive_user_experiences</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-06-30T14:20:00"> Mon 30 June 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: Notes for 211</p>
 <h1>intuitive</h1>
 <p>字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  </p>
@@ -80,114 +66,118 @@ Summary: Notes for 211</p>
 记住设计不是为自己(已知者)设计，是为其他人设计</p>
 <p>以下按5部分，进行阐述  </p>
 <h2>platform savvy</h2>
-<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体／大小，滑动触发的距离等等。<br />
-这里强调的是设计要和系统保持一致性。类似的包括手势操作：tap, pan, swipe, pinch, long press, rotate，控件：button／switch等。比如，tab的选中和非选中状态设置。<br />
-同时也说明为什么要保持这种一致性：因为是我们对真实世界体验的表现——显然有点是自夸自家的设计了<br />
-当然，演讲者也说明打破惯例（break convention）也不是不可以，这时就需要告诉用户如何使用了——有点像引导操作，但不一样。</p>
-<h2>easy to navigate</h2>
-<p>经典的导航式结构，主要还是围绕以下3个方面来解释：
-<em> Tells you where you are
-</em> Shows you where else you can go
-<em> Explain what's there
-印象深的是“maximize continuty”：以photo中点击小图查看大图的导航为例，可以明确大图是来自哪一张小图。<br />
-这里居然还“批判”了抽屉式导航（视频里叫 hamburger）:
-</em> 页面的内容在app中不可见，需要通过左上方（一般都是放置在左上方）的按钮点开后显示
-<em> 通过该页面进行app内容切换的场景很少
-</em> 页面切换耗费比较多：要比nav＋tab式多点一次，以及2倍的等待切换动画完成
-当然hamburger也不是不能用（毕竟辩证法说明了万事没有绝对），但是在使用之前还是需要围绕最初的3个方面进行甄别</p>
-<h2>clear</h2>
-<p>清晰-&gt;达意。 比如，tab选中后tintcolor显示出来就很明确告诉用户当前是在哪里。演讲者还侧重谈了如何撰写文字/设计icon</p>
-<h2>simple</h2>
-<p>80/20法则，80%的用户只会使用app提供的20%功能</p>
-<h2>focused</h2>
-<p>简单的说，就是app的目的是什么，那么所有的操作都为然着这个目的而来。</p>
-<p>设计真是门艺术——大家都能判断出体验的好坏，但却不能据此进行改良。这部分内容不仅对designer，对开发／产品人员，也大有裨益——虽然我的体会不是很深。</p> 
-	<a class="btn btn-mini xsmall" href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html">
-          <i class="icon-comment"></i> Comment </a>
-	<hr />
-      </div>
-      
-    </div>
-    
-<div class="pagination">
+<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体 ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/wwdc-2014.html">wwdc 2014</a>
+											<a class="danger label" href="/tag/ui.html">ui</a>
+											<a class="danger label" href="/tag/ios.html">ios</a>
+											<a class="danger label" href="/tag/ux.html">ux</a>
+								</div>
+
+
+
+				        </article></li>
+				</ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
 <ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/tag/ux.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
+		<li><a href="/category/design.html">Design</a></li>
+		<li><a href="/category/ios.html">iOS</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/versions.html">versions</a></li>
 </ul>
-</div>
- 
-  
-        </div>
-        
-        
-    </div>     </div> </div>
 
-<!--footer-->
-<div class="container">
-  <div class="well" style="background-color: #E9EFF6">
-    <div id="blog-footer">
-      <div class="row-fluid">
-	<div class="social span2" align="center" id="socialist">
-	  <ul class="nav nav-list">
-	    <li class="nav-header">
-	      Social
-	    </li>
-	    <li><a href="https://github.com/scorpiozj"><i class="icon-scorpiozj" style="color: #1f334b"></i>scorpiozj</a></li>
-	    <li><a href="https://twitter.com/charleszhu_"><i class="icon-charleszhu_" style="color: #1f334b"></i>charleszhu_</a></li>
 
-	  </ul>
-	</div>
-        <div class="links span2" align="center">
-          <ul class="nav nav-list">
-            <li class="nav-header"> 
-              Links
-            </li>
-            
-            <li><a href="http://getpelican.com/">Pelican</a></li>
-            <li><a href="http://www.cnblogs.com/scorpiozj/">cnblog</a></li>
-          </ul>
-        </div>
-	<div class="site-nav span2" align="center">
-          <ul class="nav nav-list" id="site-links">
-            <li class="nav-header"> 
-              Site
-            </li>
-            <li><a href=""><i class="icon-home" style="color: #1f334b">
-                </i>Home</a></li>
-            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
-                </i>Archives</a></li>
-	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
-                </i>Tags</a></li>
-	    
-            <li><a href="/" rel="alternate">
-                <i class="icon-rss-sign" style="color: #1f334b"></i>
-                Atom Feed</a></li>
-	  </ul>
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+</ul>
 
-        </div>
 
-      </div> <!--end of fluid row-->
-    </div> <!--end of blog-footer-->
-    <hr />
-    <p align="center"><a href="">To be Independent</a>
-      &copy; Charles Zhu
-    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
-        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
-        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
-        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
 
-  </div> <!--end of well -->
-</div> <!--end of container -->
+</div> </div><!-- /.row -->
 
-<!--/footer-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
 
 
 
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
 </body>
 </html>

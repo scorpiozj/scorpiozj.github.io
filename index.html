@@ -1,77 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>To be Independent</title>
-    <meta name="description" content="">
-    <meta name="author" content="Charles Zhu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
-    <![endif]-->
 
-    <!-- Le styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
-    <link href="/theme/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+        <title>To be Independent</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
 </head>
 
-<body>
-<header class="blog-header">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span9">
-	<a href="" class="brand">To be Independent</a>
-      </div>
+<body id="index" class="home">
 
-      <div class="span3" id="blog-nav">
-	<ul class="nav nav-pills pull-right">
-	    <li >
-	      <a href="/category/design.html ">Design</a>
-	    <li >
-	      <a href="/category/ios.html ">iOS</a>
-	    <li >
-	      <a href="/category/linux.html ">Linux</a>
-	    <li >
-	      <a href="/category/versions.html ">versions</a>
-	</ul>
-      </div>
-    </div> <!-- End of fluid row-->
-  </div>   <!-- End of Container-->
-</header>
-    
-<div class="container">
-    <div class="content">
-    <div class="row-fluid">
 
-        <div class="span10">
-        
+    <div class="container">
 
-        
+        <div class="row">
 
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/app-extension-study-1.html"><h1>App Extension Study 1</h1></a>
-        </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 16 October 2014 </p>
+          <header id="banner" class="body">
+                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios8.html">ios8</a> <a href="/tag/appextension.html">AppExtension</a> </p>
-<p>
-</p>
-      </div>
-      <div class="article-content span8">
-	<p>Author: Charles Zhu<br />
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content">
+
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">App Extension Study 1</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-16T14:00:00"> Thu 16 October 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
 <p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
@@ -83,177 +69,27 @@ Summary: ios8 app extension</p>
 <li>containing app: extension不能单独作为target存在，必须依附在某个具有普通app的工程内，该app就是containing app。一个containing app可以有多个extension。</li>
 <li>app extension: </li>
 </ul>
-<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension，那么就可以在app(此即host app)中调用extension</p>
-<h3>生命周期</h3>
-<p><img alt="extension_life_cycle" src="./imgs/20141016/extension_cycle.png" /><br />
-extension是由用户选择启动，然后作为一个单独的“程序”运行，直到运行结束，系统kill该extension，至此结束extension的使命。需要说明的是，无法在containing app中启用extension。<br />
-尽管extension通常是在host app中启动，但是extension的运行过程却不受 host/containing app 的“干预”——不能在host或containing app 中影响extention的运行。但是系统提供了某种机制使得三者之间可以共享部分数据。</p>
-<h3>通信</h3>
-<h4>与host app 通信</h4>
-<p><img alt="with_host" src="./imgs/20141016/communicat_only_with_host.png" /><br />
-两者关系干净利落：一个请求，一个响应，没有其他藕断丝连。iOS8中<code>UIViewController</code>包含了<code>extensionContext</code>的新属性。请求的所有信息都包含在该context属性中。<br />
-该图的虚线表明extension和containing没有直接的通信。 </p>
-<h4>与containing app 通信</h4>
-<p>从某种意义上，extension是“依附”着containing app的，既然不能直接通信，那么必然有迂回的方式。<br />
-<img alt="with_containing" src="./imgs/20141016/communicat_indirectly_with_containing.png" /><br />
-上图中显示extension可以通过 OpenURL的方式打开自己的contaning app。更为重要的是，两者直接有一个shared resources区域来交换数据信息。</p>
-<h4>其他注意事项</h4>
-<p>由extension的工程必须包含arm64或x86_64框架，另外extension :  </p>
-<ul>
-<li>不能访问相机和麦克风</li>
-<li>不能执行长时间的后台任务，如果要上传／下载的话，需要使用 <code>NSURLSession</code></li>
-<li>不能访问 <code>UIApplication</code> 对象</li>
-<li>不能接受通过 <em>AirDrop</em> 传送的数据</li>
-</ul>
-<h2>创建App Extesnion</h2>
-<p>使用Xcode6创建一个application，然后在new一个target，这时模板选项里会出现 "Application Extension"，选择任一添加。这样运行安装app后，连带之前的扩展也一并安装了。  </p>
-<h3>extension的工程文件</h3>
-<p><img alt="extension_template" src="./imgs/20141016/extension_template.png" /><br />
-extension的组成很简单：</p>
-<ul>
-<li>ViewController: extension的主要实现部分</li>
-<li>storyboard: extension的UI界面入口</li>
-<li>Info.plist: 老朋友了，主要关注<code>NSExtension</code>键值。以后对一些限制，比如文件类型都在这里添加</li>
-<li>entitlements: optional，如果要启用share resource，就需要开启app group，那么会自动生产该文件。</li>
-</ul>
-<h3>extension的常见处理流程</h3>
-<p>如前所说，请求的extenison的所有信息可以通过<code>UIViewController</code>的<code>extensionContext</code>获取。至于相关信息怎么获取，下面分门别类细说。  </p>
-<h3>debug</h3>
-<p>选中extesnion的scheme，然后debug，Xcode6会让你选择某个host app，然后进入该host app。在host app启用extension后，就可以debug了。</p>
-<h3>distribution</h3>
-<p>提交containing app即可——没有实践过，itunes connect是否要设置，暂时不详  </p>
-<h2>处理常见场景</h2>
-<p>在开始实践extension之前，有必要直到一些常见问题如何处理。</p>
-<h3>使用嵌入式框架共享代码</h3>
-<p>constaining和extension可以通过该方式共享代码，需要注意的是extension中不是所有API都可以使用，并且要包含64位的架构。这两点是文档中Apple反复提及的，一旦有违反这样的情况而进行提交的会直接被打回。<br />
-添加完库后，要将target的"Require Only App-Extension-Safe API"设置为"YES"。  </p>
-<h3>shared resources</h3>
-<p>前面说过extension和containing可以共享数据。这时分别对containing 和extension target启用"App Group"。Xcode6会自动获取group名，当然也可以自行添加。共享数据的读写是通过老朋友<code>NSUserDefault</code>:</p>
-<div class="highlight"><pre><span class="c1">// Create and share access to an NSUserDefaults object.</span>
-<span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithSuiteName</span><span class="o">:</span><span class="s">@&quot;com.example.domain.MyShareExtension&quot;</span><span class="p">];</span>
-<span class="c1">// Use the shared user defaults object to update the user&#39;s account.</span>
-<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="n">theAccountName</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;lastAccountName&quot;</span><span class="p">];</span>
-</pre></div>
+<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p> </div><!-- /.entry-content -->
 
-
-<p>对共享区域的数据，extesnion和containing都有读写权限，所以某一方进行读写后要及时同步数据。  </p>
-<h3>访问网页</h3>
-<p>Share和Action类型的extension可以通过safari访问某个页面，执行你设定的js脚本，然后把执行的结果返回给extension。注意可以在extension执行前就执行脚本访问web页面，也可以在extension执行完毕后访问或修改web页面(该情形只在iOS有效)。<br />
-步骤：  </p>
-<ol>
-<li>创建js文件，文件中要有一个名为<code>ExtensionPreprocessingJS</code>的全局对象</li>
-<li>修改plist：将<code>NSExtensionActivationRule</code>的属性<code>NSExtensionActivationSupportsWebPageWithMaxCount</code>设置为非零的值</li>
-<li>当extension开始后，使用 <code>NSItemProvider</code>获取js运行的结果</li>
-<li>iOS中如果要传递给js文件参数， 也通过 <code>NSItemProvider</code></li>
-</ol>
-<p>为了让safari响应extension的js文件，需要添加：</p>
-<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;dict&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionJavaScriptPreprocessingFile<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;string&gt;</span>MyJavaScriptFile<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!-- Do not include the &quot;.js&quot; filename extension --&gt;</span>
-    <span class="nt">&lt;/dict&gt;</span>
-</pre></div>
-
-
-<h4>js文件的写法</h4>
-<p>sample: </p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">MyExtensionJavaScriptClass</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{};</span>
-<span class="n">MyExtensionJavaScriptClass</span><span class="p">.</span><span class="n">prototype</span> <span class="o">=</span> <span class="p">{</span>
-<span class="nl">run:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Pass the baseURI of the webpage to the extension.</span>
-      <span class="n">arguments</span><span class="p">.</span><span class="n">completionFunction</span><span class="p">({</span><span class="s">&quot;baseURI&quot;</span><span class="o">:</span> <span class="n">document</span><span class="p">.</span><span class="n">baseURI</span><span class="p">});</span>
-  <span class="p">},</span>
-  <span class="c1">// Note that the finalize function is only available in iOS.</span>
-  <span class="nl">finalize:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// arguments contains the value the extension provides in [NSExtensionContext completeRequestReturningItems:completion:].</span>
-  <span class="c1">// In this example, the extension provides a color as a returning item.</span>
-  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">&quot;bgColor&quot;</span><span class="p">];</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="c1">// The JavaScript file must contain a global object named &quot;ExtensionPreprocessingJS&quot;. </span>
-<span class="n">var</span> <span class="n">ExtensionPreprocessingJS</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MyExtensionJavaScriptClass</span><span class="p">;</span>
-</pre></div>
-
-
-<p>解释和说明：  </p>
-<ol>
-<li>当safari加载了js后，立即执行<code>run</code>函数，执行的结果通过<code>completionFunction</code>返回给extension</li>
-<li><code>finalize</code>函数是extension执行<code>completeRequestReturningItems:completion:</code>后执行，extesnion传递的参数在arguments中</li>
-</ol>
-<p>对应的extension中： </p>
-<ol>
-<li>
-<p>获取run执行的结果：</p>
-<p>[imageProvider loadItemForTypeIdentifier:kUTTypePropertyList options:nil
-completionHandler:^(NSDictionary <em>item, NSError </em>error) {
-NSDictionary <em>results = (NSDictionary </em>)item;
-NSString *baseURI = [[results objectForKey:NSExtensionJavaScriptPreprocessingResultsKey] objectForKey:@"baseURI"];
-}];</p>
-</li>
-<li>
-<p>传递给finalize：</p>
-<p>NSExtensionItem <em>extensionItem = [[NSExtensionItem alloc] init];
-extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtensionJavaScriptFinalizeArgumentKey: @{@"bgColor":@"red"}} typeIdentifier:(NSString </em>)kUTTypePropertyList]];
-[[self extensionContext] completeRequestReturningItems:@[extensionItem]
-  completion:nil];</p>
-</li>
-</ol>
-<h3>上传和下载</h3>
-<p>使用<code>NSURLSession</code>，经过测试，<code>upload task session</code> 不能在extension中使用。</p>
-<h3>声明Share/Action extension支持的数据类型</h3>
-<p>sample：  </p>
-<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
-<span class="nt">&lt;dict&gt;</span>
-    <span class="nt">&lt;key&gt;</span>NSExtensionActivationRule<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;dict&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsImageWithMaxCount<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;integer&gt;</span>10<span class="nt">&lt;/integer&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsMovieWithMaxCount<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsWebURLWithMaxCount<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
-    <span class="nt">&lt;/dict&gt;</span>
-<span class="nt">&lt;/dict&gt;</span>
-</pre></div>
-
-
-<p>不支持的数据类型设置值为0或者移除该键。 </p>
-<h3>适配iOS8前的containing app</h3>
-<p>使用了嵌入式框架后，也能继续兼容iOS8之前的系统。这就要使用<code>dlopen</code>，该命令可以在编译时条件链接和加载库。注意要在objc使用<code>dlopen</code>。在containing执行的时候，检测系统只有是iOS8及以后的系统，才加载库。 </p>
-<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p> 
-	<a class="btn btn-mini xsmall" href="/app-extension-study-1.html">
-          <i class="icon-comment"></i> Comment </a>
-	<hr />
-      </div>
-      
-    </div>
-    
-
- 
-        
+								<div class="medium primary btn"><a href="/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html"><h1>git bisect查找xcode6工程在iOS7下不全屏的问题</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 16 October 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios8.html">ios8</a>
+											<a class="danger label" href="/tag/appextension.html">AppExtension</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios8.html">ios8</a> <a href="/tag/git.html">git</a> <a href="/tag/launch-screen.html">launch screen</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">git bisect查找xcode6工程在iOS7下不全屏的问题</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-16T10:00:00"> Thu 16 October 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: launch screen,xcode6,git</p>
 <h2>xcode6工程在iOS7下未全屏</h2>
 <p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
@@ -262,40 +98,28 @@ Summary: launch screen,xcode6,git</p>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
 <span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> 
-	<a class="btn btn-mini xsmall" href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/git-commit-a-de-wu-qu.html"><h1>git commit -a 的误区</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Mon 22 September 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios8.html">ios8</a>
+											<a class="danger label" href="/tag/git.html">git</a>
+											<a class="danger label" href="/tag/launch-screen.html">launch screen</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/versions.html">versions</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/git.html">git</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-22T14:00:00"> Mon 22 September 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: git 错误理解</p>
 <h2>SVN下的项目管理</h2>
 <p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
@@ -307,40 +131,26 @@ Summary: git 错误理解</p>
 <span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
 <span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
 
-<span class="nx">Initial ...</span></pre></div> 
-	<a class="btn btn-mini xsmall" href="/git-commit-a-de-wu-qu.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+<span class="nx">Initial ...</span></pre></div> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/quartzcomposerji-ben-gai-nian.html"><h1>QuartzComposer基本概念</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Mon 25 August 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/git.html">git</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/design.html">Design</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/quartzcomposer.html">QuartzComposer</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">QuartzComposer基本概念</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-08-25T14:00:00"> Mon 25 August 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: a guide to QuartzComposer</p>
 <p>Processors are green, providers are blue, and consumers are pink
 最近才发现QuartzComposer也是一款用来设计交互的工具，原来Xcode自带，现在从Xcode中分离成为单独的app。之所以会关注是发现facebook的设计师也比较推崇该工具。在官网上搜索相关文档，内容都比较陈旧，或许说明这个工具比较成熟吧。</p>
@@ -349,40 +159,26 @@ Summary: a guide to QuartzComposer</p>
 <p>Composer中创建的文件叫Quartz composition ， 其中最基本的单元（module）叫patch。</p>
 <h4>2. patch</h4>
 <p>patch是最基本的单元，苹果准备了丰富的库来完成一系列操作。patch库可以通过cmd＋enter的方式调用，然后找到需要的patch直接拖即可。patch相当于是一个程序，函数原型相当于：  </p>
-<div class="highlight"><pre><span class="nx">Result</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span> <span class="nx">or</span> <span class="nx">more</span> <span class="nx">input</span> <span class="nx">parameters ...</span></pre></div> 
-	<a class="btn btn-mini xsmall" href="/quartzcomposerji-ben-gai-nian.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+<div class="highlight"><pre><span class="nx">Result</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span> <span class="nx">or</span> <span class="nx">more</span> <span class="nx">input</span> <span class="nx">parameters ...</span></pre></div> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/mvvmchu-shi-jian.html"><h1>MVVM初实践</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Mon 25 August 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/quartzcomposer.html">QuartzComposer</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/mvvm.html">MVVM</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">MVVM初实践</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-08-25T10:00:00"> Mon 25 August 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: a sample project practising MVVM</p>
 <p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br />
 考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br />
@@ -396,40 +192,26 @@ Summary: a sample project practising MVVM</p>
 <li>cell的点击操作
 对于文件，需要把文件内容显示出来(为了方便，这里只对图片文件显示)。  </li>
 </ol>
-<h3>控制器的任务 ...</h3> 
-	<a class="btn btn-mini xsmall" href="/mvvmchu-shi-jian.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+<h3>控制器的任务 ...</h3> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/centos65-an-zhuang-eclipse.html"><h1>CentOS6.5 安装eclipse</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Wed 23 July 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/mvvm.html">MVVM</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/linux.html">Linux</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/linux.html">linux</a> <a href="/tag/eclipse.html">eclipse</a> <a href="/tag/jdk.html">jdk</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-07-23T10:00:00"> Wed 23 July 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: install eclipse on centos6.5</p>
 <p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
 <h3>eclipse 下载</h3>
@@ -441,40 +223,28 @@ Summary: install eclipse on centos6.5</p>
 <p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
 <ol>
 <li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看 ...</li></ol> 
-	<a class="btn btn-mini xsmall" href="/centos65-an-zhuang-eclipse.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+<li>退出su，查看 ...</li></ol> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/designcode-tutorial1-bi-ji.html"><h1>design+code tutorial1 笔记</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 17 July 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/linux.html">linux</a>
+											<a class="danger label" href="/tag/eclipse.html">eclipse</a>
+											<a class="danger label" href="/tag/jdk.html">jdk</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios.html">iOS</a> <a href="/tag/design.html">design</a> <a href="/tag/sketch.html">sketch</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">design+code tutorial1 笔记</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-07-17T17:00:00"> Thu 17 July 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: design笔记</p>
 <ol>
 <li>
@@ -491,40 +261,28 @@ normal #FAC3FF 10%
 添加圆形，斜对角渐变</p>
 </li>
 <li></li>
-</ol> 
-	<a class="btn btn-mini xsmall" href="/designcode-tutorial1-bi-ji.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+</ol> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/mvvmmo-shi-chu-tan.html"><h1>MVVM模式初探</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 17 July 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios.html">iOS</a>
+											<a class="danger label" href="/tag/design.html">design</a>
+											<a class="danger label" href="/tag/sketch.html">sketch</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios.html">iOS</a> <a href="/tag/mvvm.html">mvvm</a> <a href="/tag/mvc.html">mvc</a> <a href="/tag/pattern.html">pattern</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">MVVM模式初探</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-07-17T13:00:00"> Thu 17 July 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: 设计模式</p>
 <h2>MVC的无奈</h2>
 <p><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html">MVC</a>结构是学习iOS开发的人最先学习的一种开发模式，apple提倡以MVC为中心的开发模式。因为它很好的解构了应用场景中相关而又各自独立的部分：视图，视图控制器和数据模型。在MVC的世界里，控制器负责将模型中的数据以内容的形式展现到视图中，同时也把视图上产生的数据变化传递给模型从而将这种变化持久化。于是，在稍微复杂的app中，控制器中的内容会很庞大：网络操作，数据存储，手势响应等等。几乎可以确定，如果app需要添加新功能，超过一半的新增代码是添加在控制器中，这样不可避免的造成控制器的冗余以及大段无法重用的重复代码。<br />
@@ -532,40 +290,29 @@ Summary: 设计模式</p>
 <h3>视图</h3>
 <p>毋庸置疑，视图的作用很重要，但在设计中，视图是否需要和控制器，数据模型同等的地位呢？要知道绝大多数情况下，视图是不会重用的，往往“耦合”在视图控制器中，所以往往代码中有几个view controller，就能知道程序会有几个页面。此外，视图中的UI元素也是直接作为变量存在在控制器代码中，因为只有这样才方便刷新。很显然，视图控制器就可以代表视图本身。  </p>
 <h3>控制器</h3>
-<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> 
-	<a class="btn btn-mini xsmall" href="/mvvmmo-shi-chu-tan.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/umeng-you-meng-cuo-wu-bao-gao-chu-li.html"><h1>umeng 友盟错误报告处理</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Mon 14 July 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios.html">iOS</a>
+											<a class="danger label" href="/tag/mvvm.html">mvvm</a>
+											<a class="danger label" href="/tag/mvc.html">mvc</a>
+											<a class="danger label" href="/tag/pattern.html">pattern</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios.html">iOS</a> <a href="/tag/sigsegv.html">sigsegv</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">umeng 友盟错误报告处理</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-07-14T10:00:00"> Mon 14 July 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: 错误报告处理</p>
 <p>今天发现友盟的后台中出现了app crash，打开一看：</p>
 <div class="highlight"><pre><span class="n">Application</span> <span class="n">received</span> <span class="n">signal</span> <span class="n">SIGSEGV</span>
@@ -579,40 +326,27 @@ Summary: 错误报告处理</p>
     <span class="mi">5</span>   <span class="n">UIKit</span>                               <span class="mh">0x30f20765</span>  <span class="o">+</span> <span class="mi">64</span>
     <span class="mi">6</span>   <span class="n">UIKit</span>                               <span class="mh">0x30c9a7bd</span>  <span class="o">+</span> <span class="mi">604</span>
     <span class="mi">7</span>   <span class="n">UIKit</span>                               <span class="mh">0x30f216db</span>  <span class="o">+</span> <span class="mi">1398</span>
-    <span class="mi">8 ...</span></pre></div> 
-	<a class="btn btn-mini xsmall" href="/umeng-you-meng-cuo-wu-bao-gao-chu-li.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
+    <span class="mi">8 ...</span></pre></div> </div><!-- /.entry-content -->
 
- 
-        
+								<div class="medium primary btn"><a href="/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/sketch-tutorials-study-1.html"><h1>Sketch Tutorials Study 1</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Tue 08 July 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios.html">iOS</a>
+											<a class="danger label" href="/tag/sigsegv.html">sigsegv</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/design.html">design</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/sketch.html">sketch</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/sketch-tutorials-study-1.html" rel="bookmark" title="Permalink to Sketch Tutorials Study 1">Sketch Tutorials Study 1</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-07-08T14:00:00"> Tue 08 July 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: some tutorials of sketch</p>
 <p>sketch是Mac上优秀的设计软件，堪称一把利剑。可好剑还得配好剑法，才能发挥威力。最近做的app，在界面上欠缺不少，正好借助sketch进行优化。下面是根据几个tutorial学习了sketch和设计的相关步骤。</p>
 <h3>Flat Styled Icon</h3>
@@ -621,94 +355,116 @@ Summary: some tutorials of sketch</p>
 另外，sketch中可以通过双击来激活编辑状态，然后编辑锚点。但是我发现有时候对组合过的图像，这个方法有点不太灵。这时，可以先在左边选中图形，然后点击上方状态栏的"Edit"，然后就可以自由添加锚点了。</p>
 <h3>Shadow Effect</h3>
 <p>原文在此：<a href="http://brilliantsketch.com/make-long-shadow-effect-sketch/">shadow effect</a> <br />
-该示例主要讲解了模糊 ...</p> 
-	<a class="btn btn-mini xsmall" href="/sketch-tutorials-study-1.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
-<div class="pagination">
+该示例主要讲解了模糊 ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/sketch-tutorials-study-1.html" rel="bookmark" title="Permalink to Sketch Tutorials Study 1">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/sketch.html">sketch</a>
+								</div>
+
+
+
+				        </article></li>
+				</ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
 <ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/index.html">1</a></li>
-    <li class=""><a href="/index2.html">2</a></li>
-
-    <li class="next"><a href="/index2.html">Next &rarr;</a></li>
-
+		<li><a href="/category/design.html">Design</a></li>
+		<li><a href="/category/ios.html">iOS</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/versions.html">versions</a></li>
 </ul>
-</div>
- 
-  
-        </div>
-        
-        
-    </div>     </div> </div>
 
-<!--footer-->
-<div class="container">
-  <div class="well" style="background-color: #E9EFF6">
-    <div id="blog-footer">
-      <div class="row-fluid">
-	<div class="social span2" align="center" id="socialist">
-	  <ul class="nav nav-list">
-	    <li class="nav-header">
-	      Social
-	    </li>
-	    <li><a href="https://github.com/scorpiozj"><i class="icon-scorpiozj" style="color: #1f334b"></i>scorpiozj</a></li>
-	    <li><a href="https://twitter.com/charleszhu_"><i class="icon-charleszhu_" style="color: #1f334b"></i>charleszhu_</a></li>
 
-	  </ul>
-	</div>
-        <div class="links span2" align="center">
-          <ul class="nav nav-list">
-            <li class="nav-header"> 
-              Links
-            </li>
-            
-            <li><a href="http://getpelican.com/">Pelican</a></li>
-            <li><a href="http://www.cnblogs.com/scorpiozj/">cnblog</a></li>
-          </ul>
-        </div>
-	<div class="site-nav span2" align="center">
-          <ul class="nav nav-list" id="site-links">
-            <li class="nav-header"> 
-              Site
-            </li>
-            <li><a href=""><i class="icon-home" style="color: #1f334b">
-                </i>Home</a></li>
-            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
-                </i>Archives</a></li>
-	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
-                </i>Tags</a></li>
-	    
-            <li><a href="/" rel="alternate">
-                <i class="icon-rss-sign" style="color: #1f334b"></i>
-                Atom Feed</a></li>
-	  </ul>
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+</ul>
 
-        </div>
 
-      </div> <!--end of fluid row-->
-    </div> <!--end of blog-footer-->
-    <hr />
-    <p align="center"><a href="">To be Independent</a>
-      &copy; Charles Zhu
-    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
-        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
-        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
-        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
 
-  </div> <!--end of well -->
-</div> <!--end of container -->
+</div> </div><!-- /.row -->
 
-<!--/footer-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<p class="paginator">
+    Page 1 / 2
+        <a href="/index2.html"><i class="icon-arrow-right"></i></a>
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
 
 
 
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
 </body>
 </html>

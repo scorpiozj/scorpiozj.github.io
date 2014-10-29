@@ -1,77 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>To be Independent</title>
-    <meta name="description" content="">
-    <meta name="author" content="Charles Zhu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
-    <![endif]-->
 
-    <!-- Le styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
-    <link href="/theme/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+        <title>To be Independent - AppExtension</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
 </head>
 
-<body>
-<header class="blog-header">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span9">
-	<a href="" class="brand">To be Independent</a>
-      </div>
+<body id="index" class="home">
 
-      <div class="span3" id="blog-nav">
-	<ul class="nav nav-pills pull-right">
-	    <li >
-	      <a href="/category/design.html ">Design</a>
-	    <li >
-	      <a href="/category/ios.html ">iOS</a>
-	    <li >
-	      <a href="/category/linux.html ">Linux</a>
-	    <li >
-	      <a href="/category/versions.html ">versions</a>
-	</ul>
-      </div>
-    </div> <!-- End of fluid row-->
-  </div>   <!-- End of Container-->
-</header>
-    
-<div class="container">
-    <div class="content">
-    <div class="row-fluid">
 
-        <div class="span10">
-        
+    <div class="container">
 
-        
+        <div class="row">
 
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/app-extension-study-1.html"><h1>App Extension Study 1</h1></a>
-        </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 16 October 2014 </p>
+          <header id="banner" class="body">
+                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios8.html">ios8</a> <a href="/tag/appextension.html">AppExtension</a> </p>
-<p>
-</p>
-      </div>
-      <div class="article-content span8">
-	<p>Author: Charles Zhu<br />
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content">
+
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">App Extension Study 1</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-16T14:00:00"> Thu 16 October 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
 <p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
@@ -83,230 +69,116 @@ Summary: ios8 app extension</p>
 <li>containing app: extension不能单独作为target存在，必须依附在某个具有普通app的工程内，该app就是containing app。一个containing app可以有多个extension。</li>
 <li>app extension: </li>
 </ul>
-<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension，那么就可以在app(此即host app)中调用extension</p>
-<h3>生命周期</h3>
-<p><img alt="extension_life_cycle" src="./imgs/20141016/extension_cycle.png" /><br />
-extension是由用户选择启动，然后作为一个单独的“程序”运行，直到运行结束，系统kill该extension，至此结束extension的使命。需要说明的是，无法在containing app中启用extension。<br />
-尽管extension通常是在host app中启动，但是extension的运行过程却不受 host/containing app 的“干预”——不能在host或containing app 中影响extention的运行。但是系统提供了某种机制使得三者之间可以共享部分数据。</p>
-<h3>通信</h3>
-<h4>与host app 通信</h4>
-<p><img alt="with_host" src="./imgs/20141016/communicat_only_with_host.png" /><br />
-两者关系干净利落：一个请求，一个响应，没有其他藕断丝连。iOS8中<code>UIViewController</code>包含了<code>extensionContext</code>的新属性。请求的所有信息都包含在该context属性中。<br />
-该图的虚线表明extension和containing没有直接的通信。 </p>
-<h4>与containing app 通信</h4>
-<p>从某种意义上，extension是“依附”着containing app的，既然不能直接通信，那么必然有迂回的方式。<br />
-<img alt="with_containing" src="./imgs/20141016/communicat_indirectly_with_containing.png" /><br />
-上图中显示extension可以通过 OpenURL的方式打开自己的contaning app。更为重要的是，两者直接有一个shared resources区域来交换数据信息。</p>
-<h4>其他注意事项</h4>
-<p>由extension的工程必须包含arm64或x86_64框架，另外extension :  </p>
+<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios8.html">ios8</a>
+											<a class="danger label" href="/tag/appextension.html">AppExtension</a>
+								</div>
+
+
+
+				        </article></li>
+				</ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
 <ul>
-<li>不能访问相机和麦克风</li>
-<li>不能执行长时间的后台任务，如果要上传／下载的话，需要使用 <code>NSURLSession</code></li>
-<li>不能访问 <code>UIApplication</code> 对象</li>
-<li>不能接受通过 <em>AirDrop</em> 传送的数据</li>
+		<li><a href="/category/design.html">Design</a></li>
+		<li><a href="/category/ios.html">iOS</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/versions.html">versions</a></li>
 </ul>
-<h2>创建App Extesnion</h2>
-<p>使用Xcode6创建一个application，然后在new一个target，这时模板选项里会出现 "Application Extension"，选择任一添加。这样运行安装app后，连带之前的扩展也一并安装了。  </p>
-<h3>extension的工程文件</h3>
-<p><img alt="extension_template" src="./imgs/20141016/extension_template.png" /><br />
-extension的组成很简单：</p>
-<ul>
-<li>ViewController: extension的主要实现部分</li>
-<li>storyboard: extension的UI界面入口</li>
-<li>Info.plist: 老朋友了，主要关注<code>NSExtension</code>键值。以后对一些限制，比如文件类型都在这里添加</li>
-<li>entitlements: optional，如果要启用share resource，就需要开启app group，那么会自动生产该文件。</li>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
 </ul>
-<h3>extension的常见处理流程</h3>
-<p>如前所说，请求的extenison的所有信息可以通过<code>UIViewController</code>的<code>extensionContext</code>获取。至于相关信息怎么获取，下面分门别类细说。  </p>
-<h3>debug</h3>
-<p>选中extesnion的scheme，然后debug，Xcode6会让你选择某个host app，然后进入该host app。在host app启用extension后，就可以debug了。</p>
-<h3>distribution</h3>
-<p>提交containing app即可——没有实践过，itunes connect是否要设置，暂时不详  </p>
-<h2>处理常见场景</h2>
-<p>在开始实践extension之前，有必要直到一些常见问题如何处理。</p>
-<h3>使用嵌入式框架共享代码</h3>
-<p>constaining和extension可以通过该方式共享代码，需要注意的是extension中不是所有API都可以使用，并且要包含64位的架构。这两点是文档中Apple反复提及的，一旦有违反这样的情况而进行提交的会直接被打回。<br />
-添加完库后，要将target的"Require Only App-Extension-Safe API"设置为"YES"。  </p>
-<h3>shared resources</h3>
-<p>前面说过extension和containing可以共享数据。这时分别对containing 和extension target启用"App Group"。Xcode6会自动获取group名，当然也可以自行添加。共享数据的读写是通过老朋友<code>NSUserDefault</code>:</p>
-<div class="highlight"><pre><span class="c1">// Create and share access to an NSUserDefaults object.</span>
-<span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithSuiteName</span><span class="o">:</span><span class="s">@&quot;com.example.domain.MyShareExtension&quot;</span><span class="p">];</span>
-<span class="c1">// Use the shared user defaults object to update the user&#39;s account.</span>
-<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="n">theAccountName</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;lastAccountName&quot;</span><span class="p">];</span>
-</pre></div>
 
 
-<p>对共享区域的数据，extesnion和containing都有读写权限，所以某一方进行读写后要及时同步数据。  </p>
-<h3>访问网页</h3>
-<p>Share和Action类型的extension可以通过safari访问某个页面，执行你设定的js脚本，然后把执行的结果返回给extension。注意可以在extension执行前就执行脚本访问web页面，也可以在extension执行完毕后访问或修改web页面(该情形只在iOS有效)。<br />
-步骤：  </p>
-<ol>
-<li>创建js文件，文件中要有一个名为<code>ExtensionPreprocessingJS</code>的全局对象</li>
-<li>修改plist：将<code>NSExtensionActivationRule</code>的属性<code>NSExtensionActivationSupportsWebPageWithMaxCount</code>设置为非零的值</li>
-<li>当extension开始后，使用 <code>NSItemProvider</code>获取js运行的结果</li>
-<li>iOS中如果要传递给js文件参数， 也通过 <code>NSItemProvider</code></li>
-</ol>
-<p>为了让safari响应extension的js文件，需要添加：</p>
-<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;dict&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionJavaScriptPreprocessingFile<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;string&gt;</span>MyJavaScriptFile<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!-- Do not include the &quot;.js&quot; filename extension --&gt;</span>
-    <span class="nt">&lt;/dict&gt;</span>
-</pre></div>
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
 
 
-<h4>js文件的写法</h4>
-<p>sample: </p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">MyExtensionJavaScriptClass</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{};</span>
-<span class="n">MyExtensionJavaScriptClass</span><span class="p">.</span><span class="n">prototype</span> <span class="o">=</span> <span class="p">{</span>
-<span class="nl">run:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
-  <span class="c1">// Pass the baseURI of the webpage to the extension.</span>
-      <span class="n">arguments</span><span class="p">.</span><span class="n">completionFunction</span><span class="p">({</span><span class="s">&quot;baseURI&quot;</span><span class="o">:</span> <span class="n">document</span><span class="p">.</span><span class="n">baseURI</span><span class="p">});</span>
-  <span class="p">},</span>
-  <span class="c1">// Note that the finalize function is only available in iOS.</span>
-  <span class="nl">finalize:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
-<span class="c1">// arguments contains the value the extension provides in [NSExtensionContext completeRequestReturningItems:completion:].</span>
-  <span class="c1">// In this example, the extension provides a color as a returning item.</span>
-  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">&quot;bgColor&quot;</span><span class="p">];</span>
-  <span class="p">}</span>
-<span class="p">};</span>
-<span class="c1">// The JavaScript file must contain a global object named &quot;ExtensionPreprocessingJS&quot;. </span>
-<span class="n">var</span> <span class="n">ExtensionPreprocessingJS</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MyExtensionJavaScriptClass</span><span class="p">;</span>
-</pre></div>
+       <div class="container.nopad bg">
 
-
-<p>解释和说明：  </p>
-<ol>
-<li>当safari加载了js后，立即执行<code>run</code>函数，执行的结果通过<code>completionFunction</code>返回给extension</li>
-<li><code>finalize</code>函数是extension执行<code>completeRequestReturningItems:completion:</code>后执行，extesnion传递的参数在arguments中</li>
-</ol>
-<p>对应的extension中： </p>
-<ol>
-<li>
-<p>获取run执行的结果：</p>
-<p>[imageProvider loadItemForTypeIdentifier:kUTTypePropertyList options:nil
-completionHandler:^(NSDictionary <em>item, NSError </em>error) {
-NSDictionary <em>results = (NSDictionary </em>)item;
-NSString *baseURI = [[results objectForKey:NSExtensionJavaScriptPreprocessingResultsKey] objectForKey:@"baseURI"];
-}];</p>
-</li>
-<li>
-<p>传递给finalize：</p>
-<p>NSExtensionItem <em>extensionItem = [[NSExtensionItem alloc] init];
-extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtensionJavaScriptFinalizeArgumentKey: @{@"bgColor":@"red"}} typeIdentifier:(NSString </em>)kUTTypePropertyList]];
-[[self extensionContext] completeRequestReturningItems:@[extensionItem]
-  completion:nil];</p>
-</li>
-</ol>
-<h3>上传和下载</h3>
-<p>使用<code>NSURLSession</code>，经过测试，<code>upload task session</code> 不能在extension中使用。</p>
-<h3>声明Share/Action extension支持的数据类型</h3>
-<p>sample：  </p>
-<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
-<span class="nt">&lt;dict&gt;</span>
-    <span class="nt">&lt;key&gt;</span>NSExtensionActivationRule<span class="nt">&lt;/key&gt;</span>
-    <span class="nt">&lt;dict&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsImageWithMaxCount<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;integer&gt;</span>10<span class="nt">&lt;/integer&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsMovieWithMaxCount<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
-        <span class="nt">&lt;key&gt;</span>NSExtensionActivationSupportsWebURLWithMaxCount<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
-    <span class="nt">&lt;/dict&gt;</span>
-<span class="nt">&lt;/dict&gt;</span>
-</pre></div>
-
-
-<p>不支持的数据类型设置值为0或者移除该键。 </p>
-<h3>适配iOS8前的containing app</h3>
-<p>使用了嵌入式框架后，也能继续兼容iOS8之前的系统。这就要使用<code>dlopen</code>，该命令可以在编译时条件链接和加载库。注意要在objc使用<code>dlopen</code>。在containing执行的时候，检测系统只有是iOS8及以后的系统，才加载库。 </p>
-<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p> 
-	<a class="btn btn-mini xsmall" href="/app-extension-study-1.html">
-          <i class="icon-comment"></i> Comment </a>
-	<hr />
-      </div>
-      
-    </div>
     
-<div class="pagination">
-<ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
 
-    <li class="active"><a href="/tag/appextension.html">1</a></li>
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
 
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
 
-</ul>
-</div>
- 
-  
-        </div>
-        
-        
-    </div>     </div> </div>
-
-<!--footer-->
-<div class="container">
-  <div class="well" style="background-color: #E9EFF6">
-    <div id="blog-footer">
-      <div class="row-fluid">
-	<div class="social span2" align="center" id="socialist">
-	  <ul class="nav nav-list">
-	    <li class="nav-header">
-	      Social
-	    </li>
-	    <li><a href="https://github.com/scorpiozj"><i class="icon-scorpiozj" style="color: #1f334b"></i>scorpiozj</a></li>
-	    <li><a href="https://twitter.com/charleszhu_"><i class="icon-charleszhu_" style="color: #1f334b"></i>charleszhu_</a></li>
-
-	  </ul>
-	</div>
-        <div class="links span2" align="center">
-          <ul class="nav nav-list">
-            <li class="nav-header"> 
-              Links
-            </li>
-            
-            <li><a href="http://getpelican.com/">Pelican</a></li>
-            <li><a href="http://www.cnblogs.com/scorpiozj/">cnblog</a></li>
-          </ul>
-        </div>
-	<div class="site-nav span2" align="center">
-          <ul class="nav nav-list" id="site-links">
-            <li class="nav-header"> 
-              Site
-            </li>
-            <li><a href=""><i class="icon-home" style="color: #1f334b">
-                </i>Home</a></li>
-            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
-                </i>Archives</a></li>
-	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
-                </i>Tags</a></li>
-	    
-            <li><a href="/" rel="alternate">
-                <i class="icon-rss-sign" style="color: #1f334b"></i>
-                Atom Feed</a></li>
-	  </ul>
-
-        </div>
-
-      </div> <!--end of fluid row-->
-    </div> <!--end of blog-footer-->
-    <hr />
-    <p align="center"><a href="">To be Independent</a>
-      &copy; Charles Zhu
-    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
-        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
-        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
-        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
-
-  </div> <!--end of well -->
-</div> <!--end of container -->
-
-<!--/footer-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
 
 
 
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
 </body>
 </html>

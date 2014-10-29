@@ -1,77 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>To be Independent</title>
-    <meta name="description" content="">
-    <meta name="author" content="Charles Zhu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
-    <![endif]-->
 
-    <!-- Le styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
-    <link href="/theme/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+        <title>To be Independent - git</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
 </head>
 
-<body>
-<header class="blog-header">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span9">
-	<a href="" class="brand">To be Independent</a>
-      </div>
+<body id="index" class="home">
 
-      <div class="span3" id="blog-nav">
-	<ul class="nav nav-pills pull-right">
-	    <li >
-	      <a href="/category/design.html ">Design</a>
-	    <li >
-	      <a href="/category/ios.html ">iOS</a>
-	    <li >
-	      <a href="/category/linux.html ">Linux</a>
-	    <li >
-	      <a href="/category/versions.html ">versions</a>
-	</ul>
-      </div>
-    </div> <!-- End of fluid row-->
-  </div>   <!-- End of Container-->
-</header>
-    
-<div class="container">
-    <div class="content">
-    <div class="row-fluid">
 
-        <div class="span10">
-        
+    <div class="container">
 
-        
+        <div class="row">
 
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html"><h1>git bisect查找xcode6工程在iOS7下不全屏的问题</h1></a>
-        </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Thu 16 October 2014 </p>
+          <header id="banner" class="body">
+                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
 
-<p style="text-align: left;">
-Filed under <a href="/category/ios.html">iOS</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/ios8.html">ios8</a> <a href="/tag/git.html">git</a> <a href="/tag/launch-screen.html">launch screen</a> </p>
-<p>
-</p>
-      </div>
-      <div class="article-content span8">
-	<p>Author: Charles Zhu<br />
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content">
+
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">git bisect查找xcode6工程在iOS7下不全屏的问题</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-16T10:00:00"> Thu 16 October 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: launch screen,xcode6,git</p>
 <h2>xcode6工程在iOS7下未全屏</h2>
 <p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
@@ -80,53 +66,28 @@ Summary: launch screen,xcode6,git</p>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
 <div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
 <span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master）为错误版本</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">good</span> <span class="n">A</span><span class="o">-</span><span class="n">commit</span> <span class="c1">//提供一个运行正确的版本，下面开始查找</span>
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> </div><!-- /.entry-content -->
 
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">reset</span> <span class="c1">//当确认错误的提交后，需要清理战场，回到HEAD</span>
-</pre></div>
-
-
-<h2>LaunchScreen.xib</h2>
-<p>经过bisect的检查，发现是将工程的 Deployment target设置为iOS7引起的。因为Xcode6中模板工程默认使用LaunchScreen.xib，而且size class是对iOS8才有效，所以猜想应该是LaunchScreen引起的。重新运行了下工程，发现在iOS7下的确启动画面没有显示。而目前iOS7的用户还是占了大多数，很显然不可能只适配iOS8，所以工程还是得使用LaunchImage。</p>
-<h2>启用LaunchImage</h2>
-<p>启用很简单，在target的general设置中找到 <code>App Icons and Launch Images</code>， 然后点击 <code>Use Asset Catalog</code>，接下来按提示操作就可以了。  </p>
-<p>就目前的测试和google搜索情况来看，这种iOS7的不全屏显示问题只能通过这种方式解决。从app的launch过程（下图）可以看出，启动图片的加载是在<code>Load the main UI file</code>进行的，此时还无法通过代码和程序进行“交互”。<br />
-<img alt="app launch process" src="./imgs/20141016/app_launch_process.png" /><br />
-(图片来自 <a href="https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/StrategiesforHandlingAppStateTransitions/StrategiesforHandlingAppStateTransitions.html#//apple_ref/doc/uid/TP40007072-CH8-SW1">App Programming Guide</a>)</p> 
-	<a class="btn btn-mini xsmall" href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">
-          <i class="icon-comment"></i> Comment </a>
-	<hr />
-      </div>
-      
-    </div>
-    
-
- 
-        
+								<div class="medium primary btn"><a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-    <div class='row-fluid'>
-      <div class='article-title span9'> 
-        <a href="/git-commit-a-de-wu-qu.html"><h1>git commit -a 的误区</h1></a>
-      </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Mon 22 September 2014 </p>
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios8.html">ios8</a>
+											<a class="danger label" href="/tag/git.html">git</a>
+											<a class="danger label" href="/tag/launch-screen.html">launch screen</a>
+								</div>
 
-<p style="text-align: left;">
-Filed under <a href="/category/versions.html">versions</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/git.html">git</a> </p>
-<p>
-</p>
-      </div>
-      <div class="summary span8">
-	<p>Author: Charles Zhu<br />
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-22T14:00:00"> Mon 22 September 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: git 错误理解</p>
 <h2>SVN下的项目管理</h2>
 <p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
@@ -138,93 +99,115 @@ Summary: git 错误理解</p>
 <span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
 <span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
 
-<span class="nx">Initial ...</span></pre></div> 
-	<a class="btn btn-mini xsmall" href="/git-commit-a-de-wu-qu.html">
-          <i class="icon-plus-sign"></i> Read More </a>
-	<hr />
-      </div>
-      
-    </div>
-      
-<div class="pagination">
+<span class="nx">Initial ...</span></pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/git.html">git</a>
+								</div>
+
+
+
+				        </article></li>
+				</ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
 <ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/tag/git.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
+		<li><a href="/category/design.html">Design</a></li>
+		<li><a href="/category/ios.html">iOS</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/versions.html">versions</a></li>
 </ul>
-</div>
- 
-  
-        </div>
-        
-        
-    </div>     </div> </div>
 
-<!--footer-->
-<div class="container">
-  <div class="well" style="background-color: #E9EFF6">
-    <div id="blog-footer">
-      <div class="row-fluid">
-	<div class="social span2" align="center" id="socialist">
-	  <ul class="nav nav-list">
-	    <li class="nav-header">
-	      Social
-	    </li>
-	    <li><a href="https://github.com/scorpiozj"><i class="icon-scorpiozj" style="color: #1f334b"></i>scorpiozj</a></li>
-	    <li><a href="https://twitter.com/charleszhu_"><i class="icon-charleszhu_" style="color: #1f334b"></i>charleszhu_</a></li>
 
-	  </ul>
-	</div>
-        <div class="links span2" align="center">
-          <ul class="nav nav-list">
-            <li class="nav-header"> 
-              Links
-            </li>
-            
-            <li><a href="http://getpelican.com/">Pelican</a></li>
-            <li><a href="http://www.cnblogs.com/scorpiozj/">cnblog</a></li>
-          </ul>
-        </div>
-	<div class="site-nav span2" align="center">
-          <ul class="nav nav-list" id="site-links">
-            <li class="nav-header"> 
-              Site
-            </li>
-            <li><a href=""><i class="icon-home" style="color: #1f334b">
-                </i>Home</a></li>
-            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
-                </i>Archives</a></li>
-	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
-                </i>Tags</a></li>
-	    
-            <li><a href="/" rel="alternate">
-                <i class="icon-rss-sign" style="color: #1f334b"></i>
-                Atom Feed</a></li>
-	  </ul>
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+</ul>
 
-        </div>
 
-      </div> <!--end of fluid row-->
-    </div> <!--end of blog-footer-->
-    <hr />
-    <p align="center"><a href="">To be Independent</a>
-      &copy; Charles Zhu
-    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
-        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
-        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
-        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
 
-  </div> <!--end of well -->
-</div> <!--end of container -->
+</div> </div><!-- /.row -->
 
-<!--/footer-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
 
 
 
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
 </body>
 </html>

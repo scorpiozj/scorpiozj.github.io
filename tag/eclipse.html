@@ -1,77 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>To be Independent</title>
-    <meta name="description" content="">
-    <meta name="author" content="Charles Zhu">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- Le HTML5 shim, for IE6-8 support of HTML elements -->
-    <!--[if lt IE 9]>
-    <script src="/theme/html5.js"></script>
-    <![endif]-->
 
-    <!-- Le styles -->
-    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.1.1/css/bootstrap.no-icons.min.css" rel="stylesheet">
-    <link href="/theme/local.css" rel="stylesheet">
-    <link href="/theme/pygments.css" rel="stylesheet">
-    <link href="/theme/font-awesome.css" rel="stylesheet">
-    <link href='http://fonts.googleapis.com/css?family=Gudea:400,400italic|Alegreya+SC' rel='stylesheet' type='text/css'>
+        <title>To be Independent - eclipse</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
 </head>
 
-<body>
-<header class="blog-header">
-  <div class="container">
-    <div class="row-fluid">
-      <div class="span9">
-	<a href="" class="brand">To be Independent</a>
-      </div>
+<body id="index" class="home">
 
-      <div class="span3" id="blog-nav">
-	<ul class="nav nav-pills pull-right">
-	    <li >
-	      <a href="/category/design.html ">Design</a>
-	    <li >
-	      <a href="/category/ios.html ">iOS</a>
-	    <li >
-	      <a href="/category/linux.html ">Linux</a>
-	    <li >
-	      <a href="/category/versions.html ">versions</a>
-	</ul>
-      </div>
-    </div> <!-- End of fluid row-->
-  </div>   <!-- End of Container-->
-</header>
-    
-<div class="container">
-    <div class="content">
-    <div class="row-fluid">
 
-        <div class="span10">
-        
+    <div class="container">
 
-        
+        <div class="row">
 
-    <div class='row-fluid''>
-        <div class="article-title span9">
-            <a href="/centos65-an-zhuang-eclipse.html"><h1>CentOS6.5 安装eclipse</h1></a>
-        </div>
-    </div>
-    <div class="row-fluid">
-      <div class="span2">
-<p>Wed 23 July 2014 </p>
+          <header id="banner" class="body">
+                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
 
-<p style="text-align: left;">
-Filed under <a href="/category/linux.html">Linux</a>
-</p>
-<p style="text-align: left;">
- 
-    Tags <a href="/tag/linux.html">linux</a> <a href="/tag/eclipse.html">eclipse</a> <a href="/tag/jdk.html">jdk</a> </p>
-<p>
-</p>
-      </div>
-      <div class="article-content span8">
-	<p>Author: Charles Zhu<br />
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content">
+
+
+
+   <div class="row">
+
+
+        <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-07-23T10:00:00"> Wed 23 July 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: install eclipse on centos6.5</p>
 <p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
 <h3>eclipse 下载</h3>
@@ -83,104 +69,117 @@ Summary: install eclipse on centos6.5</p>
 <p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
 <ol>
 <li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看$PATH，发现添加的没有生效</li>
-<li>再次进入su，查看$PATH，发现添加的没有生效</li>
-</ol>
-<p>目测应该是和linux系统启动的知识有关，果然在<a href="http://www.cnblogs.com/BigIdiot/archive/2012/03/26/2417547.html">这里</a>找到了答案，简单的说：</p>
-<ol>
-<li>/etc/profile:在登录时,操作系统定制用户环境时使用的第一个文件,此 文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。</li>
-<li>/etc/environment:在登录时操作系统使用的第二个文件,系统在 读取你自己的profile前,设置环境文件的环境变量。</li>
-<li>~/.bash_profile:在登录时用到的第三个文件是.profile文 件,每个用户都可使用该文件输入专用于自己使用的shell信息,当用 户登录时,该 文件仅仅执行一次!默认情况下,他设置一些环境变游戏量,执 行用户的.bashrc文件。/etc/bashrc:为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该 文件被读取.</li>
-<li>~/.bashrc:该文件包含专用于你的bash shell的bash信 息,当登录时以及每次打开新的shell时,该该文件被读取。</li>
-</ol>
-<p>所以，如果修改/etc/profile的话，需要重启系统。</p>
-<p>这样，最终整个过程完成了。</p> 
-	<a class="btn btn-mini xsmall" href="/centos65-an-zhuang-eclipse.html">
-          <i class="icon-comment"></i> Comment </a>
-	<hr />
-      </div>
-      
-    </div>
-    
-<div class="pagination">
+<li>退出su，查看 ...</li></ol> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/linux.html">linux</a>
+											<a class="danger label" href="/tag/eclipse.html">eclipse</a>
+											<a class="danger label" href="/tag/jdk.html">jdk</a>
+								</div>
+
+
+
+				        </article></li>
+				</ol><!-- /#posts-list -->
+
+        </div><!-- /.eleven.columns -->
+        
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
 <ul>
-    <li class="prev disabled"><a href="#">&larr; Previous</a></li>
-
-    <li class="active"><a href="/tag/eclipse.html">1</a></li>
-
-    <li class="next disabled"><a href="#">&rarr; Next</a></li>
-
+		<li><a href="/category/design.html">Design</a></li>
+		<li><a href="/category/ios.html">iOS</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/versions.html">versions</a></li>
 </ul>
-</div>
- 
-  
-        </div>
-        
-        
-    </div>     </div> </div>
 
-<!--footer-->
-<div class="container">
-  <div class="well" style="background-color: #E9EFF6">
-    <div id="blog-footer">
-      <div class="row-fluid">
-	<div class="social span2" align="center" id="socialist">
-	  <ul class="nav nav-list">
-	    <li class="nav-header">
-	      Social
-	    </li>
-	    <li><a href="https://github.com/scorpiozj"><i class="icon-scorpiozj" style="color: #1f334b"></i>scorpiozj</a></li>
-	    <li><a href="https://twitter.com/charleszhu_"><i class="icon-charleszhu_" style="color: #1f334b"></i>charleszhu_</a></li>
 
-	  </ul>
-	</div>
-        <div class="links span2" align="center">
-          <ul class="nav nav-list">
-            <li class="nav-header"> 
-              Links
-            </li>
-            
-            <li><a href="http://getpelican.com/">Pelican</a></li>
-            <li><a href="http://www.cnblogs.com/scorpiozj/">cnblog</a></li>
-          </ul>
-        </div>
-	<div class="site-nav span2" align="center">
-          <ul class="nav nav-list" id="site-links">
-            <li class="nav-header"> 
-              Site
-            </li>
-            <li><a href=""><i class="icon-home" style="color: #1f334b">
-                </i>Home</a></li>
-            <li><a href="/archives.html"><i class="icon-list" style="color: #1f334b">
-                </i>Archives</a></li>
-	    <li><a href="/tags.html"><i class="icon-tags" style="color: #1f334b">
-                </i>Tags</a></li>
-	    
-            <li><a href="/" rel="alternate">
-                <i class="icon-rss-sign" style="color: #1f334b"></i>
-                Atom Feed</a></li>
-	  </ul>
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+</ul>
 
-        </div>
 
-      </div> <!--end of fluid row-->
-    </div> <!--end of blog-footer-->
-    <hr />
-    <p align="center"><a href="">To be Independent</a>
-      &copy; Charles Zhu
-    Powered by <a href="github.com/getpelican/pelican">Pelican</a> and
-        <a href="https://twitter.github.com/bootstrap">Twitter Bootstrap</a>. 
-        Icons by <a href="http://fortawesome.github.com/Font-Awesome">Font Awesome</a> and 
-        <a href="http://gregoryloucas.github.com/Font-Awesome-More">Font Awesome More</a></p>
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
 
-  </div> <!--end of well -->
-</div> <!--end of container -->
+</div> </div><!-- /.row -->
 
-<!--/footer-->
-<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.2.2/js/bootstrap.min.js"></script>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
 
 
 
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
 </body>
 </html>
