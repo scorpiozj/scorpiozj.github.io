@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>Sketch Tutorials Study 1</title>
+        <title>To be Independent - revert</title>
         <meta charset="utf-8" />
 
 
@@ -43,40 +43,58 @@
               </ul>
             </div>
 
-<section id="content" class="body">
+<section id="content">
+
+
 
    <div class="row">
+
+
         <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-03T10:00:00"> Mon 03 November 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
+<h4>git revert</h4>
+<p>对应的中文术语叫反转提交，基本的用法：</p>
+<div class="highlight"><pre><span class="n">git</span> <span class="n">revert</span> <span class="n">commit</span><span class="o">-</span><span class="n">ish</span>
+</pre></div>
 
 
-            <header>
-              <h2 class="entry-title">
-                <a href="/sketch-tutorials-study-1.html" rel="bookmark"
-                   title="Permalink to Sketch Tutorials Study 1">Sketch Tutorials Study 1</a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2014-07-08T14:00:00">
-                Tue 08 July 2014
-              </abbr>
-              <address class="vcard author">
-                By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              <p>Author: Charles Zhu<br />
-Summary: some tutorials of sketch</p>
-<p>sketch是Mac上优秀的设计软件，堪称一把利剑。可好剑还得配好剑法，才能发挥威力。最近做的app，在界面上欠缺不少，正好借助sketch进行优化。下面是根据几个tutorial学习了sketch和设计的相关步骤。</p>
-<h3>Flat Styled Icon</h3>
-<p>原文在此：<a href="https://medium.com/@sokratus/how-to-create-a-flat-styled-icon-in-sketch-3-27c4bd09989">flat styled icon </a> <br />
-该示例主要展示了<strong>相交</strong>运算的作用，以及锚点的使用。很多图形，仔细观察，都可以通过各种图形进行布尔运算而实现。通过形状的运算实现，还方便给各个部分填色。不过这一部分对我还是有点难，需要多练习。<br />
-另外，sketch中可以通过双击来激活编辑状态，然后编辑锚点。但是我发现有时候对组合过的图像，这个方法有点不太灵。这时，可以先在左边选中图形，然后点击上方状态栏的"Edit"，然后就可以自由添加锚点了。</p>
-<h3>Shadow Effect</h3>
-<p>原文在此：<a href="http://brilliantsketch.com/make-long-shadow-effect-sketch/">shadow effect</a> <br />
-该示例主要讲解了模糊、mask和锚点的使用。对于想做阴影效果，非常有帮助。我还依葫芦画瓢实现了文中文字的shadow效果。理解了这个方法，基本上阴影的实现就掌握了。</p>
-<p>最后，我的练习地址：<a href="https://github.com/scorpiozj/blogproject/tree/master/sketch">github</a></p>
-            </div><!-- /.entry-content -->
+<p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
+<h4>svn revert</h4>
+<p>svn中revert即回滚，基本用法</p>
+<div class="highlight"><pre><span class="n">svn</span> <span class="n">revert</span> <span class="n">PATH</span>
+</pre></div>
 
+
+<p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
+<h4>svn实现git revert的功能</h4>
+<p>如果要向用svn实现git revert的功能那么就需要：</p>
+<div class="highlight"><pre><span class="n">svn</span> <span class="n">update</span>
+<span class="c1">//确保版本库最新</span>
+<span class="n">svn</span> <span class="n">log</span>
+<span class="c1">//找到想要“回复”的版本号</span>
+<span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">r ...</span></pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/revert.html">revert</a>
+											<a class="danger label" href="/tag/git.html">git</a>
+											<a class="danger label" href="/tag/svn.html">svn</a>
+								</div>
+
+
+
+				        </article></li>
+				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
@@ -131,8 +149,10 @@ Summary: some tutorials of sketch</p>
 
 </div> </div><!-- /.row -->
 
-
-</section>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
 
        </div><!-- /.row -->
     </div><!-- /.container -->
