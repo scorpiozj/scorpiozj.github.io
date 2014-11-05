@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent - jdk</title>
+        <title>To be Independent</title>
         <meta charset="utf-8" />
 
 
@@ -44,7 +44,7 @@
             </div>
 
 <section id="content">
-
+<h2>Articles in the iOS category</h2>
 
 
    <div class="row">
@@ -53,33 +53,32 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-23T10:00:00"> Wed 23 July 2014 </abbr>
+				                    <abbr class="published" title="2014-06-29T14:00:00"> Sun 29 June 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br />
-Summary: install eclipse on centos6.5</p>
-<p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
-<h3>eclipse 下载</h3>
-<p>直接在<a href="https://www.eclipse.org/downloads/">官网</a>下载，选择合适的版本：网站会识别操作系统，主要注意是32位还是64位<br />
-下载后，解压打开，双击eclipse的可执行程序，发现不能启动。弹出的提示说系统的jvm是1.6，而最新luna版需要1.7或以上。</p>
-<h3>jdk安装</h3>
-<p>主要参考了<a href="http://www.cnblogs.com/zhoulf/archive/2013/02/04/2891608.html">这篇文章</a>，具体过程就不多说了，注意操作要在su账号下。</p>
-<h4>source /etc/profile 不生效</h4>
-<p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
-<ol>
-<li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看 ...</li></ol> </div><!-- /.entry-content -->
+Summary: notes for 221</p>
+<p>本场主要分4个议题： </p>
+<ul>
+<li>Spring animations</li>
+<li>Vibrancy and blur</li>
+<li>Shape layers</li>
+<li>Dynamic Core Animation behaviors</li>
+</ul>
+<h2>Spring animations</h2>
+<p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
+<div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">animateWithDuration</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">duration</span> <span class="n">delay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">delay</span> <span class="n">usingSpringWithDamping</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">dampingRatio</span> <span class="n">initialSpringVelocity</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">velocity</span> <span class="n">options</span><span class="o">:</span><span class="p">(</span><span class="n">UIViewAnimationOptions</span><span class="p">)</span><span class="n">options</span> <span class="n">animations</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="n">animations</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">BOOL</span> <span class="n">finished ...</span></pre></div> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="/tag/linux.html">linux</a>
-											<a class="danger label" href="/tag/eclipse.html">eclipse</a>
-											<a class="danger label" href="/tag/jdk.html">jdk</a>
+											<a class="danger label" href="/tag/wwdc-2014.html">wwdc 2014</a>
+											<a class="danger label" href="/tag/ui.html">ui</a>
+											<a class="danger label" href="/tag/ios.html">ios</a>
 								</div>
 
 
@@ -141,7 +140,8 @@ Summary: install eclipse on centos6.5</p>
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 1
+            <a href="/category/ios.html"><i class="icon-arrow-left"></i></a>
+    Page 2 / 2
 </p>
 </section><!-- /#content -->
 
