@@ -100,6 +100,14 @@
 <p>可见，新API最大的特点无疑就是吸取了开源社区中已有的block的实现，这样最大限度的简化了代码，并且带来了无与伦比的可读性。由于新API中action的初始化是类方法，如果action不作为类成员的话，也不需要考虑block的循环引用问题。</p>
 <h4>结束</h4>
 <p>iOS8对API的更新还是挺大的，比如<code>UIPopoverViewController</code>兼容iPad和iPhone，所以可以慢慢的开始更新了。</p>
+<h4>紧急修正</h4>
+<p>经过测试，在ipad上的使用还需要注意一个<strong>问题</strong>，那就是在present之前要设置<code>UIAlertController</code>的属性<code>popoverPresentationController</code>。该属性是<code>UIPopoverPresentationController</code>类，主要用途就是管理popover中的内容。如果不设置，在iPad竖屏测试的时候没有问题，但是在横屏的时候就会有问题。原因在于，横屏的时候，popover没有指定位置。这时，可以</p>
+<div class="highlight"><pre><span class="n">UIPopoverPresentationController</span> <span class="o">*</span><span class="n">popoverPresentationController</span> <span class="o">=</span> <span class="n">alertController</span><span class="p">.</span><span class="n">popoverPresentationController</span><span class="p">;</span>        
+<span class="n">popoverPresentationController</span><span class="p">.</span><span class="n">barButtonItem</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIBarButtonItem</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
+<span class="c1">//或</span>
+<span class="n">popoverPresentationController</span><span class="p">.</span><span class="n">sourceView</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
+<span class="n">popoverPresentationController</span><span class="p">.</span><span class="n">sourceRect</span> <span class="o">=</span> <span class="p">[(</span><span class="n">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="n">bounds</span><span class="p">];</span>
+</pre></div>
             </div><!-- /.entry-content -->
 
 
@@ -123,26 +131,26 @@
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
-	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
-	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
 	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
 	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
 	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
 </ul>
 
 
