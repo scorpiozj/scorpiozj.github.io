@@ -53,6 +53,37 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">iOS8下控件的旋转</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-07T16:00:00"> Fri 07 November 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <h4>由起</h4>
+<p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
+<h4>修复</h4>
+<p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="n">NSFoundationVersionNumber</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">NSFoundationVersionNumber_iOS_7_1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">interfaceOrientation</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">UIInterfaceOrientationLandscapeLeft</span>:
+                <span class="n">self</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">M_PI</span> <span class="o">*</span> <span class="mf">270.0</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
+
+            <span class="k">case</span> <span class="n">UIInterfaceOrientationLandscapeRight</span>:
+                <span class="n">self</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">M_PI</span> <span class="o">*</span> <span class="mf">90.0</span> <span class="o">/</span> <span class="mf">180 ...</span></pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios8.html">ios8</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">iOS8之UIAlertController</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-05T11:00:00"> Wed 05 November 2014 </abbr>
@@ -193,26 +224,26 @@ bisect的使用就是标记两个版本，一个正确一个错误，然后git�
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
 	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
-	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
-	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
-	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
 	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
 	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 
