@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
 
-        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://github.icocoa.tk/">Home</a></li>
+                <li><a href="/">Home</a></li>
 
 
               </ul>
@@ -51,7 +51,7 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://github.icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark"
+                <a href="/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark"
                    title="Permalink to Pelican若干问题汇总">Pelican若干问题汇总</a></h2>
            
             </header>
@@ -60,7 +60,7 @@
                 Sun 09 November 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
@@ -80,10 +80,10 @@ WARNING: Could not process content/output/index.html
 'NoneType' object has no attribute 'lower'
 WARNING: Could not process content/output/tags.html
 'NoneType' object has no attribute 'lower'
-Done: Processed 18 articles and 0 pages in 2.23 seconds.
-虽然生成了文章，但总感觉怪怪的。也许是强迫症，不过修改这个警告也让我学会了一些东西。<br />
-首先确认了<code>md</code>文件中语法格式没有问题，接下来重新安装了<code>markdown</code>，<code>pelican</code>和<code>Fabric</code>，确保不是软件引起的问题。更新后，警告依然存在，于是google，第一页出现了很多强相关性的链接，专注github上的issue。先找的是<a href="https://github.com/getpelican/pelican/issues/1097">issue 1097</a>，尝试运行<code>pelican --debug</code>，发现没有有效的提示信息。再看<a href="https://github.com/getpelican/pelican/issues/1116">issue 1116</a>，这个帖子的方法是修改<code>fabfile.py</code>:</p>
+Done: Processed 18 articles and 0 pages in 2.23 seconds.</p>
 </blockquote>
+<p>虽然生成了文章，但总感觉怪怪的。也许是强迫症，不过修改这个警告也让我学会了一些东西。<br />
+首先确认了<code>md</code>文件中语法格式没有问题，接下来重新安装了<code>markdown</code>，<code>pelican</code>和<code>Fabric</code>，确保不是软件引起的问题。更新后，警告依然存在，于是google，第一页出现了很多强相关性的链接，专注github上的issue。先找的是<a href="https://github.com/getpelican/pelican/issues/1097">issue 1097</a>，尝试运行<code>pelican --debug</code>，发现没有有效的提示信息。再看<a href="https://github.com/getpelican/pelican/issues/1116">issue 1116</a>，这个帖子的方法是修改<code>fabfile.py</code>:</p>
 <div class="highlight"><pre><span class="nt">def</span> <span class="nt">build</span><span class="o">():</span>
     <span class="nt">local</span><span class="o">(</span><span class="s1">&#39;pelican content/ -s pelicanconf.py&#39;</span><span class="o">)</span>
 <span class="nt">def</span> <span class="nt">regenerate</span><span class="o">():</span>
@@ -93,7 +93,8 @@ Done: Processed 18 articles and 0 pages in 2.23 seconds.
 
 <p>照做然后<code>build</code>后，警告消失了，此外还把page不生成的问题解决了</p>
 <h4>Pages不生成</h4>
-<p>在content文件夹下添加了<code>pages</code>文件夹，写入了一些md文件，但发现总是生成不了。一度怀疑是pages中的md文件需要独特的语法：比如有特定的metadata需要写入，或是选用的主题不支持pages。当折腾大半天的时候，却发现上述的警告产生的原因也是该问题产生的凶手！所以，千万不要忽视警告，尤其是让人觉得不影响最终运行的情况。</p>
+<p>在content文件夹下添加了<code>pages</code>文件夹，写入了一些md文件，但发现总是生成不了。一度怀疑是pages中的md文件需要独特的语法：比如有特定的metadata需要写入，或是选用的主题不支持pages。当折腾大半天的时候，却发现上述的警告产生的原因也是该问题产生的凶手！顺便说一下，该问题也导致<code>disqus</code>评论系统加载不上去。<br />
+所以，千万不要忽视警告，尤其是让人觉得不影响最终运行的情况。</p>
             </div><!-- /.entry-content -->
             <div class="comments">
               <h3>Comments</h3>
@@ -120,39 +121,39 @@ Done: Processed 18 articles and 0 pages in 2.23 seconds.
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="/category/design.html">Design</a></li>
+		<li><a href="/category/ios.html">iOS</a></li>
+		<li><a href="/category/linux.html">Linux</a></li>
+		<li><a href="/category/python.html">Python</a></li>
+		<li><a href="/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-0"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
 </ul>
 
 
@@ -213,8 +214,8 @@ Done: Processed 18 articles and 0 pages in 2.23 seconds.
         (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
     }());
 </script>
-  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="/theme/js/libs/gumby.min.js"></script>
+  <script src="/theme/js/plugins.js"></script>
 </body>
 </html>
