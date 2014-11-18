@@ -53,6 +53,34 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Git版本库管理</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-18T10:30:00"> Tue 18 November 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>在开发过程中往往会使用第三方库，可有时候会因为某种原因不使用了，我们可以使用 <code>reset</code>或是直接删除的方式将库删除，比如开发中用到了某度的SDK，可是发现crash的概率太大需要舍弃之。可是，这些库的影子还在版本库的历史中可以找到，会增大库的体积。这时候我们就需要完全清楚这些“残留”文件。<br />
+本篇内容可在<a href="http://www.amazon.cn/gp/product/B0058FLC40/ref=as_li_ss_tl?ie=UTF8&amp;camp=536&amp;creative=3132&amp;creativeASIN=B0058FLC40&amp;linkCode=as2&amp;tag=scorpiozj-23">Git权威指南</a>第14章中找到。</p>
+<h4>松散对象</h4>
+<p>Git中对于以SHA1值作为目录名和文件保存的对象称之为松散对象。因此 add，commit等操作都会产生一系列的松散对象。大量的松散对象会造成访问效率低下，占用过多存储空间。在Git中可以通过打包的方式提高访问效率，同时也方便通过增量更新的方式节省存储空间。</p>
+<h4>暂存区中的临时对象</h4>
+<p>添加到暂存区的文件发现不需要了，我们应该怎么办？
+首先我们复制2个稍大的(10M)的文件到工作区，然后添加到暂存区：</p>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">cp</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">xxxxx</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">zip</span> <span class="n">bigfile</span>
+<span class="err">$</span> <span class="n">cp</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">xxxxx</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">zip</span> <span class="n">bigfile</span><span class="p">.</span><span class="n">dup</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">bigfile ...</span></pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/git.html">git</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">App Extension Study 3</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-14T16:00:00"> Fri 14 November 2014 </abbr>
@@ -332,37 +360,6 @@ bisect的使用就是标记两个版本，一个正确一个错误，然后git�
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-22T14:00:00"> Mon 22 September 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br />
-Summary: git 错误理解</p>
-<h2>SVN下的项目管理</h2>
-<p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
-<h2>git下的误区</h2>
-<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br />
-接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="err">$</span> <span class="nx">git</span> <span class="nb">init</span>
-<span class="err">$</span> <span class="nx">echo</span> <span class="s2">&quot;this is a init text&quot;</span> <span class="o">&gt;&gt;</span> <span class="nx">hello.txt</span>
-<span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
-<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
-
-<span class="nx">Initial ...</span></pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="/tag/git.html">git</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -386,29 +383,29 @@ Summary: git 错误理解</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
 	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-1"><a href="/tag/git.html">git</a></li>
 	    <li class="tag-4"><a href="/tag/security.html">security</a></li>
 	    <li class="tag-0"><a href="/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
-	    <li class="tag-2"><a href="/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
-	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
-	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
 </ul>
 
 
@@ -423,7 +420,7 @@ Summary: git 错误理解</p>
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 2
+    Page 1 / 3
         <a href="/index2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
