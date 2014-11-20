@@ -53,6 +53,38 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">App Extension Study 4</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-19T10:00:00"> Wed 19 November 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br />
+Summary: ios8 app extension</p>
+<h3>1 开始</h3>
+<p>本篇介绍剩下的<code>Custom Keyboard</code>，之前的3篇： </p>
+<ul>
+<li><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>: 介绍了Extension的基本概念/运行周期/数据共享等通用技术细节  </li>
+<li><a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践:widget，share，action和Photo Editing</li>
+<li><a href="http://github.icocoa.tk/app-extension-study-3.html">第三篇</a>介绍并实践了Sync和File Procvider</li>
+</ul>
+<h3>2 Custom Keyboard</h3>
+<p>iOS8终于对第三方输入法开放，引起一片毋需越狱的呼声，这就是通过extension实现的。在以前，app可以单独实现适合自己的文本输入法；而iOS8上，如果用户在设置中添加第三方的键盘，就会对所有app可见(如果app没有禁止使用第三方输入法的话)。对于重视用户隐私的苹果公司而言，虽然开放了输入法的扩展，但是对于用户数据和隐私的保护是非常重视，因此在开发的时候要时刻关注。</p>
+<h4>2.1 第三方输入法要具备的特征</h4>
+<p>输入法的核心是要对用户的点击等手势及时的响应，提供可选的文本和插入文本等。除此之外，重要的就是要能够切换到下一个输入法。苹果文档中列出了一些特征 ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="/tag/ios8.html">ios8</a>
+											<a class="danger label" href="/tag/appextension.html">AppExtension</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Git版本库管理</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-18T10:30:00"> Tue 18 November 2014 </abbr>
@@ -88,7 +120,7 @@
 				                <div class="entry-content"> <p>Author: Charles Zhu<br />
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
-<p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
+<p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
 <h3>2 Finder Sync (OS X)</h3>
 <p>因为extension要运行在10.10的OS X上，由于没升级，所以本节就侧重“理论”了。  </p>
 <h4>2.1 含义</h4>
@@ -330,36 +362,6 @@ Summary: ios8 app extension</p>
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">git bisect查找xcode6工程在iOS7下不全屏的问题</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-10-16T10:00:00"> Thu 16 October 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br />
-Summary: launch screen,xcode6,git</p>
-<h2>xcode6工程在iOS7下未全屏</h2>
-<p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
-<h2>git bisect</h2>
-<p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br />
-bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
-<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="/tag/ios8.html">ios8</a>
-											<a class="danger label" href="/tag/git.html">git</a>
-											<a class="danger label" href="/tag/launch-screen.html">launch screen</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -383,29 +385,29 @@ bisect的使用就是标记两个版本，一个正确一个错误，然后git�
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
-	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-0"><a href="/tag/ios.html">iOS</a></li>
 	    <li class="tag-1"><a href="/tag/git.html">git</a></li>
+	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
+	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
+	    <li class="tag-1"><a href="/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
+	    <li class="tag-1"><a href="/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
 	    <li class="tag-4"><a href="/tag/security.html">security</a></li>
-	    <li class="tag-0"><a href="/tag/ios8.html">ios8</a></li>
 </ul>
 
 
