@@ -4,386 +4,400 @@ xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitem
 xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
-<loc>http://github.icocoa.tk/index.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/index.html</loc>
+<lastmod>2014-12-08T23:04:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/archives.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/archives.html</loc>
+<lastmod>2014-12-08T23:04:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tags.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tags.html</loc>
+<lastmod>2014-12-08T23:04:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/categories.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/categories.html</loc>
+<lastmod>2014-12-08T23:04:36-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/app-extension-study-4.html</loc>
-<lastmod>2014-11-19T10:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/dong-de-zhi-sun.html</loc>
+<lastmod>2014-12-08T22:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/gitban-ben-ku-guan-li.html</loc>
-<lastmod>2014-11-18T10:30:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/app-extension-study-4.html</loc>
+<lastmod>2014-11-19T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/app-extension-study-3.html</loc>
-<lastmod>2014-11-14T16:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/gitban-ben-ku-guan-li.html</loc>
+<lastmod>2014-11-18T10:30:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html</loc>
-<lastmod>2014-11-09T16:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/app-extension-study-3.html</loc>
+<lastmod>2014-11-14T16:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/wen-jian-quan-xian.html</loc>
-<lastmod>2014-11-09T16:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/pelicanruo-gan-wen-ti-hui-zong.html</loc>
+<lastmod>2014-11-09T16:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html</loc>
-<lastmod>2014-11-07T16:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/wen-jian-quan-xian.html</loc>
+<lastmod>2014-11-09T16:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/ios8zhi-uialertcontroller.html</loc>
-<lastmod>2014-11-05T11:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/ios8xia-kong-jian-de-xuan-zhuan.html</loc>
+<lastmod>2014-11-07T16:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/git-revert-svn-revertde-bu-tong.html</loc>
-<lastmod>2014-11-03T10:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/ios8zhi-uialertcontroller.html</loc>
+<lastmod>2014-11-05T11:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/app-extension-study-2.html</loc>
-<lastmod>2014-10-31T14:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/git-revert-svn-revertde-bu-tong.html</loc>
+<lastmod>2014-11-03T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/app-extension-study-1.html</loc>
-<lastmod>2014-10-16T14:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/app-extension-study-2.html</loc>
+<lastmod>2014-10-31T14:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html</loc>
-<lastmod>2014-10-16T10:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/app-extension-study-1.html</loc>
+<lastmod>2014-10-16T14:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/git-commit-a-de-wu-qu.html</loc>
-<lastmod>2014-09-22T14:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html</loc>
+<lastmod>2014-10-16T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/quartzcomposerji-ben-gai-nian.html</loc>
-<lastmod>2014-08-25T14:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/git-commit-a-de-wu-qu.html</loc>
+<lastmod>2014-09-22T14:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/mvvmchu-shi-jian.html</loc>
-<lastmod>2014-08-25T10:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/quartzcomposerji-ben-gai-nian.html</loc>
+<lastmod>2014-08-25T14:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/centos65-an-zhuang-eclipse.html</loc>
-<lastmod>2014-07-23T10:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/mvvmchu-shi-jian.html</loc>
+<lastmod>2014-08-25T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/designcode-tutorial1-bi-ji.html</loc>
-<lastmod>2014-07-17T17:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/centos65-an-zhuang-eclipse.html</loc>
+<lastmod>2014-07-23T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/mvvmmo-shi-chu-tan.html</loc>
-<lastmod>2014-07-17T13:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/designcode-tutorial1-bi-ji.html</loc>
+<lastmod>2014-07-17T17:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html</loc>
-<lastmod>2014-07-14T10:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/mvvmmo-shi-chu-tan.html</loc>
+<lastmod>2014-07-17T13:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/sketch-tutorials-study-1.html</loc>
-<lastmod>2014-07-08T14:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/umeng-you-meng-cuo-wu-bao-gao-chu-li.html</loc>
+<lastmod>2014-07-14T10:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/wwdc2014-223-notes-protyping.html</loc>
-<lastmod>2014-07-03T22:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/sketch-tutorials-study-1.html</loc>
+<lastmod>2014-07-08T14:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/wwdc2014-211-notes-designing_intuitive_user_experiences.html</loc>
-<lastmod>2014-06-30T14:20:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/wwdc2014-223-notes-protyping.html</loc>
+<lastmod>2014-07-03T22:00:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html</loc>
-<lastmod>2014-06-29T14:00:00-00:00</lastmod>
+<loc>http://127.0.0.1:8000/wwdc2014-211-notes-designing_intuitive_user_experiences.html</loc>
+<lastmod>2014-06-30T14:20:00+08:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/category/design.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html</loc>
+<lastmod>2014-06-29T14:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://127.0.0.1:8000/category/design.html</loc>
+<lastmod>2014-08-25T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/category/ios.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/category/ios.html</loc>
+<lastmod>2014-12-08T22:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/category/linux.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/category/linux.html</loc>
+<lastmod>2014-11-09T16:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/category/python.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/category/python.html</loc>
+<lastmod>2014-11-09T16:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/category/version.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/category/version.html</loc>
+<lastmod>2014-11-18T10:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/pelican.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/.html</loc>
+<lastmod>2014-12-08T22:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/sketch.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/pelican.html</loc>
+<lastmod>2014-11-09T16:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/mvvm.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/sketch.html</loc>
+<lastmod>2014-07-17T17:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/sigsegv.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/mvvm.html</loc>
+<lastmod>2014-08-25T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/eclipse.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/sigsegv.html</loc>
+<lastmod>2014-07-14T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/ios8.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/eclipse.html</loc>
+<lastmod>2014-07-23T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/design.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/ios8.html</loc>
+<lastmod>2014-11-19T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/linux.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/design.html</loc>
+<lastmod>2014-07-17T17:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/git.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/linux.html</loc>
+<lastmod>2014-07-23T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/appextension.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/git.html</loc>
+<lastmod>2014-11-18T10:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/pattern.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/appextension.html</loc>
+<lastmod>2014-11-19T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/python.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/pattern.html</loc>
+<lastmod>2014-07-17T13:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/ios.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/python.html</loc>
+<lastmod>2014-11-09T16:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/launch-screen.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/ios.html</loc>
+<lastmod>2014-07-17T17:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/svn.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/launch-screen.html</loc>
+<lastmod>2014-10-16T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/ux.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/svn.html</loc>
+<lastmod>2014-11-03T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/jdk.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/ux.html</loc>
+<lastmod>2014-06-30T14:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/revert.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/jdk.html</loc>
+<lastmod>2014-07-23T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/quartzcomposer.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/revert.html</loc>
+<lastmod>2014-11-03T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/wwdc-2014.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/quartzcomposer.html</loc>
+<lastmod>2014-08-25T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/mvc.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/wwdc-2014.html</loc>
+<lastmod>2014-07-03T22:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/ui.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/mvc.html</loc>
+<lastmod>2014-07-17T13:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/tag/security.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/ui.html</loc>
+<lastmod>2014-07-03T22:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
-<loc>http://github.icocoa.tk/author/charles-zhu.html</loc>
-<lastmod>2014-12-08T13:16:54-00:00</lastmod>
+<loc>http://127.0.0.1:8000/tag/security.html</loc>
+<lastmod>2014-11-09T16:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://127.0.0.1:8000/author/charles-zhu.html</loc>
+<lastmod>2014-12-08T22:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

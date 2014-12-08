@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
 
-        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://github.icocoa.tk/">Home</a></li>
+                <li><a href="http://127.0.0.1:8000/">Home</a></li>
 
 
               </ul>
@@ -51,27 +51,27 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://github.icocoa.tk/app-extension-study-3.html" rel="bookmark"
+                <a href="http://127.0.0.1:8000/app-extension-study-3.html" rel="bookmark"
                    title="Permalink to App Extension Study 3">App Extension Study 3</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-11-14T16:00:00">
+              <abbr class="published" title="2014-11-14T16:00:00+08:00">
                 Fri 14 November 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <p>Author: Charles Zhu<br />
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
 <h3>2 Finder Sync (OS X)</h3>
 <p>因为extension要运行在10.10的OS X上，由于没升级，所以本节就侧重“理论”了。  </p>
 <h4>2.1 含义</h4>
-<p>顾名思义，就是保持本地的某些文件夹和远程的文件夹内容保持一致。它可以让用户在Finder实时察觉同步的状态并随时控制同步的进程。比如说可以在文件夹上加badge或是文字来告诉用户当前的状态，或是在Finder窗口添加工具栏方便打开监视的文件夹或强制退出同步(不知道网盘类的应用如何集成该extension呢)。因此，<code>Finder Sync</code>的host app只能是<code>Finder</code>。<br/>
+<p>顾名思义，就是保持本地的某些文件夹和远程的文件夹内容保持一致。它可以让用户在Finder实时察觉同步的状态并随时控制同步的进程。比如说可以在文件夹上加badge或是文字来告诉用户当前的状态，或是在Finder窗口添加工具栏方便打开监视的文件夹或强制退出同步(不知道网盘类的应用如何集成该extension呢)。因此，<code>Finder Sync</code>的host app只能是<code>Finder</code>。<br />
 <code>Finder Sync</code>可以：</p>
 <ul>
 <li>注册一系列文件夹进行同步</li>
@@ -81,77 +81,89 @@ Summary: ios8 app extension</p>
 <li>可以给Finder的工具栏添加按钮</li>
 </ul>
 <h4>2.2模版文件</h4>
-<p>plist文件和widget中的类似，默认的类是<code>FIFinderSync</code>子类，实现文件中预先生成的方法很好的解释了FinderSync的工作流程。<br/>
+<p>plist文件和widget中的类似，默认的类是<code>FIFinderSync</code>子类，实现文件中预先生成的方法很好的解释了FinderSync的工作流程。<br />
 首先是<code>init</code>,  </p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">instancetype</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
-<span class="n">self</span> <span class="o">=</span> <span class="p">[</span><span class="n">super</span> <span class="n">init</span><span class="p">];</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">init</span> <span class="p">{</span>
+<span class="nb">self</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="n">init</span><span class="p">];</span>
 
-<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%s launched from %@ ; compiled at %s"</span><span class="p">,</span> <span class="n">__PRETTY_FUNCTION__</span><span class="p">,</span> <span class="p">[[</span><span class="n">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="n">bundlePath</span><span class="p">],</span> <span class="n">__TIME__</span><span class="p">);</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%s launched from %@ ; compiled at %s&quot;</span><span class="p">,</span> <span class="n">__PRETTY_FUNCTION__</span><span class="p">,</span> <span class="p">[[</span><span class="bp">NSBundle</span> <span class="n">mainBundle</span><span class="p">]</span> <span class="n">bundlePath</span><span class="p">],</span> <span class="n">__TIME__</span><span class="p">);</span>
 
 <span class="c1">// Set up the directory we are syncing.</span>
-<span class="n">self</span><span class="p">.</span><span class="n">myFolderURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSURL</span> <span class="n">fileURLWithPath</span><span class="o">:</span><span class="s">@"/Users/Shared/MySyncExtension Documents"</span><span class="p">];</span>
-<span class="p">[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">].</span><span class="n">directoryURLs</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSSet</span> <span class="n">setWithObject</span><span class="o">:</span><span class="n">self</span><span class="p">.</span><span class="n">myFolderURL</span><span class="p">];</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">myFolderURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSURL</span> <span class="nl">fileURLWithPath</span><span class="p">:</span><span class="s">@&quot;/Users/Shared/MySyncExtension Documents&quot;</span><span class="p">];</span>
+<span class="p">[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">].</span><span class="n">directoryURLs</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSSet</span> <span class="nl">setWithObject</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">myFolderURL</span><span class="p">];</span>
 
 <span class="c1">// Set up images for our badge identifiers. For demonstration purposes, this uses off-the-shelf images.</span>
-<span class="p">[[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">]</span> <span class="n">setBadgeImage</span><span class="o">:</span><span class="p">[</span><span class="n">NSImage</span> <span class="n">imageNamed</span><span class="o">:</span> <span class="n">NSImageNameColorPanel</span><span class="p">]</span> <span class="n">label</span><span class="o">:</span><span class="s">@"Status One"</span> <span class="n">forBadgeIdentifier</span><span class="o">:</span><span class="s">@"One"</span><span class="p">];</span>
-<span class="p">[[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">]</span> <span class="n">setBadgeImage</span><span class="o">:</span><span class="p">[</span><span class="n">NSImage</span> <span class="n">imageNamed</span><span class="o">:</span> <span class="n">NSImageNameCaution</span><span class="p">]</span> <span class="n">label</span><span class="o">:</span><span class="s">@"Status Two"</span> <span class="n">forBadgeIdentifier</span><span class="o">:</span><span class="s">@"Two"</span><span class="p">];</span>
+<span class="p">[[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">]</span> <span class="nl">setBadgeImage</span><span class="p">:[</span><span class="n">NSImage</span> <span class="nl">imageNamed</span><span class="p">:</span> <span class="n">NSImageNameColorPanel</span><span class="p">]</span> <span class="nl">label</span><span class="p">:</span><span class="s">@&quot;Status One&quot;</span> <span class="nl">forBadgeIdentifier</span><span class="p">:</span><span class="s">@&quot;One&quot;</span><span class="p">];</span>
+<span class="p">[[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">]</span> <span class="nl">setBadgeImage</span><span class="p">:[</span><span class="n">NSImage</span> <span class="nl">imageNamed</span><span class="p">:</span> <span class="n">NSImageNameCaution</span><span class="p">]</span> <span class="nl">label</span><span class="p">:</span><span class="s">@&quot;Status Two&quot;</span> <span class="nl">forBadgeIdentifier</span><span class="p">:</span><span class="s">@&quot;Two&quot;</span><span class="p">];</span>
 
-<span class="k">return</span> <span class="n">self</span><span class="p">;</span>
+<span class="k">return</span> <span class="nb">self</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>初始化函数中主要做的就是注册要同步的文件夹，可以是多个。通常指定的文件夹是在containing app中操作的，因此需要用到<code>share group</code>来共享数据。所以，实际中会通过<code>NSUserDefaults</code>来读取，然后再注册。除此之外，还可以进行badge等修饰。这里badge的图片里不能有padding(我的理解就是图片的内容都要顶边)，此外还有像素的限制：  </p>
 <ul>
 <li>retina屏： 12x12-320x320</li>
 <li>非retina屏： 8x8-160x160</li>
 </ul>
 <p>接下来就是实现一系列<code>FIFinderSync</code>协议：</p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">beginObservingDirectoryAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
-<span class="c1">// The user is now seeing the container's contents.</span>
-<span class="c1">// If they see it in more than one view at a time, we're only told once.</span>
-<span class="n">NSLog</span><span class="p">(</span><span class="s">@"beginObservingDirectoryAtURL:%@"</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span><span class="p">);</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">beginObservingDirectoryAtURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
+<span class="c1">// The user is now seeing the container&#39;s contents.</span>
+<span class="c1">// If they see it in more than one view at a time, we&#39;re only told once.</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;beginObservingDirectoryAtURL:%@&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-<p>当用户打开同步文件夹或其子文件夹时，调用此方法，查看的文件夹路径作为<code>url</code>参数传入。<br/>
+
+
+<p>当用户打开同步文件夹或其子文件夹时，调用此方法，查看的文件夹路径作为<code>url</code>参数传入。<br />
 和打开香对应的，有关闭浏览同步文件夹的协议： </p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">endObservingDirectoryAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
-<span class="c1">// The user is no longer seeing the container's contents.</span>
-<span class="n">NSLog</span><span class="p">(</span><span class="s">@"endObservingDirectoryAtURL:%@"</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span><span class="p">);</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">endObservingDirectoryAtURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
+<span class="c1">// The user is no longer seeing the container&#39;s contents.</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;endObservingDirectoryAtURL:%@&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>还有一个协议，当同步文件夹里的内容要显示的时候，会调用：  </p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">requestBadgeIdentifierForURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
-<span class="n">NSLog</span><span class="p">(</span><span class="s">@"requestBadgeIdentifierForURL:%@"</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span><span class="p">);</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">requestBadgeIdentifierForURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;requestBadgeIdentifierForURL:%@&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span><span class="p">);</span>
 
 <span class="c1">// For demonstration purposes, this picks one of our two badges, or no badge at all, based on the filename.</span>
 <span class="n">NSInteger</span> <span class="n">whichBadge</span> <span class="o">=</span> <span class="p">[</span><span class="n">url</span><span class="p">.</span><span class="n">filePathURL</span> <span class="n">hash</span><span class="p">]</span> <span class="o">%</span> <span class="mi">3</span><span class="p">;</span>
-<span class="n">NSString</span><span class="o">*</span> <span class="n">badgeIdentifier</span> <span class="o">=</span> <span class="err">@</span><span class="p">[</span><span class="s">@""</span><span class="p">,</span> <span class="s">@"One"</span><span class="p">,</span> <span class="s">@"Two"</span><span class="p">][</span><span class="n">whichBadge</span><span class="p">];</span>
-<span class="p">[[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">]</span> <span class="n">setBadgeIdentifier</span><span class="o">:</span><span class="n">badgeIdentifier</span> <span class="n">forURL</span><span class="o">:</span><span class="n">url</span><span class="p">];</span>
+<span class="bp">NSString</span><span class="o">*</span> <span class="n">badgeIdentifier</span> <span class="o">=</span> <span class="l">@[</span><span class="s">@&quot;&quot;</span><span class="p">,</span> <span class="s">@&quot;One&quot;</span><span class="p">,</span> <span class="s">@&quot;Two&quot;</span><span class="l">]</span><span class="p">[</span><span class="n">whichBadge</span><span class="p">];</span>
+<span class="p">[[</span><span class="n">FIFinderSyncController</span> <span class="n">defaultController</span><span class="p">]</span> <span class="nl">setBadgeIdentifier</span><span class="p">:</span><span class="n">badgeIdentifier</span> <span class="nl">forURL</span><span class="p">:</span><span class="n">url</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>如例子所做的那样，文件夹内的每个内容显示的时候会调用该协议，然后extension根据一些条件(比如文件的名字等)来决定是否加badge以及加哪种badge。</p>
 <p>接下来就是菜单和工具栏相关的协议：</p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">NSMenu</span> <span class="o">*</span><span class="p">)</span><span class="nf">menuForMenuKind:</span><span class="p">(</span><span class="n">FIMenuKind</span><span class="p">)</span><span class="nv">whichMenu</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="n">NSMenu</span> <span class="o">*</span><span class="p">)</span><span class="nf">menuForMenuKind:</span><span class="p">(</span><span class="n">FIMenuKind</span><span class="p">)</span><span class="nv">whichMenu</span> <span class="p">{</span>
     <span class="c1">// Produce a menu for the extension.</span>
-    <span class="n">NSMenu</span> <span class="o">*</span><span class="n">menu</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMenu</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithTitle</span><span class="o">:</span><span class="s">@""</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">menu</span> <span class="n">addItemWithTitle</span><span class="o">:</span><span class="s">@"Example Menu Item"</span> <span class="n">action</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">sampleAction</span><span class="o">:</span><span class="p">)</span> <span class="n">keyEquivalent</span><span class="o">:</span><span class="s">@""</span><span class="p">];</span>
+    <span class="n">NSMenu</span> <span class="o">*</span><span class="n">menu</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSMenu</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithTitle</span><span class="p">:</span><span class="s">@&quot;&quot;</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">menu</span> <span class="nl">addItemWithTitle</span><span class="p">:</span><span class="s">@&quot;Example Menu Item&quot;</span> <span class="nl">action</span><span class="p">:</span><span class="k">@selector</span><span class="p">(</span><span class="nl">sampleAction</span><span class="p">:)</span> <span class="nl">keyEquivalent</span><span class="p">:</span><span class="s">@&quot;&quot;</span><span class="p">];</span>
 
     <span class="k">return</span> <span class="n">menu</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>实现自定义的菜单就要实现该协议，根据不同的<code>FIMenuKind</code>,提供不同的菜单。  </p>
 <p>接下来是在Finder窗口添加自定义的工具按钮：</p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">toolbarItemName</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s">@"FinderSynTest"</span><span class="p">;</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">toolbarItemName</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s">@&quot;FinderSynTest&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">toolbarItemToolTip</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="s">@"FinderSynTest: Click the toolbar item for a menu."</span><span class="p">;</span>
+<span class="p">-</span> <span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nf">toolbarItemToolTip</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="s">@&quot;FinderSynTest: Click the toolbar item for a menu.&quot;</span><span class="p">;</span>
 <span class="p">}</span>
 
-<span class="k">-</span> <span class="p">(</span><span class="n">NSImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">toolbarItemImage</span> <span class="p">{</span>
-  <span class="k">return</span> <span class="p">[</span><span class="n">NSImage</span> <span class="n">imageNamed</span><span class="o">:</span><span class="n">NSImageNameCaution</span><span class="p">];</span>
+<span class="p">-</span> <span class="p">(</span><span class="n">NSImage</span> <span class="o">*</span><span class="p">)</span><span class="nf">toolbarItemImage</span> <span class="p">{</span>
+  <span class="k">return</span> <span class="p">[</span><span class="n">NSImage</span> <span class="nl">imageNamed</span><span class="p">:</span><span class="n">NSImageNameCaution</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>当用户点击按钮后，系统就会调用之前的<code>menuForMenuKind:</code>方法，并把<code>FIMenuKindToolbarItemMenu</code>类参数传入。</p>
 <h4>2.3 Finder Sync典型用例</h4>
 <p>因为同步文件夹内可以会有很多很多的内容，这时候效率就显得特别重要了。适时更新就显得尤为重要，简单的说就是lazy-load，需要用到的时候再去加载，可见的时候才有必要去更新。<code>Finder Sync</code>的典型运作流程：</p>
@@ -164,7 +176,7 @@ Summary: ios8 app extension</p>
 </ol>
 <h3>3 Document Provider</h3>
 <h4>3.1 Document Provider是什么</h4>
-<p><code>Document Provider</code>充当containing app管理的文件和其他 app 之间的“中介”，该中介可以让其他app <code>导入</code>或是<code>打开</code>文件，可以从服务器上<code>上传</code>/<code>下载</code>文件，也可以<code>导出</code>/<code>移动</code>文件到扩展的共享数据区。因此，<code>Document Provider</code>由2个独立的extension组成：一个是<code>Document Picker View Controller extension</code>(简称<code>picker extension</code>)，另一个则是<code>File Provider extension</code>(简称<code>provider extension</code>)。前者负责将可供使用的文件展示给用户，后者则根据用户选择的类型(指导入，打开，导出，移动等4种类型)提供相应的服务。在host app中，通过<code>UIDocumentPickerViewController</code>或是<code>UIDocumentMenuViewController</code>调用<code>picker extension</code>，extesnion根据实际需要把相关的文件呈现给用户，供用户选择；用户选择完毕后，有需要的话，再去运行<code>provider extension</code>。这里说“有需要”是因为理想情况下，<code>Document Provide</code>r最好支持上述4种类型，但不是必须。同时，只有打开和移动操作是一定要提供<code>provider extension</code>的，因为导入导出操作可只与共享数据区进行数据交换：比如说只是备份文件。<br/>
+<p><code>Document Provider</code>充当containing app管理的文件和其他 app 之间的“中介”，该中介可以让其他app <code>导入</code>或是<code>打开</code>文件，可以从服务器上<code>上传</code>/<code>下载</code>文件，也可以<code>导出</code>/<code>移动</code>文件到扩展的共享数据区。因此，<code>Document Provider</code>由2个独立的extension组成：一个是<code>Document Picker View Controller extension</code>(简称<code>picker extension</code>)，另一个则是<code>File Provider extension</code>(简称<code>provider extension</code>)。前者负责将可供使用的文件展示给用户，后者则根据用户选择的类型(指导入，打开，导出，移动等4种类型)提供相应的服务。在host app中，通过<code>UIDocumentPickerViewController</code>或是<code>UIDocumentMenuViewController</code>调用<code>picker extension</code>，extesnion根据实际需要把相关的文件呈现给用户，供用户选择；用户选择完毕后，有需要的话，再去运行<code>provider extension</code>。这里说“有需要”是因为理想情况下，<code>Document Provide</code>r最好支持上述4种类型，但不是必须。同时，只有打开和移动操作是一定要提供<code>provider extension</code>的，因为导入导出操作可只与共享数据区进行数据交换：比如说只是备份文件。<br />
 需要注意的是，iCloud也“集成”了该类型的扩展，就是说如果app启用了icloud，那么可以查看icloud的文件并选择操作。启用iCloud需要在plist文件中添加类似如下的属性：  </p>
 <div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSUbiquitousContainers<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
@@ -179,6 +191,8 @@ Summary: ios8 app extension</p>
     <span class="nt">&lt;/dict&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
+
+
 <h4>3.2 picker extension</h4>
 <p>新建一个<code>File Provider</code>，在导航上就可以看到Xcode会提供是否要创建<code>provider extension</code>的选项，一并勾上，然后来观察程序创建了2个target。先看<code>picker extension</code>的plist文件： </p>
 <div class="highlight"><pre><span class="nt">&lt;dict&gt;</span>
@@ -202,10 +216,12 @@ Summary: ios8 app extension</p>
 <span class="nt">&lt;string&gt;</span>com.apple.fileprovider-ui<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
+
+
 <p>键<code>UIDocumentPickerModes</code>设置了支持的操作类型，而<code>UIDocumentPickerSupportedFileTypes</code>则设置了支持的文件类型，<code>public.content</code>说明支持所有的文件。
-再来看模版文件，可以看到<code>picker extension</code>的实现是继承<code>UIDocumentPickerExtensionViewController</code>的子类，下图是<code>picker extension</code>的示例界面：<br/>
-<img alt="picker_ui" src="./imgs/20141117/picker_ui.png"/></p>
-<p>顶部的Bar是系统提供的，程序内无法自定义。左边的location是切换不同的文件来源，因为iPhone上可以安装多个提供了document provider的containing app。Bar下面的部分就是可以定制的picker extension的界面，完全在<code>UIDocumentPickerExtensionViewController</code>中自定义。<br/>
+再来看模版文件，可以看到<code>picker extension</code>的实现是继承<code>UIDocumentPickerExtensionViewController</code>的子类，下图是<code>picker extension</code>的示例界面：<br />
+<img alt="picker_ui" src="./imgs/20141117/picker_ui.png" /></p>
+<p>顶部的Bar是系统提供的，程序内无法自定义。左边的location是切换不同的文件来源，因为iPhone上可以安装多个提供了document provider的containing app。Bar下面的部分就是可以定制的picker extension的界面，完全在<code>UIDocumentPickerExtensionViewController</code>中自定义。<br />
 picker extension的生命周期：  </p>
 <ol>
 <li>host app弹出<code>UIDocumentMenuViewController</code></li>
@@ -225,8 +241,8 @@ picker extension的生命周期：  </p>
 </ul>
 <p>此外，如果涉及到用户授权，可以在extension中实现，也可以使用通知的方式在containing app中实现。</p>
 <h4>3.3 provider extension</h4>
-<p>如果picker提供打开和导出功能，那么就一定要实现<code>provider extension</code>。provider可以在host app之外打开/移动文件，可以让host app下载文件。<br/>
-对于远程未下载的文件，<code>provider extension</code>是用<code>placeholder</code>代替，通过<code>fileCoordinator</code>实现读写。文件的变化会以通知的方式传递给extension，以便作出相应的变化。<br/>
+<p>如果picker提供打开和导出功能，那么就一定要实现<code>provider extension</code>。provider可以在host app之外打开/移动文件，可以让host app下载文件。<br />
+对于远程未下载的文件，<code>provider extension</code>是用<code>placeholder</code>代替，通过<code>fileCoordinator</code>实现读写。文件的变化会以通知的方式传递给extension，以便作出相应的变化。<br />
 接下来还是先看plist文件：  </p>
 <div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtension<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
@@ -239,46 +255,52 @@ picker extension的生命周期：  </p>
     <span class="nt">&lt;string&gt;</span>FileProvider<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
+
+
 <p><code>NSExtensionFileProviderDocumentGroup</code>定义了可以访问的组，该值也同样在entitle文件中声明：</p>
 <div class="highlight"><pre><span class="nt">&lt;key&gt;</span>com.apple.security.application-groups<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;array&gt;</span>
      <span class="nt">&lt;string&gt;</span>com.apple.devpubs<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/array&gt;</span>
 </pre></div>
+
+
 <p>紧接着看代码，实现部分是<code>NSFileProviderExtension</code>的子类，该类的头文件中着重注明了2个类只能调用不需要重载：</p>
-<div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">writePlaceholderAtURL</span><span class="o">:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">placeholderURL</span> <span class="n">withMetadata</span><span class="o">:</span><span class="p">(</span><span class="n">NSDictionary</span> <span class="o">*</span><span class="p">)</span><span class="n">metadata</span> <span class="n">error</span><span class="o">:</span><span class="p">(</span><span class="n">NSError</span> <span class="o">**</span><span class="p">)</span><span class="n">error</span><span class="p">;</span>
-<span class="o">+</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">placeholderURLForURL</span><span class="o">:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">url</span><span class="p">;</span>
+<div class="highlight"><pre><span class="o">+</span> <span class="o">(</span><span class="nt">BOOL</span><span class="o">)</span><span class="nt">writePlaceholderAtURL</span><span class="o">:(</span><span class="nt">NSURL</span> <span class="o">*)</span><span class="nt">placeholderURL</span> <span class="nt">withMetadata</span><span class="o">:(</span><span class="nt">NSDictionary</span> <span class="o">*)</span><span class="nt">metadata</span> <span class="nt">error</span><span class="o">:(</span><span class="nt">NSError</span> <span class="o">**)</span><span class="nt">error</span><span class="o">;</span>
+<span class="o">+</span> <span class="o">(</span><span class="nt">NSURL</span> <span class="o">*)</span><span class="nt">placeholderURLForURL</span><span class="o">:(</span><span class="nt">NSURL</span> <span class="o">*)</span><span class="nt">url</span><span class="o">;</span>
 </pre></div>
+
+
 <p>主要作用是为未下载的文件创建<code>placeholder</code>，<code>metadata</code>通常包含文件大小，名字以及缩略图。
 接下来是必须重载的方法，模版文件中主要有：</p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">providePlaceholderAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="nf">completionHandler:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">))</span><span class="nv">completionHandler</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">providePlaceholderAtURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="nf">completionHandler:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">))</span><span class="nv">completionHandler</span> <span class="p">{</span>
     <span class="c1">// Should call + writePlaceholderAtURL:withMetadata:error: with the placeholder URL, then call the completion handler with the error if applicable.</span>
-    <span class="n">NSString</span><span class="o">*</span> <span class="n">fileName</span> <span class="o">=</span> <span class="p">[</span><span class="n">url</span> <span class="n">lastPathComponent</span><span class="p">];</span>
+    <span class="bp">NSString</span><span class="o">*</span> <span class="n">fileName</span> <span class="o">=</span> <span class="p">[</span><span class="n">url</span> <span class="n">lastPathComponent</span><span class="p">];</span>
 
-    <span class="n">NSURL</span> <span class="o">*</span><span class="n">placeholderURL</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSFileProviderExtension</span> <span class="n">placeholderURLForURL</span><span class="o">:</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">documentStorageURL</span> <span class="n">URLByAppendingPathComponent</span><span class="o">:</span><span class="n">fileName</span><span class="p">]];</span>
+    <span class="bp">NSURL</span> <span class="o">*</span><span class="n">placeholderURL</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSFileProviderExtension</span> <span class="nl">placeholderURLForURL</span><span class="p">:[</span><span class="nb">self</span><span class="p">.</span><span class="n">documentStorageURL</span> <span class="nl">URLByAppendingPathComponent</span><span class="p">:</span><span class="n">fileName</span><span class="p">]];</span>
 
     <span class="n">NSUInteger</span> <span class="n">fileSize</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span>
     <span class="c1">// TODO: get file size for file at &lt;url&gt; from model</span>
 
-    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">fileCoordinator</span> <span class="n">coordinateWritingItemAtURL</span><span class="o">:</span><span class="n">placeholderURL</span> <span class="n">options</span><span class="o">:</span><span class="mi">0</span> <span class="n">error</span><span class="o">:</span><span class="nb">NULL</span> <span class="n">byAccessor</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="n">newURL</span><span class="p">)</span> <span class="p">{</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">fileCoordinator</span> <span class="nl">coordinateWritingItemAtURL</span><span class="p">:</span><span class="n">placeholderURL</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">error</span><span class="p">:</span><span class="nb">NULL</span> <span class="nl">byAccessor</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="n">newURL</span><span class="p">)</span> <span class="p">{</span>
 
-        <span class="n">NSDictionary</span><span class="o">*</span> <span class="n">metadata</span> <span class="o">=</span> <span class="err">@</span><span class="p">{</span> <span class="n">NSURLFileSizeKey</span> <span class="o">:</span> <span class="err">@</span><span class="p">(</span><span class="n">fileSize</span><span class="p">)};</span>
-        <span class="p">[</span><span class="n">NSFileProviderExtension</span> <span class="n">writePlaceholderAtURL</span><span class="o">:</span><span class="n">placeholderURL</span> <span class="n">withMetadata</span><span class="o">:</span><span class="n">metadata</span> <span class="n">error</span><span class="o">:</span><span class="nb">NULL</span><span class="p">];</span>
+        <span class="bp">NSDictionary</span><span class="o">*</span> <span class="n">metadata</span> <span class="o">=</span> <span class="l">@{</span> <span class="nl">NSURLFileSizeKey</span> <span class="p">:</span> <span class="l">@(</span><span class="n">fileSize</span><span class="l">)}</span><span class="p">;</span>
+        <span class="p">[</span><span class="bp">NSFileProviderExtension</span> <span class="nl">writePlaceholderAtURL</span><span class="p">:</span><span class="n">placeholderURL</span> <span class="nl">withMetadata</span><span class="p">:</span><span class="n">metadata</span> <span class="nl">error</span><span class="p">:</span><span class="nb">NULL</span><span class="p">];</span>
     <span class="p">}];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">completionHandler</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">completionHandler</span><span class="p">(</span><span class="nb">nil</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
-<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">startProvidingItemAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="nf">completionHandler:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NSError</span> <span class="o">*</span><span class="p">))</span><span class="nv">completionHandler</span> <span class="p">{</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">startProvidingItemAtURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="nf">completionHandler:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="bp">NSError</span> <span class="o">*</span><span class="p">))</span><span class="nv">completionHandler</span> <span class="p">{</span>
     <span class="c1">// Should ensure that the actual file is in the position returned by URLForItemWithIdentifier:, then call the completion handler</span>
-    <span class="n">NSError</span><span class="o">*</span> <span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
-    <span class="n">__block</span> <span class="n">NSError</span><span class="o">*</span> <span class="n">fileError</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="bp">NSError</span><span class="o">*</span> <span class="n">error</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="k">__block</span> <span class="bp">NSError</span><span class="o">*</span> <span class="n">fileError</span> <span class="o">=</span> <span class="nb">nil</span><span class="p">;</span>
 
-    <span class="n">NSData</span> <span class="o">*</span> <span class="n">fileData</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSData</span> <span class="n">data</span><span class="p">];</span>
+    <span class="bp">NSData</span> <span class="o">*</span> <span class="n">fileData</span> <span class="o">=</span> <span class="p">[</span><span class="bp">NSData</span> <span class="n">data</span><span class="p">];</span>
     <span class="c1">// TODO: get the contents of file at &lt;url&gt; from model</span>
 
-    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">fileCoordinator</span> <span class="n">coordinateWritingItemAtURL</span><span class="o">:</span><span class="n">url</span> <span class="n">options</span><span class="o">:</span><span class="mi">0</span> <span class="n">error</span><span class="o">:&amp;</span><span class="n">error</span> <span class="n">byAccessor</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="n">newURL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">fileData</span> <span class="n">writeToURL</span><span class="o">:</span><span class="n">newURL</span> <span class="n">options</span><span class="o">:</span><span class="mi">0</span> <span class="n">error</span><span class="o">:&amp;</span><span class="n">fileError</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">fileCoordinator</span> <span class="nl">coordinateWritingItemAtURL</span><span class="p">:</span><span class="n">url</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">error</span> <span class="nl">byAccessor</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="n">newURL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">fileData</span> <span class="nl">writeToURL</span><span class="p">:</span><span class="n">newURL</span> <span class="nl">options</span><span class="p">:</span><span class="mi">0</span> <span class="nl">error</span><span class="p">:</span><span class="o">&amp;</span><span class="n">fileError</span><span class="p">];</span>
     <span class="p">}];</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="o">!=</span><span class="nb">nil</span><span class="p">)</span> <span class="p">{</span>
         <span class="n">completionHandler</span><span class="p">(</span><span class="n">error</span><span class="p">);</span>
@@ -287,45 +309,53 @@ picker extension的生命周期：  </p>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>当文件开始读取的时候，上述2个方法都会被触发。触发的先后视情况而定。和iCloud一样，操作文件是使用<code>NSFileCoordinator</code>。对于未下载的情形，第一个方法首先执行，在该方法中首先创建<code>placeholder</code>，然后调用<code>coordinate</code>方法写文件，最后务必调用<code>completionHandler</code>。第二个方法执行的内容和第一个差不多，只是不需要创建<code>placeholder</code>，所以这里要注意确认url指定的路径下，文件是否存在。
 接下来就是文件有变化时，收到的通知：  </p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">itemChangedAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">itemChangedAtURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
     <span class="c1">// Called at some point after the file has changed; the provider may then trigger an upload</span>
 
     <span class="c1">// TODO: mark file at &lt;url&gt; as needing an update in the model; kick off update process</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Item changed at URL %@"</span><span class="p">,</span> <span class="n">url</span><span class="p">);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;Item changed at URL %@&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>在这里，需要自行设计，文件变化后尤其是产生冲突后的处理。</p>
 <p>最后一个就是：  </p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">stopProvidingItemAtURL:</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">stopProvidingItemAtURL:</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nv">url</span> <span class="p">{</span>
     <span class="c1">// Called after the last claim to the file has been released. At this point, it is safe for the file provider to remove the content file.</span>
     <span class="c1">// Care should be taken that the corresponding placeholder file stays behind after the content file has been deleted.</span>
 
-    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">fileCoordinator</span> <span class="n">coordinateWritingItemAtURL</span><span class="o">:</span><span class="n">url</span> <span class="n">options</span><span class="o">:</span><span class="n">NSFileCoordinatorWritingForDeleting</span> <span class="n">error</span><span class="o">:</span><span class="nb">NULL</span> <span class="n">byAccessor</span><span class="o">:^</span><span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="n">newURL</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[[</span><span class="n">NSFileManager</span> <span class="n">defaultManager</span><span class="p">]</span> <span class="n">removeItemAtURL</span><span class="o">:</span><span class="n">newURL</span> <span class="n">error</span><span class="o">:</span><span class="nb">NULL</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">fileCoordinator</span> <span class="nl">coordinateWritingItemAtURL</span><span class="p">:</span><span class="n">url</span> <span class="nl">options</span><span class="p">:</span><span class="n">NSFileCoordinatorWritingForDeleting</span> <span class="nl">error</span><span class="p">:</span><span class="nb">NULL</span> <span class="nl">byAccessor</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="n">newURL</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[[</span><span class="bp">NSFileManager</span> <span class="n">defaultManager</span><span class="p">]</span> <span class="nl">removeItemAtURL</span><span class="p">:</span><span class="n">newURL</span> <span class="nl">error</span><span class="p">:</span><span class="nb">NULL</span><span class="p">];</span>
     <span class="p">}];</span>
-    <span class="p">[</span><span class="n">self</span> <span class="n">providePlaceholderAtURL</span><span class="o">:</span><span class="n">url</span> <span class="n">completionHandler</span><span class="o">:</span><span class="nb">NULL</span><span class="p">];</span>
+    <span class="p">[</span><span class="nb">self</span> <span class="nl">providePlaceholderAtURL</span><span class="p">:</span><span class="n">url</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="nb">NULL</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
+
+
 <p>该方法是系统检测到没有进程调用该文件时触发的，这里可以把文件从共享区域中删除以节省空间。 
 另外还有4个方法可以重载：  </p>
-<div class="highlight"><pre><span class="c1">// An identifier unique to this provider.</span>
-<span class="c1">// When modifying the files stored in the directory returned by documentStorageURL, you should pass this identifier</span>
-<span class="c1">// to your file coordinator's setPurposeIdentifier: method.</span>
-<span class="c1">// By default, this returns the bundle identifier of the application containing your extension. You need to make sure to use the same identifier in your containing app.</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">providerIdentifier</span><span class="p">;</span>
+<div class="highlight"><pre><span class="o">//</span> <span class="nt">An</span> <span class="nt">identifier</span> <span class="nt">unique</span> <span class="nt">to</span> <span class="nt">this</span> <span class="nt">provider</span><span class="o">.</span>
+<span class="o">//</span> <span class="nt">When</span> <span class="nt">modifying</span> <span class="nt">the</span> <span class="nt">files</span> <span class="nt">stored</span> <span class="nt">in</span> <span class="nt">the</span> <span class="nt">directory</span> <span class="nt">returned</span> <span class="nt">by</span> <span class="nt">documentStorageURL</span><span class="o">,</span> <span class="nt">you</span> <span class="nt">should</span> <span class="nt">pass</span> <span class="nt">this</span> <span class="nt">identifier</span>
+<span class="o">//</span> <span class="nt">to</span> <span class="nt">your</span> <span class="nt">file</span> <span class="nt">coordinator</span><span class="s1">&#39;s setPurposeIdentifier: method.</span>
+<span class="s1">// By default, this returns the bundle identifier of the application containing your extension. You need to make sure to use the same identifier in your containing app.</span>
+<span class="s1">- (NSString *)providerIdentifier;</span>
 
-<span class="c1">// The root URL for provided documents. This URL must be writable from your app extension, and must only be used for the extension's files or their placeholders.</span>
-<span class="o">-</span> <span class="p">(</span><span class="no">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">documentStorageURL</span><span class="p">;</span>
+<span class="s1">// The root URL for provided documents. This URL must be writable from your app extension, and must only be used for the extension&#39;</span><span class="nt">s</span> <span class="nt">files</span> <span class="nt">or</span> <span class="nt">their</span> <span class="nt">placeholders</span><span class="o">.</span>
+<span class="nt">-</span> <span class="o">(</span><span class="nt">NSURL</span> <span class="o">*)</span><span class="nt">documentStorageURL</span><span class="o">;</span>
 
-<span class="c1">// Should return the URL corresponding to a specific identifier. Fail if it's not a subpath of documentStorageURL.</span>
-<span class="c1">// This is a static mapping; each identifier must always return a path corresponding to the same file.</span>
-<span class="c1">// By default, this returns the path relative to the path returned by documentStorageURL.</span>
-<span class="o">-</span> <span class="p">(</span><span class="no">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="nl">URLForItemWithPersistentIdentifier:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">identifier</span><span class="p">;</span>
-<span class="o">-</span> <span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nl">persistentIdentifierForItemAtURL:</span><span class="p">(</span><span class="no">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">url</span><span class="p">;</span>
+<span class="o">//</span> <span class="nt">Should</span> <span class="nt">return</span> <span class="nt">the</span> <span class="nt">URL</span> <span class="nt">corresponding</span> <span class="nt">to</span> <span class="nt">a</span> <span class="nt">specific</span> <span class="nt">identifier</span><span class="o">.</span> <span class="nt">Fail</span> <span class="nt">if</span> <span class="nt">it</span><span class="err">&#39;</span><span class="nt">s</span> <span class="nt">not</span> <span class="nt">a</span> <span class="nt">subpath</span> <span class="nt">of</span> <span class="nt">documentStorageURL</span><span class="o">.</span>
+<span class="o">//</span> <span class="nt">This</span> <span class="nt">is</span> <span class="nt">a</span> <span class="nt">static</span> <span class="nt">mapping</span><span class="o">;</span> <span class="nt">each</span> <span class="nt">identifier</span> <span class="nt">must</span> <span class="nt">always</span> <span class="nt">return</span> <span class="nt">a</span> <span class="nt">path</span> <span class="nt">corresponding</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">same</span> <span class="nt">file</span><span class="o">.</span>
+<span class="o">//</span> <span class="nt">By</span> <span class="nt">default</span><span class="o">,</span> <span class="nt">this</span> <span class="nt">returns</span> <span class="nt">the</span> <span class="nt">path</span> <span class="nt">relative</span> <span class="nt">to</span> <span class="nt">the</span> <span class="nt">path</span> <span class="nt">returned</span> <span class="nt">by</span> <span class="nt">documentStorageURL</span><span class="o">.</span>
+<span class="nt">-</span> <span class="o">(</span><span class="nt">NSURL</span> <span class="o">*)</span><span class="nt">URLForItemWithPersistentIdentifier</span><span class="o">:(</span><span class="nt">NSString</span> <span class="o">*)</span><span class="nt">identifier</span><span class="o">;</span>
+<span class="nt">-</span> <span class="o">(</span><span class="nt">NSString</span> <span class="o">*)</span><span class="nt">persistentIdentifierForItemAtURL</span><span class="o">:(</span><span class="nt">NSURL</span> <span class="o">*)</span><span class="nt">url</span><span class="o">;</span>
 </pre></div>
-<p>但是因为通常情况下，重载这些方法会影响到plist和entitlement中的设置，所以一般情况下也可以认为是不需要重载的。<br/>
+
+
+<p>但是因为通常情况下，重载这些方法会影响到plist和entitlement中的设置，所以一般情况下也可以认为是不需要重载的。<br />
 需要说明的是，文档中指出如果在8.0上使用了<code>iCloud Drive</code>，那么访问文件需要使用<code>UIDocument</code>或是<code>NSFileProviderExtension</code>，而不要使用<code>NSFileCoordinator</code>。
 最后WWDC2014中有一个<a href="http://adcdownload.apple.com//wwdc_2014/wwdc_2014_sample_code/newboxanintroductiontoiclouddocumentenhancementsinios8.0.zip">示例</a>，可以下载后研究下。</p>
 <h3>End</h3>
@@ -335,9 +365,9 @@ picker extension的生命周期：  </p>
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://github.icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html">← Previous : Pelican若干问题汇总</a></li>
+        <li class="prev"><a href="http://127.0.0.1:8000/pelicanruo-gan-wen-ti-hui-zong.html">← Previous : Pelican若干问题汇总</a></li>
         
-        <li class="next"><a href="http://github.icocoa.tk/gitban-ben-ku-guan-li.html">Git版本库管理:Next →</a></li>
+        <li class="next"><a href="http://127.0.0.1:8000/gitban-ben-ku-guan-li.html">Git版本库管理:Next →</a></li>
       </ul>
     </div>
 
@@ -361,39 +391,40 @@ picker extension的生命周期：  </p>
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
+		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
+		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
+		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
+		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/git.html">git</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/ux.html">ux</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/security.html">security</a></li>
 </ul>
 
 
@@ -445,8 +476,8 @@ picker extension的生命周期：  </p>
     </div>
 
 
-  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
 </body>
 </html>

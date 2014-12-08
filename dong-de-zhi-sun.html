@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>CentOS6.5 安装eclipse</title>
+        <title>懂得止损</title>
         <meta charset="utf-8" />
 
 
@@ -51,51 +51,62 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://127.0.0.1:8000/centos65-an-zhuang-eclipse.html" rel="bookmark"
-                   title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2>
+                <a href="http://127.0.0.1:8000/dong-de-zhi-sun.html" rel="bookmark"
+                   title="Permalink to 懂得止损">懂得止损</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-23T10:00:00+08:00">
-                Wed 23 July 2014
+              <abbr class="published" title="2014-12-08T22:30:00+08:00">
+                Mon 08 December 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br />
-Summary: install eclipse on centos6.5</p>
-<p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
-<h3>eclipse 下载</h3>
-<p>直接在<a href="https://www.eclipse.org/downloads/">官网</a>下载，选择合适的版本：网站会识别操作系统，主要注意是32位还是64位<br />
-下载后，解压打开，双击eclipse的可执行程序，发现不能启动。弹出的提示说系统的jvm是1.6，而最新luna版需要1.7或以上。</p>
-<h3>jdk安装</h3>
-<p>主要参考了<a href="http://www.cnblogs.com/zhoulf/archive/2013/02/04/2891608.html">这篇文章</a>，具体过程就不多说了，注意操作要在su账号下。</p>
-<h4>source /etc/profile 不生效</h4>
-<p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
+              <h2>缘起</h2>
+<p>止损一词似乎在股市中运用的颇多，大概是直接和金钱有联系的缘故。可是大家不要忘记，在当下，每个人的实践也是笔巨大的财富。想想首富们一分钟能赚的钱，就知道此言不虚。虽然你我离首富尚有些距离，但时间的宝贵会随着年龄的增长与日俱增。<br />
+最近在做app的分享功能，使用的是<code>Umeng</code>的组件，之所以使用Umeng是因为：</p>
 <ol>
-<li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看$PATH，发现添加的没有生效</li>
-<li>再次进入su，查看$PATH，发现添加的没有生效</li>
+<li>之前在技术群中，经常见到有人对shareSDK的诟病</li>
+<li>使用umeng的统计组件，对其印象不错
+可是，偏偏这个分享，花费了整整一周的时间。<br />
+虽然我在这里直接列出了umeng和sharesdk，但是绝无软广的意思，想表达的是在浪费了一定宝贵时间的时候，个人应该如何选择分析并做出决策的重要性。</li>
 </ol>
-<p>目测应该是和linux系统启动的知识有关，果然在<a href="http://www.cnblogs.com/BigIdiot/archive/2012/03/26/2417547.html">这里</a>找到了答案，简单的说：</p>
+<h2>事件过程</h2>
+<p>分享的问题主要是facebook分享失败。在facebook的开发页面注册好app，申请并通过了pulic_action(是post wall的必须)的权限。由于疏忽，使用了Test User进行share的测试，没有任何问题。可是，使用了一个普通账号——既不是admin，也不是developer或tester的账号进行测试时，就会发现分享失败。经过排查，发现在第一次授权的时候，facebook授权页面上显示<code>该app不能post wall</code>。我的第一直觉先是排查app的设置，未果后联系umeng的客服(这里需要点名一下，umeng的客服水平真的是有待提高)。客服听完我的描述，给出的结论是：既然测试账户可以分享，那么就是说明代码是没有问题的。哈哈，言外之意就是：你个sb，自己不会用，来作甚！ok，那虚心的问下对方，app的设置有什么需要注意的地方。这时，就像服务器超时一般，直到企业qq弹出长时间未说话，然后关闭对话的消息。 
+上述的过程，花费了2个工作日，尤其是排查facebook上app的设置，花了近1天时间。<br />
+直到第三天，我丝毫没有怀疑umeng的sdk，还在facebook的开发组里发帖。说实在的，老外的水平也是参差不齐，我特别说明已经取得了相应的权限，还有人不断回复权限要审核。这时有位资料显示是facebook开发人员的回复引起了我的注意，他说：我这种情况facebook的app会弹出2次授权提示，第二次提示的时候会告诉用户该app拥有post权限。虽然以前做过facebook的分享，但是两年前的事情了，我开始意识到这是关键。与此同时，我也发现umeng给出的demo中，facebook分享也有同样的问题，我逐渐意识到这是个bug。于是赶紧联系客服，这次居然没有下文。好在我也不是太TMD一根筋，立马下载并使用了sharesdk，发现facebook的授权果然是会弹出2次。这时已经是第4天，还好自己的开发经验不算差，很快的集成好sharesdk。这时又发现了几个使用问题，联系sharesdk的客服，——不得不说，有了比较后sharesdk简直把你当vip一般看待的。周五晚上五点半快下班的时候，还在帮我解答问题，还好我也没耽搁太久，很快就搞定了一切。</p>
+<h2>过程分析</h2>
+<p>首先，因为现在的分析平台确实太多，逐个去集成太麻烦，所以第三方的分享服务才这么有市场。既然有市场，就有好坏之分。虽然是免费的产品，但花费的时间是无法用金钱衡量的(当然我不否认第三方服务为我们节省了大量时间)。这就像是金钱投资，花费了时间，总归需要有回报。当只有一个facebook分享有问题的情况下，要颠覆自己舍弃该sdk是件不易的事情。<br />
+其次，国外的分享平台由于众所周知的原因，一般情况下不太会涉及。这就导致个人对此类平台的陌生：至少我之前根本不知道facebook的授权流程已经<code>进化</code>到现在的样子了。
+最后，就是没有完全测试第三方提供的demo，如果先试用demo的话，就会发现其本身就存在bug</p>
+<h2>止损需要具备的条件</h2>
+<p>虽然5天的时间不是100%的都在处理这个事情，但是这样的一个功能占据了一周的时间，还是需要警惕的。从现在的角度看，可以在以下的时间点及时转换sdk进行<code>止损</code>：</p>
 <ol>
-<li>/etc/profile:在登录时,操作系统定制用户环境时使用的第一个文件,此 文件为系统的每个用户设置环境信息,当用户第一次登录时,该文件被执行。</li>
-<li>/etc/environment:在登录时操作系统使用的第二个文件,系统在 读取你自己的profile前,设置环境文件的环境变量。</li>
-<li>~/.bash_profile:在登录时用到的第三个文件是.profile文 件,每个用户都可使用该文件输入专用于自己使用的shell信息,当用 户登录时,该 文件仅仅执行一次!默认情况下,他设置一些环境变游戏量,执 行用户的.bashrc文件。/etc/bashrc:为每一个运行bash shell的用户执行此文件.当bash shell被打开时,该 文件被读取.</li>
-<li>~/.bashrc:该文件包含专用于你的bash shell的bash信 息,当登录时以及每次打开新的shell时,该该文件被读取。</li>
+<li>当发现facebook上app的设置权限没有问题</li>
+<li>测试用户和普通用户分享的不同情况</li>
 </ol>
-<p>所以，如果修改/etc/profile的话，需要重启系统。</p>
-<p>这样，最终整个过程完成了。</p>
+<p>之所以没有及时那样做，或者说不敢止损的原因在于：</p>
+<ol>
+<li>虽然有第三方的集成服务，但程序中要初始化一些相关的代码。怕麻烦，以及只有facebook不能分享，导致对umeng的期望过大</li>
+<li>个人对facebook平台的认识缺乏，简单的说就是技术上了解的不多，导致不能及时觉察到问题的症结所在</li>
+<li>先天对sharesdk有了排斥，以及相对的对umeng有了些许好感。主观的因素，往往能决定性的影响人的判断</li>
+</ol>
+<h2>经验教训</h2>
+<ol>
+<li>一切都是不可靠的，第三方的服务可以使用但不能依赖</li>
+<li>一切不明白why或者细节的都是可怕的。你不知道实现过程，只知道结果，所以问题发生的时候无从判断</li>
+<li>要增强自己的技术力</li>
+</ol>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://127.0.0.1:8000/designcode-tutorial1-bi-ji.html">← Previous : design+code tutorial1 笔记</a></li>
+        <li class="prev"><a href="http://127.0.0.1:8000/app-extension-study-4.html">← Previous : App Extension Study 4</a></li>
         
-        <li class="next"><a href="http://127.0.0.1:8000/mvvmchu-shi-jian.html">MVVM初实践:Next →</a></li>
+        <li class="next"><a href="/">Next →</a></li>
       </ul>
     </div>
 

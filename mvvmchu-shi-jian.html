@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
 
-        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://github.icocoa.tk/">Home</a></li>
+                <li><a href="http://127.0.0.1:8000/">Home</a></li>
 
 
               </ul>
@@ -51,23 +51,23 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://github.icocoa.tk/mvvmchu-shi-jian.html" rel="bookmark"
+                <a href="http://127.0.0.1:8000/mvvmchu-shi-jian.html" rel="bookmark"
                    title="Permalink to MVVM初实践">MVVM初实践</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-08-25T10:00:00">
+              <abbr class="published" title="2014-08-25T10:00:00+08:00">
                 Mon 25 August 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <p>Author: Charles Zhu<br />
 Summary: a sample project practising MVVM</p>
-<p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br/>
-考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br/>
+<p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br />
+考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br />
 另外需要说明的，这里的网盘其实是一个带有系统的SD卡，自身带有AP，可以无线连接访问。同时，提供了API接口获取相关的数据。</p>
 <h3>MVVM 的角色分配</h3>
 <p>视图无疑是用<code>UITableView</code>, 控制器自然选择<code>UITableViewController</code>,自然这里需要建立一个<code>ViewModel</code>来监视一切变化并把这种变化传递给控制器。</p>
@@ -86,31 +86,33 @@ Summary: a sample project practising MVVM</p>
 dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上的文件名也要通过VM来获取</li>
 <li>数据获取的时机
 一般是在VM的信号didBecomeActiveSignal中去注册相应的事件。当事件完成后（获取列表任务），发送更新signal去通知控制器更新页面，因此在控制器中也要注册更新signal收到时相应的事件。整个伪代码逻辑：  <div class="highlight"><pre><span class="c1">//ViewController</span>
-    <span class="err">@</span><span class="n">weakify</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
-<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="n">subscribeNext</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-<span class="err">@</span><span class="n">strongify</span><span class="p">(</span><span class="n">self</span><span class="p">);</span>
-<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">tableView</span> <span class="n">reloadData</span><span class="p">];</span>
+    <span class="p">@</span><span class="n">weakify</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="nl">subscribeNext</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">@</span><span class="n">strongify</span><span class="p">(</span><span class="nb">self</span><span class="p">);</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">tableView</span> <span class="n">reloadData</span><span class="p">];</span>
 <span class="p">}];</span>
 
 <span class="c1">//ViewModel</span>
-<span class="n">self</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="o">=</span> <span class="p">[[</span> <span class="n">RACSubject</span> <span class="n">subject</span><span class="p">]</span> <span class="n">setNameWithFormat</span><span class="o">:</span><span class="s">@"%@_MasterVC"</span><span class="p">,</span><span class="n">self</span><span class="p">.</span><span class="n">directory</span><span class="p">];</span>
-<span class="n">self</span><span class="p">.</span><span class="n">flashCommand</span> <span class="o">=</span> <span class="p">[[</span><span class="n">RACCommand</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithSignalBlock</span><span class="o">:^</span><span class="n">RACSignal</span> <span class="o">*</span><span class="p">(</span><span class="kt">id</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
-    <span class="k">return</span> <span class="p">[</span><span class="n">RACSignal</span> <span class="n">defer</span><span class="o">:^</span><span class="n">RACSignal</span> <span class="o">*</span><span class="p">{</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="o">=</span> <span class="p">[[</span> <span class="n">RACSubject</span> <span class="n">subject</span><span class="p">]</span> <span class="nl">setNameWithFormat</span><span class="p">:</span><span class="s">@&quot;%@_MasterVC&quot;</span><span class="p">,</span><span class="nb">self</span><span class="p">.</span><span class="n">directory</span><span class="p">];</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">flashCommand</span> <span class="o">=</span> <span class="p">[[</span><span class="n">RACCommand</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithSignalBlock</span><span class="p">:</span><span class="o">^</span><span class="n">RACSignal</span> <span class="o">*</span><span class="p">(</span><span class="kt">id</span> <span class="n">input</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">RACSignal</span> <span class="nl">defer</span><span class="p">:</span><span class="o">^</span><span class="n">RACSignal</span> <span class="o">*</span><span class="p">{</span>
         <span class="c1">//get content list</span>
 
         <span class="c1">//finish data fetching and send signal</span>
 
-        <span class="p">[(</span><span class="n">RACSubject</span> <span class="o">*</span><span class="p">)</span><span class="n">self</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="n">sendNext</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+        <span class="p">[(</span><span class="n">RACSubject</span> <span class="o">*</span><span class="p">)</span><span class="nb">self</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="nl">sendNext</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
         <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
     <span class="p">}];</span>
 <span class="p">}];</span>
 
-<span class="err">@</span><span class="n">weakify</span><span class="p">(</span><span class="n">self</span><span class="p">)</span>
-<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">didBecomeActiveSignal</span> <span class="n">subscribeNext</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
-<span class="err">@</span><span class="n">strongify</span><span class="p">(</span><span class="n">self</span><span class="p">);</span>
-<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">flashCommand</span> <span class="n">execute</span><span class="o">:</span><span class="p">[</span><span class="n">NSNull</span> <span class="n">null</span><span class="p">]];</span>
+<span class="p">@</span><span class="n">weakify</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">didBecomeActiveSignal</span> <span class="nl">subscribeNext</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
+<span class="p">@</span><span class="n">strongify</span><span class="p">(</span><span class="nb">self</span><span class="p">);</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">flashCommand</span> <span class="nl">execute</span><span class="p">:[</span><span class="bp">NSNull</span> <span class="n">null</span><span class="p">]];</span>
 <span class="p">}];</span>
 </pre></div>
+
+
 </li>
 </ol>
 <h3>Cell的点击</h3>
@@ -122,9 +124,9 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://github.icocoa.tk/centos65-an-zhuang-eclipse.html">← Previous : CentOS6.5 安装eclipse</a></li>
+        <li class="prev"><a href="http://127.0.0.1:8000/centos65-an-zhuang-eclipse.html">← Previous : CentOS6.5 安装eclipse</a></li>
         
-        <li class="next"><a href="http://github.icocoa.tk/quartzcomposerji-ben-gai-nian.html">QuartzComposer基本概念:Next →</a></li>
+        <li class="next"><a href="http://127.0.0.1:8000/quartzcomposerji-ben-gai-nian.html">QuartzComposer基本概念:Next →</a></li>
       </ul>
     </div>
 
@@ -148,39 +150,40 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
+		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
+		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
+		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
+		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/git.html">git</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/ux.html">ux</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/security.html">security</a></li>
 </ul>
 
 
@@ -232,8 +235,8 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
     </div>
 
 
-  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
 </body>
 </html>
