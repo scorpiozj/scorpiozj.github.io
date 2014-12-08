@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,7 +51,7 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="/app-extension-study-2.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/app-extension-study-2.html" rel="bookmark"
                    title="Permalink to App Extension Study 2">App Extension Study 2</a></h2>
            
             </header>
@@ -60,11 +60,11 @@
                 Fri 31 October 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br />
+              <p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p><a href="http://github.icocoa.tk/app-extension-study-1.html">上一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，这节开始实践。需要说明的本文不会覆盖所有类型，比如<strong>Finder Sync</strong>类型是OS X独有的，这里会一带而过。</p>
@@ -75,8 +75,8 @@ Summary: ios8 app extension</p>
 <li>必定和containing app有着数据共享</li>
 </ol>
 <h4>2.1 widget 工程模版</h4>
-<p>在已有工程中新建一个target，选择<code>Application Extension</code>中的<code>Today Extension</code>，这时工程中增加了如下文件：<br />
-<img alt="widgetImg" src="./imgs/20141031/widget_template.png" /><br />
+<p>在已有工程中新建一个target，选择<code>Application Extension</code>中的<code>Today Extension</code>，这时工程中增加了如下文件：<br/>
+<img alt="widgetImg" src="./imgs/20141031/widget_template.png"/><br/>
 先来看<code>Info.plist</code>，主要增加了NSExtenstion的key，内容如下：</p>
 <div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtension<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
@@ -86,10 +86,8 @@ Summary: ios8 app extension</p>
     <span class="nt">&lt;string&gt;</span>com.apple.widget-extension<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
-<p>和app一样，如果不需要使用默认提供的sb文件，那么可以删除<code>NSExtensionMainStoryboard</code>属性，然后添加<code>NSExtensionPrincipalClass</code>。<br />
-上面说过widget必定会和containing app进行数据交互，那么我们必须同时开启containing app和widget的<code>App Groups</code>功能。打开的方式：选中target-&gt;Capabilities-&gt;App Groups。 当你开启后，Xcode6会联网帮你进行一些操作，然后你需要做的就是给App Groups取一个名字，这个名字必须以group开头，建议后面的部分还是用反域名的结构。注意containing和widget的group名字得是一样的，不然就不能进行数据的共享。<br />
+<p>和app一样，如果不需要使用默认提供的sb文件，那么可以删除<code>NSExtensionMainStoryboard</code>属性，然后添加<code>NSExtensionPrincipalClass</code>。<br/>
+上面说过widget必定会和containing app进行数据交互，那么我们必须同时开启containing app和widget的<code>App Groups</code>功能。打开的方式：选中target-&gt;Capabilities-&gt;App Groups。 当你开启后，Xcode6会联网帮你进行一些操作，然后你需要做的就是给App Groups取一个名字，这个名字必须以group开头，建议后面的部分还是用反域名的结构。注意containing和widget的group名字得是一样的，不然就不能进行数据的共享。<br/>
 接下来，我们看<code>TodayViewController</code>，这是<code>UIViewController</code>的子类，同时实现了<code>NCWidgetProviding</code>协议。它的实现文件模版中有3个方法：</p>
 <div class="highlight"><pre> <span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
   <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
@@ -104,13 +102,11 @@ Summary: ios8 app extension</p>
 <span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">widgetPerformUpdateWithCompletionHandler</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NCUpdateResult</span><span class="p">))</span><span class="n">completionHandler</span> <span class="p">{</span>
   <span class="c1">// Perform any setup necessary in order to update the view.</span>
   <span class="c1">// If an error is encountered, use NCUpdateResultFailed</span>
-  <span class="c1">// If there&#39;s no update required, use NCUpdateResultNoData</span>
-  <span class="c1">// If there&#39;s an update, use NCUpdateResultNewData</span>
+  <span class="c1">// If there's no update required, use NCUpdateResultNoData</span>
+  <span class="c1">// If there's an update, use NCUpdateResultNewData</span>
   <span class="n">completionHandler</span><span class="p">(</span><span class="n">NCUpdateResultNewData</span><span class="p">);</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>其中最后一个就是<code>NCWidgetProviding</code>协议，该协议的作用：  </p>
 <ol>
 <li>在通知中心可见或者在后台的情况下，系统会在合适的时候更新widget</li>
@@ -120,36 +116,28 @@ Summary: ios8 app extension</p>
 <p>另外，<code>NCWidgetProviding</code>协议还包括： </p>
 <div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="n">UIEdgeInsets</span><span class="p">)</span><span class="n">widgetMarginInsetsForProposedMarginInsets</span><span class="o">:</span><span class="p">(</span><span class="n">UIEdgeInsets</span><span class="p">)</span><span class="n">defaultMarginInsets</span><span class="p">;</span>
 </pre></div>
-
-
 <p>可以让你自由选择widget四周对齐处的间距。</p>
 <h4>2.2 widget的设计</h4>
 <p>可以在sb文件中设计你的widget页面，作为一个简单的演示，我们设计一个直接显示文字的widget。你可以在containing app中设计一个<code>UITextField</code>，把输入保存到share group中。然后在widget中读取，并显示在<code>UILabel</code>中。核心的读写操作一并演示如下：</p>
 <div class="highlight"><pre><span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span>
-                                    <span class="nl">initWithSuiteName:</span><span class="s">@&quot;group.xxxxxx&quot;</span><span class="p">];</span>
-<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">detailItem</span> <span class="n">description</span><span class="p">]</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@&quot;nameKey&quot;</span><span class="p">];</span>
-<span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@&quot;nameKey&quot;</span><span class="p">];</span>
+                                    <span class="nl">initWithSuiteName:</span><span class="s">@"group.xxxxxx"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">detailItem</span> <span class="n">description</span><span class="p">]</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@"nameKey"</span><span class="p">];</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@"nameKey"</span><span class="p">];</span>
 <span class="n">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
 </pre></div>
-
-
 <p>苹果建议widget的UI不要使用scrollview，因为所有的widget都是在一个scrollview中，嵌套使用scrollview有多大的不爽想必可想而知，所以尺寸大小需要变化的就直接通过view的大小来实现。当然，如果是横向的scrollview会好一点，不过也建议不要放置太多的内容。因为widget本身就包含着信息一目了然，如果需要用户进行操作，就会拖累widget的体验</p>
 <h4>2.3 widget的显示</h4>
 <p>有时候，当没有可用数据的时候，我们可以控制widget是否显示：</p>
-<div class="highlight"><pre><span class="p">[[</span><span class="n">NCWidgetController</span> <span class="n">widgetController</span><span class="p">]</span> <span class="n">setHasContent</span><span class="o">:</span><span class="nb">NO</span> <span class="n">forWidgetWithBundleIdentifier</span><span class="o">:</span><span class="s">@&quot;com.XXXXXX&quot;</span><span class="p">];</span>
+<div class="highlight"><pre><span class="p">[[</span><span class="n">NCWidgetController</span> <span class="n">widgetController</span><span class="p">]</span> <span class="n">setHasContent</span><span class="o">:</span><span class="nb">NO</span> <span class="n">forWidgetWithBundleIdentifier</span><span class="o">:</span><span class="s">@"com.XXXXXX"</span><span class="p">];</span>
 </pre></div>
-
-
 <p>这样就能隐藏widget而不显示。</p>
 <h4>2.4 打开contaning app</h4>
 <p>使用URL scheme，首先需要在containing中定义一个scheme，例如: extest，然后在widget中使用<code>extensionContext</code>属性打开</p>
-<div class="highlight"><pre><span class="k">[self.extensionContext openURL:[NSURL URLWithString:@&quot;extest://&quot;]</span>
+<div class="highlight"><pre><span class="k">[self.extensionContext openURL:[NSURL URLWithString:@"extest://"]</span>
              <span class="err">completionHandler:^(BOOL</span> <span class="err">success)</span> <span class="err">{</span>
 
 <span class="err">}]</span><span class="c1">;</span>
 </pre></div>
-
-
 <h4>2.5 编辑</h4>
 <p>OS X上支持widget的编辑，iOS上不支持</p>
 <h3>3 Share</h3>
@@ -170,12 +158,10 @@ Summary: ios8 app extension</p>
     <span class="nt">&lt;integer&gt;</span>1<span class="nt">&lt;/integer&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
 <p>这样的话，Share就可以支持图片/视频/URL，后面的数字代表可以支持的数目。</p>
 <h4>3.2 发送内容</h4>
 <p>完成了上述步骤后，我们安装这个action，并用Photos应用打开该action:
-<img alt="share_extension" src="./imgs/20141031/share_extension.png" />  </p>
+<img alt="share_extension" src="./imgs/20141031/share_extension.png"/> </p>
 <p>如图所示，Share extension会弹出一个对话框视图，视图上有文字输入的地方和Post/Cancel的按钮。回到工程可以发现Share的视图父类是<code>SLComposeServiceViewController</code>，它定义了一系列方法让子类去重载。重要的而且通常需要实现的一些方法已经定义在模版里，我们逐个来看一下。
 首先第一个就是<code>isContentValid</code>，该方法是用于检查用户输入的有效性(主要指输入字符长度检查)，典型的实现：</p>
 <div class="highlight"><pre><span class="k">-</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isContentValid</span> <span class="p">{</span>
@@ -200,8 +186,6 @@ Summary: ios8 app extension</p>
 <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>接下来就是<code>didSelectPost</code>，这是点击Post调用的方法，典型实现：  </p>
 <div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">didSelectPost</span>
 <span class="p">{</span>
@@ -215,11 +199,9 @@ Summary: ios8 app extension</p>
     <span class="n">NSArray</span> <span class="o">*</span><span class="n">outputItems</span> <span class="o">=</span> <span class="err">@</span><span class="p">[</span><span class="n">outputItem</span><span class="p">];</span>
     <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">extensionContext</span> <span class="n">completeRequestReturningItems</span><span class="o">:</span><span class="n">outputItems</span>
  <span class="nl">expirationHandler:</span><span class="nb">nil</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
-<span class="c1">// Or call [super didSelectPost] to use the superclass&#39;s default completion     behavior. </span>
+<span class="c1">// Or call [super didSelectPost] to use the superclass's default completion     behavior. </span>
 <span class="p">}</span>
 </pre></div>
-
-
 <p>这个方法里要做几件事：</p>
 <ul>
 <li>上传任务：使用<code>NSURLSession</code>把图片(或其他媒体)和文字存储到服务器</li>
@@ -235,7 +217,7 @@ Summary: ios8 app extension</p>
 
 <span class="k">for</span> <span class="p">(</span><span class="n">NSItemProvider</span> <span class="o">*</span><span class="n">provider</span> <span class="k">in</span> <span class="n">outputItem</span><span class="p">.</span><span class="n">attachments</span><span class="p">)</span>
 <span class="p">{</span>
-    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;%@&quot;</span><span class="p">,</span> <span class="p">[</span><span class="n">provider</span> <span class="n">registeredTypeIdentifiers</span><span class="p">]);</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="p">[</span><span class="n">provider</span> <span class="n">registeredTypeIdentifiers</span><span class="p">]);</span>
     <span class="k">if</span> <span class="p">([</span><span class="n">provider</span> <span class="n">hasItemConformingToTypeIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kUTTypeImage</span><span class="p">])</span>
     <span class="p">{</span>
         <span class="p">[</span><span class="n">provider</span> <span class="n">loadItemForTypeIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kUTTypeImage</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">NSSecureCoding</span><span class="o">&gt;</span> <span class="n">item</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
@@ -246,7 +228,7 @@ Summary: ios8 app extension</p>
             <span class="p">{</span>
                 <span class="k">if</span> <span class="p">([(</span><span class="n">NSObject</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span> <span class="n">isKindOfClass</span><span class="o">:</span><span class="p">[</span><span class="n">NSURL</span> <span class="n">class</span><span class="p">]])</span>
                 <span class="p">{</span>
-                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@&quot;NSURL: %@&quot;</span><span class="p">,</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">);</span>
+                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"NSURL: %@"</span><span class="p">,</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">);</span>
                     <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{</span>
                         <span class="n">self</span><span class="p">.</span><span class="n">imgURL</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">;</span>
                     <span class="p">});</span>
@@ -265,9 +247,7 @@ Summary: ios8 app extension</p>
 <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-
-
-<p>Share的内容基本全部覆盖了，觉得不能满足定制需求的可以去头文件查看还有哪些方法没有实现。如果没有找到，那么很大程度就是你的Share extension设计有问题了。<br />
+<p>Share的内容基本全部覆盖了，觉得不能满足定制需求的可以去头文件查看还有哪些方法没有实现。如果没有找到，那么很大程度就是你的Share extension设计有问题了。<br/>
 如果Share extension的运作和实现理解了，下面的Action，PhotoEditing会更容易理解，因为后两者的实现流程和Share非常类似。</p>
 <h3>4 Action</h3>
 <p>Action可以获得host app提供的可视数据，如何直接或者经过修改后使用，并把最终修改的数据交还给containing app。 
@@ -293,8 +273,6 @@ Summary: ios8 app extension</p>
  <span class="nt">&lt;string&gt;</span>com.apple.ui-services<span class="nt">&lt;/string&gt;</span>
  <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
 <p>默认的plist文件还是不够完备的，需要自己添加，比如:</p>
 <div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtension<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
@@ -320,8 +298,6 @@ Summary: ios8 app extension</p>
     <span class="nt">&lt;string&gt;</span>com.apple.ui-services<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
 <p>其中，<code>NSExtensionActionWantsFullScreenPresentation</code>指定Action是否需要全屏显示，而<code>NSExtensionServiceRoleType</code>则有2种取值：
 <em> <code>NSExtensionServiceRoleTypeEditor</code>: 可以编辑或转换文档，并将修改过的文档回传给host app
 </em> <code>NSExtensionServiceRoleTypeViewer</code>: 将选中的文档以另一种形式打开浏览</p>
@@ -344,15 +320,13 @@ Summary: ios8 app extension</p>
 <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">extensionContext</span> <span class="n">completeRequestReturningItems</span><span class="o">:</span><span class="n">outputItems</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <h3>5 Photo Editing</h3>
 <p>Photo Editing和Action很类似，唯一的区别就是Photo Editing的host只能是Photos app。它的启动方式是：Photos-&gt;单个图片浏览-&gt;编辑-&gt;左上角按钮。经过Photo Editing处理的图片会返回给Photos，用户可以选择接受或取消该改变。</p>
 <h4>5.1 Photo Editing如何运行</h4>
-<p>Photos会保存多个版本的asset数据：原始的数据，历次做过修改的数据(比如添加的滤镜参数)，以及现有含修改的数据。当启用Photo Editing，Photos会问extension能否读懂修改数据，如果可以读懂Photos会把原始数据作为输入传递给extension，再把修改数据传递给extension。这样，extension可以使用修改数据(比如修改滤镜参数)或者直接添加新的编辑。<br />
+<p>Photos会保存多个版本的asset数据：原始的数据，历次做过修改的数据(比如添加的滤镜参数)，以及现有含修改的数据。当启用Photo Editing，Photos会问extension能否读懂修改数据，如果可以读懂Photos会把原始数据作为输入传递给extension，再把修改数据传递给extension。这样，extension可以使用修改数据(比如修改滤镜参数)或者直接添加新的编辑。<br/>
 如果extension不支持修改的数据，那么Photos就会把当前的数据作为输入传递给extension，这样extension只能添加新的便捷了。</p>
 <h4>5.2 模版文件</h4>
-<p>plist文件新加<code>PHSupportedMediaTypes</code>的key，它的值是 <code>Image</code>或<code>Video</code>。<br />
+<p>plist文件新加<code>PHSupportedMediaTypes</code>的key，它的值是 <code>Image</code>或<code>Video</code>。<br/>
 而查看实现文件可以发现视图控制器实现了<code>PHContentEditingController</code>协议，该协议的代理方法都是<code>required</code>，方法的说明见下：</p>
 <div class="highlight"><pre><span class="c1">//extension能否处理编辑的数据</span>
  <span class="o">-</span> <span class="p">(</span><span class="no">BOOL</span><span class="p">)</span><span class="nl">canHandleAdjustmentData:</span><span class="p">(</span><span class="n">PHAdjustmentData</span> <span class="o">*</span><span class="p">)</span><span class="n">adjustmentData</span><span class="p">;</span>
@@ -363,29 +337,32 @@ Summary: ios8 app extension</p>
 <span class="c1">//编辑完成后调用，注意要调用completionHandler来通知host app编辑完成</span>
 <span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nl">finishContentEditingWithCompletionHandler:</span><span class="p">(</span><span class="k">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">PHContentEditingOutput</span> <span class="o">*</span><span class="p">))</span><span class="n">completionHandler</span><span class="p">;</span>
 </pre></div>
-
-
 <h4>5.3 sample</h4>
 <p>官方有一个例子:<a href="https://developer.apple.com/devcenter/download.action?path=/wwdc_2014/wwdc_2014_sample_code/samplephotoeditingextension.zip">samplephotoeditingextension</a>，可以去看看。</p>
 <h3>Bingo</h3>
 <p>以上介绍了widget， Share，Action和Photo Editing，剩下后文继续。</p>
             </div><!-- /.entry-content -->
-            <div class="comments">
-              <h3>Comments</h3>
-              <div id="disqus_thread"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "app-extension-study-2.html";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://icocoatk.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://github.icocoa.tk/app-extension-study-1.html">← Previous : App Extension Study 1</a></li>
+        
+        <li class="next"><a href="http://github.icocoa.tk/git-revert-svn-revertde-bu-tong.html">git revert && svn revert的不同:Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
 
 
         </div><!-- /.eleven.columns -->
         
+        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -395,39 +372,39 @@ Summary: ios8 app extension</p>
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="/category/design.html">Design</a></li>
-		<li><a href="/category/ios.html">iOS</a></li>
-		<li><a href="/category/linux.html">Linux</a></li>
-		<li><a href="/category/python.html">Python</a></li>
-		<li><a href="/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-1"><a href="/tag/git.html">git</a></li>
-	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
-	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
-	    <li class="tag-1"><a href="/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 
@@ -479,17 +456,8 @@ Summary: ios8 app extension</p>
     </div>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'icocoatk';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="/theme/js/libs/gumby.min.js"></script>
-  <script src="/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

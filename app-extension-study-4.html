@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,7 +51,7 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="/app-extension-study-4.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/app-extension-study-4.html" rel="bookmark"
                    title="Permalink to App Extension Study 4">App Extension Study 4</a></h2>
            
             </header>
@@ -60,11 +60,11 @@
                 Wed 19 November 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br />
+              <p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p>本篇介绍剩下的<code>Custom Keyboard</code>，之前的3篇： </p>
@@ -86,26 +86,24 @@ Summary: ios8 app extension</p>
 <li>提供键帽的图片(keycap artwork)</li>
 <li>为表意文字提供多级输入</li>
 </ul>
-<p>要注意的是，在<code>设置</code>中对键盘的一些设置，只对系统的键盘有效。因此，如果要添加自定义键盘的设置，需要自行添加<code>setting bundle</code>。如果输入的文本要求是加密，那么iOS会自动使用系统的键盘暂时代替第三方的键盘输入。对于指定拨号类的输入如<code>UIKeyboardTypePhonePad</code>和<code>UIKeyboardTypeNamePhonePad</code>，第三方输入法也是不支持的。<br />
+<p>要注意的是，在<code>设置</code>中对键盘的一些设置，只对系统的键盘有效。因此，如果要添加自定义键盘的设置，需要自行添加<code>setting bundle</code>。如果输入的文本要求是加密，那么iOS会自动使用系统的键盘暂时代替第三方的键盘输入。对于指定拨号类的输入如<code>UIKeyboardTypePhonePad</code>和<code>UIKeyboardTypeNamePhonePad</code>，第三方输入法也是不支持的。<br/>
 因为第三方的输入法对所有的app都是适用的，所以iOS8中也提供了方法，供app选择是否可以使用第三方输入。如果只想使用系统的键盘输入，那么只要实现如下代理：</p>
 <div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">application</span><span class="o">:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="n">shouldAllowExtensionPointIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">extensionPointIdentifier</span>
 <span class="p">{</span>
     <span class="k">return</span> <span class="n">NO</span><span class="p">;</span>
 <span class="p">}</span>
 </pre></div>
-
-
 <h4>2.2 API的使用</h4>
-<p>首先来看一下第三方输入法的基本构成：<br />
-<img alt="API_Start" src="./imgs/20141119/API_start.png" />  </p>
-<p>第三方输入法激活后的调用和系统输入法的界面构成完全一样，页面主要是由<code>UIInputViewController</code>的子类构成，可以在上面添加各种按钮或其他控件。图上很明显的加了可以切换输入法的按钮，和上述的要点吻合。<code>Text Input Object</code>是类似<code>UITextView</code>会弹出键盘的对象，<code>insertText:</code>则是输入法输出字符这个最基本的功能。<br />
+<p>首先来看一下第三方输入法的基本构成：<br/>
+<img alt="API_Start" src="./imgs/20141119/API_start.png"/> </p>
+<p>第三方输入法激活后的调用和系统输入法的界面构成完全一样，页面主要是由<code>UIInputViewController</code>的子类构成，可以在上面添加各种按钮或其他控件。图上很明显的加了可以切换输入法的按钮，和上述的要点吻合。<code>Text Input Object</code>是类似<code>UITextView</code>会弹出键盘的对象，<code>insertText:</code>则是输入法输出字符这个最基本的功能。<br/>
 <code>UIInputViewController</code>包含一个实现了<code>UITextDocumentProxy</code>协议的<code>NSObject</code>属性<code>textDocumentProxy</code>，该proxy对象作用比较大，以下事情都是由它负责的：  </p>
 <ul>
 <li>插入/删除字符</li>
 <li>查看当前文本</li>
 <li>
 <p>控制插入光标的位置
-由于<code>UIInputViewController</code>实现了<code>UITextInputDelegate</code>协议，当字符选中或输入的字符有变化时，相应的代理方法会触发。<br />
+由于<code>UIInputViewController</code>实现了<code>UITextInputDelegate</code>协议，当字符选中或输入的字符有变化时，相应的代理方法会触发。<br/>
 对于要支持多语言的，可以有2种选择：  </p>
 </li>
 <li>
@@ -129,13 +127,13 @@ Summary: ios8 app extension</p>
 1. 按键数据的安全性：因为可以根据按键知道输入的文本内容，千万不能以任何接口上传到自己的服务器
 2. 慎用其他数据：启用了network access后，就能访问位置和通讯录，那么使用这些数据的时候就要想好如何跟用户解释
 3. 精确性：这个不涉及隐私，主要是影响到用户是否认为你是合意的输入法
-默认情况下，网络访问是关闭的，当启用后，输入法将获得一些额外能力，但同时输入法的责任也相应的增加：<br />
-<img alt="responsibility.png" src="./imgs/20141119/responsibility.png" /> 
+默认情况下，网络访问是关闭的，当启用后，输入法将获得一些额外能力，但同时输入法的责任也相应的增加：<br/>
+<img alt="responsibility.png" src="./imgs/20141119/responsibility.png"/> 
 以上列出了所有增加的能力以及开发者需要考虑的问题。</p>
 <h4>2.4 模版文件</h4>
 <p>新建一个<code>Custom Board</code>的target，安装并运行<code>containing app</code>一下，然后就可以在<code>Settings&gt;General&gt;Keyboard&gt;Keyboards&gt;Add New Keyboard</code>中添加，然后打开某个文本，可以切换到我们定义的输入法。
-自定义的键盘的名字可以在plist文件中用<code>Bundle display name</code>指定，如果在<code>containing app</code>和<code>extension</code>都指定了该键值的话，那么在添加键盘的时候会显示<code>Contaning app</code>中定义的名字，添加完毕后两者都一起显示:<br />
-<img alt="keyboardName" src="./imgs/20141119/keyboard_name.png" /><br />
+自定义的键盘的名字可以在plist文件中用<code>Bundle display name</code>指定，如果在<code>containing app</code>和<code>extension</code>都指定了该键值的话，那么在添加键盘的时候会显示<code>Contaning app</code>中定义的名字，添加完毕后两者都一起显示:<br/>
+<img alt="keyboardName" src="./imgs/20141119/keyboard_name.png"/><br/>
 接下来看一下plist文件：  </p>
 <div class="highlight"><pre><span class="nt">&lt;dict&gt;</span>
     <span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
@@ -155,30 +153,33 @@ Summary: ios8 app extension</p>
     <span class="nt">&lt;string&gt;</span>KeyboardViewController<span class="nt">&lt;/string&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
-<p>要打开完全访问，需要设置<code>RequestsOpenAccess</code>为<code>true</code>。<code>IsASCIICapable</code>指的是是否可以输入ascii字符，<code>PrefersRightToLeft</code>是为从右向左的语言设置的。而<code>PrimaryLanguage</code>是键盘的主语言，它的写法是<code>&lt;language&gt;-&lt;REGION&gt;</code>。相应的语言和地区的值的定义在<a href="http://www.opensource.apple.com/source/CF/CF-476.14/CFLocaleIdentifier.c">这里</a>。<br />
+<p>要打开完全访问，需要设置<code>RequestsOpenAccess</code>为<code>true</code>。<code>IsASCIICapable</code>指的是是否可以输入ascii字符，<code>PrefersRightToLeft</code>是为从右向左的语言设置的。而<code>PrimaryLanguage</code>是键盘的主语言，它的写法是<code>&lt;language&gt;-&lt;REGION&gt;</code>。相应的语言和地区的值的定义在<a href="http://www.opensource.apple.com/source/CF/CF-476.14/CFLocaleIdentifier.c">这里</a>。<br/>
 Build&amp;Run一下，我们的输入法就安装在系统了，使用前先在设置中启用，然后打开搜索，切换几下，就可以看到了:
-<img alt="keyboad" src="./imgs/20141119/keyboard.png" /></p>
+<img alt="keyboad" src="./imgs/20141119/keyboard.png"/></p>
 <h3>3 结束</h3>
 <p>至此，所有的extension都讲解完了，extension的基本原理贯穿在7中extension之中。Store上已经有很多实现extesnion的app，而且我发现实现了extension的app提交后在2个小时左右就能<code>waiting in review</code>，所以开发者们要加油了。  </p>
             </div><!-- /.entry-content -->
-            <div class="comments">
-              <h3>Comments</h3>
-              <div id="disqus_thread"></div>
-              <script type="text/javascript">
-                var disqus_identifier = "app-extension-study-4.html";
-                (function() {
-                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
-                dsq.src = 'http://icocoatk.disqus.com/embed.js';
-                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
-                })();
-              </script>
-            </div>
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://github.icocoa.tk/gitban-ben-ku-guan-li.html">← Previous : Git版本库管理</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
 
 
         </div><!-- /.eleven.columns -->
         
+        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -188,39 +189,39 @@ Build&amp;Run一下，我们的输入法就安装在系统了，使用前先在�
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="/category/design.html">Design</a></li>
-		<li><a href="/category/ios.html">iOS</a></li>
-		<li><a href="/category/linux.html">Linux</a></li>
-		<li><a href="/category/python.html">Python</a></li>
-		<li><a href="/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-1"><a href="/tag/git.html">git</a></li>
-	    <li class="tag-2"><a href="/tag/ui.html">ui</a></li>
-	    <li class="tag-1"><a href="/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="/tag/pelican.html">pelican</a></li>
-	    <li class="tag-1"><a href="/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 
@@ -272,17 +273,8 @@ Build&amp;Run一下，我们的输入法就安装在系统了，使用前先在�
     </div>
 
 
-<script type="text/javascript">
-    var disqus_shortname = 'icocoatk';
-    (function () {
-        var s = document.createElement('script'); s.async = true;
-        s.type = 'text/javascript';
-        s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
-        (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
-    }());
-</script>
-  <script src="/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="/theme/js/libs/gumby.min.js"></script>
-  <script src="/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>
