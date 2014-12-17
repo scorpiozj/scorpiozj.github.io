@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://127.0.0.1:8000/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,100 +51,88 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://127.0.0.1:8000/git-commit-a-de-wu-qu.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark"
                    title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-09-22T14:00:00+08:00">
+              <abbr class="published" title="2014-09-22T14:00:00">
                 Mon 22 September 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br />
+              <p>Author: Charles Zhu<br/>
 Summary: git 错误理解</p>
 <h2>SVN下的项目管理</h2>
 <p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
 <h2>git下的误区</h2>
-<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br />
+<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
 接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;this is a init text&quot;</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
-On branch master
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">git</span> <span class="nb">init</span>
+<span class="err">$</span> <span class="nx">echo</span> <span class="s2">"this is a init text"</span> <span class="o">&gt;&gt;</span> <span class="nx">hello.txt</span>
+<span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
+<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
 
-Initial commit
+<span class="nx">Initial</span> <span class="nx">commit</span>
 
-Untracked files:
-<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to include in what will be committed<span class="o">)</span>
+<span class="nx">Untracked</span> <span class="nx">files</span><span class="p">:</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git add &lt;file&gt;..."</span> <span class="k">to</span> <span class="n">include</span> <span class="k">in</span> <span class="nx">what</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">committed</span><span class="p">)</span>
 
-    hello.txt
+    <span class="nx">hello.txt</span>
 
-nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> to track<span class="o">)</span>
+<span class="nx">nothing</span> <span class="nx">added</span> <span class="k">to</span> <span class="nx">commit</span> <span class="nx">but</span> <span class="nx">untracked</span> <span class="nx">files</span> <span class="nx">present</span> <span class="p">(</span><span class="nx">use</span> <span class="s2">"git add"</span> <span class="k">to</span> <span class="nx">track</span><span class="p">)</span>
 </pre></div>
-
-
 <p>很显然，我们需要先“添加” 文件到版本库（注意这个add在git中不是添加到版本库），然后进行提交：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git add .
-<span class="nv">$ </span>git commit -m <span class="s2">&quot;init commit&quot;</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="p">.</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">"init commit"</span>
 </pre></div>
-
-
 <p>接下来修改文件：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;add a line&quot;</span> &gt;&gt; hello.txt 
-<span class="nv">$ </span>git status
-On branch master
-Changes not staged <span class="k">for</span> commit:
-<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
-<span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">echo</span> <span class="s2">"add a line"</span> <span class="o">&gt;&gt;</span> <span class="nx">hello.txt</span> 
+<span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
+<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
+<span class="nx">Changes</span> <span class="ow">not</span> <span class="nx">staged</span> <span class="nb">for</span> <span class="nx">commit</span><span class="p">:</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git add &lt;file&gt;..."</span> <span class="k">to</span> <span class="nx">update</span> <span class="nx">what</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">committed</span><span class="p">)</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git checkout -- &lt;file&gt;..."</span> <span class="k">to</span> <span class="nx">discard</span> <span class="n">changes</span> <span class="k">in</span> <span class="nx">working</span> <span class="nx">directory</span><span class="p">)</span>
 
-    modified:   hello.txt
+    <span class="nx">modified</span><span class="p">:</span>   <span class="nx">hello.txt</span>
 
-no changes added to commit <span class="o">(</span>use <span class="s2">&quot;git add&quot;</span> and/or <span class="s2">&quot;git commit -a&quot;</span><span class="o">)</span>
+<span class="nx">no</span> <span class="nx">changes</span> <span class="nx">added</span> <span class="k">to</span> <span class="nx">commit</span> <span class="p">(</span><span class="nx">use</span> <span class="s2">"git add"</span> <span class="ow">and</span><span class="p">/</span><span class="nb">or</span> <span class="s2">"git commit -a"</span><span class="p">)</span>
 </pre></div>
-
-
 <p>仔细看log，它提示我们先进行add操作再进行commit（如果确定要提交的情形下），但是等一下，add操作不是已经做了吗？难道add的含义不是添加文件到版本库以便进行追踪？</p>
 <h2>git add到底是什么意思</h2>
 <p>我们先接着上面继续操作：  </p>
-<div class="highlight"><pre><span class="nv">$ </span>git add hello.txt 
-<span class="nv">$ </span>git status
-On branch master
-Changes to be committed:
-<span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">git</span> <span class="nb">add</span> <span class="nx">hello.txt</span> 
+<span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
+<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
+<span class="nx">Changes</span> <span class="k">to</span> <span class="nx">be</span> <span class="nx">committed</span><span class="p">:</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git reset HEAD &lt;file&gt;..."</span> <span class="k">to</span> <span class="nx">unstage</span><span class="p">)</span>
 
-    modified:   hello.txt
+    <span class="nx">modified</span><span class="p">:</span>   <span class="nx">hello.txt</span>
 </pre></div>
-
-
 <p>这时的log和之前相比，没有了add的建议操作，为了更明显显示这种区别：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">&quot;difference&quot;</span> &gt;&gt;hello.txt
-<span class="nv">$git</span> status 
-On branch master
-Changes to be committed:
-<span class="o">(</span>use <span class="s2">&quot;git reset HEAD &lt;file&gt;...&quot;</span> to unstage<span class="o">)</span>
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">echo</span> <span class="s2">"difference"</span> <span class="o">&gt;&gt;</span><span class="nx">hello.txt</span>
+<span class="nv">$git</span> <span class="nb">status</span> 
+<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
+<span class="nx">Changes</span> <span class="k">to</span> <span class="nx">be</span> <span class="nx">committed</span><span class="p">:</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git reset HEAD &lt;file&gt;..."</span> <span class="k">to</span> <span class="nx">unstage</span><span class="p">)</span>
 
-    modified:   hello.txt
+    <span class="nx">modified</span><span class="p">:</span>   <span class="nx">hello.txt</span>
 
-Changes not staged <span class="k">for</span> commit:
-<span class="o">(</span>use <span class="s2">&quot;git add &lt;file&gt;...&quot;</span> to update what will be committed<span class="o">)</span>
-<span class="o">(</span>use <span class="s2">&quot;git checkout -- &lt;file&gt;...&quot;</span> to discard changes in working directory<span class="o">)</span>
+<span class="nx">Changes</span> <span class="ow">not</span> <span class="nx">staged</span> <span class="nb">for</span> <span class="nx">commit</span><span class="p">:</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git add &lt;file&gt;..."</span> <span class="k">to</span> <span class="nx">update</span> <span class="nx">what</span> <span class="nx">will</span> <span class="nx">be</span> <span class="nx">committed</span><span class="p">)</span>
+<span class="p">(</span><span class="nx">use</span> <span class="s2">"git checkout -- &lt;file&gt;..."</span> <span class="k">to</span> <span class="nx">discard</span> <span class="n">changes</span> <span class="k">in</span> <span class="nx">working</span> <span class="nx">directory</span><span class="p">)</span>
 
-    modified:   hello.txt
+    <span class="nx">modified</span><span class="p">:</span>   <span class="nx">hello.txt</span>
 </pre></div>
-
-
 <p>或者用－s参数：</p>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">git</span><span class="x"> status -s</span>
-<span class="x">MM hello.txt //在shell中2个M的颜色显示不一样</span>
+<div class="highlight"><pre><span class="err">$</span><span class="n">git</span> <span class="n">status</span> <span class="o">-</span><span class="n">s</span>
+<span class="n">MM</span> <span class="n">hello</span><span class="p">.</span><span class="n">txt</span> <span class="c1">//在shell中2个M的颜色显示不一样</span>
 </pre></div>
-
-
-<p>这里可以明白，git中的add操作和svn中的add操作是完全不一样的意思。<br />
-在git中， 执行add操作后是把文件加入版本库的暂存区，而commit针对的内容就只是暂存区。<br />
+<p>这里可以明白，git中的add操作和svn中的add操作是完全不一样的意思。<br/>
+在git中， 执行add操作后是把文件加入版本库的暂存区，而commit针对的内容就只是暂存区。<br/>
 而 <code>git commit -a</code> 其实会先执行add操作再提交暂存区的内容，所以这样做是一个非常不好的实践，因为add到暂存区的操作实际是需要我们严格控制的。至于git上为什么要有这样的设计，那么需要知道 <code>reset</code> 命令。这个下次再讲。</p>
 <h2>反思</h2>
 <p>很早就知道“暂存区”的概念，可是一直没有深入。git 的 <code>add</code> 和 <code>commit</code> 一直使用，可是却没有想到背后的涵义。所谓 “知其然不知其所以然”，实是大忌！</p>
@@ -153,9 +141,9 @@ Changes not staged <span class="k">for</span> commit:
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://127.0.0.1:8000/quartzcomposerji-ben-gai-nian.html">← Previous : QuartzComposer基本概念</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/quartzcomposerji-ben-gai-nian.html">← Previous : QuartzComposer基本概念</a></li>
         
-        <li class="next"><a href="http://127.0.0.1:8000/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">git bisect查找xcode6工程在iOS7下不全屏的问题:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">git bisect查找xcode6工程在iOS7下不全屏的问题:Next →</a></li>
       </ul>
     </div>
 
@@ -179,40 +167,41 @@ Changes not staged <span class="k">for</span> commit:
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
-		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
-		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
-		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
-		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/sketch.html">sketch</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
 </ul>
 
 
@@ -264,8 +253,8 @@ Changes not staged <span class="k">for</span> commit:
     </div>
 
 
-  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

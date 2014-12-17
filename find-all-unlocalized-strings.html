@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Find All Unlocalized Strings</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
+
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://github.icocoa.tk/find-all-unlocalized-strings.html" rel="bookmark"
+                   title="Permalink to Find All Unlocalized Strings">Find All Unlocalized Strings</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-12-16T17:30:00">
+                Tue 16 December 2014
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h3>Requirements</h3>
+<p>We have a project which uses <code>NSLocalizedString</code> macro but some strings  are not localized in the <code>Localizable.strings</code> file. What we do is to find all these strings and implement the <code>Localizable.strings</code> file.</p>
+<h3>Apple's Tool</h3>
+<p>As I refered <a href="http://stackoverflow.com/a/27266522/371974">here</a>, Apple has a built-in tool but is for Appkit application. Open the scheme, and in the <code>Arguments</code> tab, input the following strings to <code>Arguments Passed On Launch</code>:  </p>
+<div class="highlight"><pre> <span class="o">-</span><span class="n">NSShowNonLocalizedStrings</span> <span class="n">YES</span>
+</pre></div>
+<p>Then, build and run your <strong>Cocoa</strong> application, the unlocalized string will be shown in console.<br/>
+Now the good news is that with iOS8 the console can also print the unlocalized string for the iOS app. For example:</p>
+<div class="highlight"><pre> <span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span> <span class="mi">15</span><span class="o">:</span><span class="mi">53</span><span class="o">:</span><span class="mf">44.073</span> <span class="n">iOSUnlocalizedTest</span><span class="p">[</span><span class="mi">6251</span><span class="o">:</span><span class="mi">1015330</span><span class="p">]</span> <span class="n">Localizable</span> <span class="n">string</span> <span class="s">"name"</span> <span class="n">not</span> <span class="n">found</span> <span class="n">in</span> <span class="n">strings</span> <span class="n">table</span> <span class="s">"Localizable"</span> <span class="n">of</span> <span class="n">bundle</span> <span class="n">CFBundle</span> <span class="mh">0x7f9fe3515b80</span> <span class="o">&lt;/</span><span class="n">Users</span><span class="o">/</span><span class="n">XXXXX</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">CoreSimulator</span><span class="o">/</span><span class="n">Devices</span><span class="o">/</span><span class="n">F7E36A7E</span><span class="o">-</span><span class="mf">14FF</span><span class="o">-</span><span class="mi">4</span><span class="n">D2A</span><span class="o">-</span><span class="mi">8881</span><span class="o">-</span><span class="n">A62C14CB66DE</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">Containers</span><span class="o">/</span><span class="n">Bundle</span><span class="o">/</span><span class="n">Application</span><span class="o">/</span><span class="mi">18</span><span class="n">EB0513</span><span class="o">-</span><span class="mi">5162</span><span class="o">-</span><span class="mi">4</span><span class="n">CEC</span><span class="o">-</span><span class="mi">9823</span><span class="o">-</span><span class="mi">17</span><span class="n">AC3B513EFB</span><span class="o">/</span><span class="n">iOSUnlocalizedTest</span><span class="p">.</span><span class="n">app</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">executable</span><span class="p">,</span> <span class="n">loaded</span><span class="p">)</span>
+</pre></div>
+<p>However, this is not the final answer as it is just a runtime checking not a static checking(As the setting above is under the <code>Run</code>). You can't get all expected results at a glance.</p>
+<h3>What we do</h3>
+<p>It is apparent that we have to fix it manually. Considering all the shown strings using <code>NSLocalizedString</code>, we can:</p>
+<ol>
+<li>find all strings in 'NSLocalizedString' macro</li>
+<li>check the string whether exists in the <code>Localized.Strings</code></li>
+</ol>
+<p>So let's start!<br/>
+Open a shell, cd to the project and then run:</p>
+<div class="highlight"><pre><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">h</span> <span class="s">"LocalizedString"</span> <span class="o">-</span><span class="n">r</span> <span class="p">.</span><span class="o">/</span> <span class="o">&gt;&gt;</span><span class="p">..</span><span class="o">/</span><span class="n">result</span>
+</pre></div>
+<p>it will save all the lines including "LocalizedString" to the result. In the result file, it will list the file name and line number so that we can recheck it.<br/>
+Then we try to get the targeted string which is the first parameter of <code>NSLocalizedString</code> macro:</p>
+<div class="highlight"><pre><span class="n">grep</span> <span class="o">-</span><span class="n">o</span> <span class="o">-</span><span class="n">n</span> <span class="s">"</span><span class="se">\"</span><span class="s">\w\{1,\}</span><span class="se">\"</span><span class="s">"</span> <span class="p">.</span><span class="o">/</span><span class="n">result</span> <span class="o">&gt;&gt;</span> <span class="n">singleWord</span>
+</pre></div>
+<p>it will save all the words to <code>singleWord</code> file.<br/>
+Then we copy the content from <code>Localizable.String</code> to a txt file and then using the following script <strong>find.sh</strong>:</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+
+cat <span class="nv">$1</span> | <span class="k">while </span><span class="nb">read </span>line
+<span class="k">do</span>
+<span class="c"># echo $line</span>
+    grep  <span class="nv">$line</span> ./japios.txt &gt;&gt; ./has.txt
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">==</span> 0 <span class="o">]</span>; <span class="k">then</span>
+<span class="k">        </span><span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./has.txt
+    <span class="k">else</span>
+<span class="k">        </span><span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./nothas.txt
+    <span class="k">fi</span>
+<span class="k">done</span>
+</pre></div>
+</td></tr></table>
+<p>run the sh file using: <code>./find.sh singkeWord</code>. It will save the localized words to has.txt and the non-localized words to the nothas.txt.<br/>
+Notice in the script, japios.txt should be created from the <code>Localizable.String</code> file as <code>Localizable.String</code> file is recognized as binary file and <code>grep</code> can't work.</p>
+<h3>Results</h3>
+<p>Using the following steps, we can find all the unlocalized one, but there are places to be imporoved:</p>
+<ol>
+<li>the comment code still be figured out</li>
+<li>there are the duplicated words </li>
+<li>can't figure out those which not use <code>NSLocalizedString</code> macro</li>
+</ol>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://github.icocoa.tk/dong-de-zhi-sun.html">← Previous : 懂得止损</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

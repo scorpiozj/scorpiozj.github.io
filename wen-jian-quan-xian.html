@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://127.0.0.1:8000/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,16 +51,16 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://127.0.0.1:8000/wen-jian-quan-xian.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/wen-jian-quan-xian.html" rel="bookmark"
                    title="Permalink to 文件权限">文件权限</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-11-09T16:00:00+08:00">
+              <abbr class="published" title="2014-11-09T16:00:00">
                 Sun 09 November 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
@@ -68,43 +68,39 @@
 <p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
     ls -l README
     -rw-r--r--   1 xxxx  staff    234 Nov  9 11:27 README
-说明：<br />
-第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br />
+说明：<br/>
+第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br/>
 第二列数字1表示索引节点的目录连接。
 第三列就是文件拥有者的名字，第四列则是共享文件所在组。
 第五列是文件的字节数，第六、七、八列是时间，最后一列是名字。
 其中文件权限可以用二进制表达，该例对应的则是： <code>110100100</code>，用十进制表达则是： <code>644</code>。因此，有时候修改权限 <code>777</code>的时候，就一定要小心了，要么是小白行为，要么就是带有恶意。  </p>
 <h4>SUID/SGID</h4>
-<p>通常情况下，执行一个程序时，相应的进程具有<strong>执行这一程序的用户</strong>的权限，但有时这并没有赋予进程正确完成任务所必要的权限。这个时候，可以直接修改文件权限以满足程序的运行，但是这样可能会对系统安全造成伤害。Linux系统的解决办法是设置SUID/SGID使得用户分别以<em>程序拥有者</em>或<em>用户组</em>的权限，而不是它自己的权限去运行程序。<br />
-这里SUID代表 "set user ID"，SGID则代表 "set group ID"，同时设置SUID和SGID的话，SUID的优先级高。<br />
+<p>通常情况下，执行一个程序时，相应的进程具有<strong>执行这一程序的用户</strong>的权限，但有时这并没有赋予进程正确完成任务所必要的权限。这个时候，可以直接修改文件权限以满足程序的运行，但是这样可能会对系统安全造成伤害。Linux系统的解决办法是设置SUID/SGID使得用户分别以<em>程序拥有者</em>或<em>用户组</em>的权限，而不是它自己的权限去运行程序。<br/>
+这里SUID代表 "set user ID"，SGID则代表 "set group ID"，同时设置SUID和SGID的话，SUID的优先级高。<br/>
 设置的方法：</p>
-<div class="highlight"><pre>chmod u+s filename //设置SUID位
-chmod u-s filename //去掉SUID设置
-chmod g+s filename //设置SGID位
-chmod g-s filename //去掉SGID设置
+<div class="highlight"><pre><span class="n">chmod</span> <span class="n">u</span><span class="o">+</span><span class="n">s</span> <span class="n">filename</span> <span class="c1">//设置SUID位</span>
+<span class="n">chmod</span> <span class="n">u</span><span class="o">-</span><span class="n">s</span> <span class="n">filename</span> <span class="c1">//去掉SUID设置</span>
+<span class="n">chmod</span> <span class="n">g</span><span class="o">+</span><span class="n">s</span> <span class="n">filename</span> <span class="c1">//设置SGID位</span>
+<span class="n">chmod</span> <span class="n">g</span><span class="o">-</span><span class="n">s</span> <span class="n">filename</span> <span class="c1">//去掉SGID设置</span>
 </pre></div>
-
-
 <p>举个例子：</p>
-<div class="highlight"><pre><span class="nv">$ </span>ls -l
-total 8
--rw-r--r--  <span class="m">1</span> xxxxxx  staff  <span class="m">3</span> Nov  <span class="m">9</span> 16:51 hello
-<span class="nv">$ </span>chmod u+s hello 
-<span class="nv">$ </span>ls -l
-total 8
--rwSr--r--  <span class="m">1</span> xxxxxx  staff  <span class="m">3</span> Nov  <span class="m">9</span> 16:51 hello
+<div class="highlight"><pre><span class="err">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">total</span> <span class="mi">8</span>
+<span class="o">-</span><span class="n">rw</span><span class="o">-</span><span class="n">r</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">xxxxxx</span>  <span class="n">staff</span>  <span class="mi">3</span> <span class="n">Nov</span>  <span class="mi">9</span> <span class="mi">16</span><span class="o">:</span><span class="mi">51</span> <span class="n">hello</span>
+<span class="err">$</span> <span class="n">chmod</span> <span class="n">u</span><span class="o">+</span><span class="n">s</span> <span class="n">hello</span> 
+<span class="err">$</span> <span class="n">ls</span> <span class="o">-</span><span class="n">l</span>
+<span class="n">total</span> <span class="mi">8</span>
+<span class="o">-</span><span class="n">rwSr</span><span class="o">--</span><span class="n">r</span><span class="o">--</span>  <span class="mi">1</span> <span class="n">xxxxxx</span>  <span class="n">staff</span>  <span class="mi">3</span> <span class="n">Nov</span>  <span class="mi">9</span> <span class="mi">16</span><span class="o">:</span><span class="mi">51</span> <span class="n">hello</span>
 </pre></div>
-
-
 <p>因为原本的拥有者不具备<code>x</code>权限，所以设置后显示<code>S</code>；如果有对应的 <code>x</code>权限，设置后则会显示 <code>s</code>。</p>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://127.0.0.1:8000/ios8xia-kong-jian-de-xuan-zhuan.html">← Previous : iOS8下控件的旋转</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html">← Previous : iOS8下控件的旋转</a></li>
         
-        <li class="next"><a href="http://127.0.0.1:8000/pelicanruo-gan-wen-ti-hui-zong.html">Pelican若干问题汇总:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html">Pelican若干问题汇总:Next →</a></li>
       </ul>
     </div>
 
@@ -128,40 +124,41 @@ total 8
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
-		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
-		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
-		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
-		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/sketch.html">sketch</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
 </ul>
 
 
@@ -213,8 +210,8 @@ total 8
     </div>
 
 
-  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

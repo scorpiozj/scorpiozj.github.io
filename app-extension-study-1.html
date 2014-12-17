@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://127.0.0.1:8000/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,20 +51,20 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://127.0.0.1:8000/app-extension-study-1.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/app-extension-study-1.html" rel="bookmark"
                    title="Permalink to App Extension Study 1">App Extension Study 1</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-10-16T14:00:00+08:00">
+              <abbr class="published" title="2014-10-16T14:00:00">
                 Thu 16 October 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br />
+              <p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
 <p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
@@ -78,17 +78,17 @@ Summary: ios8 app extension</p>
 </ul>
 <p>当下载了含有extension的containing app，那么如果某个app可以使用该extension，那么就可以在app(此即host app)中调用extension</p>
 <h3>生命周期</h3>
-<p><img alt="extension_life_cycle" src="./imgs/20141016/extension_cycle.png" /><br />
-extension是由用户选择启动，然后作为一个单独的“程序”运行，直到运行结束，系统kill该extension，至此结束extension的使命。需要说明的是，无法在containing app中启用extension。<br />
+<p><img alt="extension_life_cycle" src="./imgs/20141016/extension_cycle.png"/><br/>
+extension是由用户选择启动，然后作为一个单独的“程序”运行，直到运行结束，系统kill该extension，至此结束extension的使命。需要说明的是，无法在containing app中启用extension。<br/>
 尽管extension通常是在host app中启动，但是extension的运行过程却不受 host/containing app 的“干预”——不能在host或containing app 中影响extention的运行。但是系统提供了某种机制使得三者之间可以共享部分数据。</p>
 <h3>通信</h3>
 <h4>与host app 通信</h4>
-<p><img alt="with_host" src="./imgs/20141016/communicat_only_with_host.png" /><br />
-两者关系干净利落：一个请求，一个响应，没有其他藕断丝连。iOS8中<code>UIViewController</code>包含了<code>extensionContext</code>的新属性。请求的所有信息都包含在该context属性中。<br />
+<p><img alt="with_host" src="./imgs/20141016/communicat_only_with_host.png"/><br/>
+两者关系干净利落：一个请求，一个响应，没有其他藕断丝连。iOS8中<code>UIViewController</code>包含了<code>extensionContext</code>的新属性。请求的所有信息都包含在该context属性中。<br/>
 该图的虚线表明extension和containing没有直接的通信。 </p>
 <h4>与containing app 通信</h4>
-<p>从某种意义上，extension是“依附”着containing app的，既然不能直接通信，那么必然有迂回的方式。<br />
-<img alt="with_containing" src="./imgs/20141016/communicat_indirectly_with_containing.png" /><br />
+<p>从某种意义上，extension是“依附”着containing app的，既然不能直接通信，那么必然有迂回的方式。<br/>
+<img alt="with_containing" src="./imgs/20141016/communicat_indirectly_with_containing.png"/><br/>
 上图中显示extension可以通过 OpenURL的方式打开自己的contaning app。更为重要的是，两者直接有一个shared resources区域来交换数据信息。</p>
 <h4>其他注意事项</h4>
 <p>由extension的工程必须包含arm64或x86_64框架，另外extension :  </p>
@@ -101,7 +101,7 @@ extension是由用户选择启动，然后作为一个单独的“程序”运�
 <h2>创建App Extesnion</h2>
 <p>使用Xcode6创建一个application，然后在new一个target，这时模板选项里会出现 "Application Extension"，选择任一添加。这样运行安装app后，连带之前的扩展也一并安装了。  </p>
 <h3>extension的工程文件</h3>
-<p><img alt="extension_template" src="./imgs/20141016/extension_template.png" /><br />
+<p><img alt="extension_template" src="./imgs/20141016/extension_template.png"/><br/>
 extension的组成很简单：</p>
 <ul>
 <li>ViewController: extension的主要实现部分</li>
@@ -118,20 +118,18 @@ extension的组成很简单：</p>
 <h2>处理常见场景</h2>
 <p>在开始实践extension之前，有必要直到一些常见问题如何处理。</p>
 <h3>使用嵌入式框架共享代码</h3>
-<p>constaining和extension可以通过该方式共享代码，需要注意的是extension中不是所有API都可以使用，并且要包含64位的架构。这两点是文档中Apple反复提及的，一旦有违反这样的情况而进行提交的会直接被打回。<br />
+<p>constaining和extension可以通过该方式共享代码，需要注意的是extension中不是所有API都可以使用，并且要包含64位的架构。这两点是文档中Apple反复提及的，一旦有违反这样的情况而进行提交的会直接被打回。<br/>
 添加完库后，要将target的"Require Only App-Extension-Safe API"设置为"YES"。  </p>
 <h3>shared resources</h3>
 <p>前面说过extension和containing可以共享数据。这时分别对containing 和extension target启用"App Group"。Xcode6会自动获取group名，当然也可以自行添加。共享数据的读写是通过老朋友<code>NSUserDefault</code>:</p>
 <div class="highlight"><pre><span class="c1">// Create and share access to an NSUserDefaults object.</span>
-<span class="bp">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithSuiteName</span><span class="p">:</span><span class="s">@&quot;com.example.domain.MyShareExtension&quot;</span><span class="p">];</span>
-<span class="c1">// Use the shared user defaults object to update the user&#39;s account.</span>
-<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">theAccountName</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@&quot;lastAccountName&quot;</span><span class="p">];</span>
+<span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithSuiteName</span><span class="o">:</span><span class="s">@"com.example.domain.MyShareExtension"</span><span class="p">];</span>
+<span class="c1">// Use the shared user defaults object to update the user's account.</span>
+<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="n">theAccountName</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@"lastAccountName"</span><span class="p">];</span>
 </pre></div>
-
-
 <p>对共享区域的数据，extesnion和containing都有读写权限，所以某一方进行读写后要及时同步数据。  </p>
 <h3>访问网页</h3>
-<p>Share和Action类型的extension可以通过safari访问某个页面，执行你设定的js脚本，然后把执行的结果返回给extension。注意可以在extension执行前就执行脚本访问web页面，也可以在extension执行完毕后访问或修改web页面(该情形只在iOS有效)。<br />
+<p>Share和Action类型的extension可以通过safari访问某个页面，执行你设定的js脚本，然后把执行的结果返回给extension。注意可以在extension执行前就执行脚本访问web页面，也可以在extension执行完毕后访问或修改web页面(该情形只在iOS有效)。<br/>
 步骤：  </p>
 <ol>
 <li>创建js文件，文件中要有一个名为<code>ExtensionPreprocessingJS</code>的全局对象</li>
@@ -143,31 +141,27 @@ extension的组成很简单：</p>
 <div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
     <span class="nt">&lt;dict&gt;</span>
         <span class="nt">&lt;key&gt;</span>NSExtensionJavaScriptPreprocessingFile<span class="nt">&lt;/key&gt;</span>
-        <span class="nt">&lt;string&gt;</span>MyJavaScriptFile<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!-- Do not include the &quot;.js&quot; filename extension --&gt;</span>
+        <span class="nt">&lt;string&gt;</span>MyJavaScriptFile<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!-- Do not include the ".js" filename extension --&gt;</span>
     <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
 <h4>js文件的写法</h4>
 <p>sample: </p>
 <div class="highlight"><pre><span class="n">var</span> <span class="n">MyExtensionJavaScriptClass</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{};</span>
 <span class="n">MyExtensionJavaScriptClass</span><span class="p">.</span><span class="n">prototype</span> <span class="o">=</span> <span class="p">{</span>
-<span class="nl">run</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
+<span class="nl">run:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Pass the baseURI of the webpage to the extension.</span>
-      <span class="n">arguments</span><span class="p">.</span><span class="n">completionFunction</span><span class="p">({</span><span class="s">&quot;baseURI&quot;</span><span class="o">:</span> <span class="n">document</span><span class="p">.</span><span class="n">baseURI</span><span class="p">});</span>
+      <span class="n">arguments</span><span class="p">.</span><span class="n">completionFunction</span><span class="p">({</span><span class="s">"baseURI"</span><span class="o">:</span> <span class="n">document</span><span class="p">.</span><span class="n">baseURI</span><span class="p">});</span>
   <span class="p">},</span>
   <span class="c1">// Note that the finalize function is only available in iOS.</span>
-  <span class="nl">finalize</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
+  <span class="nl">finalize:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
 <span class="c1">// arguments contains the value the extension provides in [NSExtensionContext completeRequestReturningItems:completion:].</span>
   <span class="c1">// In this example, the extension provides a color as a returning item.</span>
-  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">&quot;bgColor&quot;</span><span class="p">];</span>
+  <span class="n">document</span><span class="p">.</span><span class="n">body</span><span class="p">.</span><span class="n">style</span><span class="p">.</span><span class="n">backgroundColor</span> <span class="o">=</span> <span class="n">arguments</span><span class="p">[</span><span class="s">"bgColor"</span><span class="p">];</span>
   <span class="p">}</span>
 <span class="p">};</span>
-<span class="c1">// The JavaScript file must contain a global object named &quot;ExtensionPreprocessingJS&quot;. </span>
+<span class="c1">// The JavaScript file must contain a global object named "ExtensionPreprocessingJS". </span>
 <span class="n">var</span> <span class="n">ExtensionPreprocessingJS</span> <span class="o">=</span> <span class="n">new</span> <span class="n">MyExtensionJavaScriptClass</span><span class="p">;</span>
 </pre></div>
-
-
 <p>解释和说明：  </p>
 <ol>
 <li>当safari加载了js后，立即执行<code>run</code>函数，执行的结果通过<code>completionFunction</code>返回给extension</li>
@@ -208,8 +202,6 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
     <span class="nt">&lt;/dict&gt;</span>
 <span class="nt">&lt;/dict&gt;</span>
 </pre></div>
-
-
 <p>不支持的数据类型设置值为0或者移除该键。 </p>
 <h3>适配iOS8前的containing app</h3>
 <p>使用了嵌入式框架后，也能继续兼容iOS8之前的系统。这就要使用<code>dlopen</code>，该命令可以在编译时条件链接和加载库。注意要在objc使用<code>dlopen</code>。在containing执行的时候，检测系统只有是iOS8及以后的系统，才加载库。 </p>
@@ -219,9 +211,9 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://127.0.0.1:8000/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">← Previous : git bisect查找xcode6工程在iOS7下不全屏的问题</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">← Previous : git bisect查找xcode6工程在iOS7下不全屏的问题</a></li>
         
-        <li class="next"><a href="http://127.0.0.1:8000/app-extension-study-2.html">App Extension Study 2:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/app-extension-study-2.html">App Extension Study 2:Next →</a></li>
       </ul>
     </div>
 
@@ -245,40 +237,41 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
-		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
-		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
-		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
-		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/sketch.html">sketch</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
 </ul>
 
 
@@ -330,8 +323,8 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
     </div>
 
 
-  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

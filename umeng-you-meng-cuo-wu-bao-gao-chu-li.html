@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://127.0.0.1:8000/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,73 +51,71 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://127.0.0.1:8000/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark"
                    title="Permalink to umeng 友盟错误报告处理">umeng 友盟错误报告处理</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-07-14T10:00:00+08:00">
+              <abbr class="published" title="2014-07-14T10:00:00">
                 Mon 14 July 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br />
+              <p>Author: Charles Zhu<br/>
 Summary: 错误报告处理</p>
 <p>今天发现友盟的后台中出现了app crash，打开一看：</p>
-<div class="highlight"><pre>Application received signal SIGSEGV
-(null)
-(
-    0   CoreFoundation                      0x2e44bf23  + 154
-    1   libobjc.A.dylib                     0x38bdece7 objc_exception_throw + 38
-    2   CoreFoundation                      0x2e44be4d  + 0
-    3   ?????????                           0x00107a51 ????????? + 735825
-    4   libsystem_platform.dylib            0x391f671b _sigtramp + 34
-    5   UIKit                               0x30f20765  + 64
-    6   UIKit                               0x30c9a7bd  + 604
-    7   UIKit                               0x30f216db  + 1398
-    8   UIKit                               0x30d4d3f7  + 418
-    9   UIKit                               0x30d4d24f  + 30
-    10  UIKit                               0x30d4d207  + 30
-    11  UIKit                               0x30c7b977  + 378
-    12  UIKit                               0x3116a977  + 110
-    13  libobjc.A.dylib                     0x38bee0d3  + 358
-    14  CoreFoundation                      0x2e37f4c1 _CFAutoreleasePoolPop + 16
-    15  UIKit                               0x30c73bc1  + 36
-    16  CoreFoundation                      0x2e417039  + 20
-    17  CoreFoundation                      0x2e4149c7  + 286
-    18  CoreFoundation                      0x2e414d13  + 738
-    19  CoreFoundation                      0x2e37f769 CFRunLoopRunSpecific + 524
-    20  CoreFoundation                      0x2e37f54b CFRunLoopRunInMode + 106
-    21  GraphicsServices                    0x332dc6d3 GSEventRunModal + 138
-    22  UIKit                               0x30cde891 UIApplicationMain + 1136
-    23  ?????????                           0x0007bfd3 ????????? + 163795
-    24  libdyld.dylib                       0x390dcab7  + 2
-)
-dSYM UUID: xx-XXX-38B1-B7A0-2XXXXX
-CPU Type: armv7s
-Slide Address: 0x00004000
-Binary Image: ???
-Base Address: 0x00054000
+<div class="highlight"><pre><span class="n">Application</span> <span class="n">received</span> <span class="n">signal</span> <span class="n">SIGSEGV</span>
+<span class="p">(</span><span class="n">null</span><span class="p">)</span>
+<span class="p">(</span>
+    <span class="mi">0</span>   <span class="n">CoreFoundation</span>                      <span class="mh">0x2e44bf23</span>  <span class="o">+</span> <span class="mi">154</span>
+    <span class="mi">1</span>   <span class="n">libobjc</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">dylib</span>                     <span class="mh">0x38bdece7</span> <span class="n">objc_exception_throw</span> <span class="o">+</span> <span class="mi">38</span>
+    <span class="mi">2</span>   <span class="n">CoreFoundation</span>                      <span class="mh">0x2e44be4d</span>  <span class="o">+</span> <span class="mi">0</span>
+    <span class="mi">3</span>   <span class="o">?????????</span>                           <span class="mh">0x00107a51</span> <span class="o">?????????</span> <span class="o">+</span> <span class="mi">735825</span>
+    <span class="mi">4</span>   <span class="n">libsystem_platform</span><span class="p">.</span><span class="n">dylib</span>            <span class="mh">0x391f671b</span> <span class="n">_sigtramp</span> <span class="o">+</span> <span class="mi">34</span>
+    <span class="mi">5</span>   <span class="n">UIKit</span>                               <span class="mh">0x30f20765</span>  <span class="o">+</span> <span class="mi">64</span>
+    <span class="mi">6</span>   <span class="n">UIKit</span>                               <span class="mh">0x30c9a7bd</span>  <span class="o">+</span> <span class="mi">604</span>
+    <span class="mi">7</span>   <span class="n">UIKit</span>                               <span class="mh">0x30f216db</span>  <span class="o">+</span> <span class="mi">1398</span>
+    <span class="mi">8</span>   <span class="n">UIKit</span>                               <span class="mh">0x30d4d3f7</span>  <span class="o">+</span> <span class="mi">418</span>
+    <span class="mi">9</span>   <span class="n">UIKit</span>                               <span class="mh">0x30d4d24f</span>  <span class="o">+</span> <span class="mi">30</span>
+    <span class="mi">10</span>  <span class="n">UIKit</span>                               <span class="mh">0x30d4d207</span>  <span class="o">+</span> <span class="mi">30</span>
+    <span class="mi">11</span>  <span class="n">UIKit</span>                               <span class="mh">0x30c7b977</span>  <span class="o">+</span> <span class="mi">378</span>
+    <span class="mi">12</span>  <span class="n">UIKit</span>                               <span class="mh">0x3116a977</span>  <span class="o">+</span> <span class="mi">110</span>
+    <span class="mi">13</span>  <span class="n">libobjc</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">dylib</span>                     <span class="mh">0x38bee0d3</span>  <span class="o">+</span> <span class="mi">358</span>
+    <span class="mi">14</span>  <span class="n">CoreFoundation</span>                      <span class="mh">0x2e37f4c1</span> <span class="n">_CFAutoreleasePoolPop</span> <span class="o">+</span> <span class="mi">16</span>
+    <span class="mi">15</span>  <span class="n">UIKit</span>                               <span class="mh">0x30c73bc1</span>  <span class="o">+</span> <span class="mi">36</span>
+    <span class="mi">16</span>  <span class="n">CoreFoundation</span>                      <span class="mh">0x2e417039</span>  <span class="o">+</span> <span class="mi">20</span>
+    <span class="mi">17</span>  <span class="n">CoreFoundation</span>                      <span class="mh">0x2e4149c7</span>  <span class="o">+</span> <span class="mi">286</span>
+    <span class="mi">18</span>  <span class="n">CoreFoundation</span>                      <span class="mh">0x2e414d13</span>  <span class="o">+</span> <span class="mi">738</span>
+    <span class="mi">19</span>  <span class="n">CoreFoundation</span>                      <span class="mh">0x2e37f769</span> <span class="n">CFRunLoopRunSpecific</span> <span class="o">+</span> <span class="mi">524</span>
+    <span class="mi">20</span>  <span class="n">CoreFoundation</span>                      <span class="mh">0x2e37f54b</span> <span class="n">CFRunLoopRunInMode</span> <span class="o">+</span> <span class="mi">106</span>
+    <span class="mi">21</span>  <span class="n">GraphicsServices</span>                    <span class="mh">0x332dc6d3</span> <span class="n">GSEventRunModal</span> <span class="o">+</span> <span class="mi">138</span>
+    <span class="mi">22</span>  <span class="n">UIKit</span>                               <span class="mh">0x30cde891</span> <span class="n">UIApplicationMain</span> <span class="o">+</span> <span class="mi">1136</span>
+    <span class="mi">23</span>  <span class="o">?????????</span>                           <span class="mh">0x0007bfd3</span> <span class="o">?????????</span> <span class="o">+</span> <span class="mi">163795</span>
+    <span class="mi">24</span>  <span class="n">libdyld</span><span class="p">.</span><span class="n">dylib</span>                       <span class="mh">0x390dcab7</span>  <span class="o">+</span> <span class="mi">2</span>
+<span class="p">)</span>
+<span class="n">dSYM</span> <span class="n">UUID</span><span class="o">:</span> <span class="n">xx</span><span class="o">-</span><span class="n">XXX</span><span class="o">-</span><span class="mi">38</span><span class="n">B1</span><span class="o">-</span><span class="n">B7A0</span><span class="o">-</span><span class="mi">2</span><span class="n">XXXXX</span>
+<span class="n">CPU</span> <span class="n">Type</span><span class="o">:</span> <span class="n">armv7s</span>
+<span class="n">Slide</span> <span class="n">Address</span><span class="o">:</span> <span class="mh">0x00004000</span>
+<span class="n">Binary</span> <span class="n">Image</span><span class="o">:</span> <span class="o">???</span>
+<span class="n">Base</span> <span class="n">Address</span><span class="o">:</span> <span class="mh">0x00054000</span>
 </pre></div>
-
-
-<p>因为没有相应的dsym信息，所以出错后没有办法symbolicate，也就看不到具体是那个方法引起的。这时我们就要通过上传的archive包，来查找相应地址对应的函数。这里需要说明的是，因为程序的bundle设置为了中文，所以会有上述的_?????_出现。因此，我们也可以得到，程序中引起crash的方法对应的函数地址是<strong>0x0007bfd3</strong>。<br />
+<p>因为没有相应的dsym信息，所以出错后没有办法symbolicate，也就看不到具体是那个方法引起的。这时我们就要通过上传的archive包，来查找相应地址对应的函数。这里需要说明的是，因为程序的bundle设置为了中文，所以会有上述的_?????_出现。因此，我们也可以得到，程序中引起crash的方法对应的函数地址是<strong>0x0007bfd3</strong>。<br/>
 接下来，我们在xcode找到上传成功的archive包，通过_show in finder_定位。xarchive后缀的文件和app后缀的文件一样，也是个bundle，可以通过右键<em>show content</em> 打开。我们需要使用的可执行程序包，通常在:  </p>
 <p><code>/Products/Applications/YourAppName.app/YourAppName</code></p>
-<p>然后使用命令：<br />
-<code>atos -arch armv7s -o /Products/Applications/YourAppName.app/YourAppName 0x0007bfd3</code><br />
+<p>然后使用命令：<br/>
+<code>atos -arch armv7s -o /Products/Applications/YourAppName.app/YourAppName 0x0007bfd3</code><br/>
 这样就会显示出是哪一个方法引起crash了。</p>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://127.0.0.1:8000/sketch-tutorials-study-1.html">← Previous : Sketch Tutorials Study 1</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/sketch-tutorials-study-1.html">← Previous : Sketch Tutorials Study 1</a></li>
         
-        <li class="next"><a href="http://127.0.0.1:8000/mvvmmo-shi-chu-tan.html">MVVM模式初探:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/mvvmmo-shi-chu-tan.html">MVVM模式初探:Next →</a></li>
       </ul>
     </div>
 
@@ -141,40 +139,41 @@ Base Address: 0x00054000
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
-		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
-		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
-		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
-		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="http://127.0.0.1:8000/tag/sketch.html">sketch</a></li>
-	    <li class="tag-1"><a href="http://127.0.0.1:8000/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://127.0.0.1:8000/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
 </ul>
 
 
@@ -226,8 +225,8 @@ Base Address: 0x00054000
     </div>
 
 
-  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
-  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>
