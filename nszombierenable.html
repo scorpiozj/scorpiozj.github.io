@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>NSZombierEnable</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
+
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://github.icocoa.tk/nszombierenable.html" rel="bookmark"
+                   title="Permalink to NSZombierEnable">NSZombierEnable</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2014-12-18T10:30:00">
+                Thu 18 December 2014
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>今天在cocoachina上看到一篇关于实现NSZombier的翻译贴，原文来自<a href="https://mikeash.com/">Mike Ash</a>。此人是(Friday Q&amp;A)的作者，更为神奇的是他白天是飞行员，晚上是程序员，这在天朝不可想像。本文主要是基于他以下两篇文章的笔记。<br/>
+<a href="https://mikeash.com/pyblog/friday-qa-2014-11-07-lets-build-nszombie.html">Friday Q&amp;A 2011-05-20: The Inner Life of Zombies</a><br/>
+<a href="https://mikeash.com/pyblog/friday-qa-2011-05-20-the-inner-life-of-zombies.html">Friday Q&amp;A 2014-11-07: Let's Build NSZombie</a></p>
+<h3>启用NSZombier对象</h3>
+<p>有经验的开发者在遇到诸如<code>EXC_BAD_ACCESS</code>的错误时往往会设置<code>NSZombieEnabled</code>为<code>YES</code>，这样类似的错误发生后，就可以定位到出错的位置，从而便于诊断问题所在。<br/>
+诸如此类的内存错误不管是MRC还是ARC下，都是会发生的。发生的原因在于：一个已经release的指针对象，又收到了某个消息，这时就会发生古怪。在MRC下，alloc一个对象A，然后release后，该对象所指向的内存被系统回收，标记为可用状态。根据程序运行的情况，该处内存可能过会被系统回收也可能马上分配给另一对象B。这时，如果程序还认为A对象存在，并发生某个消息给A时，就会发生错误。可以设计如下的测试代码：</p>
+<div class="highlight"><pre><span class="n">NSString</span> <span class="o">*</span><span class="n">testString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFormat</span><span class="o">:</span><span class="s">@"%@"</span><span class="p">,</span> <span class="s">@"test"</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">testString</span><span class="p">);</span>
+<span class="p">[</span><span class="n">testString</span> <span class="n">release</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">testString</span><span class="p">);</span>
+</pre></div>
+<p>该片段放置在某个点击事件中，当我们没有设置<code>NSZombieEnabled</code>时，运行一下：
+<img alt="NSZombier_Disable" src="./imgs/20141218/NSZombier_Disable.png"/></p>
+<p>测试的时候，快速点击了两下，可以发现console里输出了3次"test"，然后程序crash定位在release后的<code>NSLog</code>处。这说明release后系统可能会没有立即清理该处内存，导致可以输出该内存所存储的内容。<br/>
+接下来，启用<code>NSZombieEnabled</code>，Xcode6中打开<code>schema-&gt;Diagnostics-&gt;Enable Zombie Objects</code>，然后测试：  </p>
+<p><img alt="NSZombier_Enable" src="./imgs/20141218/NSZombier_Enable.png"/></p>
+<p>console里输出了 
+     [CFString respondsToSelector:]: message sent to deallocated instance 0x7fa52a7df560
+这很明确的指明了错误发生的原因：给dealloc的对象发送了消息。所以在大型项目中，设置<code>NSZombieEnabled</code>后还是很便于定位内存错误。</p>
+<p>这种给释放的对象发送消息还有可能发生一种错误，就是:</p>
+<blockquote>
+<p>*** Terminating app due to uncaught exception 'NSInvalidArgumentException', reason: '-[__NSCFString xxxxx]: unrecognized selector sent to instance 0x7fdd626b2b90'</p>
+</blockquote>
+<p>这是因为释放掉的内存被系统分配给另一个对象，而程序继续发送消息给原先的对象时，就很容易发生该类型错误。如果恰好新对象也有一个同名的方法，虽然不至于导致程序马上crash可造成的后果就可大可小了。因此如果程序crash然后console显示因为发送给某个没用到的对象一个程序内找不到的方法的错误时，往往都是对象释放后仍去使用造成的。   </p>
+<h3>深入NSZombier</h3>
+<p>启用<code>NSZombieEnabled</code>后，对于要释放的内存，系统会创建一个NSZombier的对象来"接管"该内存，当NSZombier对象收到消息后，就会crash并显示错误信息和调用栈。我们使用mikeash的代码来深入研究下内存变化，添加如下的函数并更新原代码：</p>
+<div class="highlight"><pre><span class="cp">#import &lt;malloc/malloc.h&gt;</span>
+<span class="kt">void</span> <span class="nf">Dump</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="n">msg</span><span class="p">,</span> <span class="kt">id</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">int</span> <span class="n">size</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">s</span> <span class="o">=</span> <span class="p">[</span><span class="n">NSString</span> <span class="n">stringWithFormat</span><span class="o">:</span> <span class="s">@"%@ malloc_size %d - %@"</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">malloc_size</span><span class="p">(</span><span class="n">obj</span><span class="p">),</span> <span class="p">[</span><span class="n">NSData</span> <span class="n">dataWithBytes</span><span class="o">:</span> <span class="n">obj</span> <span class="n">length</span><span class="o">:</span> <span class="n">size</span><span class="p">]];</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"%s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="p">[</span><span class="n">s</span> <span class="n">UTF8String</span><span class="p">]);</span>
+<span class="p">}</span>
+
+<span class="c1">//</span>
+<span class="n">NSString</span> <span class="o">*</span><span class="n">testString</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSString</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">initWithFormat</span><span class="o">:</span><span class="s">@"%@"</span><span class="p">,</span> <span class="s">@"test"</span><span class="p">];</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">testString</span><span class="p">);</span>
+<span class="kt">int</span> <span class="n">size</span> <span class="o">=</span> <span class="n">malloc_size</span><span class="p">(</span><span class="n">testString</span><span class="p">);</span>
+<span class="n">Dump</span><span class="p">(</span><span class="s">@"Fresh NSObject"</span><span class="p">,</span> <span class="n">testString</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+<span class="p">[</span><span class="n">testString</span> <span class="n">release</span><span class="p">];</span>
+<span class="n">Dump</span><span class="p">(</span><span class="s">@"Destroyed NSObject"</span><span class="p">,</span> <span class="n">testString</span><span class="p">,</span> <span class="n">size</span><span class="p">);</span>
+<span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="n">testString</span><span class="p">);</span>
+</pre></div>
+<p>未设置<code>NSZombieEnabled</code>，运行效果：</p>
+<div class="highlight"><pre><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">18</span> <span class="mi">09</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mf">50.975</span> <span class="n">NSZombierTest</span><span class="p">[</span><span class="mi">1579</span><span class="o">:</span><span class="mi">185318</span><span class="p">]</span> <span class="n">test</span>
+<span class="n">Fresh</span> <span class="n">NSObject</span> <span class="n">malloc_size</span> <span class="mi">32</span> <span class="o">-</span> <span class="o">&lt;</span><span class="n">b8647209</span> <span class="mo">01000000</span> <span class="mi">8</span><span class="n">c070000</span> <span class="mo">01000000</span> <span class="mo">04746573</span> <span class="mi">74000000</span> <span class="mo">00000000</span> <span class="mo">00000000</span><span class="o">&gt;</span>
+<span class="n">Destroyed</span> <span class="n">NSObject</span> <span class="n">malloc_size</span> <span class="mi">0</span> <span class="o">-</span> <span class="o">&lt;</span><span class="n">b8647209</span> <span class="mo">01000000</span> <span class="mi">8</span><span class="n">c076000</span> <span class="mo">00000000</span> <span class="mo">04746573</span> <span class="mi">74000000</span> <span class="mo">00000000</span> <span class="mo">00000000</span><span class="o">&gt;</span>
+<span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">18</span> <span class="mi">09</span><span class="o">:</span><span class="mi">59</span><span class="o">:</span><span class="mf">50.976</span> <span class="n">NSZombierTest</span><span class="p">[</span><span class="mi">1579</span><span class="o">:</span><span class="mi">185318</span><span class="p">]</span> <span class="n">test</span>
+</pre></div>
+<p>此时release后对象内存size为0，但指向内存地址还是和之前的一样。<br/>
+然后设置<code>NSZombieEnabled</code>，运行效果：</p>
+<div class="highlight"><pre><span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">18</span> <span class="mi">10</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="mf">31.229</span> <span class="n">NSZombierTest</span><span class="p">[</span><span class="mi">1683</span><span class="o">:</span><span class="mi">206192</span><span class="p">]</span> <span class="n">test</span>
+<span class="n">Fresh</span> <span class="n">NSObject</span> <span class="n">malloc_size</span> <span class="mi">32</span> <span class="o">-</span> <span class="o">&lt;</span><span class="n">b8542f07</span> <span class="mo">01000000</span> <span class="mi">8</span><span class="n">c070000</span> <span class="mo">01000000</span> <span class="mo">04746573</span> <span class="mi">74000000</span> <span class="mo">00000000</span> <span class="mo">00000000</span><span class="o">&gt;</span>
+<span class="n">Destroyed</span> <span class="n">NSObject</span> <span class="n">malloc_size</span> <span class="mi">32</span> <span class="o">-</span> <span class="o">&lt;</span><span class="n">c050f14b</span> <span class="mf">927f</span><span class="mo">0000</span> <span class="mi">8</span><span class="n">c076000</span> <span class="mo">00000000</span> <span class="mo">04746573</span> <span class="mi">74000000</span> <span class="mo">00000000</span> <span class="mo">00000000</span><span class="o">&gt;</span>
+<span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">18</span> <span class="mi">10</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="mf">31.230</span> <span class="n">NSZombierTest</span><span class="p">[</span><span class="mi">1683</span><span class="o">:</span><span class="mi">206192</span><span class="p">]</span> <span class="o">***</span> <span class="o">-</span><span class="p">[</span><span class="n">CFString</span> <span class="n">respondsToSelector</span><span class="o">:</span><span class="p">]</span><span class="o">:</span> <span class="n">message</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">deallocated</span> <span class="n">instance</span> <span class="mh">0x7f924bfd9780</span>
+</pre></div>
+<p>这时release后的对象内存size为32和release前一样大，同时内存的地址也改变了。这就印证了NSZombier对象的作用。更进一步的，Mike指出系统会使用一个NSZombier类型的对象覆盖之前release的内存，我们继续使用Mike的代码做测试：</p>
+<div class="highlight"><pre><span class="kt">void</span> <span class="nf">DumpClass</span><span class="p">(</span><span class="n">Class</span> <span class="n">c</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Dumping class %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">class_getName</span><span class="p">(</span><span class="n">c</span><span class="p">));</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Superclass: %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">class_getName</span><span class="p">(</span><span class="n">class_getSuperclass</span><span class="p">(</span><span class="n">c</span><span class="p">)));</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Ivars:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">Ivar</span> <span class="o">*</span><span class="n">ivars</span> <span class="o">=</span> <span class="n">class_copyIvarList</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">Ivar</span> <span class="o">*</span><span class="n">cursor</span> <span class="o">=</span> <span class="n">ivars</span><span class="p">;</span> <span class="n">cursor</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">cursor</span><span class="p">;</span> <span class="n">cursor</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">printf</span><span class="p">(</span><span class="s">"    %s %s %d</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">ivar_getName</span><span class="p">(</span><span class="o">*</span><span class="n">cursor</span><span class="p">),</span> <span class="n">ivar_getTypeEncoding</span><span class="p">(</span><span class="o">*</span><span class="n">cursor</span><span class="p">),</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ivar_getOffset</span><span class="p">(</span><span class="o">*</span><span class="n">cursor</span><span class="p">));</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">ivars</span><span class="p">);</span>
+
+    <span class="n">printf</span><span class="p">(</span><span class="s">"Methods:</span><span class="se">\n</span><span class="s">"</span><span class="p">);</span>
+    <span class="n">Method</span> <span class="o">*</span><span class="n">methods</span> <span class="o">=</span> <span class="n">class_copyMethodList</span><span class="p">(</span><span class="n">c</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">for</span><span class="p">(</span><span class="n">Method</span> <span class="o">*</span><span class="n">cursor</span> <span class="o">=</span> <span class="n">methods</span><span class="p">;</span> <span class="n">cursor</span> <span class="o">&amp;&amp;</span> <span class="o">*</span><span class="n">cursor</span><span class="p">;</span> <span class="n">cursor</span><span class="o">++</span><span class="p">)</span>
+        <span class="n">fprintf</span><span class="p">(</span><span class="n">stderr</span><span class="p">,</span> <span class="s">"    %s %s</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">sel_getName</span><span class="p">(</span><span class="n">method_getName</span><span class="p">(</span><span class="o">*</span><span class="n">cursor</span><span class="p">)),</span> <span class="n">method_getTypeEncoding</span><span class="p">(</span><span class="o">*</span><span class="n">cursor</span><span class="p">));</span>
+    <span class="n">free</span><span class="p">(</span><span class="n">methods</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//</span>
+<span class="n">DumpClass</span><span class="p">(</span><span class="n">object_getClass</span><span class="p">(</span><span class="n">testString</span><span class="p">));</span>
+</pre></div>
+<p>结果如下：</p>
+<div class="highlight"><pre><span class="n">Dumping</span> <span class="n">class</span> <span class="n">_NSZombie_CFString</span>
+<span class="nl">Superclass:</span> <span class="n">nil</span>
+<span class="nl">Ivars:</span>
+    <span class="n">isa</span> <span class="err">#</span> <span class="mi">0</span>
+<span class="nl">Methods:</span>
+</pre></div>
+<p>可以看出此时的Zombier对象是<code>_NSZombie_CFString</code>类型，该类型和<code>NSObject</code>一样，是root class且只包含isa指针，但没有任何方法。  </p>
+<h3>实现 NSZombierEnable</h3>
+<p>实现这一机制，无疑依靠objc的runtime机制。首先想一想需要做哪些事情：</p>
+<ol>
+<li>生成一个相应的NSZombier class</li>
+<li>设置该类对消息的响应</li>
+<li>获取释放的对象，将其改写为上述NSZombier class</li>
+</ol>
+<p>接下来，我把Mike的相关代码整理了下并做了说明：</p>
+<div class="highlight"><pre><span class="c1">//启用NSZomiber，该函数可以放在+initialize中执行，目的的替换类默认的dealloc方法</span>
+ <span class="kt">void</span> <span class="nf">EnableZombies</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">Method</span> <span class="n">m</span> <span class="o">=</span> <span class="n">class_getInstanceMethod</span><span class="p">([</span><span class="n">NSObject</span> <span class="n">class</span><span class="p">],</span> <span class="k">@selector</span><span class="p">(</span><span class="n">dealloc</span><span class="p">));</span>
+    <span class="n">method_setImplementation</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="p">(</span><span class="kt">IMP</span><span class="p">)</span><span class="n">ZombieDealloc</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//将要释放的对象设置成相应的Zombier class</span>
+ <span class="kt">void</span> <span class="nf">ZombieDealloc</span><span class="p">(</span><span class="kt">id</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">SEL</span> <span class="n">_cmd</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">Class</span> <span class="n">c</span> <span class="o">=</span> <span class="n">ZombifyClass</span><span class="p">(</span><span class="n">object_getClass</span><span class="p">(</span><span class="n">obj</span><span class="p">));</span>
+    <span class="n">object_setClass</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="n">c</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">//创建Zombierclass，并添加方法</span>
+ <span class="kt">Class</span> <span class="nf">ZombifyClass</span><span class="p">(</span><span class="kt">Class</span> <span class="n">class</span><span class="p">)</span> <span class="p">{</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">className</span> <span class="o">=</span> <span class="n">NSStringFromClass</span><span class="p">(</span><span class="n">class</span><span class="p">);</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">zombieClassName</span> <span class="o">=</span> <span class="p">[</span><span class="s">@"MAZombie_"</span> <span class="n">stringByAppendingString</span><span class="o">:</span> <span class="n">className</span><span class="p">];</span>
+     <span class="kt">Class</span> <span class="n">zombieClass</span> <span class="o">=</span> <span class="n">NSClassFromString</span><span class="p">(</span><span class="n">zombieClassName</span><span class="p">);</span>
+    <span class="k">if</span><span class="p">(</span><span class="n">zombieClass</span><span class="p">)</span> <span class="k">return</span> <span class="n">zombieClass</span><span class="p">;</span>
+    <span class="n">zombieClass</span> <span class="o">=</span> <span class="n">objc_allocateClassPair</span><span class="p">(</span><span class="nb">nil</span><span class="p">,</span> <span class="p">[</span><span class="n">zombieClassName</span> <span class="n">UTF8String</span><span class="p">],</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">class_addMethod</span><span class="p">(</span><span class="n">zombieClass</span><span class="p">,</span> <span class="k">@selector</span><span class="p">(</span><span class="n">methodSignatureForSelector</span><span class="o">:</span><span class="p">),</span> <span class="p">(</span><span class="kt">IMP</span><span class="p">)</span><span class="n">ZombieMethodSignatureForSelector</span><span class="p">,</span> <span class="s">"@@::"</span><span class="p">);</span>
+    <span class="n">class_addMethod</span><span class="p">(</span><span class="n">object_getClass</span><span class="p">(</span><span class="n">zombieClass</span><span class="p">),</span> <span class="k">@selector</span><span class="p">(</span><span class="n">initialize</span><span class="p">),</span> <span class="p">(</span><span class="kt">IMP</span><span class="p">)</span><span class="n">EmptyIMP</span><span class="p">,</span> <span class="s">"v@:"</span><span class="p">);</span>
+    <span class="n">objc_registerClassPair</span><span class="p">(</span><span class="n">zombieClass</span><span class="p">);</span>
+
+    <span class="k">return</span> <span class="n">zombieClass</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="c1">//</span>
+<span class="kt">void</span> <span class="nf">EmptyIMP</span><span class="p">(</span><span class="kt">id</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">SEL</span> <span class="n">_cmd</span><span class="p">)</span> 
+<span class="p">{}</span>
+<span class="c1">//消息转发</span>
+<span class="n">NSMethodSignature</span> <span class="o">*</span><span class="nf">ZombieMethodSignatureForSelector</span><span class="p">(</span><span class="kt">id</span> <span class="n">obj</span><span class="p">,</span> <span class="kt">SEL</span> <span class="n">_cmd</span><span class="p">,</span> <span class="kt">SEL</span> <span class="n">selector</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kt">Class</span> <span class="n">class</span> <span class="o">=</span> <span class="n">object_getClass</span><span class="p">(</span><span class="n">obj</span><span class="p">);</span>
+    <span class="n">NSString</span> <span class="o">*</span><span class="n">className</span> <span class="o">=</span> <span class="n">NSStringFromClass</span><span class="p">(</span><span class="n">class</span><span class="p">);</span>
+    <span class="n">className</span> <span class="o">=</span> <span class="p">[</span><span class="n">className</span> <span class="n">substringFromIndex</span><span class="o">:</span> <span class="p">[</span><span class="s">@"MAZombie_"</span> <span class="n">length</span><span class="p">]];</span>
+    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Selector %@ sent to deallocated instance %p of class %@"</span><span class="p">,</span> <span class="n">NSStringFromSelector</span><span class="p">(</span><span class="n">selector</span><span class="p">),</span> <span class="n">obj</span><span class="p">,</span> <span class="n">className</span><span class="p">);</span>
+    <span class="n">abort</span><span class="p">();</span>
+<span class="p">}</span>
+
+
+<span class="c1">//测试代码</span>
+<span class="n">obj</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSIndexSet</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="p">[</span><span class="n">obj</span> <span class="n">release</span><span class="p">];</span>
+<span class="p">[</span><span class="n">obj</span> <span class="n">count</span><span class="p">];</span>
+</pre></div>
+<p>测试结果：  </p>
+<div class="highlight"><pre><span class="n">NSZombierTest</span><span class="p">[</span><span class="mi">3236</span><span class="o">:</span><span class="mi">495027</span><span class="p">]</span> <span class="n">Selector</span> <span class="n">count</span> <span class="n">sent</span> <span class="n">to</span> <span class="n">deallocated</span> <span class="n">instance</span> <span class="mh">0x7fbd80eabd00</span> <span class="n">of</span> <span class="n">class</span> <span class="n">NSIndexSet</span>
+</pre></div>
+<p>最后的评论中有人给出了Chromium的zombie的实现，源代码可以去<a href="https://chromium.googlesource.com/chromium/src/+/master/chrome/common/mac/objc_zombie.mm">主页</a>上查看。</p>
+<h3>总结</h3>
+<p>由此可见，对象的生命周期/相应内存的变化，以及objc的runtime机制，无疑是理解<code>NSZombierEnable</code>的关键。</p>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://github.icocoa.tk/find-all-unlocalized-strings.html">← Previous : Find All Unlocalized Strings</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>
