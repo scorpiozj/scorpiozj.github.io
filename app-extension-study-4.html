@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://www.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://www.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://www.icocoa.tk/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,16 +51,16 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.icocoa.tk/app-extension-study-4.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/app-extension-study-4.html" rel="bookmark"
                    title="Permalink to App Extension Study 4">App Extension Study 4</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-11-19T10:00:00">
-                Wed 19 November 2014
+              <abbr class="published" title="2014-11-19T10:00:00+08:00">
+                三 19 十一月 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://www.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
@@ -88,10 +88,10 @@ Summary: ios8 app extension</p>
 </ul>
 <p>要注意的是，在<code>设置</code>中对键盘的一些设置，只对系统的键盘有效。因此，如果要添加自定义键盘的设置，需要自行添加<code>setting bundle</code>。如果输入的文本要求是加密，那么iOS会自动使用系统的键盘暂时代替第三方的键盘输入。对于指定拨号类的输入如<code>UIKeyboardTypePhonePad</code>和<code>UIKeyboardTypeNamePhonePad</code>，第三方输入法也是不支持的。<br/>
 因为第三方的输入法对所有的app都是适用的，所以iOS8中也提供了方法，供app选择是否可以使用第三方输入。如果只想使用系统的键盘输入，那么只要实现如下代理：</p>
-<div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">application</span><span class="o">:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="n">application</span> <span class="n">shouldAllowExtensionPointIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">extensionPointIdentifier</span>
-<span class="p">{</span>
-    <span class="k">return</span> <span class="n">NO</span><span class="p">;</span>
-<span class="p">}</span>
+<div class="highlight"><pre>- (BOOL)application:(UIApplication *)application shouldAllowExtensionPointIdentifier:(NSString *)extensionPointIdentifier
+{
+    return NO;
+}
 </pre></div>
 <h4>2.2 API的使用</h4>
 <p>首先来看一下第三方输入法的基本构成：<br/>
@@ -163,9 +163,9 @@ Build&amp;Run一下，我们的输入法就安装在系统了，使用前先在�
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://www.icocoa.tk/gitban-ben-ku-guan-li.html">← Previous : Git版本库管理</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/gitban-ben-ku-guan-li.html">← Previous : Git版本库管理</a></li>
         
-        <li class="next"><a href="http://www.icocoa.tk/dong-de-zhi-sun.html">懂得止损:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/dong-de-zhi-sun.html">懂得止损:Next →</a></li>
       </ul>
     </div>
 
@@ -189,43 +189,43 @@ Build&amp;Run一下，我们的输入法就安装在系统了，使用前先在�
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://www.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://www.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://www.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://www.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://www.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
 </ul>
 
 
@@ -277,8 +277,8 @@ Build&amp;Run一下，我们的输入法就安装在系统了，使用前先在�
     </div>
 
 
-  <script src="http://www.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

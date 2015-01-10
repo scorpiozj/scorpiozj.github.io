@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://www.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://www.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://www.icocoa.tk/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,44 +51,44 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark"
                    title="Permalink to iOS8之UIAlertController">iOS8之UIAlertController</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-11-05T11:00:00">
-                Wed 05 November 2014
+              <abbr class="published" title="2014-11-05T11:00:00+08:00">
+                三 05 十一月 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://www.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <h4>由起</h4>
 <p><code>UIAlertController</code>是iOS8中引入的，用于整合<code>UIAlertView</code>和<code>UIActionSheet</code>的新类，在实现中抛弃了之前的delegate用法，而采用了block的方式，从而使得使用和可读性都简化了不少。<br/>
 使用iOS8SDK编译的项目，大多数情况使用之前的<code>UIAlertView</code>或<code>UIActionSheet</code>都不会产生问题，如果有问题了，那就需要使用新类了。比如，一个项目中iPad上调用<code>[actionSheet showFromToolbar:]</code>产生错误：</p>
-<div class="highlight"><pre><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">05</span> <span class="mi">10</span><span class="o">:</span><span class="mi">50</span><span class="o">:</span><span class="mf">26.614</span> <span class="n">XXXXXX</span><span class="p">[</span><span class="mi">467</span><span class="o">:</span><span class="mi">78104</span><span class="p">]</span> <span class="n">Presenting</span> <span class="n">view</span> <span class="n">controllers</span> <span class="n">on</span> <span class="n">detached</span> <span class="n">view</span> <span class="n">controllers</span> <span class="n">is</span> <span class="n">discouraged</span> <span class="o">&lt;</span><span class="n">UIViewController</span><span class="o">:</span> <span class="mh">0x17ea3470</span><span class="o">&gt;</span><span class="p">.</span>
-<span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">05</span> <span class="mi">10</span><span class="o">:</span><span class="mi">50</span><span class="o">:</span><span class="mf">26.762</span> <span class="n">XXXXXX</span><span class="p">[</span><span class="mi">467</span><span class="o">:</span><span class="mi">78104</span><span class="p">]</span> <span class="o">***</span> <span class="n">Terminating</span> <span class="n">app</span> <span class="n">due</span> <span class="n">to</span> <span class="n">uncaught</span> <span class="n">exception</span> <span class="err">'</span><span class="n">NSGenericException</span><span class="err">'</span><span class="p">,</span> <span class="n">reason</span><span class="o">:</span> <span class="err">'</span><span class="n">Your</span> <span class="n">application</span> <span class="n">has</span> <span class="n">presented</span> <span class="n">a</span> <span class="n">UIAlertController</span> <span class="p">(</span><span class="o">&lt;</span><span class="n">UIAlertController</span><span class="o">:</span> <span class="mh">0x17e73620</span><span class="o">&gt;</span><span class="p">)</span> <span class="n">of</span> <span class="n">style</span> <span class="n">UIAlertControllerStyleActionSheet</span><span class="p">.</span> <span class="n">The</span> <span class="n">modalPresentationStyle</span> <span class="n">of</span> <span class="n">a</span> <span class="n">UIAlertController</span> <span class="n">with</span> <span class="n">this</span> <span class="n">style</span> <span class="n">is</span> <span class="n">UIModalPresentationPopover</span><span class="p">.</span> <span class="n">You</span> <span class="n">must</span> <span class="n">provide</span> <span class="n">location</span> <span class="n">information</span> <span class="k">for</span> <span class="n">this</span> <span class="n">popover</span> <span class="n">through</span> <span class="n">the</span> <span class="n">alert</span> <span class="n">controller</span><span class="err">'</span><span class="n">s</span> <span class="n">popoverPresentationController</span><span class="p">.</span> <span class="n">You</span> <span class="n">must</span> <span class="n">provide</span> <span class="n">either</span> <span class="n">a</span> <span class="n">sourceView</span> <span class="n">and</span> <span class="n">sourceRect</span> <span class="n">or</span> <span class="n">a</span> <span class="n">barButtonItem</span><span class="p">.</span>  <span class="n">If</span> <span class="n">this</span> <span class="n">information</span> <span class="n">is</span> <span class="n">not</span> <span class="n">known</span> <span class="n">when</span> <span class="n">you</span> <span class="n">present</span> <span class="n">the</span> <span class="n">alert</span> <span class="n">controller</span><span class="p">,</span> <span class="n">you</span> <span class="n">may</span> <span class="n">provide</span> <span class="n">it</span> <span class="n">in</span> <span class="n">the</span> <span class="n">UIPopoverPresentationControllerDelegate</span> <span class="n">method</span> <span class="o">-</span><span class="n">prepareForPopoverPresentation</span><span class="p">.</span><span class="err">'</span>
+<div class="highlight"><pre>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
+2014-11-05 10:50:26.762 XXXXXX[467:78104] *** Terminating app due to uncaught exception 'NSGenericException', reason: 'Your application has presented a UIAlertController (&lt;UIAlertController: 0x17e73620&gt;) of style UIAlertControllerStyleActionSheet. The modalPresentationStyle of a UIAlertController with this style is UIModalPresentationPopover. You must provide location information for this popover through the alert controller's popoverPresentationController. You must provide either a sourceView and sourceRect or a barButtonItem.  If this information is not known when you present the alert controller, you may provide it in the UIPopoverPresentationControllerDelegate method -prepareForPopoverPresentation.'
 </pre></div>
 <p>从奔溃日志中可以看出，虽然代码中使用的是<code>UIActionSheet</code>，实际运行时却已经是<code>UIAlertController</code>了。</p>
 <h4>使用</h4>
 <p>使用非常简单，基本用法：</p>
 <div class="highlight"><pre><span class="c1">//初始化alert controller</span>
-<span class="n">UIAlertController</span> <span class="o">*</span><span class="n">alertController</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIAlertController</span> <span class="n">alertControllerWithTitle</span><span class="o">:</span><span class="n">ZJLocalizedString</span><span class="p">(</span><span class="s">@"xxxx"</span><span class="p">)</span> <span class="n">message</span><span class="o">:</span><span class="nb">nil</span> <span class="n">preferredStyle</span><span class="o">:</span><span class="n">UIAlertControllerStyleActionSheet</span><span class="p">];</span>
+<span class="bp">UIAlertController</span> <span class="o">*</span><span class="n">alertController</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIAlertController</span> <span class="nl">alertControllerWithTitle</span><span class="p">:</span><span class="n">ZJLocalizedString</span><span class="p">(</span><span class="s">@"xxxx"</span><span class="p">)</span> <span class="nl">message</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">preferredStyle</span><span class="p">:</span><span class="n">UIAlertControllerStyleActionSheet</span><span class="p">];</span>
 <span class="c1">//创建一个操作</span>
-<span class="n">UIAlertAction</span> <span class="o">*</span><span class="n">fileAction</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIAlertAction</span> <span class="n">actionWithTitle</span><span class="o">:</span><span class="n">ZJLocalizedString</span><span class="p">(</span><span class="s">@"action1"</span><span class="p">)</span> <span class="n">style</span><span class="o">:</span><span class="n">UIAlertActionStyleDefault</span> <span class="n">handler</span><span class="o">:^</span><span class="p">(</span><span class="n">UIAlertAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span> <span class="p">{</span>
-        <span class="p">[</span><span class="n">self</span> <span class="n">doAction1</span><span class="p">];</span>
+<span class="bp">UIAlertAction</span> <span class="o">*</span><span class="n">fileAction</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIAlertAction</span> <span class="nl">actionWithTitle</span><span class="p">:</span><span class="n">ZJLocalizedString</span><span class="p">(</span><span class="s">@"action1"</span><span class="p">)</span> <span class="nl">style</span><span class="p">:</span><span class="n">UIAlertActionStyleDefault</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">UIAlertAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="nb">self</span> <span class="n">doAction1</span><span class="p">];</span>
     <span class="p">}];</span>
 <span class="c1">//添加操作</span>
-<span class="p">[</span><span class="n">alertController</span> <span class="n">addAction</span><span class="o">:</span><span class="n">fileAction</span><span class="p">];</span>
+<span class="p">[</span><span class="n">alertController</span> <span class="nl">addAction</span><span class="p">:</span><span class="n">fileAction</span><span class="p">];</span>
 <span class="c1">//</span>
-<span class="n">UIAlertAction</span> <span class="o">*</span><span class="n">cancelAction</span> <span class="o">=</span> <span class="p">[</span><span class="n">UIAlertAction</span> <span class="n">actionWithTitle</span><span class="o">:</span><span class="n">ZJLocalizedString</span><span class="p">(</span><span class="s">@"Cancel"</span><span class="p">)</span> <span class="n">style</span><span class="o">:</span><span class="n">UIAlertActionStyleCancel</span> <span class="n">handler</span><span class="o">:^</span><span class="p">(</span><span class="n">UIAlertAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span> <span class="p">{</span>
+<span class="bp">UIAlertAction</span> <span class="o">*</span><span class="n">cancelAction</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIAlertAction</span> <span class="nl">actionWithTitle</span><span class="p">:</span><span class="n">ZJLocalizedString</span><span class="p">(</span><span class="s">@"Cancel"</span><span class="p">)</span> <span class="nl">style</span><span class="p">:</span><span class="n">UIAlertActionStyleCancel</span> <span class="nl">handler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="bp">UIAlertAction</span> <span class="o">*</span><span class="n">action</span><span class="p">)</span> <span class="p">{</span>
 
     <span class="p">}];</span>
-<span class="p">[</span><span class="n">alertController</span> <span class="n">addAction</span><span class="o">:</span><span class="n">cancelAction</span><span class="p">];</span>
+<span class="p">[</span><span class="n">alertController</span> <span class="nl">addAction</span><span class="p">:</span><span class="n">cancelAction</span><span class="p">];</span>
 
 <span class="c1">//展示alert controller   </span>
-<span class="p">[</span><span class="n">self</span> <span class="n">presentViewController</span><span class="o">:</span><span class="n">alertController</span> <span class="n">animated</span><span class="o">:</span><span class="nb">YES</span> <span class="n">completion</span><span class="o">:^</span><span class="p">{</span>
+<span class="p">[</span><span class="nb">self</span> <span class="nl">presentViewController</span><span class="p">:</span><span class="n">alertController</span> <span class="nl">animated</span><span class="p">:</span><span class="nb">YES</span> <span class="nl">completion</span><span class="p">:</span><span class="o">^</span><span class="p">{</span>
 
     <span class="p">}];</span>
 </pre></div>
@@ -98,20 +98,20 @@
 <p>iOS8对API的更新还是挺大的，比如<code>UIPopoverViewController</code>兼容iPad和iPhone，所以可以慢慢的开始更新了。</p>
 <h4>紧急修正</h4>
 <p>经过测试，在ipad上的使用还需要注意一个<strong>问题</strong>，那就是在present之前要设置<code>UIAlertController</code>的属性<code>popoverPresentationController</code>。该属性是<code>UIPopoverPresentationController</code>类，主要用途就是管理popover中的内容。如果不设置，在iPad竖屏测试的时候没有问题，但是在横屏的时候就会有问题。原因在于，横屏的时候，popover没有指定位置。这时，可以</p>
-<div class="highlight"><pre><span class="n">UIPopoverPresentationController</span> <span class="o">*</span><span class="n">popoverPresentationController</span> <span class="o">=</span> <span class="n">alertController</span><span class="p">.</span><span class="n">popoverPresentationController</span><span class="p">;</span>        
-<span class="n">popoverPresentationController</span><span class="p">.</span><span class="n">barButtonItem</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIBarButtonItem</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
-<span class="c1">//或</span>
-<span class="n">popoverPresentationController</span><span class="p">.</span><span class="n">sourceView</span> <span class="o">=</span> <span class="p">(</span><span class="n">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span><span class="p">;</span>
-<span class="n">popoverPresentationController</span><span class="p">.</span><span class="n">sourceRect</span> <span class="o">=</span> <span class="p">[(</span><span class="n">UIButton</span> <span class="o">*</span><span class="p">)</span><span class="n">sender</span> <span class="n">bounds</span><span class="p">];</span>
+<div class="highlight"><pre>UIPopoverPresentationController *popoverPresentationController = alertController.popoverPresentationController;        
+popoverPresentationController.barButtonItem = (UIBarButtonItem *)sender;
+//或
+popoverPresentationController.sourceView = (UIButton *)sender;
+popoverPresentationController.sourceRect = [(UIButton *)sender bounds];
 </pre></div>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://www.icocoa.tk/git-revert-svn-revertde-bu-tong.html">← Previous : git revert && svn revert的不同</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/git-revert-svn-revertde-bu-tong.html">← Previous : git revert && svn revert的不同</a></li>
         
-        <li class="next"><a href="http://www.icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html">iOS8下控件的旋转:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html">iOS8下控件的旋转:Next →</a></li>
       </ul>
     </div>
 
@@ -135,43 +135,43 @@
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://www.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://www.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://www.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://www.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://www.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
 </ul>
 
 
@@ -223,8 +223,8 @@
     </div>
 
 
-  <script src="http://www.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

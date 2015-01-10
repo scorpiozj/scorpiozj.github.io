@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent - objc</title>
+        <title>限制文本输入长度</title>
         <meta charset="utf-8" />
 
 
@@ -43,67 +43,90 @@
               </ul>
             </div>
 
-<section id="content">
-
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://github.icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">限制文本输入长度</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2015-01-09T22:30:00+08:00"> 五 09 一月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>需求</h2>
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://github.icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark"
+                   title="Permalink to 限制文本输入长度">限制文本输入长度</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-01-09T22:30:00+08:00">
+                五 09 一月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2>需求</h2>
 <p>限制字符输入长度是个常见的需求，比如注册的账号或者密码。通常，从用户体验的角度，iOS App中当输入超过制定长度的字符时不需要显式的弹出提示，而只需要让超过的字符不显示即可。这个功能看似简单，但是考虑到一些输入系统例如中文输入法的联想功能，就不那么简单。</p>
 <h2>一般的实现</h2>
 <p>以UITextField为例，通常的做法是在delegate中做文章。这样的解决方案很多，stackflow上一个比较全面的解答：<a href="http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield">Set the maximum character length of a UITextField</a>，大致的思路就是在输入即将要替换的时候，计算最终要显示的字符串。这个方法对于英文输入是没有问题的，但是对于其他语言如中文输入就会存在问题。举例来说中文拼音输入“的”时，用户需要输入de，在未选中“的”时，de以选中的状态在输入框中显示，并作为输入框的内容，如下图：</p>
 <p><img alt="input1" src="./imgs/20150109/IMG_0040.png"/><img alt="input2" src="./imgs/20150109/IMG_0041.png"/>
-按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确 ...</p> </div><!-- /.entry-content -->
+按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确”的时候，UITextField的任一delegate都不会响应。所以，要另想办法解决。</p>
+<h2>解决办法</h2>
+<p>UITextField有一个属性<em>markedTextRange</em>用于标识如中文拼音输入字母时的情形，那么解决的思路：</p>
+<ol>
+<li>UITextFiled的delegate中先检查markedTextRange是否为空，不为空时不做检查允许输入；否则按原先的思路计算字符长度</li>
+<li>注册<em>UITextFieldTextDidChangeNotification</em>消息，用于处理联想输入情形</li>
+</ol>
+<p>下面给出代码：</p>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">textField:</span><span class="p">(</span><span class="bp">UITextField</span> <span class="o">*</span><span class="p">)</span><span class="nv">textField</span> <span class="nf">shouldChangeCharactersInRange:</span><span class="p">(</span><span class="n">NSRange</span><span class="p">)</span><span class="nv">range</span> <span class="nf">replacementString:</span><span class="p">(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="nv">string</span>
+<span class="p">{</span>
+    <span class="c1">//delete</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">string</span> <span class="n">length</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="o">||</span> <span class="n">textField</span><span class="p">.</span><span class="n">markedTextRange</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+    <span class="p">}</span>
 
-								<div class="medium primary btn"><a href="http://github.icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">Read more <i class="icon-arrow-right"></i></a></div>
+    <span class="k">if</span> <span class="p">(([</span><span class="n">string</span> <span class="n">length</span><span class="p">]</span> <span class="o">+</span> <span class="p">[</span><span class="n">textField</span><span class="p">.</span><span class="n">text</span> <span class="n">length</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">15</span> <span class="p">)</span> <span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">NO</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">textChange:</span><span class="p">(</span><span class="bp">NSNotification</span> <span class="o">*</span><span class="p">)</span><span class="nv">noti</span>
+<span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nb">self</span><span class="p">.</span><span class="n">waterTextField</span><span class="p">.</span><span class="n">markedTextRange</span> <span class="o">!=</span> <span class="nb">nil</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="bp">NSString</span> <span class="o">*</span><span class="n">string</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">waterTextField</span><span class="p">.</span><span class="n">text</span><span class="p">;</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">string</span> <span class="n">length</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">15</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="nb">self</span><span class="p">.</span><span class="n">waterTextField</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">string</span> <span class="nl">substringToIndex</span><span class="p">:</span><span class="mi">15</span><span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>需要注意的是在<em>UITextFieldTextDidChangeNotification</em>的响应中需要检测markedTextRange，只有在为nil的情况下再进行字符截断处理，否则程序会抛出异常。</p>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://github.icocoa.tk/xin-nian-kai-pian.html">← Previous : 新年开篇</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
 
 
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://github.icocoa.tk/tag/objc.html">objc</a>
-								</div>
+            
 
 
 
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://github.icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">NSZombierEnable</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-12-18T10:30:00+08:00"> 四 18 十二月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>今天在cocoachina上看到一篇关于实现NSZombier的翻译贴，原文来自<a href="https://mikeash.com/">Mike Ash</a>。此人是(Friday Q&amp;A)的作者，更为神奇的是他白天是飞行员，晚上是程序员，这在天朝不可想像。本文主要是基于他以下两篇文章的笔记。<br/>
-<a href="https://mikeash.com/pyblog/friday-qa-2014-11-07-lets-build-nszombie.html">Friday Q&amp;A 2011-05-20: The Inner Life of Zombies</a><br/>
-<a href="https://mikeash.com/pyblog/friday-qa-2011-05-20-the-inner-life-of-zombies.html">Friday Q&amp;A 2014-11-07: Let's Build NSZombie</a></p>
-<h3>启用NSZombier对象</h3>
-<p>有经验的开发者在遇到诸如<code>EXC_BAD_ACCESS</code>的错误时往往会设置<code>NSZombieEnabled</code>为<code>YES</code>，这样类似的错误发生后，就可以定位到出错的位置，从而便于诊断问题所在。<br/>
-诸如此类的内存错误不管是MRC还是ARC下，都是会发生的。发生的原因在于：一个已经release的指针对象，又收到了某个消息，这时就会发生古怪。在MRC下，alloc一个对象A，然后release后，该对象所指向的内存被系统回收 ...</br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://github.icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://github.icocoa.tk/tag/objc.html">objc</a>
-								</div>
-
-
-
-				        </article></li>
-				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
+        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -163,10 +186,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://www.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://www.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://www.icocoa.tk/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,49 +51,49 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark"
                    title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-11-03T10:00:00">
-                Mon 03 November 2014
+              <abbr class="published" title="2014-11-03T10:00:00+08:00">
+                一 03 十一月 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://www.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
               <p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
 <h4>git revert</h4>
 <p>对应的中文术语叫反转提交，基本的用法：</p>
-<div class="highlight"><pre><span class="n">git</span> <span class="n">revert</span> <span class="n">commit</span><span class="o">-</span><span class="n">ish</span>
+<div class="highlight"><pre>git revert commit-ish
 </pre></div>
 <p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
 <h4>svn revert</h4>
 <p>svn中revert即回滚，基本用法</p>
-<div class="highlight"><pre><span class="n">svn</span> <span class="n">revert</span> <span class="n">PATH</span>
+<div class="highlight"><pre>svn revert PATH
 </pre></div>
 <p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
 <h4>svn实现git revert的功能</h4>
 <p>如果要向用svn实现git revert的功能那么就需要：</p>
-<div class="highlight"><pre><span class="n">svn</span> <span class="n">update</span>
-<span class="c1">//确保版本库最新</span>
-<span class="n">svn</span> <span class="n">log</span>
-<span class="c1">//找到想要“回复”的版本号</span>
-<span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">r</span> <span class="n">currentID</span><span class="o">:</span><span class="n">revertID</span> <span class="n">PATH</span>
-<span class="c1">//回滚到revertID所代表的版本</span>
-<span class="n">svn</span> <span class="n">commit</span> <span class="o">-</span><span class="n">m</span> <span class="s">"message"</span>
-<span class="c1">//确认后提交</span>
+<div class="highlight"><pre>svn update
+//确保版本库最新
+svn log
+//找到想要“回复”的版本号
+svn merge -r currentID:revertID PATH
+//回滚到revertID所代表的版本
+svn commit -m "message"
+//确认后提交
 </pre></div>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://www.icocoa.tk/app-extension-study-2.html">← Previous : App Extension Study 2</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/app-extension-study-2.html">← Previous : App Extension Study 2</a></li>
         
-        <li class="next"><a href="http://www.icocoa.tk/ios8zhi-uialertcontroller.html">iOS8之UIAlertController:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/ios8zhi-uialertcontroller.html">iOS8之UIAlertController:Next →</a></li>
       </ul>
     </div>
 
@@ -117,43 +117,43 @@
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://www.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://www.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://www.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://www.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://www.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
 </ul>
 
 
@@ -205,8 +205,8 @@
     </div>
 
 
-  <script src="http://www.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>

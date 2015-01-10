@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://www.icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://github.icocoa.tk/theme/pygment.css" />
 
-        <script src="http://www.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://github.icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://www.icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://github.icocoa.tk/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://www.icocoa.tk/">Home</a></li>
+                <li><a href="http://github.icocoa.tk/">Home</a></li>
 
 
               </ul>
@@ -51,16 +51,16 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://www.icocoa.tk/app-extension-study-2.html" rel="bookmark"
+                <a href="http://github.icocoa.tk/app-extension-study-2.html" rel="bookmark"
                    title="Permalink to App Extension Study 2">App Extension Study 2</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-10-31T14:00:00">
-                Fri 31 October 2014
+              <abbr class="published" title="2014-10-31T14:00:00+08:00">
+                五 31 十月 2014
               </abbr>
               <address class="vcard author">
-                By <a class="url fn" href="http://www.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+                By <a class="url fn" href="http://github.icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
@@ -90,16 +90,16 @@ Summary: ios8 app extension</p>
 上面说过widget必定会和containing app进行数据交互，那么我们必须同时开启containing app和widget的<code>App Groups</code>功能。打开的方式：选中target-&gt;Capabilities-&gt;App Groups。 当你开启后，Xcode6会联网帮你进行一些操作，然后你需要做的就是给App Groups取一个名字，这个名字必须以group开头，建议后面的部分还是用反域名的结构。注意containing和widget的group名字得是一样的，不然就不能进行数据的共享。<br/>
 接下来，我们看<code>TodayViewController</code>，这是<code>UIViewController</code>的子类，同时实现了<code>NCWidgetProviding</code>协议。它的实现文件模版中有3个方法：</p>
 <div class="highlight"><pre> <span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">viewDidLoad</span> <span class="p">{</span>
-  <span class="p">[</span><span class="n">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
+  <span class="p">[</span><span class="nb">super</span> <span class="n">viewDidLoad</span><span class="p">];</span>
   <span class="c1">// Do any additional setup after loading the view from its nib.</span>
 <span class="p">}</span>
 
 <span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">didReceiveMemoryWarning</span> <span class="p">{</span>
-  <span class="p">[</span><span class="n">super</span> <span class="n">didReceiveMemoryWarning</span><span class="p">];</span>
+  <span class="p">[</span><span class="nb">super</span> <span class="n">didReceiveMemoryWarning</span><span class="p">];</span>
   <span class="c1">// Dispose of any resources that can be recreated.</span>
 <span class="p">}</span>
 
-<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">widgetPerformUpdateWithCompletionHandler</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NCUpdateResult</span><span class="p">))</span><span class="n">completionHandler</span> <span class="p">{</span>
+<span class="o">-</span><span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nl">widgetPerformUpdateWithCompletionHandler</span><span class="p">:(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">NCUpdateResult</span><span class="p">))</span><span class="n">completionHandler</span> <span class="p">{</span>
   <span class="c1">// Perform any setup necessary in order to update the view.</span>
   <span class="c1">// If an error is encountered, use NCUpdateResultFailed</span>
   <span class="c1">// If there's no update required, use NCUpdateResultNoData</span>
@@ -114,21 +114,21 @@ Summary: ios8 app extension</p>
 </ol>
 <p>此外，文档中还说系统会不时的对widget进行截屏，这样当widget可见的时候，widget会将最近的截屏先显示出来，然后再用最新的实时的view替换。从这个意义上说，对于股票类的widget适时的刷新页面就很有必要。</p>
 <p>另外，<code>NCWidgetProviding</code>协议还包括： </p>
-<div class="highlight"><pre><span class="o">-</span> <span class="p">(</span><span class="n">UIEdgeInsets</span><span class="p">)</span><span class="n">widgetMarginInsetsForProposedMarginInsets</span><span class="o">:</span><span class="p">(</span><span class="n">UIEdgeInsets</span><span class="p">)</span><span class="n">defaultMarginInsets</span><span class="p">;</span>
+<div class="highlight"><pre><span class="nt">-</span> <span class="o">(</span><span class="nt">UIEdgeInsets</span><span class="o">)</span><span class="nt">widgetMarginInsetsForProposedMarginInsets</span><span class="o">:(</span><span class="nt">UIEdgeInsets</span><span class="o">)</span><span class="nt">defaultMarginInsets</span><span class="o">;</span>
 </pre></div>
 <p>可以让你自由选择widget四周对齐处的间距。</p>
 <h4>2.2 widget的设计</h4>
 <p>可以在sb文件中设计你的widget页面，作为一个简单的演示，我们设计一个直接显示文字的widget。你可以在containing app中设计一个<code>UITextField</code>，把输入保存到share group中。然后在widget中读取，并显示在<code>UILabel</code>中。核心的读写操作一并演示如下：</p>
-<div class="highlight"><pre><span class="n">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span>
-                                    <span class="nl">initWithSuiteName:</span><span class="s">@"group.xxxxxx"</span><span class="p">];</span>
-<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">setObject</span><span class="o">:</span><span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">detailItem</span> <span class="n">description</span><span class="p">]</span> <span class="n">forKey</span><span class="o">:</span><span class="s">@"nameKey"</span><span class="p">];</span>
-<span class="n">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">mySharedDefaults</span> <span class="n">objectForKey</span><span class="o">:</span><span class="s">@"nameKey"</span><span class="p">];</span>
-<span class="n">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
+<div class="highlight"><pre><span class="bp">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span>
+                                    <span class="nl">initWithSuiteName</span><span class="p">:</span><span class="s">@"group.xxxxxx"</span><span class="p">];</span>
+<span class="p">[</span><span class="n">mySharedDefaults</span> <span class="nl">setObject</span><span class="p">:[</span><span class="nb">self</span><span class="p">.</span><span class="n">detailItem</span> <span class="n">description</span><span class="p">]</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@"nameKey"</span><span class="p">];</span>
+<span class="bp">NSString</span> <span class="o">*</span><span class="n">text</span> <span class="o">=</span> <span class="p">[</span><span class="n">mySharedDefaults</span> <span class="nl">objectForKey</span><span class="p">:</span><span class="s">@"nameKey"</span><span class="p">];</span>
+<span class="nb">self</span><span class="p">.</span><span class="n">label</span><span class="p">.</span><span class="n">text</span> <span class="o">=</span> <span class="n">text</span><span class="p">;</span>
 </pre></div>
 <p>苹果建议widget的UI不要使用scrollview，因为所有的widget都是在一个scrollview中，嵌套使用scrollview有多大的不爽想必可想而知，所以尺寸大小需要变化的就直接通过view的大小来实现。当然，如果是横向的scrollview会好一点，不过也建议不要放置太多的内容。因为widget本身就包含着信息一目了然，如果需要用户进行操作，就会拖累widget的体验</p>
 <h4>2.3 widget的显示</h4>
 <p>有时候，当没有可用数据的时候，我们可以控制widget是否显示：</p>
-<div class="highlight"><pre><span class="p">[[</span><span class="n">NCWidgetController</span> <span class="n">widgetController</span><span class="p">]</span> <span class="n">setHasContent</span><span class="o">:</span><span class="nb">NO</span> <span class="n">forWidgetWithBundleIdentifier</span><span class="o">:</span><span class="s">@"com.XXXXXX"</span><span class="p">];</span>
+<div class="highlight"><pre><span class="p">[[</span><span class="bp">NCWidgetController</span> <span class="n">widgetController</span><span class="p">]</span> <span class="nl">setHasContent</span><span class="p">:</span><span class="nb">NO</span> <span class="nl">forWidgetWithBundleIdentifier</span><span class="p">:</span><span class="s">@"com.XXXXXX"</span><span class="p">];</span>
 </pre></div>
 <p>这样就能隐藏widget而不显示。</p>
 <h4>2.4 打开contaning app</h4>
@@ -164,15 +164,15 @@ Summary: ios8 app extension</p>
 <img alt="share_extension" src="./imgs/20141031/share_extension.png"/> </p>
 <p>如图所示，Share extension会弹出一个对话框视图，视图上有文字输入的地方和Post/Cancel的按钮。回到工程可以发现Share的视图父类是<code>SLComposeServiceViewController</code>，它定义了一系列方法让子类去重载。重要的而且通常需要实现的一些方法已经定义在模版里，我们逐个来看一下。
 首先第一个就是<code>isContentValid</code>，该方法是用于检查用户输入的有效性(主要指输入字符长度检查)，典型的实现：</p>
-<div class="highlight"><pre><span class="k">-</span><span class="p">(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isContentValid</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="p">-(</span><span class="kt">BOOL</span><span class="p">)</span><span class="nf">isContentValid</span> <span class="p">{</span>
 
 <span class="c1">// Do validation of contentText and/or NSExtensionContext attachments here</span>
-<span class="k">if</span> <span class="p">([</span><span class="n">self</span><span class="p">.</span><span class="n">contentText</span> <span class="n">length</span><span class="p">])</span>
+<span class="k">if</span> <span class="p">([</span><span class="nb">self</span><span class="p">.</span><span class="n">contentText</span> <span class="n">length</span><span class="p">])</span>
 <span class="p">{</span>
-    <span class="n">NSInteger</span> <span class="n">messageLength</span> <span class="o">=</span> <span class="p">[[</span><span class="n">self</span><span class="p">.</span><span class="n">contentText</span>
-                                <span class="nl">stringByTrimmingCharactersInSet:</span><span class="p">[</span><span class="n">NSCharacterSet</span> <span class="n">whitespaceCharacterSet</span><span class="p">]]</span> <span class="n">length</span><span class="p">];</span>
+    <span class="n">NSInteger</span> <span class="n">messageLength</span> <span class="o">=</span> <span class="p">[[</span><span class="nb">self</span><span class="p">.</span><span class="n">contentText</span>
+                                <span class="nl">stringByTrimmingCharactersInSet</span><span class="p">:[</span><span class="bp">NSCharacterSet</span> <span class="n">whitespaceCharacterSet</span><span class="p">]]</span> <span class="n">length</span><span class="p">];</span>
     <span class="n">NSInteger</span> <span class="n">charactersRemaining</span> <span class="o">=</span> <span class="mi">100</span> <span class="o">-</span> <span class="n">messageLength</span><span class="p">;</span>
-    <span class="n">self</span><span class="p">.</span><span class="n">charactersRemaining</span> <span class="o">=</span> <span class="err">@</span><span class="p">(</span><span class="n">charactersRemaining</span><span class="p">);</span>
+    <span class="nb">self</span><span class="p">.</span><span class="n">charactersRemaining</span> <span class="o">=</span> <span class="l">@(</span><span class="n">charactersRemaining</span><span class="l">)</span><span class="p">;</span>
     <span class="k">if</span> <span class="p">(</span><span class="n">charactersRemaining</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
         <span class="k">return</span> <span class="nb">YES</span><span class="p">;</span>
     <span class="p">}</span>
@@ -187,18 +187,18 @@ Summary: ios8 app extension</p>
 <span class="p">}</span>
 </pre></div>
 <p>接下来就是<code>didSelectPost</code>，这是点击Post调用的方法，典型实现：  </p>
-<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">didSelectPost</span>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">didSelectPost</span>
 <span class="p">{</span>
   <span class="c1">// Perform the post operation.</span>
 <span class="c1">// When the operation is complete (probably asynchronously), the Share  extension should notify the success or failure, as well as the items that   were actually shared.</span>
-  <span class="n">NSExtensionItem</span> <span class="o">*</span><span class="n">inputItem</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">extensionContext</span><span class="p">.</span><span class="n">inputItems</span><span class="p">.</span><span class="n">firstObject</span><span class="p">;</span>
-  <span class="n">NSExtensionItem</span> <span class="o">*</span><span class="n">outputItem</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputItem</span> <span class="n">copy</span><span class="p">];</span>
-  <span class="n">outputItem</span><span class="p">.</span><span class="n">attributedContentText</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSAttributedString</span> <span class="n">alloc</span><span class="p">]</span>
-<span class="nl">initWithString:</span><span class="n">self</span><span class="p">.</span><span class="n">contentText</span> <span class="n">attributes</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+  <span class="bp">NSExtensionItem</span> <span class="o">*</span><span class="n">inputItem</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">extensionContext</span><span class="p">.</span><span class="n">inputItems</span><span class="p">.</span><span class="n">firstObject</span><span class="p">;</span>
+  <span class="bp">NSExtensionItem</span> <span class="o">*</span><span class="n">outputItem</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputItem</span> <span class="k">copy</span><span class="p">];</span>
+  <span class="n">outputItem</span><span class="p">.</span><span class="n">attributedContentText</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSAttributedString</span> <span class="n">alloc</span><span class="p">]</span>
+<span class="nl">initWithString</span><span class="p">:</span><span class="nb">self</span><span class="p">.</span><span class="n">contentText</span> <span class="nl">attributes</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="c1">// Complete this implementation by setting the appropriate value on the output item.</span>
-    <span class="n">NSArray</span> <span class="o">*</span><span class="n">outputItems</span> <span class="o">=</span> <span class="err">@</span><span class="p">[</span><span class="n">outputItem</span><span class="p">];</span>
-    <span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">extensionContext</span> <span class="n">completeRequestReturningItems</span><span class="o">:</span><span class="n">outputItems</span>
- <span class="nl">expirationHandler:</span><span class="nb">nil</span> <span class="n">completion</span><span class="o">:</span><span class="nb">nil</span><span class="p">];</span>
+    <span class="bp">NSArray</span> <span class="o">*</span><span class="n">outputItems</span> <span class="o">=</span> <span class="l">@[</span><span class="n">outputItem</span><span class="l">]</span><span class="p">;</span>
+    <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">extensionContext</span> <span class="nl">completeRequestReturningItems</span><span class="p">:</span><span class="n">outputItems</span>
+ <span class="nl">expirationHandler</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">completion</span><span class="p">:</span><span class="nb">nil</span><span class="p">];</span>
 <span class="c1">// Or call [super didSelectPost] to use the superclass's default completion     behavior. </span>
 <span class="p">}</span>
 </pre></div>
@@ -212,25 +212,25 @@ Summary: ios8 app extension</p>
 <p>最后是<code>presentationAnimationDidFinish</code>，该方法是Share页面弹出动画结束后执行，苹果建议一些耗费重的工作在这里进行。我建议可以在这里准备好要上传的一些数据，比如获取图片数据，例如：  </p>
 <div class="highlight"><pre> <span class="o">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">presentationAnimationDidFinish</span>
 <span class="p">{</span>
-<span class="n">NSExtensionItem</span> <span class="o">*</span><span class="n">inputItem</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">extensionContext</span><span class="p">.</span><span class="n">inputItems</span><span class="p">.</span><span class="n">firstObject</span><span class="p">;</span>
-<span class="n">NSExtensionItem</span> <span class="o">*</span><span class="n">outputItem</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputItem</span> <span class="n">copy</span><span class="p">];</span>
+<span class="bp">NSExtensionItem</span> <span class="o">*</span><span class="n">inputItem</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">extensionContext</span><span class="p">.</span><span class="n">inputItems</span><span class="p">.</span><span class="n">firstObject</span><span class="p">;</span>
+<span class="bp">NSExtensionItem</span> <span class="o">*</span><span class="n">outputItem</span> <span class="o">=</span> <span class="p">[</span><span class="n">inputItem</span> <span class="k">copy</span><span class="p">];</span>
 
-<span class="k">for</span> <span class="p">(</span><span class="n">NSItemProvider</span> <span class="o">*</span><span class="n">provider</span> <span class="k">in</span> <span class="n">outputItem</span><span class="p">.</span><span class="n">attachments</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="bp">NSItemProvider</span> <span class="o">*</span><span class="n">provider</span> <span class="k">in</span> <span class="n">outputItem</span><span class="p">.</span><span class="n">attachments</span><span class="p">)</span>
 <span class="p">{</span>
     <span class="n">NSLog</span><span class="p">(</span><span class="s">@"%@"</span><span class="p">,</span> <span class="p">[</span><span class="n">provider</span> <span class="n">registeredTypeIdentifiers</span><span class="p">]);</span>
-    <span class="k">if</span> <span class="p">([</span><span class="n">provider</span> <span class="n">hasItemConformingToTypeIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kUTTypeImage</span><span class="p">])</span>
+    <span class="k">if</span> <span class="p">([</span><span class="n">provider</span> <span class="nl">hasItemConformingToTypeIdentifier</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kUTTypeImage</span><span class="p">])</span>
     <span class="p">{</span>
-        <span class="p">[</span><span class="n">provider</span> <span class="n">loadItemForTypeIdentifier</span><span class="o">:</span><span class="p">(</span><span class="n">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kUTTypeImage</span> <span class="n">options</span><span class="o">:</span><span class="nb">nil</span> <span class="n">completionHandler</span><span class="o">:^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="n">NSSecureCoding</span><span class="o">&gt;</span> <span class="n">item</span><span class="p">,</span> <span class="n">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
+        <span class="p">[</span><span class="n">provider</span> <span class="nl">loadItemForTypeIdentifier</span><span class="p">:(</span><span class="bp">NSString</span> <span class="o">*</span><span class="p">)</span><span class="n">kUTTypeImage</span> <span class="nl">options</span><span class="p">:</span><span class="nb">nil</span> <span class="nl">completionHandler</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span><span class="o">&lt;</span><span class="bp">NSSecureCoding</span><span class="o">&gt;</span> <span class="n">item</span><span class="p">,</span> <span class="bp">NSError</span> <span class="o">*</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">if</span> <span class="p">(</span><span class="n">error</span><span class="p">)</span> <span class="p">{</span>
 
             <span class="p">}</span>
             <span class="k">else</span>
             <span class="p">{</span>
-                <span class="k">if</span> <span class="p">([(</span><span class="n">NSObject</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span> <span class="n">isKindOfClass</span><span class="o">:</span><span class="p">[</span><span class="n">NSURL</span> <span class="n">class</span><span class="p">]])</span>
+                <span class="k">if</span> <span class="p">([(</span><span class="bp">NSObject</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span> <span class="nl">isKindOfClass</span><span class="p">:[</span><span class="bp">NSURL</span> <span class="k">class</span><span class="p">]])</span>
                 <span class="p">{</span>
-                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"NSURL: %@"</span><span class="p">,</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">);</span>
+                    <span class="n">NSLog</span><span class="p">(</span><span class="s">@"NSURL: %@"</span><span class="p">,</span> <span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">);</span>
                     <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{</span>
-                        <span class="n">self</span><span class="p">.</span><span class="n">imgURL</span> <span class="o">=</span> <span class="p">(</span><span class="n">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">;</span>
+                        <span class="nb">self</span><span class="p">.</span><span class="n">imgURL</span> <span class="o">=</span> <span class="p">(</span><span class="bp">NSURL</span> <span class="o">*</span><span class="p">)</span><span class="n">item</span><span class="p">;</span>
                     <span class="p">});</span>
 
 
@@ -312,12 +312,12 @@ Summary: ios8 app extension</p>
 </ul>
 <h4>4.3 内容回传</h4>
 <p>主要实现<code>done</code>，如：</p>
-<div class="highlight"><pre><span class="k">-</span><span class="p">(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">done</span> <span class="p">{</span>
+<div class="highlight"><pre><span class="p">-(</span><span class="kt">IBAction</span><span class="p">)</span><span class="nf">done</span> <span class="p">{</span>
 <span class="c1">// Return any edited content to the host app.</span>
-<span class="n">NSExtensionItem</span> <span class="o">*</span><span class="n">outputItem</span> <span class="o">=</span> <span class="p">[[</span><span class="n">NSExtensionItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
-<span class="n">outputItem</span><span class="p">.</span><span class="n">attributedContentText</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="n">myTextView</span><span class="p">.</span><span class="n">attributedString</span><span class="p">;</span>
-<span class="n">NSArray</span> <span class="o">*</span><span class="n">outputItems</span> <span class="o">=</span> <span class="err">@</span><span class="p">[</span><span class="n">outputItem</span><span class="p">];</span>
-<span class="p">[</span><span class="n">self</span><span class="p">.</span><span class="n">extensionContext</span> <span class="n">completeRequestReturningItems</span><span class="o">:</span><span class="n">outputItems</span><span class="p">];</span>
+<span class="bp">NSExtensionItem</span> <span class="o">*</span><span class="n">outputItem</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSExtensionItem</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+<span class="n">outputItem</span><span class="p">.</span><span class="n">attributedContentText</span> <span class="o">=</span> <span class="nb">self</span><span class="p">.</span><span class="n">myTextView</span><span class="p">.</span><span class="n">attributedString</span><span class="p">;</span>
+<span class="bp">NSArray</span> <span class="o">*</span><span class="n">outputItems</span> <span class="o">=</span> <span class="l">@[</span><span class="n">outputItem</span><span class="l">]</span><span class="p">;</span>
+<span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">extensionContext</span> <span class="nl">completeRequestReturningItems</span><span class="p">:</span><span class="n">outputItems</span><span class="p">];</span>
 <span class="p">}</span>
 </pre></div>
 <h3>5 Photo Editing</h3>
@@ -328,14 +328,14 @@ Summary: ios8 app extension</p>
 <h4>5.2 模版文件</h4>
 <p>plist文件新加<code>PHSupportedMediaTypes</code>的key，它的值是 <code>Image</code>或<code>Video</code>。<br/>
 而查看实现文件可以发现视图控制器实现了<code>PHContentEditingController</code>协议，该协议的代理方法都是<code>required</code>，方法的说明见下：</p>
-<div class="highlight"><pre><span class="c1">//extension能否处理编辑的数据</span>
- <span class="o">-</span> <span class="p">(</span><span class="no">BOOL</span><span class="p">)</span><span class="nl">canHandleAdjustmentData:</span><span class="p">(</span><span class="n">PHAdjustmentData</span> <span class="o">*</span><span class="p">)</span><span class="n">adjustmentData</span><span class="p">;</span>
+<div class="highlight"><pre><span class="o">//</span><span class="nt">extension</span><span class="err">能否处理编辑的数据</span>
+ <span class="nt">-</span> <span class="o">(</span><span class="nt">BOOL</span><span class="o">)</span><span class="nt">canHandleAdjustmentData</span><span class="o">:(</span><span class="nt">PHAdjustmentData</span> <span class="o">*)</span><span class="nt">adjustmentData</span><span class="o">;</span>
 
-<span class="c1">//contentEditingInput是原始输入数据，placeholderImage则是现在版本的数据</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nl">startContentEditingWithInput:</span><span class="p">(</span><span class="n">PHContentEditingInput</span> <span class="o">*</span><span class="p">)</span><span class="n">contentEditingInput</span> <span class="nl">placeholderImage:</span><span class="p">(</span><span class="n">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="n">placeholderImage</span><span class="p">;</span>
+<span class="o">//</span><span class="nt">contentEditingInput</span><span class="err">是原始输入数据，</span><span class="nt">placeholderImage</span><span class="err">则是现在版本的数据</span>
+<span class="nt">-</span> <span class="o">(</span><span class="nt">void</span><span class="o">)</span><span class="nt">startContentEditingWithInput</span><span class="o">:(</span><span class="nt">PHContentEditingInput</span> <span class="o">*)</span><span class="nt">contentEditingInput</span> <span class="nt">placeholderImage</span><span class="o">:(</span><span class="nt">UIImage</span> <span class="o">*)</span><span class="nt">placeholderImage</span><span class="o">;</span>
 
-<span class="c1">//编辑完成后调用，注意要调用completionHandler来通知host app编辑完成</span>
-<span class="o">-</span> <span class="p">(</span><span class="k">void</span><span class="p">)</span><span class="nl">finishContentEditingWithCompletionHandler:</span><span class="p">(</span><span class="k">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">PHContentEditingOutput</span> <span class="o">*</span><span class="p">))</span><span class="n">completionHandler</span><span class="p">;</span>
+<span class="o">//</span><span class="err">编辑完成后调用，注意要调用</span><span class="nt">completionHandler</span><span class="err">来通知</span><span class="nt">host</span> <span class="nt">app</span><span class="err">编辑完成</span>
+<span class="nt">-</span> <span class="o">(</span><span class="nt">void</span><span class="o">)</span><span class="nt">finishContentEditingWithCompletionHandler</span><span class="o">:(</span><span class="nt">void</span> <span class="o">(^)(</span><span class="nt">PHContentEditingOutput</span> <span class="o">*))</span><span class="nt">completionHandler</span><span class="o">;</span>
 </pre></div>
 <h4>5.3 sample</h4>
 <p>官方有一个例子:<a href="https://developer.apple.com/devcenter/download.action?path=/wwdc_2014/wwdc_2014_sample_code/samplephotoeditingextension.zip">samplephotoeditingextension</a>，可以去看看。</p>
@@ -346,9 +346,9 @@ Summary: ios8 app extension</p>
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://www.icocoa.tk/app-extension-study-1.html">← Previous : App Extension Study 1</a></li>
+        <li class="prev"><a href="http://github.icocoa.tk/app-extension-study-1.html">← Previous : App Extension Study 1</a></li>
         
-        <li class="next"><a href="http://www.icocoa.tk/git-revert-svn-revertde-bu-tong.html">git revert && svn revert的不同:Next →</a></li>
+        <li class="next"><a href="http://github.icocoa.tk/git-revert-svn-revertde-bu-tong.html">git revert && svn revert的不同:Next →</a></li>
       </ul>
     </div>
 
@@ -372,43 +372,43 @@ Summary: ios8 app extension</p>
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://www.icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://www.icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://www.icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://www.icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://www.icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://github.icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://github.icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://github.icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://github.icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://github.icocoa.tk/category/version.html">Version</a></li>
 </ul>
 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://www.icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-1"><a href="http://www.icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://www.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-1"><a href="http://github.icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://github.icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://github.icocoa.tk/tag/mvvm.html">MVVM</a></li>
 </ul>
 
 
@@ -460,8 +460,8 @@ Summary: ios8 app extension</p>
     </div>
 
 
-  <script src="http://www.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://www.icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://github.icocoa.tk/theme/js/plugins.js"></script>
 </body>
 </html>
