@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>git commit -a 的误区</title>
+        <title>VOIP:pjsip的编译和使用</title>
         <meta charset="utf-8" />
 
 
@@ -51,99 +51,92 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark"
-                   title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2>
+                <a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark"
+                   title="Permalink to VOIP:pjsip的编译和使用">VOIP:pjsip的编译和使用</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-09-22T14:00:00+08:00">
-                一 22 九月 2014
+              <abbr class="published" title="2015-01-18T22:30:00+08:00">
+                日 18 一月 2015
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
-Summary: git 错误理解</p>
-<h2>SVN下的项目管理</h2>
-<p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
-<h2>git下的误区</h2>
-<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
-接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
-On branch master
-
-Initial commit
-
-Untracked files:
-<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="o">)</span>
-
-    hello.txt
-
-nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span>
+              <h2>1pjsip简介</h2>
+<p><a href="http://www.pjsip.org/">pjsip</a>是免费开源的多媒体通信库，纯c编写，可移植性非常好，支持多种协议，多种编/解码方式。对iOS的后台支持的很好(按文档的所说)，v2.3已经支持iOS上的视频传输。鉴于此，pjsip是实现VOIP比较好的选择。</p>
+<h2>2pjsip编译</h2>
+<p>可移植性(portable)是pjsip宣称的一大<a href="http://www.pjsip.org/about.htm#portable">特性</a>。在iOS上的使用方法，有详细的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/iPhone">使用手册</a>，这里会简单的记录下需要注意的地方。</p>
+<h3>2.1 准备</h3>
+<p>编译首先需要有源码，请到<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">这里</a>查看。对于想直接使用pjsip的建议直接下载release的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">稳定版本</a>，win系统请下zip格式，其余的请下tar格式。<br/>
+源码下载好后，进入其中的<code>./pjlib/include/pj/</code>，创建文件<code>config_site.h</code>， 内容如下：</p>
+<div class="highlight"><pre><span class="cp">#define PJ_CONFIG_IPHONE 1</span>
+<span class="cp">#include &lt;pj/config_site_sample.h&gt;</span>
 </pre></div>
-<p>很显然，我们需要先“添加” 文件到版本库（注意这个add在git中不是添加到版本库），然后进行提交：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git add .
-<span class="nv">$ </span>git commit -m <span class="s2">"init commit"</span>
+<h3>2.2 编译</h3>
+<p>因为不同iPhone的处理器架构不一样，我们在编译的时候需要指定arch，iPhone6是arm64, 5s是armv7s，5是armv7，使用下面的命令：</p>
+<div class="highlight"><pre><span class="nv">$ </span><span class="nb">cd</span> /path/to/your/pjsip/dir
+<span class="nv">$ ARCH</span><span class="o">=</span><span class="s1">'-arch arm64'</span> ./configure-iphone
+<span class="nv">$ </span>make dep <span class="o">&amp;&amp;</span> make clean <span class="o">&amp;&amp;</span> make
 </pre></div>
-<p>接下来修改文件：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"add a line"</span> &gt;&gt; hello.txt 
-<span class="nv">$ </span>git status
-On branch master
-Changes not staged <span class="k">for</span> commit:
-<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
-<span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes in working directory<span class="o">)</span>
-
-    modified:   hello.txt
-
-no changes added to commit <span class="o">(</span>use <span class="s2">"git add"</span> and/or <span class="s2">"git commit -a"</span><span class="o">)</span>
+<p>这样所需的库和头文件都编译好了，可以运行sample了</p>
+<h3>2.3 sample</h3>
+<p>v2.3版本中，进入<code>./pjsip-apps/src/pjsua/ios</code>，打开<code>ipjsua.xcodeproj</code>，运行后会看到一个带有<em>pjsua</em>的黑色界面，底部有诸如：<code>Telnet to xx.xx.xx.xx:xxxx</code>的字样。从v2.1以上的版本，sample带有<code>CLI</code>功能，具体的命令见<a href="http://trac.pjsip.org/repos/wiki/PJSUA-CLI">手册</a>。<br/>
+为了演示如何打电话，需要事先准备好sip服务器，安装好2台测试机。打开terminal，通过telnet连接测试机A，首先添加账号，输入：</p>
+<div class="highlight"><pre>+a sip:100@server.com sip:server.com * 100 123456
 </pre></div>
-<p>仔细看log，它提示我们先进行add操作再进行commit（如果确定要提交的情形下），但是等一下，add操作不是已经做了吗？难道add的含义不是添加文件到版本库以便进行追踪？</p>
-<h2>git add到底是什么意思</h2>
-<p>我们先接着上面继续操作：  </p>
-<div class="highlight"><pre><span class="nv">$ </span>git add hello.txt 
-<span class="nv">$ </span>git status
-On branch master
-Changes to be committed:
-<span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
-
-    modified:   hello.txt
+<p>其中，100是sip服务器上的账号，123456是账号密码，server.com是服务器。如法炮制telnet连接测试机B后，也添加一个账号，如：</p>
+<div class="highlight"><pre>+a sip:100@server.com sip:server.com * 100 123456
 </pre></div>
-<p>这时的log和之前相比，没有了add的建议操作，为了更明显显示这种区别：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"difference"</span> &gt;&gt;hello.txt
-<span class="nv">$git</span> status 
-On branch master
-Changes to be committed:
-<span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
-
-    modified:   hello.txt
-
-Changes not staged <span class="k">for</span> commit:
-<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
-<span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes in working directory<span class="o">)</span>
-
-    modified:   hello.txt
+<p>接下来通过测试机A拨打电话给测试机B：</p>
+<div class="highlight"><pre>call new sip:101@server.com
 </pre></div>
-<p>或者用－s参数：</p>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">git</span><span class="x"> status -s</span>
-<span class="x">MM hello.txt //在shell中2个M的颜色显示不一样</span>
+<p>而在测试机B上可以选择接通或挂断： </p>
+<div class="highlight"><pre>call answer 200
+call hangup
 </pre></div>
-<p>这里可以明白，git中的add操作和svn中的add操作是完全不一样的意思。<br/>
-在git中， 执行add操作后是把文件加入版本库的暂存区，而commit针对的内容就只是暂存区。<br/>
-而 <code>git commit -a</code> 其实会先执行add操作再提交暂存区的内容，所以这样做是一个非常不好的实践，因为add到暂存区的操作实际是需要我们严格控制的。至于git上为什么要有这样的设计，那么需要知道 <code>reset</code> 命令。这个下次再讲。</p>
-<h2>反思</h2>
-<p>很早就知道“暂存区”的概念，可是一直没有深入。git 的 <code>add</code> 和 <code>commit</code> 一直使用，可是却没有想到背后的涵义。所谓 “知其然不知其所以然”，实是大忌！</p>
+<p>这时拿起手机说话，声音就能从另一台手机中听到。</p>
+<h3>2.4 模拟器上的使用</h3>
+<p>模拟器上的编译命令如下：</p>
+<div class="highlight"><pre>export DEVPATH=/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer
+ARCH="-arch i386" CFLAGS="-O2 -m32 -mios-simulator-version-min=7.0" LDFLAGS="-O2 -m32 -mios-simulator-version-min=7.0" ./configure-iphone
+make dep &amp;&amp; make clean &amp;&amp; make
+</pre></div>
+<p>安装多个Xcode的机器根据情况选择合适Xcode的路径，根据所需适配的iOS最低系统自行修改iOS参数。</p>
+<h2>3 引入工程</h2>
+<p>编译好的库和头文件位于以下文件夹内的<code>include</code>和<code>lib</code>内：</p>
+<ul>
+<li>/pjlib</li>
+<li>/pjlib-util</li>
+<li>/pjmedia</li>
+<li>/pjnath</li>
+<li>/pjnath</li>
+<li>/third_party</li>
+</ul>
+<p>接下来，把lib内的.a文件都拖到xcode工程中，再接着添加include中的文件。对于include内的文件，也可以把上述6个文件夹包含的include文件合并到一个文件夹，然后设置工程的<code>Header Search Paths</code>参数。 
+接着Xcode6以前的项目需要在pch文件中添加：</p>
+<div class="highlight"><pre>#define PJ_AUTOCONF
+</pre></div>
+<p>而Xcode6创建的项目，在<code>Preprocessor Macros</code>中添加<code>PJ_AUTOCONF</code>参数。这样，在需要使用pjsip的地方引入头文件<code>#include &lt;pjsua-lib/pjsua.h&gt;</code>即可使用了。</p>
+<h3>3.1 支持多版本的编译</h3>
+<p>分别设置不同的arch，然后使用lipo合并，如：</p>
+<div class="highlight"><pre>lipo -arch armv6 lib/armv6/libpjlib.a -arch armv7 lib/armv7/libpjlib.a -create -output lib/libpjlib.a
+</pre></div>
+<p>在测试的时候，可以把真机和模拟器的库打包在一起，等到发布的时候只需要使用真机打包的库。</p>
+<h2>4 其他要点</h2>
+<h3>4.1 支持openssl</h3>
+<p>如果通话需要加密，那么请编译openssl，具体方法在<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/iPhone#OpenSSLSuport">这里</a>。暂时还没有用到，但感觉项目以后会用到，先mark下。</p>
+<h3>4.2 常见问题</h3>
+<p>还有一些iOS系统集成中常见的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/iPhone#Commonproblems">问题说明</a>，可以先浏览下，从中也可以看到pjsip对后台任务提供了内在支持。</p>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html">← Previous : QuartzComposer基本概念</a></li>
+        <li class="prev"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html">← Previous : 限制文本输入长度</a></li>
         
-        <li class="next"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">git bisect查找xcode6工程在iOS7下不全屏的问题:Next →</a></li>
+        <li class="next"><a href="/">Next →</a></li>
       </ul>
     </div>
 
