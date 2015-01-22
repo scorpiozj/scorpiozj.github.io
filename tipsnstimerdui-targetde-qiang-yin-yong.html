@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent</title>
+        <title>[Tips]NSTimer对Target的强引用</title>
         <meta charset="utf-8" />
 
 
@@ -43,80 +43,60 @@
               </ul>
             </div>
 
-<section id="content">
-<h2>Articles in the Linux category</h2>
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">文件权限</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>权限</h4>
-<p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
-    ls -l README
-    -rw-r--r--   1 xxxx  staff    234 Nov  9 11:27 README
-说明：<br/>
-第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br/>
-第二列数字1表示索引节点的目录连接。
-第三列就是文件拥有者的名字，第四列则是共享文件所在组。
-第五列是文件的字节数，第六、七、八列是时间，最后一列是名字。
-其中文件权限可以用二进制表达，该例对应的则是： <code>110100100</code>，用十进制表达则是： <code>644</code>。因此，有时候修改权限 <code>777</code>的时候，就一定要小心了 ...</br/></br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">Read more <i class="icon-arrow-right"></i></a></div>
 
 
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/security.html">security</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-23T10:00:00+08:00"> 三 23 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: install eclipse on centos6.5</p>
-<p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
-<h3>eclipse 下载</h3>
-<p>直接在<a href="https://www.eclipse.org/downloads/">官网</a>下载，选择合适的版本：网站会识别操作系统，主要注意是32位还是64位<br/>
-下载后，解压打开，双击eclipse的可执行程序，发现不能启动。弹出的提示说系统的jvm是1.6，而最新luna版需要1.7或以上。</p>
-<h3>jdk安装</h3>
-<p>主要参考了<a href="http://www.cnblogs.com/zhoulf/archive/2013/02/04/2891608.html">这篇文章</a>，具体过程就不多说了，注意操作要在su账号下。</p>
-<h4>source /etc/profile 不生效</h4>
-<p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
-<ol>
-<li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看 ...</li></ol> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark"
+                   title="Permalink to [Tips]NSTimer对Target的强引用">[Tips]NSTimer对Target的强引用</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-01-22T17:30:00+08:00">
+                四 22 一月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2>NSTimer对Target的强引用</h2>
+<p>这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。</p>
+<div class="highlight"><pre>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
+</pre></div>
+<p>其中，API文档中清楚地解释到：</p>
+<blockquote>
+<p>The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is invalidated.</p>
+</blockquote>
+<p>在实际运用中，target往往是当前的调用者，比如一个ViewController。这样就形成了一个经典的循环引用问题，导致当前的ViewControler始终无法释放。</p>
+<h2>解决之道</h2>
+<p>对于Timer要始终牢记手动invalidate，并且不能在dealloc中进行invalidate。</p>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html">← Previous : VOIP:pjsip的编译和使用</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
 
 
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/linux.html">linux</a>
-											<a class="danger label" href="http://icocoa.tk/tag/eclipse.html">eclipse</a>
-											<a class="danger label" href="http://icocoa.tk/tag/jdk.html">jdk</a>
-								</div>
+            
 
 
 
-				        </article></li>
-				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
+        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -179,10 +159,8 @@ Summary: install eclipse on centos6.5</p>
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

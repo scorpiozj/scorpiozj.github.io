@@ -1,5 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 18 Jan 2015 22:30:00 +0800</lastBuildDate><item><title>VOIP:pjsip的编译和使用</title><link>http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html</link><description>&lt;h2&gt;1pjsip简介&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 22 Jan 2015 17:30:00 +0800</lastBuildDate><item><title>[Tips]NSTimer对Target的强引用</title><link>http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html</link><description>&lt;h2&gt;NSTimer对Target的强引用&lt;/h2&gt;
+&lt;p&gt;这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其中，API文档中清楚地解释到：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is invalidated.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;在实际运用中，target往往是当前的调用者，比如一个ViewController。这样就形成了一个经典的循环引用问题，导致当前的ViewControler始终无法释放。&lt;/p&gt;
+&lt;h2&gt;解决之道&lt;/h2&gt;
+&lt;p&gt;对于Timer要始终牢记手动invalidate，并且不能在dealloc中进行invalidate。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Thu, 22 Jan 2015 17:30:00 +0800</pubDate><guid>tag:icocoa.tk,2015-01-22:tipsnstimerdui-targetde-qiang-yin-yong.html</guid><category>objc</category><category>iOS</category></item><item><title>VOIP:pjsip的编译和使用</title><link>http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html</link><description>&lt;h2&gt;1pjsip简介&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://www.pjsip.org/"&gt;pjsip&lt;/a&gt;是免费开源的多媒体通信库，纯c编写，可移植性非常好，支持多种协议，多种编/解码方式。对iOS的后台支持的很好(按文档的所说)，v2.3已经支持iOS上的视频传输。鉴于此，pjsip是实现VOIP比较好的选择。&lt;/p&gt;
 &lt;h2&gt;2pjsip编译&lt;/h2&gt;
 &lt;p&gt;可移植性(portable)是pjsip宣称的一大&lt;a href="http://www.pjsip.org/about.htm#portable"&gt;特性&lt;/a&gt;。在iOS上的使用方法，有详细的&lt;a href="http://trac.pjsip.org/repos/wiki/Getting-Started/iPhone"&gt;使用手册&lt;/a&gt;，这里会简单的记录下需要注意的地方。&lt;/p&gt;
