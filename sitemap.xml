@@ -5,483 +5,490 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/index.html</loc>
-<lastmod>2015-01-22T21:11:45-00:00</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/archives.html</loc>
-<lastmod>2015-01-22T21:11:45-00:00</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tags.html</loc>
-<lastmod>2015-01-22T21:11:45-00:00</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/categories.html</loc>
-<lastmod>2015-01-22T21:11:45-00:00</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
+<loc>http://icocoa.tk/voippjsipji-ben-yong-fa.html</loc>
+<lastmod>2015-01-27T11:30:00-00:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html</loc>
-<lastmod>2015-01-22T17:30:00+08:00</lastmod>
+<lastmod>2015-01-22T17:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html</loc>
-<lastmod>2015-01-18T22:30:00+08:00</lastmod>
+<lastmod>2015-01-18T22:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html</loc>
-<lastmod>2015-01-09T22:30:00+08:00</lastmod>
+<lastmod>2015-01-09T22:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/xin-nian-kai-pian.html</loc>
-<lastmod>2015-01-05T22:30:00+08:00</lastmod>
+<lastmod>2015-01-05T22:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/nszombierenable.html</loc>
-<lastmod>2014-12-18T10:30:00+08:00</lastmod>
+<lastmod>2014-12-18T10:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/find-all-unlocalized-strings.html</loc>
-<lastmod>2014-12-16T17:30:00+08:00</lastmod>
+<lastmod>2014-12-16T17:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/dong-de-zhi-sun.html</loc>
-<lastmod>2014-12-08T22:30:00+08:00</lastmod>
+<lastmod>2014-12-08T22:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/app-extension-study-4.html</loc>
-<lastmod>2014-11-19T10:00:00+08:00</lastmod>
+<lastmod>2014-11-19T10:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/gitban-ben-ku-guan-li.html</loc>
-<lastmod>2014-11-18T10:30:00+08:00</lastmod>
+<lastmod>2014-11-18T10:30:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/app-extension-study-3.html</loc>
-<lastmod>2014-11-14T16:00:00+08:00</lastmod>
+<lastmod>2014-11-14T16:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html</loc>
-<lastmod>2014-11-09T16:00:00+08:00</lastmod>
+<lastmod>2014-11-09T16:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/wen-jian-quan-xian.html</loc>
-<lastmod>2014-11-09T16:00:00+08:00</lastmod>
+<lastmod>2014-11-09T16:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html</loc>
-<lastmod>2014-11-07T16:00:00+08:00</lastmod>
+<lastmod>2014-11-07T16:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/ios8zhi-uialertcontroller.html</loc>
-<lastmod>2014-11-05T11:00:00+08:00</lastmod>
+<lastmod>2014-11-05T11:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/git-revert-svn-revertde-bu-tong.html</loc>
-<lastmod>2014-11-03T10:00:00+08:00</lastmod>
+<lastmod>2014-11-03T10:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/app-extension-study-2.html</loc>
-<lastmod>2014-10-31T14:00:00+08:00</lastmod>
+<lastmod>2014-10-31T14:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/app-extension-study-1.html</loc>
-<lastmod>2014-10-16T14:00:00+08:00</lastmod>
+<lastmod>2014-10-16T14:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html</loc>
-<lastmod>2014-10-16T10:00:00+08:00</lastmod>
+<lastmod>2014-10-16T10:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/git-commit-a-de-wu-qu.html</loc>
-<lastmod>2014-09-22T14:00:00+08:00</lastmod>
+<lastmod>2014-09-22T14:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/quartzcomposerji-ben-gai-nian.html</loc>
-<lastmod>2014-08-25T14:00:00+08:00</lastmod>
+<lastmod>2014-08-25T14:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/mvvmchu-shi-jian.html</loc>
-<lastmod>2014-08-25T10:00:00+08:00</lastmod>
+<lastmod>2014-08-25T10:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/centos65-an-zhuang-eclipse.html</loc>
-<lastmod>2014-07-23T10:00:00+08:00</lastmod>
+<lastmod>2014-07-23T10:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/designcode-tutorial1-bi-ji.html</loc>
-<lastmod>2014-07-17T17:00:00+08:00</lastmod>
+<lastmod>2014-07-17T17:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/mvvmmo-shi-chu-tan.html</loc>
-<lastmod>2014-07-17T13:00:00+08:00</lastmod>
+<lastmod>2014-07-17T13:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html</loc>
-<lastmod>2014-07-14T10:00:00+08:00</lastmod>
+<lastmod>2014-07-14T10:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/sketch-tutorials-study-1.html</loc>
-<lastmod>2014-07-08T14:00:00+08:00</lastmod>
+<lastmod>2014-07-08T14:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/wwdc2014-223-notes-protyping.html</loc>
-<lastmod>2014-07-03T22:00:00+08:00</lastmod>
+<lastmod>2014-07-03T22:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/wwdc2014-211-notes-designing_intuitive_user_experiences.html</loc>
-<lastmod>2014-06-30T14:20:00+08:00</lastmod>
+<lastmod>2014-06-30T14:20:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html</loc>
-<lastmod>2014-06-29T14:00:00+08:00</lastmod>
+<lastmod>2014-06-29T14:00:00-00:00</lastmod>
 <changefreq>monthly</changefreq>
 <priority>0.7</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/design.html</loc>
-<lastmod>2014-08-25T14:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/ios.html</loc>
-<lastmod>2015-01-09T22:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/iostips.html</loc>
-<lastmod>2015-01-22T17:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/linux.html</loc>
-<lastmod>2014-11-09T16:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/python.html</loc>
-<lastmod>2014-11-09T16:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/version.html</loc>
-<lastmod>2014-11-18T10:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/category/voip.html</loc>
-<lastmod>2015-01-18T22:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/.html</loc>
-<lastmod>2014-12-08T22:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/pelican.html</loc>
-<lastmod>2014-11-09T16:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/sketch.html</loc>
-<lastmod>2014-07-17T17:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/mvvm.html</loc>
-<lastmod>2014-08-25T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/sigsegv.html</loc>
-<lastmod>2014-07-14T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/eclipse.html</loc>
-<lastmod>2014-07-23T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/ios8.html</loc>
-<lastmod>2014-11-19T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/objc.html</loc>
-<lastmod>2015-01-22T17:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/design.html</loc>
-<lastmod>2014-07-17T17:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/linux.html</loc>
-<lastmod>2014-07-23T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/localized.html</loc>
-<lastmod>2014-12-16T17:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/git.html</loc>
-<lastmod>2014-11-18T10:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/appextension.html</loc>
-<lastmod>2014-11-19T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/pattern.html</loc>
-<lastmod>2014-07-17T13:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/python.html</loc>
-<lastmod>2014-11-09T16:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/ios.html</loc>
-<lastmod>2015-01-22T17:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/pjsip.html</loc>
-<lastmod>2015-01-18T22:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/launch-screen.html</loc>
-<lastmod>2014-10-16T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/svn.html</loc>
-<lastmod>2014-11-03T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/zong-jie-ji-hua.html</loc>
-<lastmod>2015-01-05T22:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/ux.html</loc>
-<lastmod>2014-06-30T14:20:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/jdk.html</loc>
-<lastmod>2014-07-23T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/revert.html</loc>
-<lastmod>2014-11-03T10:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/quartzcomposer.html</loc>
-<lastmod>2014-08-25T14:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/wwdc-2014.html</loc>
-<lastmod>2014-07-03T22:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/mvc.html</loc>
-<lastmod>2014-07-17T13:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/ui.html</loc>
-<lastmod>2014-07-03T22:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tag/security.html</loc>
-<lastmod>2014-11-09T16:00:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/author/charles-zhu.html</loc>
-<lastmod>2015-01-22T17:30:00+08:06</lastmod>
+<lastmod>2015-01-27T15:52:51-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

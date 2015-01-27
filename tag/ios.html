@@ -53,13 +53,52 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/voippjsipji-ben-yong-fa.html" rel="bookmark" title="Permalink to [VOIP]pjsip基本用法">[VOIP]pjsip基本用法</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-01-27T11:30:00"> Tue 27 January 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <h2>简介</h2>
+<p>在<a href="/voippjsipde-bian-yi-he-shi-yong.html">上一篇</a>的基础上，我们就可以实现iOS上的VOIP功能了。本篇先简单的介绍pjsip中基本功能的实现，再介绍下iOS上独有的技术要点。这里所说的基本功能包括：</p>
+<ol>
+<li>注册到服务器</li>
+<li>拨打电话</li>
+<li>接听电话</li>
+<li>挂断电话</li>
+</ol>
+<h2>sip服务器</h2>
+<p>服务器有很多选择，也可以本地搭建。我这里使用的是<a href="http://minisipserver.com/tw/account/new.html">MINISIPSERVER云</a>，支持添加多个账号，但通话时长限制在60秒，用于demo是足够的了。具体的注册请自行处理。</p>
+<h2>基本功能实现</h2>
+<p>上一篇中用到的iOS demo位于<code>/pjsip-apps/src/pjsua/ios</code>，这里呢将使用一个简单的demo来学习基本功能的使用：<code>/pjsip-apps/src/samples/simple_pjsua.c</code>。</p>
+<h3>注册</h3>
+<p><code>main</code>函数中完成了服务器的注册功能，整理如下：</p>
+<div class="highlight"><pre><span class="n">pjsua_acc_id</span> <span class="n">acc_id</span><span class="p">;</span>
+<span class="kt">pj_status_t</span> <span class="n">status</span><span class="p">;</span>
+
+<span class="cm">/* Create pjsua first! */</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_create</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS ...</span></pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/voippjsipji-ben-yong-fa.html" rel="bookmark" title="Permalink to [VOIP]pjsip基本用法">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/pjsip.html">pjsip</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">[Tips]NSTimer对Target的强引用</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2015-01-22T17:30:00+08:00"> 四 22 一月 2015 </abbr>
+				                    <abbr class="published" title="2015-01-22T17:30:00"> Thu 22 January 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <h2>NSTimer对Target的强引用</h2>
 <p>这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。</p>
-<div class="highlight"><pre>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
+<div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="n">NSTimer</span> <span class="o">*</span><span class="p">)</span><span class="n">scheduledTimerWithTimeInterval</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">ti</span> <span class="n">target</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">aTarget</span> <span class="n">selector</span><span class="o">:</span><span class="p">(</span><span class="n">SEL</span><span class="p">)</span><span class="n">aSelector</span> <span class="n">userInfo</span><span class="o">:</span><span class="p">(</span><span class="n">id</span><span class="p">)</span><span class="n">userInfo</span> <span class="n">repeats</span><span class="o">:</span><span class="p">(</span><span class="n">BOOL</span><span class="p">)</span><span class="n">yesOrNo</span>
 </pre></div>
 <p>其中，API文档中清楚地解释到：</p>
 <blockquote>
@@ -81,7 +120,7 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark" title="Permalink to VOIP:pjsip的编译和使用">VOIP:pjsip的编译和使用</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2015-01-18T22:30:00+08:00"> 日 18 一月 2015 </abbr>
+				                    <abbr class="published" title="2015-01-18T22:30:00"> Sun 18 January 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <h2>1pjsip简介</h2>
 <p><a href="http://www.pjsip.org/">pjsip</a>是免费开源的多媒体通信库，纯c编写，可移植性非常好，支持多种协议，多种编/解码方式。对iOS的后台支持的很好(按文档的所说)，v2.3已经支持iOS上的视频传输。鉴于此，pjsip是实现VOIP比较好的选择。</p>
@@ -90,8 +129,8 @@
 <h3>2.1 准备</h3>
 <p>编译首先需要有源码，请到<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">这里</a>查看。对于想直接使用pjsip的建议直接下载release的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">稳定版本</a>，win系统请下zip格式，其余的请下tar格式。<br/>
 源码下载好后，进入其中的<code>./pjlib/include/pj/</code>，创建文件<code>config_site.h</code>， 内容如下：</p>
-<div class="highlight"><pre><span class="cp">#define PJ_CONFIG_IPHONE 1</span>
-<span class="cp">#include &lt;pj/config_site_sample.h ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="c">#define PJ_CONFIG_IPHONE 1</span>
+<span class="c">#include &lt;pj/config_site_sample.h ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark" title="Permalink to VOIP:pjsip的编译和使用">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -109,7 +148,7 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">design+code tutorial1 笔记</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-17T17:00:00+08:00"> 四 17 七月 2014 </abbr>
+				                    <abbr class="published" title="2014-07-17T17:00:00"> Thu 17 July 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: design笔记</p>
@@ -147,7 +186,7 @@ normal #FAC3FF 10%
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">MVVM模式初探</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-17T13:00:00+08:00"> 四 17 七月 2014 </abbr>
+				                    <abbr class="published" title="2014-07-17T13:00:00"> Thu 17 July 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: 设计模式</p>
@@ -177,23 +216,23 @@ Summary: 设计模式</p>
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">umeng 友盟错误报告处理</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-14T10:00:00+08:00"> 一 14 七月 2014 </abbr>
+				                    <abbr class="published" title="2014-07-14T10:00:00"> Mon 14 July 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: 错误报告处理</p>
 <p>今天发现友盟的后台中出现了app crash，打开一看：</p>
-<div class="highlight"><pre>Application received signal SIGSEGV
-(null)
-(
-    0   CoreFoundation                      0x2e44bf23  + 154
-    1   libobjc.A.dylib                     0x38bdece7 objc_exception_throw + 38
-    2   CoreFoundation                      0x2e44be4d  + 0
-    3   ?????????                           0x00107a51 ????????? + 735825
-    4   libsystem_platform.dylib            0x391f671b _sigtramp + 34
-    5   UIKit                               0x30f20765  + 64
-    6   UIKit                               0x30c9a7bd  + 604
-    7   UIKit                               0x30f216db  + 1398
-    8 ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="n">Application</span> <span class="n">received</span> <span class="n">signal</span> <span class="n">SIGSEGV</span>
+<span class="p">(</span><span class="n">null</span><span class="p">)</span>
+<span class="p">(</span>
+    <span class="mi">0</span>   <span class="n">CoreFoundation</span>                      <span class="mh">0x2e44bf23</span>  <span class="o">+</span> <span class="mi">154</span>
+    <span class="mi">1</span>   <span class="n">libobjc</span><span class="p">.</span><span class="n">A</span><span class="p">.</span><span class="n">dylib</span>                     <span class="mh">0x38bdece7</span> <span class="n">objc_exception_throw</span> <span class="o">+</span> <span class="mi">38</span>
+    <span class="mi">2</span>   <span class="n">CoreFoundation</span>                      <span class="mh">0x2e44be4d</span>  <span class="o">+</span> <span class="mi">0</span>
+    <span class="mi">3</span>   <span class="o">?????????</span>                           <span class="mh">0x00107a51</span> <span class="o">?????????</span> <span class="o">+</span> <span class="mi">735825</span>
+    <span class="mi">4</span>   <span class="n">libsystem_platform</span><span class="p">.</span><span class="n">dylib</span>            <span class="mh">0x391f671b</span> <span class="n">_sigtramp</span> <span class="o">+</span> <span class="mi">34</span>
+    <span class="mi">5</span>   <span class="n">UIKit</span>                               <span class="mh">0x30f20765</span>  <span class="o">+</span> <span class="mi">64</span>
+    <span class="mi">6</span>   <span class="n">UIKit</span>                               <span class="mh">0x30c9a7bd</span>  <span class="o">+</span> <span class="mi">604</span>
+    <span class="mi">7</span>   <span class="n">UIKit</span>                               <span class="mh">0x30f216db</span>  <span class="o">+</span> <span class="mi">1398</span>
+    <span class="mi">8 ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -211,7 +250,7 @@ Summary: 错误报告处理</p>
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">WWDC2014-223 Notes Protyping</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-03T22:00:00+08:00"> 四 03 七月 2014 </abbr>
+				                    <abbr class="published" title="2014-07-03T22:00:00"> Thu 03 July 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu
 Summary: notes for 223</p>
@@ -258,7 +297,7 @@ Summary: notes for 223</p>
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">WWDC2014-211 Notes designing_intuitive_user_experiences</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-06-30T14:20:00+08:00"> 一 30 六月 2014 </abbr>
+				                    <abbr class="published" title="2014-06-30T14:20:00"> Mon 30 June 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: Notes for 211</p>
@@ -289,7 +328,7 @@ Summary: Notes for 211</p>
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-06-29T14:00:00+08:00"> 日 29 六月 2014 </abbr>
+				                    <abbr class="published" title="2014-06-29T14:00:00"> Sun 29 June 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: notes for 221</p>
@@ -302,7 +341,7 @@ Summary: notes for 221</p>
 </ul>
 <h2>Spring animations</h2>
 <p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
-<div class="highlight"><pre>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="o">+</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="n">animateWithDuration</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">duration</span> <span class="n">delay</span><span class="o">:</span><span class="p">(</span><span class="n">NSTimeInterval</span><span class="p">)</span><span class="n">delay</span> <span class="n">usingSpringWithDamping</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">dampingRatio</span> <span class="n">initialSpringVelocity</span><span class="o">:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="n">velocity</span> <span class="n">options</span><span class="o">:</span><span class="p">(</span><span class="n">UIViewAnimationOptions</span><span class="p">)</span><span class="n">options</span> <span class="n">animations</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="kt">void</span><span class="p">))</span><span class="n">animations</span> <span class="n">completion</span><span class="o">:</span><span class="p">(</span><span class="kt">void</span> <span class="p">(</span><span class="o">^</span><span class="p">)(</span><span class="n">BOOL</span> <span class="n">finished ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -343,34 +382,34 @@ Summary: notes for 221</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 

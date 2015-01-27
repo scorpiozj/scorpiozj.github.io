@@ -56,8 +56,8 @@
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-10-16T10:00:00+08:00">
-                四 16 十月 2014
+              <abbr class="published" title="2014-10-16T10:00:00">
+                Thu 16 October 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
@@ -71,12 +71,12 @@ Summary: launch screen,xcode6,git</p>
 <h2>git bisect</h2>
 <p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br/>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
-<div class="highlight"><pre>git log --oneline //列出提交记录
-git bisect start //开始查找
-git bisect bad //标记当前（master）为错误版本
-git bisect good A-commit //提供一个运行正确的版本，下面开始查找
+<div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master）为错误版本</span>
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">good</span> <span class="n">A</span><span class="o">-</span><span class="n">commit</span> <span class="c1">//提供一个运行正确的版本，下面开始查找</span>
 
-git bisect reset //当确认错误的提交后，需要清理战场，回到HEAD
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">reset</span> <span class="c1">//当确认错误的提交后，需要清理战场，回到HEAD</span>
 </pre></div>
 <h2>LaunchScreen.xib</h2>
 <p>经过bisect的检查，发现是将工程的 Deployment target设置为iOS7引起的。因为Xcode6中模板工程默认使用LaunchScreen.xib，而且size class是对iOS8才有效，所以猜想应该是LaunchScreen引起的。重新运行了下工程，发现在iOS7下的确启动画面没有显示。而目前iOS7的用户还是占了大多数，很显然不可能只适配iOS8，所以工程还是得使用LaunchImage。</p>
@@ -128,34 +128,34 @@ git bisect reset //当确认错误的提交后，需要清理战场，回到HEAD
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 

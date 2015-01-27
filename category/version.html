@@ -55,7 +55,7 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Git版本库管理</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-18T10:30:00+08:00"> 二 18 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-18T10:30:00"> Tue 18 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>在开发过程中往往会使用第三方库，可有时候会因为某种原因不使用了，我们可以使用 <code>reset</code>或是直接删除的方式将库删除，比如开发中用到了某度的SDK，可是发现crash的概率太大需要舍弃之。可是，这些库的影子还在版本库的历史中可以找到，会增大库的体积。这时候我们就需要完全清楚这些“残留”文件。<br/>
 本篇内容可在<a href="http://www.amazon.cn/gp/product/B0058FLC40/ref=as_li_ss_tl?ie=UTF8&amp;camp=536&amp;creative=3132&amp;creativeASIN=B0058FLC40&amp;linkCode=as2&amp;tag=scorpiozj-23">Git权威指南</a>第14章中找到。</p>
@@ -64,9 +64,9 @@
 <h4>暂存区中的临时对象</h4>
 <p>添加到暂存区的文件发现不需要了，我们应该怎么办？
 首先我们复制2个稍大的(10M)的文件到工作区，然后添加到暂存区：</p>
-<div class="highlight"><pre><span class="nv">$ </span>cp /Users/xxxxx/Desktop/test.zip bigfile
-<span class="nv">$ </span>cp /Users/xxxxx/Desktop/test.zip bigfile.dup
-<span class="nv">$ </span>git add bigfile ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="err">$</span> <span class="n">cp</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">xxxxx</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">zip</span> <span class="n">bigfile</span>
+<span class="err">$</span> <span class="n">cp</span> <span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">xxxxx</span><span class="o">/</span><span class="n">Desktop</span><span class="o">/</span><span class="n">test</span><span class="p">.</span><span class="n">zip</span> <span class="n">bigfile</span><span class="p">.</span><span class="n">dup</span>
+<span class="err">$</span> <span class="n">git</span> <span class="n">add</span> <span class="n">bigfile ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -83,26 +83,26 @@
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-03T10:00:00+08:00"> 一 03 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-03T10:00:00"> Mon 03 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
 <h4>git revert</h4>
 <p>对应的中文术语叫反转提交，基本的用法：</p>
-<div class="highlight"><pre>git revert commit-ish
+<div class="highlight"><pre><span class="n">git</span> <span class="n">revert</span> <span class="n">commit</span><span class="o">-</span><span class="n">ish</span>
 </pre></div>
 <p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
 <h4>svn revert</h4>
 <p>svn中revert即回滚，基本用法</p>
-<div class="highlight"><pre>svn revert PATH
+<div class="highlight"><pre><span class="n">svn</span> <span class="n">revert</span> <span class="n">PATH</span>
 </pre></div>
 <p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
 <h4>svn实现git revert的功能</h4>
 <p>如果要向用svn实现git revert的功能那么就需要：</p>
-<div class="highlight"><pre>svn update
-//确保版本库最新
-svn log
-//找到想要“回复”的版本号
-svn merge -r currentID ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="n">svn</span> <span class="n">update</span>
+<span class="c1">//确保版本库最新</span>
+<span class="n">svn</span> <span class="n">log</span>
+<span class="c1">//找到想要“回复”的版本号</span>
+<span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">r ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -121,7 +121,7 @@ svn merge -r currentID ...</pre></div> </div><!-- /.entry-content -->
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-22T14:00:00+08:00"> 一 22 九月 2014 </abbr>
+				                    <abbr class="published" title="2014-09-22T14:00:00"> Mon 22 September 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: git 错误理解</p>
@@ -130,12 +130,12 @@ Summary: git 错误理解</p>
 <h2>git下的误区</h2>
 <p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
 接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
-On branch master
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">git</span> <span class="nb">init</span>
+<span class="err">$</span> <span class="nx">echo</span> <span class="s2">"this is a init text"</span> <span class="o">&gt;&gt;</span> <span class="nx">hello.txt</span>
+<span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
+<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
 
-Initial ...</pre></div> </div><!-- /.entry-content -->
+<span class="nx">Initial ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -174,34 +174,34 @@ Initial ...</pre></div> </div><!-- /.entry-content -->
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 

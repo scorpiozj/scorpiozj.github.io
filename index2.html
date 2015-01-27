@@ -53,9 +53,40 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">App Extension Study 3</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-14T16:00:00"> Fri 14 November 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+Summary: ios8 app extension</p>
+<h3>1 开始</h3>
+<p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
+<h3>2 Finder Sync (OS X)</h3>
+<p>因为extension要运行在10.10的OS X上，由于没升级，所以本节就侧重“理论”了。  </p>
+<h4>2.1 含义</h4>
+<p>顾名思义，就是保持本地的某些文件夹和远程的文件夹内容保持一致。它可以让用户在Finder实时察觉同步的状态并随时控制同步的进程。比如说可以在文件夹上加badge或是文字来告诉用户当前的状态，或是在Finder窗口添加工具栏方便打开监视的文件夹或强制退出同步(不知道网盘类的应用如何集成该extension呢)。因此，<code>Finder Sync</code>的host app只能是<code>Finder</code>。<br/>
+<code>Finder Sync</code>可以：</p>
+<ul>
+<li>注册一系列文件夹进行同步</li>
+<li>当用户打开 ...</li></ul> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Pelican若干问题汇总</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-09T16:00:00"> Sun 09 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>前几天感冒，鼻塞导致做任何事情都没有精力，只能花点时间整理pelican使用中遇到的一些问题。</p>
 <h4>WARNING: No valid files found in content.</h4>
@@ -84,7 +115,7 @@ WARNING: Could not process content/output/authors.html
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">文件权限</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-09T16:00:00"> Sun 09 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <h4>权限</h4>
 <p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
@@ -112,21 +143,21 @@ WARNING: Could not process content/output/authors.html
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">iOS8下控件的旋转</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-07T16:00:00+08:00"> 五 07 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-07T16:00:00"> Fri 07 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <h4>由起</h4>
 <p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
 <h4>修复</h4>
 <p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
-<div class="highlight"><pre>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
-    {
-        switch (interfaceOrientation) {
-            case UIInterfaceOrientationLandscapeLeft:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
-                break;
+<div class="highlight"><pre><span class="k">if</span> <span class="p">(</span><span class="n">floor</span><span class="p">(</span><span class="n">NSFoundationVersionNumber</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="n">NSFoundationVersionNumber_iOS_7_1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">switch</span> <span class="p">(</span><span class="n">interfaceOrientation</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="n">UIInterfaceOrientationLandscapeLeft</span>:
+                <span class="n">self</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">M_PI</span> <span class="o">*</span> <span class="mf">270.0</span> <span class="o">/</span> <span class="mf">180.0</span><span class="p">);</span>
+                <span class="k">break</span><span class="p">;</span>
 
-            case UIInterfaceOrientationLandscapeRight:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div> </div><!-- /.entry-content -->
+            <span class="k">case</span> <span class="n">UIInterfaceOrientationLandscapeRight</span>:
+                <span class="n">self</span><span class="p">.</span><span class="n">transform</span> <span class="o">=</span> <span class="n">CGAffineTransformMakeRotation</span><span class="p">(</span><span class="n">M_PI</span> <span class="o">*</span> <span class="mf">90.0</span> <span class="o">/</span> <span class="mf">180 ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -143,13 +174,13 @@ WARNING: Could not process content/output/authors.html
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">iOS8之UIAlertController</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-05T11:00:00+08:00"> 三 05 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-05T11:00:00"> Wed 05 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <h4>由起</h4>
 <p><code>UIAlertController</code>是iOS8中引入的，用于整合<code>UIAlertView</code>和<code>UIActionSheet</code>的新类，在实现中抛弃了之前的delegate用法，而采用了block的方式，从而使得使用和可读性都简化了不少。<br/>
 使用iOS8SDK编译的项目，大多数情况使用之前的<code>UIAlertView</code>或<code>UIActionSheet</code>都不会产生问题，如果有问题了，那就需要使用新类了。比如，一个项目中iPad上调用<code>[actionSheet showFromToolbar:]</code>产生错误：</p>
-<div class="highlight"><pre>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
-2014-11-05 10:50:26.762 XXXXXX[467 ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">05</span> <span class="mi">10</span><span class="o">:</span><span class="mi">50</span><span class="o">:</span><span class="mf">26.614</span> <span class="n">XXXXXX</span><span class="p">[</span><span class="mi">467</span><span class="o">:</span><span class="mi">78104</span><span class="p">]</span> <span class="n">Presenting</span> <span class="n">view</span> <span class="n">controllers</span> <span class="n">on</span> <span class="n">detached</span> <span class="n">view</span> <span class="n">controllers</span> <span class="n">is</span> <span class="n">discouraged</span> <span class="o">&lt;</span><span class="n">UIViewController</span><span class="o">:</span> <span class="mh">0x17ea3470</span><span class="o">&gt;</span><span class="p">.</span>
+<span class="mi">2014</span><span class="o">-</span><span class="mi">11</span><span class="o">-</span><span class="mo">05</span> <span class="mi">10</span><span class="o">:</span><span class="mi">50 ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -166,26 +197,26 @@ WARNING: Could not process content/output/authors.html
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-03T10:00:00+08:00"> 一 03 十一月 2014 </abbr>
+				                    <abbr class="published" title="2014-11-03T10:00:00"> Mon 03 November 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
 <h4>git revert</h4>
 <p>对应的中文术语叫反转提交，基本的用法：</p>
-<div class="highlight"><pre>git revert commit-ish
+<div class="highlight"><pre><span class="n">git</span> <span class="n">revert</span> <span class="n">commit</span><span class="o">-</span><span class="n">ish</span>
 </pre></div>
 <p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
 <h4>svn revert</h4>
 <p>svn中revert即回滚，基本用法</p>
-<div class="highlight"><pre>svn revert PATH
+<div class="highlight"><pre><span class="n">svn</span> <span class="n">revert</span> <span class="n">PATH</span>
 </pre></div>
 <p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
 <h4>svn实现git revert的功能</h4>
 <p>如果要向用svn实现git revert的功能那么就需要：</p>
-<div class="highlight"><pre>svn update
-//确保版本库最新
-svn log
-//找到想要“回复”的版本号
-svn merge -r currentID ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="n">svn</span> <span class="n">update</span>
+<span class="c1">//确保版本库最新</span>
+<span class="n">svn</span> <span class="n">log</span>
+<span class="c1">//找到想要“回复”的版本号</span>
+<span class="n">svn</span> <span class="n">merge</span> <span class="o">-</span><span class="n">r ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -204,7 +235,7 @@ svn merge -r currentID ...</pre></div> </div><!-- /.entry-content -->
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-2.html" rel="bookmark" title="Permalink to App Extension Study 2">App Extension Study 2</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-10-31T14:00:00+08:00"> 五 31 十月 2014 </abbr>
+				                    <abbr class="published" title="2014-10-31T14:00:00"> Fri 31 October 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
@@ -238,7 +269,7 @@ Summary: ios8 app extension</p>
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">App Extension Study 1</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-10-16T14:00:00+08:00"> 四 16 十月 2014 </abbr>
+				                    <abbr class="published" title="2014-10-16T14:00:00"> Thu 16 October 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
@@ -270,7 +301,7 @@ Summary: ios8 app extension</p>
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">git bisect查找xcode6工程在iOS7下不全屏的问题</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-10-16T10:00:00+08:00"> 四 16 十月 2014 </abbr>
+				                    <abbr class="published" title="2014-10-16T10:00:00"> Thu 16 October 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: launch screen,xcode6,git</p>
@@ -279,9 +310,9 @@ Summary: launch screen,xcode6,git</p>
 <h2>git bisect</h2>
 <p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br/>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
-<div class="highlight"><pre>git log --oneline //列出提交记录
-git bisect start //开始查找
-git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span class="n">git</span> <span class="n">log</span> <span class="o">--</span><span class="n">oneline</span> <span class="c1">//列出提交记录</span>
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">start</span> <span class="c1">//开始查找</span>
+<span class="n">git</span> <span class="n">bisect</span> <span class="n">bad</span> <span class="c1">//标记当前（master ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -300,7 +331,7 @@ git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-conten
 				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-22T14:00:00+08:00"> 一 22 九月 2014 </abbr>
+				                    <abbr class="published" title="2014-09-22T14:00:00"> Mon 22 September 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
 Summary: git 错误理解</p>
@@ -309,12 +340,12 @@ Summary: git 错误理解</p>
 <h2>git下的误区</h2>
 <p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
 接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
-On branch master
+<div class="highlight"><pre><span class="err">$</span> <span class="nx">git</span> <span class="nb">init</span>
+<span class="err">$</span> <span class="nx">echo</span> <span class="s2">"this is a init text"</span> <span class="o">&gt;&gt;</span> <span class="nx">hello.txt</span>
+<span class="err">$</span> <span class="nx">git</span> <span class="nb">status</span>
+<span class="k">On</span> <span class="nx">branch</span> <span class="nx">master</span>
 
-Initial ...</pre></div> </div><!-- /.entry-content -->
+<span class="nx">Initial ...</span></pre></div> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -323,34 +354,6 @@ Initial ...</pre></div> </div><!-- /.entry-content -->
 								<div class="row tag-row">
 										<span>Tagged as : </span>
 											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">QuartzComposer基本概念</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-25T14:00:00+08:00"> 一 25 八月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: a guide to QuartzComposer</p>
-<p>Processors are green, providers are blue, and consumers are pink
-最近才发现QuartzComposer也是一款用来设计交互的工具，原来Xcode自带，现在从Xcode中分离成为单独的app。之所以会关注是发现facebook的设计师也比较推崇该工具。在官网上搜索相关文档，内容都比较陈旧，或许说明这个工具比较成熟吧。</p>
-<h3>基本概念</h3>
-<h4>1. composition</h4>
-<p>Composer中创建的文件叫Quartz composition ， 其中最基本的单元（module）叫patch。</p>
-<h4>2. patch</h4>
-<p>patch是最基本的单元，苹果准备了丰富的库来完成一系列操作。patch库可以通过cmd＋enter的方式调用，然后找到需要的patch直接拖即可。patch相当于是一个程序，函数原型相当于：  </p>
-<div class="highlight"><pre><span class="nx">Result</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span> <span class="nx">or</span> <span class="nx">more</span> <span class="nx">input</span> <span class="nx">parameters ...</span></pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a>
 								</div>
 
 
@@ -381,34 +384,34 @@ Summary: a guide to QuartzComposer</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 

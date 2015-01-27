@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>[VOIP]pjsip基本用法</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/voippjsipji-ben-yong-fa.html" rel="bookmark"
+                   title="Permalink to [VOIP]pjsip基本用法">[VOIP]pjsip基本用法</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-01-27T11:30:00">
+                Tue 27 January 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h2>简介</h2>
+<p>在<a href="/voippjsipde-bian-yi-he-shi-yong.html">上一篇</a>的基础上，我们就可以实现iOS上的VOIP功能了。本篇先简单的介绍pjsip中基本功能的实现，再介绍下iOS上独有的技术要点。这里所说的基本功能包括：</p>
+<ol>
+<li>注册到服务器</li>
+<li>拨打电话</li>
+<li>接听电话</li>
+<li>挂断电话</li>
+</ol>
+<h2>sip服务器</h2>
+<p>服务器有很多选择，也可以本地搭建。我这里使用的是<a href="http://minisipserver.com/tw/account/new.html">MINISIPSERVER云</a>，支持添加多个账号，但通话时长限制在60秒，用于demo是足够的了。具体的注册请自行处理。</p>
+<h2>基本功能实现</h2>
+<p>上一篇中用到的iOS demo位于<code>/pjsip-apps/src/pjsua/ios</code>，这里呢将使用一个简单的demo来学习基本功能的使用：<code>/pjsip-apps/src/samples/simple_pjsua.c</code>。</p>
+<h3>注册</h3>
+<p><code>main</code>函数中完成了服务器的注册功能，整理如下：</p>
+<div class="highlight"><pre><span class="n">pjsua_acc_id</span> <span class="n">acc_id</span><span class="p">;</span>
+<span class="kt">pj_status_t</span> <span class="n">status</span><span class="p">;</span>
+
+<span class="cm">/* Create pjsua first! */</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_create</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error in pjsua_create()"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+
+<span class="cm">/* Init pjsua */</span>
+<span class="p">{</span>
+    <span class="n">pjsua_config</span> <span class="n">cfg</span><span class="p">;</span>
+    <span class="n">pjsua_logging_config</span> <span class="n">log_cfg</span><span class="p">;</span>
+
+    <span class="n">pjsua_config_default</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cb</span><span class="p">.</span><span class="n">on_incoming_call</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">on_incoming_call</span><span class="p">;</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cb</span><span class="p">.</span><span class="n">on_call_media_state</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">on_call_media_state</span><span class="p">;</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cb</span><span class="p">.</span><span class="n">on_call_state</span> <span class="o">=</span> <span class="o">&amp;</span><span class="n">on_call_state</span><span class="p">;</span>
+
+    <span class="n">pjsua_logging_config_default</span><span class="p">(</span><span class="o">&amp;</span><span class="n">log_cfg</span><span class="p">);</span>
+    <span class="n">log_cfg</span><span class="p">.</span><span class="n">console_level</span> <span class="o">=</span> <span class="mi">4</span><span class="p">;</span>
+
+    <span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_init</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">log_cfg</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error in pjsua_init()"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Add UDP transport. */</span>
+<span class="p">{</span>
+    <span class="n">pjsua_transport_config</span> <span class="n">cfg</span><span class="p">;</span>
+
+    <span class="n">pjsua_transport_config_default</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">5060</span><span class="p">;</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_transport_create</span><span class="p">(</span><span class="n">PJSIP_TRANSPORT_UDP</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cfg</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error creating transport"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+<span class="c1">// Add TCP transport. background mode required!!!</span>
+<span class="p">{</span>
+
+    <span class="c1">// Init transport config structure</span>
+    <span class="n">pjsua_transport_config</span> <span class="n">cfg</span><span class="p">;</span>
+    <span class="n">pjsua_transport_config_default</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">port</span> <span class="o">=</span> <span class="mi">5060</span><span class="p">;</span>
+
+    <span class="c1">// Add TCP transport.</span>
+    <span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_transport_create</span><span class="p">(</span><span class="n">PJSIP_TRANSPORT_TCP</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">cfg</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">tcpTransport</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error creating TCP transport"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="cm">/* Initialization is done, now start pjsua */</span>
+<span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_start</span><span class="p">();</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error starting pjsua"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+
+<span class="cm">/* Register to SIP server by creating SIP account. */</span>
+<span class="p">{</span>
+    <span class="n">pjsua_acc_config</span> <span class="n">cfg</span><span class="p">;</span>
+
+    <span class="n">pjsua_acc_config_default</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="kt">id</span> <span class="o">=</span> <span class="n">pj_str</span><span class="p">(</span><span class="s">"sip:"</span> <span class="n">SIP_USER</span> <span class="s">"@"</span> <span class="n">SIP_DOMAIN</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">reg_uri</span> <span class="o">=</span> <span class="n">pj_str</span><span class="p">(</span><span class="s">"sip:"</span> <span class="n">SIP_DOMAIN</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cred_count</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cred_info</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">realm</span> <span class="o">=</span> <span class="n">pj_str</span><span class="p">(</span><span class="n">SIP_DOMAIN</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cred_info</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">scheme</span> <span class="o">=</span> <span class="n">pj_str</span><span class="p">(</span><span class="s">"digest"</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cred_info</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">username</span> <span class="o">=</span> <span class="n">pj_str</span><span class="p">(</span><span class="n">SIP_USER</span><span class="p">);</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cred_info</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">data_type</span> <span class="o">=</span> <span class="n">PJSIP_CRED_DATA_PLAIN_PASSWD</span><span class="p">;</span>
+    <span class="n">cfg</span><span class="p">.</span><span class="n">cred_info</span><span class="p">[</span><span class="mi">0</span><span class="p">].</span><span class="n">data</span> <span class="o">=</span> <span class="n">pj_str</span><span class="p">(</span><span class="n">SIP_PASSWD</span><span class="p">);</span>
+
+    <span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_acc_add</span><span class="p">(</span><span class="o">&amp;</span><span class="n">cfg</span><span class="p">,</span> <span class="n">PJ_TRUE</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">acc_id</span><span class="p">);</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error adding account"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>在<code>Init pjsua</code>部分，注册了3个回调函数。这3个回调就可以基本满足我们的需要。另外，和demo不一样的是，我在这里添加了TCP transport，因为iOS上后台运行的实现中，pjsip需要使用tcp连接。</p>
+<h3>拨打电话</h3>
+<p>拨打电话需要调用：</p>
+<div class="highlight"><pre><span class="n">status</span> <span class="o">=</span> <span class="n">pjsua_call_make_call</span><span class="p">(</span><span class="n">acc_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">uri</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="k">if</span> <span class="p">(</span><span class="n">status</span> <span class="o">!=</span> <span class="n">PJ_SUCCESS</span><span class="p">)</span> <span class="n">error_exit</span><span class="p">(</span><span class="s">"Error making call"</span><span class="p">,</span> <span class="n">status</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>acc_id是注册时候添加到server中使用过的，和socket一样，是个标识连接的整数。uri是形如<code>number@sipserver</code>的参数。</p>
+<h3>接听电话</h3>
+<p>接听电话是在如下的回调函数中实现的：</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">on_incoming_call</span><span class="p">(</span><span class="n">pjsua_acc_id</span> <span class="n">acc_id</span><span class="p">,</span> <span class="n">pjsua_call_id</span> <span class="n">call_id</span><span class="p">,</span>
+             <span class="n">pjsip_rx_data</span> <span class="o">*</span><span class="n">rdata</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">pjsua_call_info</span> <span class="n">ci</span><span class="p">;</span>
+
+    <span class="n">PJ_UNUSED_ARG</span><span class="p">(</span><span class="n">acc_id</span><span class="p">);</span>
+    <span class="n">PJ_UNUSED_ARG</span><span class="p">(</span><span class="n">rdata</span><span class="p">);</span>
+
+    <span class="n">pjsua_call_get_info</span><span class="p">(</span><span class="n">call_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ci</span><span class="p">);</span>
+
+    <span class="n">PJ_LOG</span><span class="p">(</span><span class="mi">3</span><span class="p">,(</span><span class="n">THIS_FILE</span><span class="p">,</span> <span class="s">"Incoming call from %.*s!!"</span><span class="p">,</span>
+            <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ci</span><span class="p">.</span><span class="n">remote_info</span><span class="p">.</span><span class="n">slen</span><span class="p">,</span>
+            <span class="n">ci</span><span class="p">.</span><span class="n">remote_info</span><span class="p">.</span><span class="n">ptr</span><span class="p">));</span>
+
+    <span class="cm">/* Automatically answer incoming calls with 200/OK */</span>
+    <span class="n">pjsua_call_answer</span><span class="p">(</span><span class="n">call_id</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+<p>主要的是pjsua_call_answer，call_id是用来区分哪个号码打进来的。<br/>
+在这里也说一下其他回调函数的实现：</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">on_call_media_state</span><span class="p">(</span><span class="n">pjsua_call_id</span> <span class="n">call_id</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">pjsua_call_info</span> <span class="n">ci</span><span class="p">;</span>
+
+    <span class="n">pjsua_call_get_info</span><span class="p">(</span><span class="n">call_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ci</span><span class="p">);</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="n">ci</span><span class="p">.</span><span class="n">media_status</span> <span class="o">==</span> <span class="n">PJSUA_CALL_MEDIA_ACTIVE</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// When media is active, connect call to sound device.</span>
+    <span class="n">pjsua_conf_connect</span><span class="p">(</span><span class="n">ci</span><span class="p">.</span><span class="n">conf_slot</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+    <span class="n">pjsua_conf_connect</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">ci</span><span class="p">.</span><span class="n">conf_slot</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>控制语音，这里做的事情是连接语音到硬件设备。</p>
+<div class="highlight"><pre><span class="k">static</span> <span class="kt">void</span> <span class="nf">on_call_state</span><span class="p">(</span><span class="n">pjsua_call_id</span> <span class="n">call_id</span><span class="p">,</span> <span class="n">pjsip_event</span> <span class="o">*</span><span class="n">e</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">pjsua_call_info</span> <span class="n">ci</span><span class="p">;</span>
+
+    <span class="n">PJ_UNUSED_ARG</span><span class="p">(</span><span class="n">e</span><span class="p">);</span>
+
+    <span class="n">pjsua_call_get_info</span><span class="p">(</span><span class="n">call_id</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">ci</span><span class="p">);</span>
+    <span class="n">PJ_LOG</span><span class="p">(</span><span class="mi">3</span><span class="p">,(</span><span class="n">THIS_FILE</span><span class="p">,</span> <span class="s">"Call %d state=%.*s"</span><span class="p">,</span> <span class="n">call_id</span><span class="p">,</span>
+             <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">ci</span><span class="p">.</span><span class="n">state_text</span><span class="p">.</span><span class="n">slen</span><span class="p">,</span>
+             <span class="n">ci</span><span class="p">.</span><span class="n">state_text</span><span class="p">.</span><span class="n">ptr</span><span class="p">));</span>
+    <span class="k">switch</span> <span class="p">(</span><span class="n">ci</span><span class="p">.</span><span class="n">state</span><span class="p">)</span>
+    <span class="p">{</span>
+
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+<p>很显然，这里视通话的不同状态，做不同的操作，如控制通话状态，程序UI调整等等。</p>
+<h3>挂断电话</h3>
+<p>一种是不分青红皂白，全部挂断：</p>
+<div class="highlight"><pre><span class="n">pjsua_call_hangup_all</span><span class="p">();</span>
+</pre></div>
+<p>一种是挂断某一个，这时需要call_id:</p>
+<div class="highlight"><pre><span class="n">pjsua_call_hangup</span><span class="p">(</span><span class="n">callID</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">reason</span><span class="p">,</span> <span class="nb">NULL</span><span class="p">);</span>
+</pre></div>
+<p>这里的code和reason也可以忽略。</p>
+<h2>VOIP在iOS上的实现要点</h2>
+<p>官方很贴心的列举了<a href="https://developer.apple.com/library/ios/documentation/iPhone/Conceptual/iPhoneOSProgrammingGuide/StrategiesforImplementingYourApp/StrategiesforImplementingYourApp.html#//apple_ref/doc/uid/TP40007072-CH5-SW13">Tips for Developing a VoIP App</a>，摘抄如下：</p>
+<blockquote>
+<ol>
+<li>Enable the Voice over IP background mode for your app. (Because VoIP apps involve audio content, it is recommended that you also enable the Audio and AirPlay background mode.) You enable background modes in the Capabilities tab of your Xcode project.  </li>
+<li>Configure one of the app’s sockets for VoIP usage.  </li>
+<li>Before moving to the background, call the setKeepAliveTimeout:handler: method to install a handler to be executed periodically. Your app can use this handler to maintain its service connection.</li>
+<li>Configure your audio session to handle transitions to and from active use.</li>
+<li>To ensure a better user experience on iPhone, use the Core Telephony framework to adjust your behavior in relation to cell-based phone calls; see Core Telephony Framework Reference.</li>
+<li>To ensure good performance for your VoIP app, use the System Configuration framework to detect network changes and allow your app to sleep as much as possible</li>
+</ol>
+</blockquote>
+<p>下面我们来应用到iOS的项目中。</p>
+<h3>后台应用</h3>
+<p>现在设置app为后台应用非常简单，只需要选中app后在Capabilities中设置即可：<br/>
+<img alt="background_app" src="./imgs/20150127/background_app.png"/></p>
+<h3>设置socket</h3>
+<p>这里我们需要在注册服务器的时候使用tcp信道，其余的事情，pjsip已经帮我们处理好了。这里要注意的是，上文添加tcp transport的不分并不意味着就已经使用了tcp连接，pjsip有这方面的说明：<a href="https://trac.pjsip.org/repos/wiki/Using_SIP_TCP">Using_SIP_TCP</a>。<br/>
+另外，需要说明的是，对uri直接添加<code>;transport=tcp</code>的方法，在连接minisipserver云服务器的时候，tcp连接有错误。但是连接自己部署的sip服务器却正常，不知道这里还有啥猫腻。</p>
+<h3>设置后台的handler</h3>
+<p>这里直接上代码了：</p>
+<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">keepAlive</span> <span class="p">{</span>
+<span class="kt">int</span> <span class="n">i</span><span class="p">;</span>
+
+<span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">pj_thread_is_registered</span><span class="p">())</span>
+<span class="p">{</span>
+    <span class="n">pj_thread_register</span><span class="p">(</span><span class="s">"ipjsua"</span><span class="p">,</span> <span class="n">a_thread_desc</span><span class="p">,</span> <span class="o">&amp;</span><span class="n">a_thread</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="cm">/* Since iOS requires that the minimum keep alive interval is 600s,</span>
+<span class="cm">     * application needs to make sure that the account's registration</span>
+<span class="cm">     * timeout is long enough.</span>
+<span class="cm">     */</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="p">(</span><span class="kt">int</span><span class="p">)</span><span class="n">pjsua_acc_get_count</span><span class="p">();</span> <span class="o">++</span><span class="n">i</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="n">pjsua_acc_is_valid</span><span class="p">(</span><span class="n">i</span><span class="p">))</span> <span class="p">{</span>
+            <span class="n">pjsua_acc_set_registration</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">PJ_TRUE</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">applicationDidEnterBackground:</span><span class="p">(</span><span class="n">UIApplication</span> <span class="o">*</span><span class="p">)</span><span class="nv">application</span>
+<span class="p">{</span>
+    <span class="c1">// Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later. </span>
+    <span class="c1">// If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.</span>
+    <span class="p">[</span><span class="n">self</span> <span class="n">performSelectorOnMainThread</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">keepAlive</span><span class="p">)</span> <span class="n">withObject</span><span class="o">:</span><span class="nb">nil</span> <span class="n">waitUntilDone</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+    <span class="p">[</span><span class="n">application</span> <span class="n">setKeepAliveTimeout</span><span class="o">:</span><span class="n">KEEP_ALIVE_INTERVAL</span> <span class="n">handler</span><span class="o">:</span> <span class="o">^</span><span class="p">{</span>
+    <span class="p">[</span><span class="n">self</span> <span class="n">performSelectorOnMainThread</span><span class="o">:</span><span class="k">@selector</span><span class="p">(</span><span class="n">keepAlive</span><span class="p">)</span> <span class="n">withObject</span><span class="o">:</span><span class="nb">nil</span> <span class="n">waitUntilDone</span><span class="o">:</span><span class="nb">YES</span><span class="p">];</span>
+    <span class="p">}];</span>
+<span class="p">}</span>
+</pre></div>
+<p>此处代码出处：<code>/pjsip-apps/src/pjsua/ios/ipjsua/ipjsuaAppDelegate.m</code></p>
+<h3>处理来电</h3>
+<p>当有系统来电的时候，voip怎么办；或者voip通话中有系统来电时怎么办？这里需要引入库<code>CoreTelephony</code>，在程序启动的时候添加下面的代码：</p>
+<div class="highlight"><pre><span class="k">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">_addCallCenterBlock</span>
+<span class="p">{</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">callCenter</span> <span class="o">=</span> <span class="p">[[</span><span class="n">CTCallCenter</span> <span class="n">alloc</span><span class="p">]</span> <span class="n">init</span><span class="p">];</span>
+    <span class="n">self</span><span class="p">.</span><span class="n">callCenter</span><span class="p">.</span><span class="n">callEventHandler</span> <span class="o">=</span> <span class="o">^</span><span class="p">(</span><span class="n">CTCall</span> <span class="o">*</span><span class="n">call</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">if</span> <span class="p">([</span><span class="n">call</span><span class="p">.</span><span class="n">callState</span> <span class="n">isEqualToString</span><span class="o">:</span><span class="n">CTCallStateDisconnected</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Call has been disconnected"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">call</span><span class="p">.</span><span class="n">callState</span> <span class="n">isEqualToString</span><span class="o">:</span><span class="n">CTCallStateConnected</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Call has just been connected"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span><span class="p">([</span><span class="n">call</span><span class="p">.</span><span class="n">callState</span> <span class="n">isEqualToString</span><span class="o">:</span><span class="n">CTCallStateIncoming</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Call is incoming"</span><span class="p">);</span>
+            <span class="n">dispatch_async</span><span class="p">(</span><span class="n">dispatch_get_main_queue</span><span class="p">(),</span> <span class="o">^</span><span class="p">{</span>
+                <span class="p">[</span><span class="n">PjsipRouter</span> <span class="n">hangUpAllByIncomingCall</span><span class="p">];</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+        <span class="k">else</span> <span class="k">if</span> <span class="p">([</span><span class="n">call</span><span class="p">.</span><span class="n">callState</span> <span class="n">isEqualToString</span><span class="o">:</span><span class="n">CTCallStateDialing</span><span class="p">])</span>
+        <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"call is dialing"</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="k">else</span>
+        <span class="p">{</span>
+            <span class="n">NSLog</span><span class="p">(</span><span class="s">@"Nothing is done"</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">}</span>
+</pre></div>
+<p>这里注意，该handler是在后台执行的，所以有关UI的操作请路由到主线程。</p>
+<h3>处理IP变化</h3>
+<p>关于IP变化变化有专门的解释：<a href="https://trac.pjsip.org/repos/wiki/IPAddressChange">IP Address change and Access Point Reconnection Issues</a>，在iOS上的实现也有专门的代码：<a href="https://trac.pjsip.org/repos/wiki/IPAddressChange#iphone">Handling IP Change on iPhone</a>，这里就不做搬运工了。<br/>
+写到这里，不得不说pjsip很贴心。</p>
+<p>以上就是实现iOS后台app的全部要点实现。这时，当iPhone注册后进入后台，用另一iPhone拨打电话，进入后台的iPhone的<code>on_incoming_call</code>函数会响应，这时还需要判断当前的程序状态，确认是后台后就通过UILocalNotification弹出通知，这样就显得更专业了。</p>
+<h2>总结</h2>
+<p>总体来说，pjsip的文档充足，资源丰富，上手简单，不失为实现VOIP的好方式。</p>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html">← Previous : [Tips]NSTimer对Target的强引用</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

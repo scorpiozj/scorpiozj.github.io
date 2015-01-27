@@ -56,8 +56,8 @@
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-12-16T17:30:00+08:00">
-                二 16 十二月 2014
+              <abbr class="published" title="2014-12-16T17:30:00">
+                Tue 16 December 2014
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
@@ -68,11 +68,11 @@
 <p>We have a project which uses <code>NSLocalizedString</code> macro but some strings  are not localized in the <code>Localizable.strings</code> file. What we do is to find all these strings and implement the <code>Localizable.strings</code> file.</p>
 <h3>Apple's Tool</h3>
 <p>As I refered <a href="http://stackoverflow.com/a/27266522/371974">here</a>, Apple has a built-in tool but is for Appkit application. Open the scheme, and in the <code>Arguments</code> tab, input the following strings to <code>Arguments Passed On Launch</code>:  </p>
-<div class="highlight"><pre> -NSShowNonLocalizedStrings YES
+<div class="highlight"><pre> <span class="o">-</span><span class="n">NSShowNonLocalizedStrings</span> <span class="n">YES</span>
 </pre></div>
 <p>Then, build and run your <strong>Cocoa</strong> application, the unlocalized string will be shown in console.<br/>
 Now the good news is that with iOS8 the console can also print the unlocalized string for the iOS app. For example:</p>
-<div class="highlight"><pre> 2014-12-16 15:53:44.073 iOSUnlocalizedTest[6251:1015330] Localizable string "name" not found in strings table "Localizable" of bundle CFBundle 0x7f9fe3515b80 &lt;/Users/XXXXX/Library/Developer/CoreSimulator/Devices/F7E36A7E-14FF-4D2A-8881-A62C14CB66DE/data/Containers/Bundle/Application/18EB0513-5162-4CEC-9823-17AC3B513EFB/iOSUnlocalizedTest.app&gt; (executable, loaded)
+<div class="highlight"><pre> <span class="mi">2014</span><span class="o">-</span><span class="mi">12</span><span class="o">-</span><span class="mi">16</span> <span class="mi">15</span><span class="o">:</span><span class="mi">53</span><span class="o">:</span><span class="mf">44.073</span> <span class="n">iOSUnlocalizedTest</span><span class="p">[</span><span class="mi">6251</span><span class="o">:</span><span class="mi">1015330</span><span class="p">]</span> <span class="n">Localizable</span> <span class="n">string</span> <span class="s">"name"</span> <span class="n">not</span> <span class="n">found</span> <span class="n">in</span> <span class="n">strings</span> <span class="n">table</span> <span class="s">"Localizable"</span> <span class="n">of</span> <span class="n">bundle</span> <span class="n">CFBundle</span> <span class="mh">0x7f9fe3515b80</span> <span class="o">&lt;/</span><span class="n">Users</span><span class="o">/</span><span class="n">XXXXX</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">Developer</span><span class="o">/</span><span class="n">CoreSimulator</span><span class="o">/</span><span class="n">Devices</span><span class="o">/</span><span class="n">F7E36A7E</span><span class="o">-</span><span class="mf">14FF</span><span class="o">-</span><span class="mi">4</span><span class="n">D2A</span><span class="o">-</span><span class="mi">8881</span><span class="o">-</span><span class="n">A62C14CB66DE</span><span class="o">/</span><span class="n">data</span><span class="o">/</span><span class="n">Containers</span><span class="o">/</span><span class="n">Bundle</span><span class="o">/</span><span class="n">Application</span><span class="o">/</span><span class="mi">18</span><span class="n">EB0513</span><span class="o">-</span><span class="mi">5162</span><span class="o">-</span><span class="mi">4</span><span class="n">CEC</span><span class="o">-</span><span class="mi">9823</span><span class="o">-</span><span class="mi">17</span><span class="n">AC3B513EFB</span><span class="o">/</span><span class="n">iOSUnlocalizedTest</span><span class="p">.</span><span class="n">app</span><span class="o">&gt;</span> <span class="p">(</span><span class="n">executable</span><span class="p">,</span> <span class="n">loaded</span><span class="p">)</span>
 </pre></div>
 <p>However, this is not the final answer as it is just a runtime checking not a static checking(As the setting above is under the <code>Run</code>). You can't get all expected results at a glance.</p>
 <h3>What we do</h3>
@@ -83,11 +83,11 @@ Now the good news is that with iOS8 the console can also print the unlocalized s
 </ol>
 <p>So let's start!<br/>
 Open a shell, cd to the project and then run:</p>
-<div class="highlight"><pre>grep -n -h "LocalizedString" -r ./ &gt;&gt;../result
+<div class="highlight"><pre><span class="n">grep</span> <span class="o">-</span><span class="n">n</span> <span class="o">-</span><span class="n">h</span> <span class="s">"LocalizedString"</span> <span class="o">-</span><span class="n">r</span> <span class="p">.</span><span class="o">/</span> <span class="o">&gt;&gt;</span><span class="p">..</span><span class="o">/</span><span class="n">result</span>
 </pre></div>
 <p>it will save all the lines including "LocalizedString" to the result. In the result file, it will list the file name and line number so that we can recheck it.<br/>
 Then we try to get the targeted string which is the first parameter of <code>NSLocalizedString</code> macro:</p>
-<div class="highlight"><pre>grep -o -n "\"\w\{1,\}\"" ./result &gt;&gt; singleWord
+<div class="highlight"><pre><span class="n">grep</span> <span class="o">-</span><span class="n">o</span> <span class="o">-</span><span class="n">n</span> <span class="s">"</span><span class="se">\"</span><span class="s">\w\{1,\}</span><span class="se">\"</span><span class="s">"</span> <span class="p">.</span><span class="o">/</span><span class="n">result</span> <span class="o">&gt;&gt;</span> <span class="n">singleWord</span>
 </pre></div>
 <p>it will save all the words to <code>singleWord</code> file.<br/>
 Then we copy the content from <code>Localizable.String</code> to a txt file and then using the following script <strong>find.sh</strong>:</p>
@@ -104,14 +104,14 @@ Then we copy the content from <code>Localizable.String</code> to a txt file and 
 11
 12</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
 
-cat <span class="nv">$1</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>line
+cat <span class="nv">$1</span> | <span class="k">while </span><span class="nb">read </span>line
 <span class="k">do</span>
 <span class="c"># echo $line</span>
     grep  <span class="nv">$line</span> ./japios.txt &gt;&gt; ./has.txt
-    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./has.txt
+    <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">==</span> 0 <span class="o">]</span>; <span class="k">then</span>
+<span class="k">        </span><span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./has.txt
     <span class="k">else</span>
-        <span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./nothas.txt
+<span class="k">        </span><span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./nothas.txt
     <span class="k">fi</span>
 <span class="k">done</span>
 </pre></div>
@@ -168,34 +168,34 @@ Notice in the script, japios.txt should be created from the <code>Localizable.St
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 </ul>
 
 
