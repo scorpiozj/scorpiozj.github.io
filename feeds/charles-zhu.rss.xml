@@ -4,7 +4,7 @@
 使用过第三方如统计之类工具的，对framework不会陌生。所以framework最大的一个好处就是提供接口但隐藏代码，在开发SDK过程中经常使用。&lt;/p&gt;
 &lt;h2&gt;静态库模板&lt;/h2&gt;
 &lt;p&gt;选择如下的静态模板创建工程，当然也可以在已有工程下创建新的target。这里可以看到Xcode6中新加了&lt;code&gt;Cocoa Touch Framework&lt;/code&gt;，但是这里我们还是选择静态库模板。&lt;br/&gt;
-&lt;img alt="static_template" src="./20150205/static_template.png"/&gt;&lt;/p&gt;
+&lt;img alt="static_template" src="./imgs/20150205/static_template.png"/&gt;&lt;/p&gt;
 &lt;h2&gt;添加文件&lt;/h2&gt;
 &lt;p&gt;Framework本身包含库头文件和静态库，所以首先我们要把需要打包成framework的文件添加的工程，注意添加的时候确认target对象是否正确。接下来，查看文件引用了哪些系统库，在&lt;code&gt;build phase-&amp;gt;Link Binary With Libraries&lt;/code&gt;中将系统库添加进去，通常会添加Foundation或是UIKit库。然后添加相应的代码，添加的时候注意target是库对象。再在&lt;code&gt;build phase-&amp;gt;Headers&lt;/code&gt;中找到头文件，将需要设置为public的文件拖到&lt;code&gt;Public&lt;/code&gt;一榄。
 这时build一下，可以发现已经生成一个.a文件了。但此时还没有完成framework的制作：
