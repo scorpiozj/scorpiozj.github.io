@@ -1,5 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-01-22T17:30:00+08:00</updated><entry><title>[Tips]NSTimer对Target的强引用</title><link href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="alternate"></link><updated>2015-01-22T17:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-01-22:tipsnstimerdui-targetde-qiang-yin-yong.html</id><summary type="html">&lt;h2&gt;NSTimer对Target的强引用&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-02-05T14:30:00+08:00</updated><entry><title>Xcode6制作iOS Framework</title><link href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="alternate"></link><updated>2015-02-05T14:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-05:xcode6zhi-zuo-ios-framework.html</id><summary type="html">&lt;h2&gt;简介&lt;/h2&gt;
+&lt;p&gt;最近需要用到Framework，在Xcode6上实践了一下，虽然制作原理没有变化，但在Xcode6中操作还是有一些不一样。我遇到的问题在&lt;a href="http://www.raywenderlich.com/65964/create-a-framework-for-ios"&gt;raywenderlich&lt;/a&gt;上都有解决。&lt;br/&gt;
+使用过第三方如统计之类工具的，对framework不会陌生。所以framework最大的一个好处就是提供接口但隐藏代码，在开发SDK过程中经常使用。&lt;/p&gt;
+&lt;h2&gt;静态库模板&lt;/h2&gt;
+&lt;p&gt;选择如下的静态模板创建工程，当然也可以在已有工程下创建新的target。这里可以看到Xcode6中新加了&lt;code&gt;Cocoa Touch Framework&lt;/code&gt;，但是这里我们还是选择静态库模板。&lt;br/&gt;
+&lt;img alt="static_template" src="./20150205/static_template.png"/&gt;&lt;/p&gt;
+&lt;h2&gt;添加文件&lt;/h2&gt;
+&lt;p&gt;Framework本身包含库头文件和静态库，所以首先我们要把需要打包成framework的文件添加的工程，注意添加的时候确认target对象是否正确。接下来，查看文件引用了哪些系统库，在&lt;code&gt;build phase-&amp;gt;Link Binary With Libraries&lt;/code&gt;中将系统库添加进去，通常会添加Foundation或是UIKit库。然后添加相应的代码，添加的时候注意target是库对象。再在&lt;code&gt;build phase-&amp;gt;Headers&lt;/code&gt;中找到头文件，将需要设置为public的文件拖到&lt;code&gt;Public&lt;/code&gt;一榄。
+这时build一下，可以发现已经生成一个.a文件了。但此时还没有完成framework的制作：
+1. 该静态库只包含一种架构
+2. 头文件没有和库一起打包&lt;/p&gt;
+&lt;p&gt;借用 raywenderlich上的图来说明framework的组织结构：&lt;br/&gt;
+&lt;img alt="ios_framework_directory_structure" src="http://cdn3.raywenderlich.com/wp-content/uploads/2014/02/ios_framework_directory_structure.png"/&gt; &lt;/p&gt;
+&lt;h2&gt;生成Framework&lt;/h2&gt;
+&lt;p&gt;接下来，我们给静态库添加执行脚本，内容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;set -e
+
+export FRAMEWORK_LOCN="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BUILT_PRODUCTS_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PRODUCT_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;.framework"
+
+# Create the path to the real Headers die
+mkdir -p "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;FRAMEWORK_LOCN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Versions/A/Headers"
+
+# Create the required symlinks
+/bin/ln -sfh A "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;FRAMEWORK_LOCN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Versions/Current"
+/bin/ln -sfh Versions/Current/Headers "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;FRAMEWORK_LOCN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Headers"
+/bin/ln -sfh "Versions/Current/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PRODUCT_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;FRAMEWORK_LOCN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PRODUCT_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+
+# Copy the public headers into the framework
+/bin/cp -a "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;TARGET_BUILD_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PUBLIC_HEADERS_FOLDER_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/" \
+"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;FRAMEWORK_LOCN&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Versions/A/Headers"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;接着创建一个&lt;code&gt;Aggregate&lt;/code&gt;对象，然后给该对象也添加执行脚本，内容如下：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;set -e
+
+# If we're already inside this script then die
+if [ -n "&lt;span class="nv"&gt;$RW_MULTIPLATFORM_BUILD_IN_PROGRESS&lt;/span&gt;" ]; then
+exit 0
+fi
+export RW_MULTIPLATFORM_BUILD_IN_PROGRESS=1
+
+RW_FRAMEWORK_NAME=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+RW_FRAMEWORK_NAME="PjsipFramework"
+RW_INPUT_STATIC_LIB="lib&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;.a"
+RW_INPUT_STATIC_LIB="libPjsipFramework.a"
+
+RW_FRAMEWORK_LOCATION="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BUILT_PRODUCTS_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;.framework"
+
+function build_static_library {
+    # Will rebuild the static library as specified
+    #     build_static_library sdk
+    xcrun xcodebuild -project "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;PROJECT_FILE_PATH&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    -target "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;TARGET_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    -configuration "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;CONFIGURATION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    -sdk "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    ONLY_ACTIVE_ARCH=NO \
+    BUILD_DIR="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BUILD_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    OBJROOT="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;OBJROOT&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    BUILD_ROOT="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BUILD_ROOT&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+    SYMROOT="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;SYMROOT&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" &lt;span class="nv"&gt;$ACTION&lt;/span&gt;
+}
+
+function make_fat_library {
+    # Will smash 2 static libs together
+    #     make_fat_library in1 in2 out
+    xcrun lipo -create "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" -output "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="mi"&gt;3&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+}
+
+# 1 - Extract the platform (iphoneos/iphonesimulator) from the SDK name
+if [[ "&lt;span class="nv"&gt;$SDK_NAME&lt;/span&gt;" =~ ([A-Za-z]+) ]]; then
+RW_SDK_PLATFORM=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BASH_REMATCH&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+else
+echo "Could not find platform name from SDK_NAME: &lt;span class="nv"&gt;$SDK_NAME&lt;/span&gt;"
+exit 1
+fi
+
+# 2 - Extract the version from the SDK
+if [[ "&lt;span class="nv"&gt;$SDK_NAME&lt;/span&gt;" =~ ([0-9]+.*$) ]]; then
+RW_SDK_VERSION=&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BASH_REMATCH&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;
+else
+echo "Could not find sdk version from SDK_NAME: &lt;span class="nv"&gt;$SDK_NAME&lt;/span&gt;"
+exit 1
+fi
+
+# 3 - Determine the other platform
+if [ "&lt;span class="nv"&gt;$RW_SDK_PLATFORM&lt;/span&gt;" == "iphoneos" ]; then
+RW_OTHER_PLATFORM=iphonesimulator
+else
+RW_OTHER_PLATFORM=iphoneos
+fi
+
+# 4 - Find the build directory
+if [[ "&lt;span class="nv"&gt;$BUILT_PRODUCTS_DIR&lt;/span&gt;" =~ (.*)&lt;span class="nv"&gt;$RW_SDK_PLATFORM&lt;/span&gt;$ ]]; then
+RW_OTHER_BUILT_PRODUCTS_DIR="&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BASH_REMATCH&lt;/span&gt;&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="mi"&gt;1&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;&lt;span class="cp"&gt;}${&lt;/span&gt;&lt;span class="n"&gt;RW_OTHER_PLATFORM&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+else
+echo "Could not find other platform build directory."
+exit 1
+fi
+
+# Build the other platform.
+build_static_library "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_OTHER_PLATFORM&lt;/span&gt;&lt;span class="cp"&gt;}${&lt;/span&gt;&lt;span class="n"&gt;RW_SDK_VERSION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+
+# If we're currently building for iphonesimulator, then need to rebuild
+#   to ensure that we get both i386 and x86_64
+if [ "&lt;span class="nv"&gt;$RW_SDK_PLATFORM&lt;/span&gt;" == "iphonesimulator" ]; then
+build_static_library "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;SDK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+fi
+
+# Join the 2 static libs into 1 and push into the .framework
+make_fat_library "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;BUILT_PRODUCTS_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_INPUT_STATIC_LIB&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_OTHER_BUILT_PRODUCTS_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_INPUT_STATIC_LIB&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_LOCATION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Versions/A/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+
+# Ensure that the framework is present in both platform's build directories
+cp -a "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_LOCATION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Versions/A/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" \
+"&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_OTHER_BUILT_PRODUCTS_DIR&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;.framework/Versions/A/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;"
+
+# Copy the framework to the user's desktop
+ditto "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_LOCATION&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;" "&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;HOME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;/Desktop/&lt;span class="cp"&gt;${&lt;/span&gt;&lt;span class="n"&gt;RW_FRAMEWORK_NAME&lt;/span&gt;&lt;span class="cp"&gt;}&lt;/span&gt;.framework"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;脚本的内容不多说了，有解释。&lt;br/&gt;
+接下来在&lt;code&gt;Aggregate&lt;/code&gt;对象中的&lt;code&gt;Target Dependencies&lt;/code&gt;中添加之前的静态库作为依赖。接着选择&lt;code&gt;Aggregate&lt;/code&gt;对象，build一下，就可以生成所需的framework了。此脚本执行完后，framework会生成在用户桌面。使用&lt;code&gt;xcrun lipo -info your.framework/Versions/A/customFramework&lt;/code&gt; 可以检测库是否包含多个架构。&lt;/p&gt;
+&lt;h2&gt;framework的使用&lt;/h2&gt;
+&lt;p&gt;新建一个工程，将上述framework添加到工程，在需要使用的地方添加如&lt;code&gt;#import &amp;lt;YourFramework/PublicFile.h&amp;gt;&lt;/code&gt;，这样就可以使用了&lt;/p&gt;
+&lt;h2&gt;其他问题&lt;/h2&gt;
+&lt;p&gt;因为是创建一个framework给他人使用，以下设置最好留给使用framework的工程设置：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Dead Code Stripping –  NO&lt;/li&gt;
+&lt;li&gt;Strip Debug Symbols During Copy – NO&lt;/li&gt;
+&lt;li&gt;Strip Style – Non-Global Symbols&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;结束&lt;/h2&gt;
+&lt;p&gt;以上是创建framework的记录总结，使用framework一点也不神秘，可以帮助我们更好的模块化工程，加深层次的设计和实践，从而提高开发的水平。&lt;/p&gt;</summary><category term="iOS"></category><category term="framework"></category></entry><entry><title>[Tips]NSTimer对Target的强引用</title><link href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="alternate"></link><updated>2015-01-22T17:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-01-22:tipsnstimerdui-targetde-qiang-yin-yong.html</id><summary type="html">&lt;h2&gt;NSTimer对Target的强引用&lt;/h2&gt;
 &lt;p&gt;这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
 &lt;/pre&gt;&lt;/div&gt;

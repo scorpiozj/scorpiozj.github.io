@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent - security</title>
+        <title>To be Independent - framework</title>
         <meta charset="utf-8" />
 
 
@@ -53,28 +53,29 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">文件权限</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="bookmark" title="Permalink to Xcode6制作iOS Framework">Xcode6制作iOS Framework</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
+				                    <abbr class="published" title="2015-02-05T14:30:00+08:00"> 四 05 二月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>权限</h4>
-<p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
-    ls -l README
-    -rw-r--r--   1 xxxx  staff    234 Nov  9 11:27 README
-说明：<br/>
-第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br/>
-第二列数字1表示索引节点的目录连接。
-第三列就是文件拥有者的名字，第四列则是共享文件所在组。
-第五列是文件的字节数，第六、七、八列是时间，最后一列是名字。
-其中文件权限可以用二进制表达，该例对应的则是： <code>110100100</code>，用十进制表达则是： <code>644</code>。因此，有时候修改权限 <code>777</code>的时候，就一定要小心了 ...</br/></br/></p> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <h2>简介</h2>
+<p>最近需要用到Framework，在Xcode6上实践了一下，虽然制作原理没有变化，但在Xcode6中操作还是有一些不一样。我遇到的问题在<a href="http://www.raywenderlich.com/65964/create-a-framework-for-ios">raywenderlich</a>上都有解决。<br/>
+使用过第三方如统计之类工具的，对framework不会陌生。所以framework最大的一个好处就是提供接口但隐藏代码，在开发SDK过程中经常使用。</p>
+<h2>静态库模板</h2>
+<p>选择如下的静态模板创建工程，当然也可以在已有工程下创建新的target。这里可以看到Xcode6中新加了<code>Cocoa Touch Framework</code>，但是这里我们还是选择静态库模板。<br/>
+<img alt="static_template" src="./20150205/static_template.png"/></p>
+<h2>添加文件</h2>
+<p>Framework本身包含库头文件和静态库，所以首先我们要把需要打包成framework的文件添加的工程，注意添加的时候确认target对象是否正确。接下来，查看文件引用了哪些系统库，在<code>build phase-&gt;Link Binary With Libraries</code>中将系统库添加进去，通常会添加Foundation或是UIKit库。然后添加相应的代码，添加的时候注意target是库对象。再在<code>build phase-&gt;Headers</code>中找到头文件，将需要设置为public的文件拖到<code>Public</code>一榄。
+这时build一下，可以发现已经生成一个.a文件了。但此时还没有完成framework的制作：
+1 ...</p> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="bookmark" title="Permalink to Xcode6制作iOS Framework">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/security.html">security</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://icocoa.tk/tag/framework.html">framework</a>
 								</div>
 
 
