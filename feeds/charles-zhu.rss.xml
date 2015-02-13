@@ -1,5 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Thu, 05 Feb 2015 14:30:00 +0800</lastBuildDate><item><title>Xcode6制作iOS Framework</title><link>http://icocoa.tk/xcode6zhi-zuo-ios-framework.html</link><description>&lt;h2&gt;简介&lt;/h2&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Fri, 13 Feb 2015 22:30:00 +0800</lastBuildDate><item><title>过去一周的思考</title><link>http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html</link><description>&lt;h2&gt;简介&lt;/h2&gt;
+&lt;p&gt;过去的一周可以算是波澜起伏，主要关于两方面：一个是app的下载，另一个是app的发布。&lt;/p&gt;
+&lt;h2&gt;app的下载&lt;/h2&gt;
+&lt;p&gt;ASO是一个至今不得窥其入门的东西，某个收费的app自上线至今约3个月的时间保持平均每天3个的下载节奏。期间在app中集成的分享平台中发过带app的tag的链接（主要是国外的分享平台），这种方式可以引起用户的注意，可以算是营销的一种方式。只是一个人势单力薄，无法做到每天的更新。这种方式和app的下载互为因果，因为很难单纯的通过这种方式提高下载量，相反这种推广的效果还取决于app的下载基数。因此，我认为这属于“锦上添花”增加用户基数型的营销模式。&lt;br/&gt;
+虽然推广没有花费大力气，但是本周还是发生了下载量突变的情形。5-10日之间下载量分别是个位数，2位数，3位数，3位数，2位数，个位数。至此，恢复以往的平静。在此期间，做到分类付费和畅销排名前三。虽然之前也油锅这样的经历，但这次的app是收费的，意义不同寻常。此外，这样的一个过山车的表现也很让我诧异。是什么导致下载量突然的上升呢？我搜索了一下相关的分享平台，没有大量的使用app的痕迹。通过Appannie的变化追踪来看，我倾向于Apple调整了app的排名算法（如果这些下载量不是黑卡造成的话）。线索就在于5日以及之前的排名已经落后到不知什么地步，而后突然就排名上升。考虑到下载量在相应的category中中规中矩，评价几乎没有的情况，才做出算法调整的判断。&lt;br/&gt;
+这个“风波”对我的启示，就是验证了长尾理论。同时也说明，长尾并不是没有做头的。这应该是对个人开发者的一个鼓励，在大公司充斥app排行榜的如今，个人开发者肉汤还是可以喝上的。  &lt;/p&gt;
+&lt;h2&gt;app的发布流程&lt;/h2&gt;
+&lt;p&gt;查看app的运行情况，发现有闪退。刚好那天下载量飙升到3位数，心里一激动就做了个版本，同时附带着修复了一些其他可能引起闪退的地方。由于着急，联机测试没有问题后，没有进行Adhoc测试就提交发布了。考虑到时间紧迫性，给Apple申请了一个紧急审核的ticket，Apple的团队倒也挺人性的，邮件里跟我解释了下原本不应该答应的，然后说这次网开一面，提交后的8小时内就通过了。然而，第二天从store上下载测试的时候，发现某个机型奔溃了。。。这时又做了一个Adhoc的包测试，发现依然闪退。这时，我突然一阵冷汗，为自己的大意后悔不已。此时，我已经不可能再厚着脸皮请求紧急审核了，只能默默的修复一遍，重新提交一个新版本，目测要8天的时间。在此期间，会有多少同样机型的新/老用户遇到同样的问题，这个不得而知。唯一清楚的，这个原本天时地利的条件，却由于缺少“人和”而彻底陷入败局。&lt;br/&gt;
+由此，我立下规矩，无论是多么简单的修复，不管是多么紧急的情况，没有经过Adhoc的真机测试，绝对不允许提交审核！&lt;br/&gt;
+在新版本发布后的日子里，我观察到某个国家的评论还算正面——至少说明不是在所有机型上都存在那个闪退问题。这是唯一让我可以自我安慰的东西了。  &lt;/p&gt;
+&lt;h2&gt;今后的打算&lt;/h2&gt;
+&lt;p&gt;To Be Independent是我的一个梦想，Apple Store至少让我看到还是有希望的。App要想有好的表现，切中用户需求的痛点是重中之重——这是今年行事的方向。 此外，就是对待App的发布，一定要严格按照既定的流程来，不能因为是个人开发而马虎讲究！&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Fri, 13 Feb 2015 22:30:00 +0800</pubDate><guid>tag:icocoa.tk,2015-02-13:guo-qu-yi-zhou-de-si-kao.html</guid><category>iOS</category></item><item><title>Xcode6制作iOS Framework</title><link>http://icocoa.tk/xcode6zhi-zuo-ios-framework.html</link><description>&lt;h2&gt;简介&lt;/h2&gt;
 &lt;p&gt;最近需要用到Framework，在Xcode6上实践了一下，虽然制作原理没有变化，但在Xcode6中操作还是有一些不一样。我遇到的问题在&lt;a href="http://www.raywenderlich.com/65964/create-a-framework-for-ios"&gt;raywenderlich&lt;/a&gt;上都有解决。&lt;br/&gt;
 使用过第三方如统计之类工具的，对framework不会陌生。所以framework最大的一个好处就是提供接口但隐藏代码，在开发SDK过程中经常使用。&lt;/p&gt;
 &lt;h2&gt;静态库模板&lt;/h2&gt;
