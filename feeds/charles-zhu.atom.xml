@@ -1,5 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-02-13T22:30:00+08:00</updated><entry><title>过去一周的思考</title><link href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="alternate"></link><updated>2015-02-13T22:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-13:guo-qu-yi-zhou-de-si-kao.html</id><summary type="html">&lt;h2&gt;简介&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-02-25T00:00:00+08:00</updated><entry><title>个人App发布前的测试</title><link href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="alternate"></link><updated>2015-02-25T00:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-25:ge-ren-appfa-bu-qian-de-ce-shi.html</id><summary type="html">&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;假期里原本想好好的放松，多看几本书，多运动，不曾想一半的时间花费在修改bug上了。算上假期前提交的版本，整个春节期间发布了3个小版本的更新，申请了2次紧急提交审核。其中经历不可谓不惊心动魄，虽然未必对下载量有所帮助，但至少也让用户感觉到：这大过年的也在更新，也是蛮拼的了:-)。&lt;/p&gt;
+&lt;h2&gt;测试流程&lt;/h2&gt;
+&lt;p&gt;言归正传，春节期间提交的紧急修复起因都是程序出了严重的bug，而且都是在修复某个bug的过程中引入的bug。这说明即使是个人开发者，对于提交前的测试流程必须要重视。不管是养成一个好习惯，或者是开发出较高质量的程序，完备的测试是不可或缺的。下面结合自身的情况，把相应的测试守则完备下，督促自己执行。&lt;/p&gt;
+&lt;h3&gt;功能设计和实现阶段&lt;/h3&gt;
+&lt;p&gt;在分解App的功能的设计阶段，或者在实现功能的阶段，根据功能点，撰写相应的测试内容。具体来说就是针对每一个功能点，设计测试步骤；功能复杂的时候测试步骤也要细化。这里尤其要注意的是务必覆盖所有的功能点。此外，针对边界情况的测试，基本也包含在此阶段。&lt;/p&gt;
+&lt;h3&gt;模块化集成阶段&lt;/h3&gt;
+&lt;p&gt;当完成几个模块后，可以着手集成测试，这个阶段主要侧重运行时模块之间的运行情况。有时候单独的功能使用没有任何问题，但是当和其他模块功能一起使用的过程中，会发生问题。&lt;/p&gt;
+&lt;h3&gt;测试环境&lt;/h3&gt;
+&lt;p&gt;发布前的App必须完整经历Ad hoc版本的测试，因为developer模式下有些bug不会产生。这一点，相信很多人都深有体会。&lt;/p&gt;
+&lt;h2&gt;修复bug后的测试流程&lt;/h2&gt;
+&lt;p&gt;很多情况下，修复了某bug后，出于对自己的自信，只对修复bug进行测试。但往往在无意间，一个新的bug就引入了。因此，修复了bug后还是要当一个新App一样，重新测试。&lt;/p&gt;
+&lt;h3&gt;自动化测试&lt;/h3&gt;
+&lt;p&gt;说到这里，就不得不想起自动化测试了。虽然要实现自动化测试，开始需要耗费一些精力，但是如上所述修复某个bug的情形，如果这时可以用jekins自动跑一跑测试用例，相信会省力不少。而且，用心做一个App的话，更新N(N&amp;gt;10)个版本的可能性还是存在的，相信到最后，App的bug也会越来越少。&lt;br/&gt;
+这里也督促自己需要重拾jekins以及UIAutomate。&lt;/p&gt;
+&lt;h2&gt;后记&lt;/h2&gt;
+&lt;p&gt;常常提醒自己，不能在同一个地方跌倒多次。春节期间，App的发布经历无疑是一个狠狠的掌掴。那么，到底是什么引起的呢？自己的不负责任，水平有限亦或是其他？其实，简单的说就是缺少必要的制度，这里就是测试。试想，一个企业发布的app经历那么多轮的测试尚且会有问题，何况是个人的呢？虽然个人的App在复杂度上和企业类的app无法相提并论，但是bug的生存空间和几率却完全是相等的。所以没有理由只重视开发而忽视测试。&lt;br/&gt;
+当然，也有人说免费的App何须花这么多精力？然而，如果把App当成是你的作品，像一座房子，一辆车子一般，想必没有人会愿意出现crash或者其他致命的错误吧。说到底，这也是一种人生的态度。我相信，在力所能及的范围内，做好每一件事，时间久了，必然会积累出质变！&lt;/p&gt;</summary><category term="iOS"></category><category term="测试"></category></entry><entry><title>过去一周的思考</title><link href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="alternate"></link><updated>2015-02-13T22:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-13:guo-qu-yi-zhou-de-si-kao.html</id><summary type="html">&lt;h2&gt;简介&lt;/h2&gt;
 &lt;p&gt;过去的一周可以算是波澜起伏，主要关于两方面：一个是app的下载，另一个是app的发布。&lt;/p&gt;
 &lt;h2&gt;app的下载&lt;/h2&gt;
 &lt;p&gt;ASO是一个至今不得窥其入门的东西，某个收费的app自上线至今约3个月的时间保持平均每天3个的下载节奏。期间在app中集成的分享平台中发过带app的tag的链接（主要是国外的分享平台），这种方式可以引起用户的注意，可以算是营销的一种方式。只是一个人势单力薄，无法做到每天的更新。这种方式和app的下载互为因果，因为很难单纯的通过这种方式提高下载量，相反这种推广的效果还取决于app的下载基数。因此，我认为这属于“锦上添花”增加用户基数型的营销模式。&lt;br/&gt;
