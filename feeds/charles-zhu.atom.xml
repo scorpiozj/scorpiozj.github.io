@@ -1,5 +1,55 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-02-28T14:00:00+08:00</updated><entry><title>Compare of Testflight&amp;&amp;Enterprise Distribution</title><link href="http://icocoa.tk/compare-of-testflightenterprise-distribution.html" rel="alternate"></link><updated>2015-02-28T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-28:compare-of-testflightenterprise-distribution.html</id><summary type="html">&lt;h3&gt;前言&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-02-28T17:00:00+08:00</updated><entry><title>Optional of swift</title><link href="http://icocoa.tk/optional-of-swift.html" rel="alternate"></link><updated>2015-02-28T17:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-28:optional-of-swift.html</id><summary type="html">&lt;h3&gt;Intro&lt;/h3&gt;
+&lt;p&gt;This is a category of study&amp;amp;&amp;amp;notes of swift, program and so on during the study of [Developing iOS8 Apps with Swift] on the &lt;strong&gt;iTunes U&lt;/strong&gt;.&lt;br/&gt;
+此系列为学习stanford课程：Developing iOS8 Apps with Swift过程中，对语言，程序设计，编程能力等部分的学习和记录。&lt;/p&gt;
+&lt;h3&gt;Optional&lt;/h3&gt;
+&lt;p&gt;The simple way to declare a optional value:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;var testString: String?
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It means: &lt;code&gt;testString&lt;/code&gt; is an &lt;strong&gt;optional value&lt;/strong&gt; and if &lt;code&gt;testString&lt;/code&gt; has a value, it must be a string; if not, it is &lt;code&gt;nil&lt;/code&gt;. Notice:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;only optional value can be nil&lt;/li&gt;
+&lt;li&gt;optional can be available for any type, such as class, scalar&lt;/li&gt;
+&lt;li&gt;using &lt;code&gt;!&lt;/code&gt; to unwrapped the optional value to get/set&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;From the above, for the normal &lt;code&gt;var&lt;/code&gt;, we don't need to check like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;var testString: String = "demo"
+if testString {
+
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;It will have an error. &lt;br/&gt;
+nil is different from that in ObjC.  &lt;/p&gt;
+&lt;p&gt;During the course, there is another way to declare optional:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;@IBOutlet weak var label: UILabel!
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;The &lt;code&gt;Paul&lt;/code&gt; says it is called &lt;code&gt;implicit optional value&lt;/code&gt;. The difference of optional between using ? and ! only lies in usage, for example:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;var label: UILabel?
+label!.text!= label!.text! + digit
+
+var label2: UILabel!
+label2.text! = label2.text! + digit
+//here, UILable's text is `text?`
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;optional chaining&lt;/h3&gt;
+&lt;p&gt;In Book [The Swift Programming Language], there is a charpt &lt;a href="https://itun.es/us/jEUH0.l"&gt;Optional Chaining&lt;/a&gt;, it is :&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Optional chaining is a process for querying and calling properties, methods, and subscripts on an optional that might currently be nil.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;Just grab the example from the book:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;if​ ​let​ ​johnsStreet​ = ​john​.​residence​?.​address​?.​street​ {
+​    ​println​(​"John's street name is ​\(​johnsStreet​)​."​)
+​} ​else​ {
+​    ​println​(​"Unable to retrieve the address."​)
+​}
+​// prints "Unable to retrieve the address.”
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;We can use &lt;code&gt;?&lt;/code&gt; to get &lt;code&gt;john&lt;/code&gt;'s optional property &lt;code&gt;residence&lt;/code&gt;'s optional propery &lt;code&gt;address&lt;/code&gt;'s optional property &lt;code&gt;street&lt;/code&gt;. That's I think why it is called &lt;code&gt;chaining&lt;/code&gt;. Notice if &lt;code&gt;address&lt;/code&gt; is nil, it will go to the &lt;code&gt;else&lt;/code&gt;.&lt;br/&gt;
+There is an important thing: any method,property called in the &lt;code&gt;optional chaining&lt;/code&gt; becomes the optional value event it is not defined as optional. &lt;/p&gt;
+&lt;h3&gt;Why we need optional&lt;/h3&gt;
+&lt;p&gt;In swift, &lt;code&gt;nil&lt;/code&gt; is not a &lt;strong&gt;value&lt;/strong&gt;, and hence the normal var can't have the value of &lt;code&gt;nil&lt;/code&gt;. But we do need leave the var empty(without value), and &lt;code&gt;optional&lt;/code&gt; comes for that.&lt;/p&gt;
+&lt;h3&gt;&lt;/h3&gt;
+&lt;h3&gt;&lt;/h3&gt;</summary><category term="swift"></category><category term="iOS"></category></entry><entry><title>Compare of Testflight&amp;&amp;Enterprise Distribution</title><link href="http://icocoa.tk/compare-of-testflightenterprise-distribution.html" rel="alternate"></link><updated>2015-02-28T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-02-28:compare-of-testflightenterprise-distribution.html</id><summary type="html">&lt;h3&gt;前言&lt;/h3&gt;
 &lt;p&gt;应要求整理的分发方式比较。可惜了有enterprise的我们，还是没有充分利用enterprise的特点。&lt;br/&gt;
 下面从是否需要review，UDID以及下载方式进行比较，最后简单介绍利用dropbox进行wireless下载in-house app的过程。&lt;/p&gt;
 &lt;h3&gt;1 Compare&lt;/h3&gt;
