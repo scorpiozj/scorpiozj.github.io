@@ -1,5 +1,134 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Sat, 28 Feb 2015 17:00:00 +0800</lastBuildDate><item><title>Optional of swift</title><link>http://icocoa.tk/optional-of-swift.html</link><description>&lt;h3&gt;Intro&lt;/h3&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 08 Mar 2015 14:00:00 +0800</lastBuildDate><item><title>Appium的使用</title><link>http://icocoa.tk/appiumde-shi-yong.html</link><description>&lt;h3&gt;1. Intro&lt;/h3&gt;
+&lt;p&gt;本周业余时间，主要在研究如何使用Appium，内容包括Appium是什么，架构，安装，使用以及测试用例的写法。  &lt;/p&gt;
+&lt;h3&gt;2. Appium简介&lt;/h3&gt;
+&lt;p&gt;Appium的&lt;a href="http://appium.io/introduction.html"&gt;Introduction&lt;/a&gt;页面介绍了Appium，采用经典的CS架构，利用 WebDriver 封装调用各平台的测试框架(现在支持iOS，Android，FirefoxOS)，因此在使用的时候需要先启动服务器再在客户端进行测试。&lt;br/&gt;
+对技术细节及背后的实现感兴趣的，可以深入看源码。现在，我们的目标是运行Appium并成功进行测试。&lt;/p&gt;
+&lt;h3&gt;3. Tutorial&lt;/h3&gt;
+&lt;p&gt;为了上手，可以看&lt;a href="http://appium.io/slate/en/master/#README.md"&gt;GetStarted&lt;/a&gt;或者&lt;a href="http://appium.io/slate/en/tutorial/ios.html"&gt;iOS Tutorial&lt;/a&gt;。因为我只侧重iOS，因此下面把tutorial中涉及到的内容摘录出来。  &lt;/p&gt;
+&lt;h4&gt;3.1 Environment(环境配置)&lt;/h4&gt;
+&lt;p&gt;Install the latest stable release of Ruby.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;\curl -sSL https://get.rvm.io | bash -s stable
+
+source /Users/xxxx/.rvm/scripts/rvm
+rvm install ruby
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Make sure RVM is using the correct Ruby by default&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rvm list
+rvm install ruby-2.1.1
+rvm --default use 2.1.1
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;If you have an old ruby/rvm, you can upgrade with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;rvm get head
+rvm autolibs homebrew
+rvm install ruby
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Update RubyGems and Bundler.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gem update --system
+gem install --no-rdoc --no-ri bundler
+gem update
+gem cleanup
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Install appium_console gem.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gem uninstall -aIx appium_lib
+gem uninstall -aIx appium_console
+gem install --no-rdoc --no-ri appium_console
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Install flaky gem.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gem uninstall -aIx flaky
+gem install --no-rdoc --no-ri flaky
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Install brew(if installed, ignore)
+    ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"&lt;/p&gt;
+&lt;p&gt;Install nodejs using brew.(if installed, ignore)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;brew update
+brew upgrade node
+brew install node
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;此处&lt;strong&gt;注意&lt;/strong&gt;：如果以前已经安装过node的，可能使用了&lt;code&gt;sudo&lt;/code&gt;权限，这里会对Appium的启用有影响，需要安装Appium的方式安装node。
+check versions:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;node --version
+npm --version
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Install grunt.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;npm install -g grunt grunt-cli
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Run the version command from the appium folder. If you’re not in that folder, the grunt version will not display.&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;grunt --version
+grunt-cli v0.1.13
+grunt v0.4.2
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;install ant &amp;amp;&amp;amp; maven&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;brew install ant
+
+brew install maven
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;3.2 Appium&amp;amp;&amp;amp;Authorize (安装与授权)&lt;/h4&gt;
+&lt;p&gt;此处操作是在源码中进行的
+get appium&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git clone git://github.com/appium/appium.git
+cd appium; ./reset.sh --ios//只做iOS测试
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Authorize:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;sudo node bin/authorize-ios.js
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Start &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;node .
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;除了命令行启动的方式，Appium也提供了App启动方式，官网下载后直接安装。打开后，可以根据点击需要的测试平台填入相应App的信息，启动即可。Appium的app还内置了inspector，可以连接app的时候查看各个页面元素，也提供了多种语言获取元素，方便测试用例的撰写。&lt;/p&gt;
+&lt;h4&gt;3.3 Install client library&lt;/h4&gt;
+&lt;p&gt;https://github.com/appium/sample-code/tree/master/sample-code/examples/python
+因为用python写用例，需要安装：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;pip install Appium-Python-Client
+pip install pytest
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;使用方法：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;py.test ios_simple.py
+py.test -n2 --boxed ios_simple.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其中的python文件需要遵循一定的写法。&lt;br/&gt;
+使用其他语言的可以在&lt;a href="https://github.com/appium/sample-code/tree/master/sample-code/examples"&gt;这里&lt;/a&gt;查看，目前支持的语言还是挺多的。&lt;/p&gt;
+&lt;h3&gt;4. sample(demo实战)&lt;/h3&gt;
+&lt;p&gt;进入源码的&lt;code&gt;sample-code&lt;/code&gt;文件夹，其中&lt;code&gt;apps&lt;/code&gt;中是待测程序，&lt;code&gt;examples&lt;/code&gt;中是不同语言版本的测试用例。其中&lt;code&gt;/example/python/ios_simple.py&lt;/code&gt;是征对&lt;code&gt;/apps/TestApp&lt;/code&gt;的测试用例，我们如下进行测试：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;//启动Appium
+//启动方式1
+appium
+//启动方式2
+cd /Appium/source/path
+node .
+//运行测试用例，需要新开terminal
+py.test ios_simple.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;稍等一会，会启动iOS模拟器，然后运行用例，测试结果会在terminal中显示。&lt;br/&gt;
+在运行过程中，该用例可能需要修改32和49行的部分代码：将&lt;code&gt;elements()&lt;/code&gt;替换成&lt;code&gt;.elements()&lt;/code&gt;。&lt;br/&gt;
+从&lt;code&gt;ios_simple.py&lt;/code&gt;中大致可以明白测试用例的写法，比如&lt;code&gt;setUp&lt;/code&gt;负责建立测试环境如：app路径，测试平台等，&lt;code&gt;tearDown&lt;/code&gt;是告诉appium退出。&lt;br/&gt;
+另外，详细的测试语法还要继续学习。&lt;/p&gt;
+&lt;h4&gt;4.1 真机测试&lt;/h4&gt;
+&lt;p&gt;首先安装：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;brew install --HEAD ideviceinstaller
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;详见&lt;a href="https://discuss.appium.io/t/ideviceinstaller-could-not-initialize-ideviceinstaller/3000/2"&gt;这里&lt;/a&gt;。&lt;/p&gt;
+&lt;p&gt;然后就可以启动appium：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;appium -U "udid" --app "bundle-id"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;启动成功后，新开terminal，启动测试脚本：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;py.test ios_test.py
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其中，测试脚本中&lt;code&gt;desired_capabilities&lt;/code&gt;需要更新：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;desired_capabilities={
+            'app': app,
+            'platformName': 'iOS',
+            'platformVersion': '8.1',
+            'deviceName': 'iPhone 6',
+            'udid':'df41e04b1ea7dbfa0a7df54d49fc9f8c228ab20b',
+            'bundleid':'io.appium.TestApp',
+        }
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;官方也有&lt;a href="http://appium.io/slate/en/master/?python#deploying-an-ios-app-to-a-real-device"&gt;Deploying an iOS app to a real device&lt;/a&gt;的教程，步骤包括生产签过名的app，使用&lt;code&gt;fruitstrap&lt;/code&gt;部署app到真机，然后再启动appium。&lt;br/&gt;
+使用py.test客户端启动测试的过程中，就包含了部署的部分，当然待测试的app需要先安装到真机。  &lt;/p&gt;
+&lt;h3&gt;5 展望&lt;/h3&gt;
+&lt;p&gt;这个自动化测试的平台搭建成功后，还是很兴奋的。下一步就是学习case怎么写，虽然一开始会感觉负担比较重，但是会节省以后的空间。
+另外，还发现一个论坛&lt;a href="http://testerhome.com/"&gt;testerhome&lt;/a&gt;--测试员的家，看英文累的可以参考这里。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Sun, 08 Mar 2015 14:00:00 +0800</pubDate><guid>tag:icocoa.tk,2015-03-08:appiumde-shi-yong.html</guid><category>测试</category><category>appium</category></item><item><title>Optional of swift</title><link>http://icocoa.tk/optional-of-swift.html</link><description>&lt;h3&gt;Intro&lt;/h3&gt;
 &lt;p&gt;This is a category of study&amp;amp;&amp;amp;notes of swift, program and so on during the study of [Developing iOS8 Apps with Swift] on the &lt;strong&gt;iTunes U&lt;/strong&gt;.&lt;br/&gt;
 此系列为学习stanford课程：Developing iOS8 Apps with Swift过程中，对语言，程序设计，编程能力等部分的学习和记录。&lt;/p&gt;
 &lt;h3&gt;Optional&lt;/h3&gt;

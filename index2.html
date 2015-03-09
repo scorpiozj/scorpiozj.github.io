@@ -53,6 +53,30 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">NSZombierEnable</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-12-18T10:30:00+08:00"> Thu 18 December 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>今天在cocoachina上看到一篇关于实现NSZombier的翻译贴，原文来自<a href="https://mikeash.com/">Mike Ash</a>。此人是(Friday Q&amp;A)的作者，更为神奇的是他白天是飞行员，晚上是程序员，这在天朝不可想像。本文主要是基于他以下两篇文章的笔记。<br/>
+<a href="https://mikeash.com/pyblog/friday-qa-2014-11-07-lets-build-nszombie.html">Friday Q&amp;A 2011-05-20: The Inner Life of Zombies</a><br/>
+<a href="https://mikeash.com/pyblog/friday-qa-2011-05-20-the-inner-life-of-zombies.html">Friday Q&amp;A 2014-11-07: Let's Build NSZombie</a></p>
+<h3>启用NSZombier对象</h3>
+<p>有经验的开发者在遇到诸如<code>EXC_BAD_ACCESS</code>的错误时往往会设置<code>NSZombieEnabled</code>为<code>YES</code>，这样类似的错误发生后，就可以定位到出错的位置，从而便于诊断问题所在。<br/>
+诸如此类的内存错误不管是MRC还是ARC下，都是会发生的。发生的原因在于：一个已经release的指针对象，又收到了某个消息，这时就会发生古怪。在MRC下，alloc一个对象A，然后release后，该对象所指向的内存被系统回收 ...</br/></p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/find-all-unlocalized-strings.html" rel="bookmark" title="Permalink to Find All Unlocalized Strings">Find All Unlocalized Strings</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-12-16T17:30:00+08:00"> Tue 16 December 2014 </abbr>
@@ -305,44 +329,6 @@ WARNING: Could not process content/output/authors.html
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-03T10:00:00+08:00"> Mon 03 November 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
-<h4>git revert</h4>
-<p>对应的中文术语叫反转提交，基本的用法：</p>
-<div class="highlight"><pre>git revert commit-ish
-</pre></div>
-<p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
-<h4>svn revert</h4>
-<p>svn中revert即回滚，基本用法</p>
-<div class="highlight"><pre>svn revert PATH
-</pre></div>
-<p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
-<h4>svn实现git revert的功能</h4>
-<p>如果要向用svn实现git revert的功能那么就需要：</p>
-<div class="highlight"><pre>svn update
-//确保版本库最新
-svn log
-//找到想要“回复”的版本号
-svn merge -r currentID ...</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/revert.html">revert</a>
-											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
-											<a class="danger label" href="http://icocoa.tk/tag/svn.html">svn</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -369,38 +355,39 @@ svn merge -r currentID ...</pre></div> </div><!-- /.entry-content -->
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
 </ul>
 
 

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>WWDC2014-223 Notes Protyping</title>
+        <title>To be Independent - swift</title>
         <meta charset="utf-8" />
 
 
@@ -43,112 +43,46 @@
               </ul>
             </div>
 
-<section id="content" class="body">
+<section id="content">
+
+
 
    <div class="row">
+
+
         <div class="eleven columns">
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Optional of swift</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-28T17:00:00+08:00"> Sat 28 February 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <h3>Intro</h3>
+<p>This is a category of study&amp;&amp;notes of swift, program and so on during the study of [Developing iOS8 Apps with Swift] on the <strong>iTunes U</strong>.<br/>
+此系列为学习stanford课程：Developing iOS8 Apps with Swift过程中，对语言，程序设计，编程能力等部分的学习和记录。</p>
+<h3>Optional</h3>
+<p>The simple way to declare a optional value:</p>
+<div class="highlight"><pre>var testString: String?
+</pre></div>
+<p>It means ...</p> </div><!-- /.entry-content -->
 
-
-            <header>
-              <h2 class="entry-title">
-                <a href="http://icocoa.tk/wwdc2014-223-notes-protyping.html" rel="bookmark"
-                   title="Permalink to WWDC2014-223 Notes Protyping">WWDC2014-223 Notes Protyping</a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2014-07-03T22:00:00+08:00">
-                Thu 03 July 2014
-              </abbr>
-              <address class="vcard author">
-                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              <p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br/>
-这一讲的内容分为下面几个部分：</p>
-<ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br/>
-<img alt="relations icon" src="./imgs/20140703/how-relations.png"/><br/>
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we fake</li>
-<li>Where will they use it<br/>
-make的目的是为了给人看，那么就需要判断fake app中看上去更真实（和最终产品的样貌一致的部分），以及哪些部分进行fake（指的是不是仅仅用几张屏幕截图来组成fake app，而是分割成不同的组成部分），比如文字，图标，图片等。当然，我们要确保用户会在iphone/ipad的设备上使用。</li>
-</ul>
-<h3>Show</h3>
-<p>还是3个问题:   </p>
-<ul>
-<li>Do you know how to ____?</li>
-<li>is it easy to ____?</li>
-<li>
-<p>How can we make this better?
-这里的空格就是表示fake app所承载的功能，就是问用户：  </p>
-</li>
-<li>
-<p>我这个是用来做某某事的，你知道怎么做吗</p>
-</li>
-<li>这样做操作简单吗</li>
-<li>怎么能做更好？  </li>
-</ul>
-<p>当然，如果设计考虑到了"Ituitive"的话，用户对fake app的功能应该一目了然。</p>
-<h3>Learn</h3>
-<p>这一部分就是闭环反馈系统的关键了，正反馈吸收，负反馈反思。同时看看有没有碰撞起火花，产生新的灵感</p>
-<ul>
-<li>What's working</li>
-<li>what's not working</li>
-<li>what other ideas does this give us?</li>
-</ul>
-<h2>工具</h2>
-<p>主要演示了用keynote进行protype的方法。keynote（或ppt）的动画功能还是一流的，每个人或多或少知道些。在这个过程中，演讲者使用了一个寻找好吃的toast的app为例，演示了如何进行上述环节的过程。这一部分，需要亲自看，体会才能更深</p>
-<h2>制作演示程序</h2>
-<p>使用xcode和core animation制作成可以在device上运行的app。示例的例子在官网上可以下载：<a href="https://developer.apple.com/library/prerelease/ios/samplecode/ToastModern/">ToastModern</a></p>
-<h2>总结</h2>
-<ul>
-<li>如何protype是最大的收获，但是这一过程需要多练。  </li>
-<li>各种工具的灵活使用：谁知道keynote也可以protype呢？</li>
-<li>制作fake app的技巧： 不局限于coding实现</li>
-</ul>
-            </div><!-- /.entry-content -->
-            
-            <!-- Neighbor -->
-            <div class="pagination">
-      <ul>
-        <li class="prev"><a href="http://icocoa.tk/wwdc2014-211-notes-designing_intuitive_user_experiences.html">← Previous : WWDC2014-211 Notes designing_intuitive_user_experiences</a></li>
-        
-        <li class="next"><a href="http://icocoa.tk/sketch-tutorials-study-1.html">Sketch Tutorials Study 1:Next →</a></li>
-      </ul>
-    </div>
+								<div class="medium primary btn"><a href="http://icocoa.tk/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-            
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/swift.html">swift</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+								</div>
 
 
 
+				        </article></li>
+				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
-        
-
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -217,8 +151,10 @@ make的目的是为了给人看，那么就需要判断fake app中看上去更�
 
 </div> </div><!-- /.row -->
 
-
-</section>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
 
        </div><!-- /.row -->
     </div><!-- /.container -->
