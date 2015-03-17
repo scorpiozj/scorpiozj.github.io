@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>QuartzComposer基本概念</title>
+        <title>To be Independent - storyboard</title>
         <meta charset="utf-8" />
 
 
@@ -43,77 +43,49 @@
               </ul>
             </div>
 
-<section id="content" class="body">
+<section id="content">
+
+
 
    <div class="row">
+
+
         <div class="eleven columns">
-
-
-            <header>
-              <h2 class="entry-title">
-                <a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html" rel="bookmark"
-                   title="Permalink to QuartzComposer基本概念">QuartzComposer基本概念</a></h2>
-           
-            </header>
-            <footer class="post-info">
-              <abbr class="published" title="2014-08-25T14:00:00+08:00">
-                Mon 25 August 2014
-              </abbr>
-              <address class="vcard author">
-                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
-              </address>
-            </footer><!-- /.post-info -->
-            <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
-Summary: a guide to QuartzComposer</p>
-<p>Processors are green, providers are blue, and consumers are pink
-最近才发现QuartzComposer也是一款用来设计交互的工具，原来Xcode自带，现在从Xcode中分离成为单独的app。之所以会关注是发现facebook的设计师也比较推崇该工具。在官网上搜索相关文档，内容都比较陈旧，或许说明这个工具比较成熟吧。</p>
-<h3>基本概念</h3>
-<h4>1. composition</h4>
-<p>Composer中创建的文件叫Quartz composition ， 其中最基本的单元（module）叫patch。</p>
-<h4>2. patch</h4>
-<p>patch是最基本的单元，苹果准备了丰富的库来完成一系列操作。patch库可以通过cmd＋enter的方式调用，然后找到需要的patch直接拖即可。patch相当于是一个程序，函数原型相当于：  </p>
-<div class="highlight"><pre><span class="nx">Result</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">time</span><span class="p">,</span> <span class="p">{</span><span class="mi">0</span> <span class="nx">or</span> <span class="nx">more</span> <span class="nx">input</span> <span class="nx">parameters</span><span class="p">})</span>
+		         <ol id="post-list">
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">RBStoryboardLink 的简介</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-03-13T17:30:00+08:00"> Fri 13 March 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <h3>1. Intro</h3>
+<p>今天简单介绍一下<a href="https://github.com/rob-brown/RBStoryboardLink">RBStoryboardLink</a>，这是一个方便在某个storyboard(下面我要用SB代之)中调用其他 SB 中的viewcontroller的项目  </p>
+<h3>2. RBStoryboardLink</h3>
+<h4>2.1 为什么要使用</h4>
+<p>当Apple越来越重视的SB时候，设计师们也愈发喜欢 SB 。如果你有一位喜欢使用SB的设计师，那么恭喜你，你可以少做很多开发准备了。然而，从项目的组织结构来考虑，不管是设计师或是开发人员，都不会使用单一SB(项目简单的除外)。我们往往会使用模块化的方式来分解，比如tab结构的app，每一个tab就可以视为一个模块。而sb文件中页面的跳转不能离开当前的sb文件，这时涉及到模块间页面跳转的情形，在sb中就无能为力了。通常的做法，就需要在代码中实现：  </p>
+<div class="highlight"><pre>//生成一个sb对象
+//获取此sb对象中的某一个scene
+//push/present该scene
 </pre></div>
-<p>在Composer中patch作为了可视化的组件出现了，如下图的billboard。
-<img alt="billboard" src="./imgs/20140827/billboard.png"/><br/>
-图中的圆点叫port，左边的port代表输入参数，如果右边也有port的话，就代表输出参数。右上角的数字表示当前所在的层，这个有点类似Quartz2D中的树的概念：数字越小代表着越先执行；从视觉上说，数字越大的会最终显示在view窗口。</p>
-<h5>2.1 patch的种类</h5>
-<ol>
-<li>consumer
-用蓝色显示，最终会显示在view窗口</li>
-<li>provider
-用粉红色表示，将外部源的数据传递进来。这里的外部源指的是鼠标等事件。</li>
-<li>processor
-用黑色显示，主要用于将处理过的数据传递给consumer。</li>
-</ol>
-<h3>入门</h3>
-<p>没有使用官方的教程因为没有找到，在库里搜索patch的时候发现有些会带有例子。我是按照<a href="http://qc.prabros.com/primer1.html">该文</a>进行入门练习的。<br/>
-该示例是模拟点击按钮切换按钮状态的例子，非常详细，跟着练习一边，基本的操作就能上手。最后的作业也很好，主要思路就是在建立一个toogle来过滤状态。</p>
-<h3>感想</h3>
-<p>有了sketch和QuartzComposer，自己设计漂亮的产品将不再遥远啦～</p>
-            </div><!-- /.entry-content -->
-            
-            <!-- Neighbor -->
-            <div class="pagination">
-      <ul>
-        <li class="prev"><a href="http://icocoa.tk/mvvmchu-shi-jian.html">← Previous : MVVM初实践</a></li>
-        
-        <li class="next"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html">git commit -a 的误区:Next →</a></li>
-      </ul>
-    </div>
+<p>而 RBStoryboardLink 就可以让你不依赖于代码，直接在sb文件中进行简单的“连接”即可。<br/>
+详细的使用方法见<a href="https://github.com/rob-brown/RBStoryboardLink#how-to-use">How to Use</a>(这里不做搬运苦力活了)。</p>
+<h4>2.2 ...</h4> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
-            
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/storyboard.html">storyboard</a>
+								</div>
 
 
 
+				        </article></li>
+				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
-        
-
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -183,8 +155,10 @@ Summary: a guide to QuartzComposer</p>
 
 </div> </div><!-- /.row -->
 
-
-</section>
+<p class="paginator">
+    Page 1 / 1
+</p>
+</section><!-- /#content -->
 
        </div><!-- /.row -->
     </div><!-- /.container -->

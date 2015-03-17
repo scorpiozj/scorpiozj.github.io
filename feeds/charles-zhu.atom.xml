@@ -1,5 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-03-08T14:00:00+08:00</updated><entry><title>Appium的使用</title><link href="http://icocoa.tk/appiumde-shi-yong.html" rel="alternate"></link><updated>2015-03-08T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-08:appiumde-shi-yong.html</id><summary type="html">&lt;h3&gt;1. Intro&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-03-13T17:30:00+08:00</updated><entry><title>RBStoryboardLink 的简介</title><link href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="alternate"></link><updated>2015-03-13T17:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-13:rbstoryboardlink-de-jian-jie.html</id><summary type="html">&lt;h3&gt;1. Intro&lt;/h3&gt;
+&lt;p&gt;今天简单介绍一下&lt;a href="https://github.com/rob-brown/RBStoryboardLink"&gt;RBStoryboardLink&lt;/a&gt;，这是一个方便在某个storyboard(下面我要用SB代之)中调用其他 SB 中的viewcontroller的项目  &lt;/p&gt;
+&lt;h3&gt;2. RBStoryboardLink&lt;/h3&gt;
+&lt;h4&gt;2.1 为什么要使用&lt;/h4&gt;
+&lt;p&gt;当Apple越来越重视的SB时候，设计师们也愈发喜欢 SB 。如果你有一位喜欢使用SB的设计师，那么恭喜你，你可以少做很多开发准备了。然而，从项目的组织结构来考虑，不管是设计师或是开发人员，都不会使用单一SB(项目简单的除外)。我们往往会使用模块化的方式来分解，比如tab结构的app，每一个tab就可以视为一个模块。而sb文件中页面的跳转不能离开当前的sb文件，这时涉及到模块间页面跳转的情形，在sb中就无能为力了。通常的做法，就需要在代码中实现：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;//生成一个sb对象
+//获取此sb对象中的某一个scene
+//push/present该scene
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;而 RBStoryboardLink 就可以让你不依赖于代码，直接在sb文件中进行简单的“连接”即可。&lt;br/&gt;
+详细的使用方法见&lt;a href="https://github.com/rob-brown/RBStoryboardLink#how-to-use"&gt;How to Use&lt;/a&gt;(这里不做搬运苦力活了)。&lt;/p&gt;
+&lt;h4&gt;2.2 内部实现&lt;/h4&gt;
+&lt;p&gt;内部的实现说起来不复杂，但是有很多细节需要注意。&lt;br/&gt;
+使用方法中，需要在当前的sb文件中新建一个scene A，然后把该scene连接到其他sb文件中的scene B中。这在代码中就依赖于: 首先通过在SB中给 A 添加的&lt;code&gt;User Defined Runtime Attributes&lt;/code&gt;中的属性将其他的SB文件以及相应的scene的identifier(如果有)获取到，然后生成sb对象和scene；接下来就通过&lt;code&gt;addChildViewController&lt;/code&gt;，把B作为子类加到A上去，这样的话A就相当于母板的功能。此外，还需要把A的一些属性转移到B，比如是&lt;code&gt;UINavigationItem&lt;/code&gt;和&lt;code&gt;UIBarButtonItem&lt;/code&gt; 的属性。这样，B就获得了pop到A的前一页面的能力。更多需要设置的细节，请阅读源码，相信会有不少的收获。&lt;/p&gt;
+&lt;h3&gt;3 其余收获&lt;/h3&gt;
+&lt;p&gt;主要指的是 &lt;code&gt;User Defined Runtime Attributes&lt;/code&gt;，这个在cocoa开发的时候经常会用到，在iOS上也有不少geek的用法。这里不做讨论，只是做个记录，提醒自己不要忘记了。大家google下，就能发现很多。  &lt;/p&gt;</summary><category term="storyboard"></category></entry><entry><title>Appium的使用</title><link href="http://icocoa.tk/appiumde-shi-yong.html" rel="alternate"></link><updated>2015-03-08T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-08:appiumde-shi-yong.html</id><summary type="html">&lt;h3&gt;1. Intro&lt;/h3&gt;
 &lt;p&gt;本周业余时间，主要在研究如何使用Appium，内容包括Appium是什么，架构，安装，使用以及测试用例的写法。  &lt;/p&gt;
 &lt;h3&gt;2. Appium简介&lt;/h3&gt;
 &lt;p&gt;Appium的&lt;a href="http://appium.io/introduction.html"&gt;Introduction&lt;/a&gt;页面介绍了Appium，采用经典的CS架构，利用 WebDriver 封装调用各平台的测试框架(现在支持iOS，Android，FirefoxOS)，因此在使用的时候需要先启动服务器再在客户端进行测试。&lt;br/&gt;

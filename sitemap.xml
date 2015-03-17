@@ -5,30 +5,37 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/index.html</loc>
-<lastmod>2015-03-09T17:30:39-00:00</lastmod>
+<lastmod>2015-03-17T10:26:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/archives.html</loc>
-<lastmod>2015-03-09T17:30:39-00:00</lastmod>
+<lastmod>2015-03-17T10:26:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tags.html</loc>
-<lastmod>2015-03-09T17:30:39-00:00</lastmod>
+<lastmod>2015-03-17T10:26:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/categories.html</loc>
-<lastmod>2015-03-09T17:30:39-00:00</lastmod>
+<lastmod>2015-03-17T10:26:08-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/rbstoryboardlink-de-jian-jie.html</loc>
+<lastmod>2015-03-13T17:30:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -285,7 +292,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/category/ios.html</loc>
-<lastmod>2015-03-08T14:00:00+08:06</lastmod>
+<lastmod>2015-03-13T17:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -508,6 +515,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/tag/storyboard.html</loc>
+<lastmod>2015-03-13T17:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/tag/ux.html</loc>
 <lastmod>2014-06-30T14:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -565,7 +579,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/author/charles-zhu.html</loc>
-<lastmod>2015-03-08T14:00:00+08:06</lastmod>
+<lastmod>2015-03-13T17:30:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
