@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent</title>
+        <title>Xcode6中批量添加矢量图</title>
         <meta charset="utf-8" />
 
 
@@ -43,80 +43,145 @@
               </ul>
             </div>
 
-<section id="content">
-<h2>Articles in the Linux category</h2>
-
+<section id="content" class="body">
 
    <div class="row">
-
-
         <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">文件权限</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> Sun 09 November 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>权限</h4>
-<p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
-    ls -l README
-    -rw-r--r--   1 xxxx  staff    234 Nov  9 11:27 README
-说明：<br/>
-第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br/>
-第二列数字1表示索引节点的目录连接。
-第三列就是文件拥有者的名字，第四列则是共享文件所在组。
-第五列是文件的字节数，第六、七、八列是时间，最后一列是名字。
-其中文件权限可以用二进制表达，该例对应的则是： <code>110100100</code>，用十进制表达则是： <code>644</code>。因此，有时候修改权限 <code>777</code>的时候，就一定要小心了 ...</br/></br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">Read more <i class="icon-arrow-right"></i></a></div>
 
 
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/security.html">security</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-23T10:00:00+08:00"> Wed 23 July 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: install eclipse on centos6.5</p>
-<p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
-<h3>eclipse 下载</h3>
-<p>直接在<a href="https://www.eclipse.org/downloads/">官网</a>下载，选择合适的版本：网站会识别操作系统，主要注意是32位还是64位<br/>
-下载后，解压打开，双击eclipse的可执行程序，发现不能启动。弹出的提示说系统的jvm是1.6，而最新luna版需要1.7或以上。</p>
-<h3>jdk安装</h3>
-<p>主要参考了<a href="http://www.cnblogs.com/zhoulf/archive/2013/02/04/2891608.html">这篇文章</a>，具体过程就不多说了，注意操作要在su账号下。</p>
-<h4>source /etc/profile 不生效</h4>
-<p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="bookmark"
+                   title="Permalink to Xcode6中批量添加矢量图">Xcode6中批量添加矢量图</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-03-23T11:00:00+08:00">
+                Mon 23 March 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <h3>1. Xcode6添加矢量图的问题</h3>
+<p>Xcode6中支持添加矢量图，然后在编译期Xcode6自动生成@2x和@3x的图片，可是添加的过程有些繁琐。<br/>
+首先，直接把矢量图拖到 <code>xcassets</code>文件中是不行的，添加的步骤：</p>
 <ol>
-<li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看 ...</li></ol> </div><!-- /.entry-content -->
+<li>在 <code>xcassets</code> 中 <code>New Image Set</code></li>
+<li>选中生成的asset，在右侧的 <code>Image Set</code>中将属性修改为 <code>Vectors</code></li>
+<li>将矢量图拖进来，再修改asset文件名称</li>
+</ol>
+<p>由此可见，需要批量添加矢量图的时候，会非常繁琐。</p>
+<h3>2. 解决之道</h3>
+<p>每一个图片都对应一个带后缀 <code>imageset</code>的文件夹，内有 <code>Contents.json</code>文件，对于普通的png而言，它的内容一般是：</p>
+<div class="highlight"><pre>{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "filename" : "ButtonFillBlue.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
+</pre></div>
+<p>而如果是以矢量图的方式添加的，json文件内容变为：</p>
+<div class="highlight"><pre>{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "ButtonFillBlue.pdf"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
+</pre></div>
+<p>两相对比，很容易看出区别，那么接下来使用脚本工具进行处理即可。</p>
+<h3>3. 处理脚本</h3>
+<p>对shell脚本知之皮毛的我低估了写的难度，在此记录下脚本的实现过程和遇到的问题。先上脚本内容：</p>
+<table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+<span class="nv">xcassetPath</span><span class="o">=</span><span class="nv">$1</span>
+<span class="nb">echo</span> <span class="nv">$xcassetPath</span>
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
+<span class="k">for</span> imageAsset in <span class="s2">"</span><span class="nv">$xcassetPath</span><span class="s2">"</span>/*<span class="p">;</span> <span class="k">do</span>
+    <span class="nb">echo</span> <span class="nv">$imageAsset</span>
+    <span class="k">for</span> file in <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/*.json<span class="p">;</span> <span class="k">do</span>
+        cat <span class="nv">$file</span> <span class="p">|</span> tr -d <span class="s1">'\n'</span> &gt; <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp
+        <span class="c"># sed 'N;N;s/\n//g'  $file &gt; "$imageAsset"/temp</span>
+        sed <span class="s1">'s/ //g'</span> <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp &gt; <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp1
+        sed <span class="s1">'s/,{.*}]/]/g'</span> <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp1 &gt; <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp2
+        sed <span class="s1">'s/,\"scale\":\"1x\",/,/g'</span> <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp2 &gt; <span class="nv">$file</span>
+
+        rm -f <span class="s2">"</span><span class="nv">$imageAsset</span><span class="s2">"</span>/temp*
+    <span class="k">done</span>
+<span class="k">done</span>
+</pre></div>
+</td></tr></table>
+<p>该脚本需要指定 <code>xcassets</code> 对应的路径，然后遍历该文件夹下的内容，依次找到 json 文件，进行字符处理。遇到的难点:</p>
+<ol>
+<li>去除换行符：sed通常逐行处理，也可以合并多行后处理，但没有成功。此处使用tr</li>
+<li>替换空格</li>
+<li>替换含有2x，3x的dictionary</li>
+<li>替换1x dictionary中的 <code>scale</code> 字段</li>
+</ol>
+<p>用到了很多临时文件，我也很无奈，虽然有更好的实现方式，可是不会啊～先凑合着用吧。<br/>
+最后说一下使用方法：</p>
+<ol>
+<li>将矢量文件拖入Xcode6的<code>xcassets</code></li>
+<li>运行脚本并将<code>xcassets</code>的路径作为输入参数</li>
+</ol>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html">← Previous : RBStoryboardLink 的简介</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
 
 
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/linux.html">linux</a>
-											<a class="danger label" href="http://icocoa.tk/tag/eclipse.html">eclipse</a>
-											<a class="danger label" href="http://icocoa.tk/tag/jdk.html">jdk</a>
-								</div>
+            
 
 
 
-				        </article></li>
-				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
+        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -186,10 +251,8 @@ Summary: install eclipse on centos6.5</p>
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

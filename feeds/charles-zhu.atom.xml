@@ -1,5 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-03-13T17:30:00+08:00</updated><entry><title>RBStoryboardLink 的简介</title><link href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="alternate"></link><updated>2015-03-13T17:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-13:rbstoryboardlink-de-jian-jie.html</id><summary type="html">&lt;h3&gt;1. Intro&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-03-23T11:00:00+08:00</updated><entry><title>Xcode6中批量添加矢量图</title><link href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="alternate"></link><updated>2015-03-23T11:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-23:xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html</id><summary type="html">&lt;h3&gt;1. Xcode6添加矢量图的问题&lt;/h3&gt;
+&lt;p&gt;Xcode6中支持添加矢量图，然后在编译期Xcode6自动生成@2x和@3x的图片，可是添加的过程有些繁琐。&lt;br/&gt;
+首先，直接把矢量图拖到 &lt;code&gt;xcassets&lt;/code&gt;文件中是不行的，添加的步骤：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;在 &lt;code&gt;xcassets&lt;/code&gt; 中 &lt;code&gt;New Image Set&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;选中生成的asset，在右侧的 &lt;code&gt;Image Set&lt;/code&gt;中将属性修改为 &lt;code&gt;Vectors&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;将矢量图拖进来，再修改asset文件名称&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;由此可见，需要批量添加矢量图的时候，会非常繁琐。&lt;/p&gt;
+&lt;h3&gt;2. 解决之道&lt;/h3&gt;
+&lt;p&gt;每一个图片都对应一个带后缀 &lt;code&gt;imageset&lt;/code&gt;的文件夹，内有 &lt;code&gt;Contents.json&lt;/code&gt;文件，对于普通的png而言，它的内容一般是：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "scale" : "1x",
+      "filename" : "ButtonFillBlue.png"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;而如果是以矢量图的方式添加的，json文件内容变为：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;{
+  "images" : [
+    {
+      "idiom" : "universal",
+      "filename" : "ButtonFillBlue.pdf"
+    }
+  ],
+  "info" : {
+    "version" : 1,
+    "author" : "xcode"
+  }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;两相对比，很容易看出区别，那么接下来使用脚本工具进行处理即可。&lt;/p&gt;
+&lt;h3&gt;3. 处理脚本&lt;/h3&gt;
+&lt;p&gt;对shell脚本知之皮毛的我低估了写的难度，在此记录下脚本的实现过程和遇到的问题。先上脚本内容：&lt;/p&gt;
+&lt;table class="highlighttable"&gt;&lt;tr&gt;&lt;td class="linenos"&gt;&lt;div class="linenodiv"&gt;&lt;pre&gt; 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16&lt;/pre&gt;&lt;/div&gt;&lt;/td&gt;&lt;td class="code"&gt;&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c"&gt;#!/bin/sh&lt;/span&gt;
+&lt;span class="nv"&gt;xcassetPath&lt;/span&gt;&lt;span class="o"&gt;=&lt;/span&gt;&lt;span class="nv"&gt;$1&lt;/span&gt;
+&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$xcassetPath&lt;/span&gt;
+
+&lt;span class="k"&gt;for&lt;/span&gt; imageAsset in &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$xcassetPath&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/*&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+    &lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="nv"&gt;$imageAsset&lt;/span&gt;
+    &lt;span class="k"&gt;for&lt;/span&gt; file in &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/*.json&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="k"&gt;do&lt;/span&gt;
+        cat &lt;span class="nv"&gt;$file&lt;/span&gt; &lt;span class="p"&gt;|&lt;/span&gt; tr -d &lt;span class="s1"&gt;'\n'&lt;/span&gt; &amp;gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp
+        &lt;span class="c"&gt;# sed 'N;N;s/\n//g'  $file &amp;gt; "$imageAsset"/temp&lt;/span&gt;
+        sed &lt;span class="s1"&gt;'s/ //g'&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp &amp;gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp1
+        sed &lt;span class="s1"&gt;'s/,{.*}]/]/g'&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp1 &amp;gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp2
+        sed &lt;span class="s1"&gt;'s/,\"scale\":\"1x\",/,/g'&lt;/span&gt; &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp2 &amp;gt; &lt;span class="nv"&gt;$file&lt;/span&gt;
+
+        rm -f &lt;span class="s2"&gt;"&lt;/span&gt;&lt;span class="nv"&gt;$imageAsset&lt;/span&gt;&lt;span class="s2"&gt;"&lt;/span&gt;/temp*
+    &lt;span class="k"&gt;done&lt;/span&gt;
+&lt;span class="k"&gt;done&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;p&gt;该脚本需要指定 &lt;code&gt;xcassets&lt;/code&gt; 对应的路径，然后遍历该文件夹下的内容，依次找到 json 文件，进行字符处理。遇到的难点:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;去除换行符：sed通常逐行处理，也可以合并多行后处理，但没有成功。此处使用tr&lt;/li&gt;
+&lt;li&gt;替换空格&lt;/li&gt;
+&lt;li&gt;替换含有2x，3x的dictionary&lt;/li&gt;
+&lt;li&gt;替换1x dictionary中的 &lt;code&gt;scale&lt;/code&gt; 字段&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;用到了很多临时文件，我也很无奈，虽然有更好的实现方式，可是不会啊～先凑合着用吧。&lt;br/&gt;
+最后说一下使用方法：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;将矢量文件拖入Xcode6的&lt;code&gt;xcassets&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;运行脚本并将&lt;code&gt;xcassets&lt;/code&gt;的路径作为输入参数&lt;/li&gt;
+&lt;/ol&gt;</summary><category term="iOS"></category></entry><entry><title>RBStoryboardLink 的简介</title><link href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="alternate"></link><updated>2015-03-13T17:30:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-13:rbstoryboardlink-de-jian-jie.html</id><summary type="html">&lt;h3&gt;1. Intro&lt;/h3&gt;
 &lt;p&gt;今天简单介绍一下&lt;a href="https://github.com/rob-brown/RBStoryboardLink"&gt;RBStoryboardLink&lt;/a&gt;，这是一个方便在某个storyboard(下面我要用SB代之)中调用其他 SB 中的viewcontroller的项目  &lt;/p&gt;
 &lt;h3&gt;2. RBStoryboardLink&lt;/h3&gt;
 &lt;h4&gt;2.1 为什么要使用&lt;/h4&gt;
