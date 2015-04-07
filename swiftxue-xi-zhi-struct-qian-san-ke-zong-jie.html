@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>[Tips]NSTimer对Target的强引用</title>
+        <title>swift学习之struct ——前三课总结</title>
         <meta charset="utf-8" />
 
 
@@ -51,38 +51,63 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark"
-                   title="Permalink to [Tips]NSTimer对Target的强引用">[Tips]NSTimer对Target的强引用</a></h2>
+                <a href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="bookmark"
+                   title="Permalink to swift学习之struct ——前三课总结">swift学习之struct ——前三课总结</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2015-01-22T17:30:00+08:00">
-                Thu 22 January 2015
+              <abbr class="published" title="2015-04-05T14:00:00+08:00">
+                Sun 05 April 2015
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h2>NSTimer对Target的强引用</h2>
-<p>这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。</p>
-<div class="highlight"><pre>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
+              <h2>Intro</h2>
+<p>During the course, a lot of swift details are touched from Lesson 1 to 3 and the classical MVC is practised in Lesson 3.<br/>
+本篇侧重swift的强类型特性以及struct的特点。</p>
+<h2>Strong type language</h2>
+<p>Swift is smart enough to know the type and you can ommit the type in decalaring, function parameters and son on. For example, instance declaring:</p>
+<div class="highlight"><pre>var userIsInTheMiddleOfTypingANumber: Bool = false
+var userIsInTheMiddleOfTypingANumber = false
 </pre></div>
-<p>其中，API文档中清楚地解释到：</p>
-<blockquote>
-<p>The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is invalidated.</p>
-</blockquote>
-<p>在实际运用中，target往往是当前的调用者，比如一个ViewController。这样就形成了一个经典的循环引用问题，导致当前的ViewControler始终无法释放。</p>
-<h2>解决之道</h2>
-<p>对于Timer要始终牢记手动invalidate，并且不能在dealloc中进行invalidate。</p>
+<p>Because in swift class, all the instances need an intialization and swift can infer the instance type from its value. <br/>
+Below is the example for <code>Array</code> and <code>Dictionary</code> declaring:  </p>
+<div class="highlight"><pre><span class="n">var</span> <span class="n">testStack</span> <span class="o">=</span> <span class="p">[</span><span class="n">Int</span><span class="p">]()</span> <span class="c1">// perferred style</span>
+<span class="n">var</span> <span class="n">testStack</span> <span class="o">=</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span><span class="p">()</span>
+
+<span class="n">var</span> <span class="n">testDic</span> <span class="o">=</span> <span class="p">[</span><span class="nl">String</span> <span class="p">:</span> <span class="n">Int</span><span class="p">]()</span> <span class="c1">// perferred style</span>
+<span class="n">var</span> <span class="n">testDic</span> <span class="o">=</span> <span class="n">Dictionary</span><span class="o">&lt;</span><span class="n">String</span><span class="p">,</span> <span class="n">Int</span><span class="o">&gt;</span><span class="p">()</span>
+</pre></div>
+<h2>class &amp;&amp; struct</h2>
+<p>In swift, many data structures are <code>struct</code>, like <code>Int</code>, <code>Array</code> and <code>Dictionary</code>, etc. It's much different from that in <code>Obj-C</code> since <code>Array</code> and <code>Dictionary</code> and so on are <code>class</code>. <br/>
+However, in swift, <code>struct</code> is much like <code>class</code>, and  it can have <code>func</code> and <code>computed property</code> just like <code>class</code> does. The differences are : </p>
+<ol>
+<li>only <code>class</code> can have inherition</li>
+<li><code>struct</code> is passed by value as parameters while <code>class</code> is passed by reference</li>
+</ol>
+<p>Here we talk a little more about <code>struct</code> passed by value. </p>
+<div class="highlight"><pre>func testFunc(operand: [Int])
+</pre></div>
+<p>In <code>testFunc</code>, there will be a copy of <code>operand</code> and this copy is immutable. Why? The reason is that ther is always a hidden <code>let</code> before every func's parameter. As a result, if we want to do something on the Array, we need make it mutable, like:</p>
+<div class="highlight"><pre>func testFunc(operand: [Int])
+{
+    var localOperand = operand //1
+    let op = localOperand.removeLast() //2
+}
+</pre></div>
+<p>In Line 1, there is a local copy of <code>operand</code> and  <code>localOperand</code> is mutable. Although there is a copy, swift may not do the really copy of <code>operand</code> in implementation and swift may still make a reference of that array. In this way, it can be much effency. <br/>
+In Line 2, we make changes on <code>localOperand</code>, and at this time swift <strong>still</strong> not do a copy. It can only remember the change and reuse the unchanged one. It is really amasing when I first learn it and it indicates swift is a smart enough language.  </p>
+<p>All in all, swift is really a smart language and is valuable to learn!</p>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html">← Previous : VOIP:pjsip的编译和使用</a></li>
+        <li class="prev"><a href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html">← Previous : Xcode6中批量添加矢量图</a></li>
         
-        <li class="next"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html">Xcode6制作iOS Framework:Next →</a></li>
+        <li class="next"><a href="/">Next →</a></li>
       </ul>
     </div>
 

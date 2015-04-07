@@ -1,5 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-03-23T11:00:00+08:00</updated><entry><title>Xcode6中批量添加矢量图</title><link href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="alternate"></link><updated>2015-03-23T11:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-23:xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html</id><summary type="html">&lt;h3&gt;1. Xcode6添加矢量图的问题&lt;/h3&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-04-05T14:00:00+08:00</updated><entry><title>swift学习之struct ——前三课总结</title><link href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="alternate"></link><updated>2015-04-05T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-04-05:swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html</id><summary type="html">&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;During the course, a lot of swift details are touched from Lesson 1 to 3 and the classical MVC is practised in Lesson 3.&lt;br/&gt;
+本篇侧重swift的强类型特性以及struct的特点。&lt;/p&gt;
+&lt;h2&gt;Strong type language&lt;/h2&gt;
+&lt;p&gt;Swift is smart enough to know the type and you can ommit the type in decalaring, function parameters and son on. For example, instance declaring:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;var userIsInTheMiddleOfTypingANumber: Bool = false
+var userIsInTheMiddleOfTypingANumber = false
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Because in swift class, all the instances need an intialization and swift can infer the instance type from its value. &lt;br/&gt;
+Below is the example for &lt;code&gt;Array&lt;/code&gt; and &lt;code&gt;Dictionary&lt;/code&gt; declaring:  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;testStack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="p"&gt;]()&lt;/span&gt; &lt;span class="c1"&gt;// perferred style&lt;/span&gt;
+&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;testStack&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Array&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+
+&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;testDic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nl"&gt;String&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="p"&gt;]()&lt;/span&gt; &lt;span class="c1"&gt;// perferred style&lt;/span&gt;
+&lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;testDic&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;Dictionary&lt;/span&gt;&lt;span class="o"&gt;&amp;lt;&lt;/span&gt;&lt;span class="n"&gt;String&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;Int&lt;/span&gt;&lt;span class="o"&gt;&amp;gt;&lt;/span&gt;&lt;span class="p"&gt;()&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;class &amp;amp;&amp;amp; struct&lt;/h2&gt;
+&lt;p&gt;In swift, many data structures are &lt;code&gt;struct&lt;/code&gt;, like &lt;code&gt;Int&lt;/code&gt;, &lt;code&gt;Array&lt;/code&gt; and &lt;code&gt;Dictionary&lt;/code&gt;, etc. It's much different from that in &lt;code&gt;Obj-C&lt;/code&gt; since &lt;code&gt;Array&lt;/code&gt; and &lt;code&gt;Dictionary&lt;/code&gt; and so on are &lt;code&gt;class&lt;/code&gt;. &lt;br/&gt;
+However, in swift, &lt;code&gt;struct&lt;/code&gt; is much like &lt;code&gt;class&lt;/code&gt;, and  it can have &lt;code&gt;func&lt;/code&gt; and &lt;code&gt;computed property&lt;/code&gt; just like &lt;code&gt;class&lt;/code&gt; does. The differences are : &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;only &lt;code&gt;class&lt;/code&gt; can have inherition&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;struct&lt;/code&gt; is passed by value as parameters while &lt;code&gt;class&lt;/code&gt; is passed by reference&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Here we talk a little more about &lt;code&gt;struct&lt;/code&gt; passed by value. &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;func testFunc(operand: [Int])
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In &lt;code&gt;testFunc&lt;/code&gt;, there will be a copy of &lt;code&gt;operand&lt;/code&gt; and this copy is immutable. Why? The reason is that ther is always a hidden &lt;code&gt;let&lt;/code&gt; before every func's parameter. As a result, if we want to do something on the Array, we need make it mutable, like:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;func testFunc(operand: [Int])
+{
+    var localOperand = operand //1
+    let op = localOperand.removeLast() //2
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;In Line 1, there is a local copy of &lt;code&gt;operand&lt;/code&gt; and  &lt;code&gt;localOperand&lt;/code&gt; is mutable. Although there is a copy, swift may not do the really copy of &lt;code&gt;operand&lt;/code&gt; in implementation and swift may still make a reference of that array. In this way, it can be much effency. &lt;br/&gt;
+In Line 2, we make changes on &lt;code&gt;localOperand&lt;/code&gt;, and at this time swift &lt;strong&gt;still&lt;/strong&gt; not do a copy. It can only remember the change and reuse the unchanged one. It is really amasing when I first learn it and it indicates swift is a smart enough language.  &lt;/p&gt;
+&lt;p&gt;All in all, swift is really a smart language and is valuable to learn!&lt;/p&gt;</summary><category term="swift"></category><category term="iOS"></category></entry><entry><title>Xcode6中批量添加矢量图</title><link href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="alternate"></link><updated>2015-03-23T11:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-03-23:xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html</id><summary type="html">&lt;h3&gt;1. Xcode6添加矢量图的问题&lt;/h3&gt;
 &lt;p&gt;Xcode6中支持添加矢量图，然后在编译期Xcode6自动生成@2x和@3x的图片，可是添加的过程有些繁琐。&lt;br/&gt;
 首先，直接把矢量图拖到 &lt;code&gt;xcassets&lt;/code&gt;文件中是不行的，添加的步骤：&lt;/p&gt;
 &lt;ol&gt;
