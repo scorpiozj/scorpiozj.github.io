@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>git commit -a 的误区</title>
+        <title>Note: More Swift and Foundation Frameworks</title>
         <meta charset="utf-8" />
 
 
@@ -51,99 +51,238 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark"
-                   title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2>
+                <a href="http://icocoa.tk/note-more-swift-and-foundation-frameworks.html" rel="bookmark"
+                   title="Permalink to Note: More Swift and Foundation Frameworks">Note: More Swift and Foundation Frameworks</a></h2>
            
             </header>
             <footer class="post-info">
-              <abbr class="published" title="2014-09-22T14:00:00+08:00">
-                Mon 22 September 2014
+              <abbr class="published" title="2015-04-13T14:00:00+08:00">
+                Mon 13 April 2015
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
-Summary: git 错误理解</p>
-<h2>SVN下的项目管理</h2>
-<p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
-<h2>git下的误区</h2>
-<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
-接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
-On branch master
-
-Initial commit
-
-Untracked files:
-<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to include in what will be committed<span class="o">)</span>
-
-    hello.txt
-
-nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span>
+              <h2>Intro</h2>
+<p>Note of More Swift and Foundation Frameworks, not detail described.<br/>
+Lesson4的要点记录，有些没有展开，侧重于“点”。看完后觉得需要注意的地方：基本数据类型如Optional/Array/Dictionary等的特点；class与struct的异同；class中的属性和方法；常见数据类型的常用方法(Array/String有很多新增的方法，功能比对应的ObjC强大)</p>
+<h2>Optional</h2>
+<p _="
+" case="case" none_="None
+" some_t_="Some(T)
+">an optional is an enum
+enum Optional<t></t></p>
+<p>! 相当于一个switch
+简单的说，就是语法糖</p>
+<h2>Array</h2>
+<p>declare
+immutable<br/>
+enumerating</p>
+<h2>Dictionary</h2>
+<p>like above
+enumerating using tuple</p>
+<h2>Range</h2>
+<p>it's new
+Array's range :<code>Range&lt;Int&gt;</code><br/>
+String's : <code>Range&lt;String.Index&gt;</code><br/>
+... / ..&lt; (close/open)
+enumerating 
+for i in [start...end]{}</p>
+<h2>Other class</h2>
+<h3>NSObject</h3>
+<p>advanced features require subclass from NSObject</p>
+<h3>NSNumber</h3>
+<p>inherited from NSObject
+--bridged--</p>
+<h3>NSDate</h3>
+<h3>NSData</h3>
+<h2>Data structure in swift</h2>
+<p>这个重要
+class/struct/enum : 3 fundamental building blocks of data structure<br/>
+Similariries:<br/>
+1. declaration
+2. oproperty and functions
+3. initializer
+Differences:<br/>
+1. Inheritance
+2. Introspection and casting
+3. value type vs. Reference type</p>
+<h3>Value VS. References</h3>
+<h4>Value</h4>
+<p>copied &amp;&amp; immutable &amp;&amp; mutating</p>
+<h4>Reference</h4>
+<p>heap &amp;&amp; reference counted</p>
+<h4>Choose</h4>
+<h3>Methods</h3>
+<p>override &amp;&amp;final(can be class)
+types and instances can have methods/properties:  (like class and instance methods)</p>
+<div class="highlight"><pre>static func abc(d: Double) -&gt; Double
+class func abc(d: Double) -&gt; Double
 </pre></div>
-<p>很显然，我们需要先“添加” 文件到版本库（注意这个add在git中不是添加到版本库），然后进行提交：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git add .
-<span class="nv">$ </span>git commit -m <span class="s2">"init commit"</span>
+<p>Parameters Names
+<em> internal: local var used in method
+</em> external: caller used to call method</p>
+<div class="highlight"><pre>func foo (external internal :Int)
+{
+    let local = internal
+}
+fun bar ()
+{
+    let result = foo(external :123)
+}
 </pre></div>
-<p>接下来修改文件：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"add a line"</span> &gt;&gt; hello.txt 
-<span class="nv">$ </span>git status
-On branch master
-Changes not staged <span class="k">for</span> commit:
-<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
-<span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes in working directory<span class="o">)</span>
-
-    modified:   hello.txt
-
-no changes added to commit <span class="o">(</span>use <span class="s2">"git add"</span> and/or <span class="s2">"git commit -a"</span><span class="o">)</span>
+<p>But we seldomly write like above.</p>
+<ul>
+<li>
+<p>_ : means not use an external name, default</p>
+<p _="=" foo_123_="foo(123)
+" let="let" result="result">func foo (<em> internal :Int)//</em> can be omitted
+{
+    let local = internal
+}
+fun bar ()</p>
+</li>
+<li>
+<p><code>#</code>: force the 1st parameter's external name to be the internal one</p>
+<p :123_=":123)
+" _="=" foo_internal="foo(internal" let="let" result="result">func foo (#internal :Int)
+{
+    let local = internal
+}
+fun bar ()</p>
+</li>
+<li>
+<p>not 1st parameter: external is the internal by default; but can be changed</p>
+<p 5.5_="5.5)
+" _="=" foo_123_="foo(123," let="let" result="result">//1
+func foo (first :Int, second: Doube)
+{
+    let local = internal
+}
+fun bar ()
+{
+    let result = foo(123, second: 5.5)
+}
+//2
+func foo (first :Int, external2nd second: Doube)
+{
+    let local = internal
+}
+fun bar ()
+{
+    let result = foo(123, external2nd: 5.5)
+}
+//3 also can be ommited, not recommended to to do
+func foo (first :Int, _ second: Doube)
+{
+    let local = internal
+}
+fun bar ()</p>
+</li>
+</ul>
+<p>使用默认的即可，其他的需要知道这种语法，遇到的时候能认识就行</p>
+<h2>Property</h2>
+<h3>observer</h3>
+<p>类似KVO<br/>
+willset didset</p>
+<div class="highlight"><pre>var someProperty: Int = 42 {
+    willSet { newValue}
+    didSet { oldValue}
+}
+override var inheriteProperty
+{
+    willSet { newValue }
+    didSet { oldValue}
+}
 </pre></div>
-<p>仔细看log，它提示我们先进行add操作再进行commit（如果确定要提交的情形下），但是等一下，add操作不是已经做了吗？难道add的含义不是添加文件到版本库以便进行追踪？</p>
-<h2>git add到底是什么意思</h2>
-<p>我们先接着上面继续操作：  </p>
-<div class="highlight"><pre><span class="nv">$ </span>git add hello.txt 
-<span class="nv">$ </span>git status
-On branch master
-Changes to be committed:
-<span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
-
-    modified:   hello.txt
+<h3>Lazy Initialization</h3>
+<p>like dynamic, when in use to access, the var is initialized</p>
+<div class="highlight"><pre>lazy var brain = ...
 </pre></div>
-<p>这时的log和之前相比，没有了add的建议操作，为了更明显显示这种区别：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"difference"</span> &gt;&gt;hello.txt
-<span class="nv">$git</span> status 
-On branch master
-Changes to be committed:
-<span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
-
-    modified:   hello.txt
-
-Changes not staged <span class="k">for</span> commit:
-<span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
-<span class="o">(</span>use <span class="s2">"git checkout -- &lt;file&gt;..."</span> to discard changes in working directory<span class="o">)</span>
-
-    modified:   hello.txt
+<p>can't use <code>let</code> together<br/>
+may have dependence problems (dependency conundrums)</p>
+<h3>Initialization</h3>
+<ul>
+<li>when is init method needed: usually not </li>
+<li><code>free</code> init : base class have defaults/struct automaticalled created </li>
+<li>what can to do in init: set any property's value even those have defaults; constant value;self.init();super.init()</li>
+<li>what required in init:   all properties must have values;   convenience and designated(not convience); desigated can only call a init of its superclass;   must init own property before call super.init;   must call super.init before assign the inherited value;  convenience can only call a designated init in its own and may call desiganated init directly; must call init before set property;
+all in all: init is requred before any setting</li>
+</ul>
+<h4>Inhering init</h4>
+<h4>Required init</h4>
+<h4>Failable init</h4>
+<div class="highlight"><pre>init?()
+{
+    // may return nil
+}
 </pre></div>
-<p>或者用－s参数：</p>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">git</span><span class="x"> status -s</span>
-<span class="x">MM hello.txt //在shell中2个M的颜色显示不一样</span>
+<h4>Createing Objects</h4>
+<h2>Any Object</h2>
+<p>Special type: a protocol</p>
+<div class="highlight"><pre>var viewController : AnyObject
+var items :[AnyObject]
 </pre></div>
-<p>这里可以明白，git中的add操作和svn中的add操作是完全不一样的意思。<br/>
-在git中， 执行add操作后是把文件加入版本库的暂存区，而commit针对的内容就只是暂存区。<br/>
-而 <code>git commit -a</code> 其实会先执行add操作再提交暂存区的内容，所以这样做是一个非常不好的实践，因为add到暂存区的操作实际是需要我们严格控制的。至于git上为什么要有这样的设计，那么需要知道 <code>reset</code> 命令。这个下次再讲。</p>
-<h2>反思</h2>
-<p>很早就知道“暂存区”的概念，可是一直没有深入。git 的 <code>add</code> 和 <code>commit</code> 一直使用，可是却没有想到背后的涵义。所谓 “知其然不知其所以然”，实是大忌！</p>
+<p>like <code>id</code>, Not common use in swift and convert it before using<br/>
+<strong>Casting</strong>: as/ as ?</p>
+<div class="highlight"><pre>//1
+if let viewController = someController as? CalViewController {}// as? returns an optional
+//2
+if someController is CalViewController {...}
+</pre></div>
+<h2>Functions</h2>
+<h3>some Array<t> Methods</t></h3>
+<div class="highlight"><pre>+= [T]
+first -&gt; T
+last -&gt; T
+append
+slice
+insert
+remove Index/Range
+sort
+filter
+map 
+reduce
+</pre></div>
+<h2>String</h2>
+<h3>String.Index</h3>
+<p>is <strong>NOT</strong> Int</p>
+<div class="highlight"><pre>//1
+var s = "hello"
+let index = advance(s.startIndex, 2)// a String.Index to 3rd glyph, "l"
+s.splice("abc",index)// s= "heabcllo"
+//2
+let num = "56.25"
+if let decimalRange = num.rangeOfString(".")
+{
+    let wholeNumberPart = num[num.startIndex..&lt;decimalRange.startindex]
+}
+</pre></div>
+<p>Other methods
+Notice : NO <code>toDouble</code></p>
+<h2>Type Conversion</h2>
+<div class="highlight"><pre>//1
+let d: Double = 37.5
+let f: Float = 37.5
+let x = Int(d)
+let cd = Double(x)
+//2: notice here
+let a = Array("abc")// a = ["a","b","c"]
+let s = String("a","b","c"]) //s = "abc"
+</pre></div>
+<h2>Assertions</h2>
+<h3>Debugging Aid</h3>
+<h2>Other Functions</h2>
+<h3>Bridging</h3>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html">← Previous : QuartzComposer基本概念</a></li>
+        <li class="prev"><a href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html">← Previous : swift学习之struct ——前三课总结</a></li>
         
-        <li class="next"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html">git bisect查找xcode6工程在iOS7下不全屏的问题:Next →</a></li>
+        <li class="next"><a href="/">Next →</a></li>
       </ul>
     </div>
 

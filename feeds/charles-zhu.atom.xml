@@ -1,5 +1,215 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-04-05T14:00:00+08:00</updated><entry><title>swift学习之struct ——前三课总结</title><link href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="alternate"></link><updated>2015-04-05T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-04-05:swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html</id><summary type="html">&lt;h2&gt;Intro&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-04-13T14:00:00+08:00</updated><entry><title>Note: More Swift and Foundation Frameworks</title><link href="http://icocoa.tk/note-more-swift-and-foundation-frameworks.html" rel="alternate"></link><updated>2015-04-13T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-04-13:note-more-swift-and-foundation-frameworks.html</id><summary type="html">&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;Note of More Swift and Foundation Frameworks, not detail described.&lt;br/&gt;
+Lesson4的要点记录，有些没有展开，侧重于“点”。看完后觉得需要注意的地方：基本数据类型如Optional/Array/Dictionary等的特点；class与struct的异同；class中的属性和方法；常见数据类型的常用方法(Array/String有很多新增的方法，功能比对应的ObjC强大)&lt;/p&gt;
+&lt;h2&gt;Optional&lt;/h2&gt;
+&lt;p _="
+" case="case" none_="None
+" some_t_="Some(T)
+"&gt;an optional is an enum
+enum Optional&lt;t&gt;&lt;/t&gt;&lt;/p&gt;
+&lt;p&gt;! 相当于一个switch
+简单的说，就是语法糖&lt;/p&gt;
+&lt;h2&gt;Array&lt;/h2&gt;
+&lt;p&gt;declare
+immutable&lt;br/&gt;
+enumerating&lt;/p&gt;
+&lt;h2&gt;Dictionary&lt;/h2&gt;
+&lt;p&gt;like above
+enumerating using tuple&lt;/p&gt;
+&lt;h2&gt;Range&lt;/h2&gt;
+&lt;p&gt;it's new
+Array's range :&lt;code&gt;Range&amp;lt;Int&amp;gt;&lt;/code&gt;&lt;br/&gt;
+String's : &lt;code&gt;Range&amp;lt;String.Index&amp;gt;&lt;/code&gt;&lt;br/&gt;
+... / ..&amp;lt; (close/open)
+enumerating 
+for i in [start...end]{}&lt;/p&gt;
+&lt;h2&gt;Other class&lt;/h2&gt;
+&lt;h3&gt;NSObject&lt;/h3&gt;
+&lt;p&gt;advanced features require subclass from NSObject&lt;/p&gt;
+&lt;h3&gt;NSNumber&lt;/h3&gt;
+&lt;p&gt;inherited from NSObject
+--bridged--&lt;/p&gt;
+&lt;h3&gt;NSDate&lt;/h3&gt;
+&lt;h3&gt;NSData&lt;/h3&gt;
+&lt;h2&gt;Data structure in swift&lt;/h2&gt;
+&lt;p&gt;这个重要
+class/struct/enum : 3 fundamental building blocks of data structure&lt;br/&gt;
+Similariries:&lt;br/&gt;
+1. declaration
+2. oproperty and functions
+3. initializer
+Differences:&lt;br/&gt;
+1. Inheritance
+2. Introspection and casting
+3. value type vs. Reference type&lt;/p&gt;
+&lt;h3&gt;Value VS. References&lt;/h3&gt;
+&lt;h4&gt;Value&lt;/h4&gt;
+&lt;p&gt;copied &amp;amp;&amp;amp; immutable &amp;amp;&amp;amp; mutating&lt;/p&gt;
+&lt;h4&gt;Reference&lt;/h4&gt;
+&lt;p&gt;heap &amp;amp;&amp;amp; reference counted&lt;/p&gt;
+&lt;h4&gt;Choose&lt;/h4&gt;
+&lt;h3&gt;Methods&lt;/h3&gt;
+&lt;p&gt;override &amp;amp;&amp;amp;final(can be class)
+types and instances can have methods/properties:  (like class and instance methods)&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;static func abc(d: Double) -&amp;gt; Double
+class func abc(d: Double) -&amp;gt; Double
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Parameters Names
+&lt;em&gt; internal: local var used in method
+&lt;/em&gt; external: caller used to call method&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;func foo (external internal :Int)
+{
+    let local = internal
+}
+fun bar ()
+{
+    let result = foo(external :123)
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;But we seldomly write like above.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;
+&lt;p&gt;_ : means not use an external name, default&lt;/p&gt;
+&lt;p _="=" foo_123_="foo(123)
+" let="let" result="result"&gt;func foo (&lt;em&gt; internal :Int)//&lt;/em&gt; can be omitted
+{
+    let local = internal
+}
+fun bar ()&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;&lt;code&gt;#&lt;/code&gt;: force the 1st parameter's external name to be the internal one&lt;/p&gt;
+&lt;p :123_=":123)
+" _="=" foo_internal="foo(internal" let="let" result="result"&gt;func foo (#internal :Int)
+{
+    let local = internal
+}
+fun bar ()&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;not 1st parameter: external is the internal by default; but can be changed&lt;/p&gt;
+&lt;p 5.5_="5.5)
+" _="=" foo_123_="foo(123," let="let" result="result"&gt;//1
+func foo (first :Int, second: Doube)
+{
+    let local = internal
+}
+fun bar ()
+{
+    let result = foo(123, second: 5.5)
+}
+//2
+func foo (first :Int, external2nd second: Doube)
+{
+    let local = internal
+}
+fun bar ()
+{
+    let result = foo(123, external2nd: 5.5)
+}
+//3 also can be ommited, not recommended to to do
+func foo (first :Int, _ second: Doube)
+{
+    let local = internal
+}
+fun bar ()&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;使用默认的即可，其他的需要知道这种语法，遇到的时候能认识就行&lt;/p&gt;
+&lt;h2&gt;Property&lt;/h2&gt;
+&lt;h3&gt;observer&lt;/h3&gt;
+&lt;p&gt;类似KVO&lt;br/&gt;
+willset didset&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;var someProperty: Int = 42 {
+    willSet { newValue}
+    didSet { oldValue}
+}
+override var inheriteProperty
+{
+    willSet { newValue }
+    didSet { oldValue}
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h3&gt;Lazy Initialization&lt;/h3&gt;
+&lt;p&gt;like dynamic, when in use to access, the var is initialized&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;lazy var brain = ...
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;can't use &lt;code&gt;let&lt;/code&gt; together&lt;br/&gt;
+may have dependence problems (dependency conundrums)&lt;/p&gt;
+&lt;h3&gt;Initialization&lt;/h3&gt;
+&lt;ul&gt;
+&lt;li&gt;when is init method needed: usually not &lt;/li&gt;
+&lt;li&gt;&lt;code&gt;free&lt;/code&gt; init : base class have defaults/struct automaticalled created &lt;/li&gt;
+&lt;li&gt;what can to do in init: set any property's value even those have defaults; constant value;self.init();super.init()&lt;/li&gt;
+&lt;li&gt;what required in init:   all properties must have values;   convenience and designated(not convience); desigated can only call a init of its superclass;   must init own property before call super.init;   must call super.init before assign the inherited value;  convenience can only call a designated init in its own and may call desiganated init directly; must call init before set property;
+all in all: init is requred before any setting&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Inhering init&lt;/h4&gt;
+&lt;h4&gt;Required init&lt;/h4&gt;
+&lt;h4&gt;Failable init&lt;/h4&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;init?()
+{
+    // may return nil
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h4&gt;Createing Objects&lt;/h4&gt;
+&lt;h2&gt;Any Object&lt;/h2&gt;
+&lt;p&gt;Special type: a protocol&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;var viewController : AnyObject
+var items :[AnyObject]
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;like &lt;code&gt;id&lt;/code&gt;, Not common use in swift and convert it before using&lt;br/&gt;
+&lt;strong&gt;Casting&lt;/strong&gt;: as/ as ?&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;//1
+if let viewController = someController as? CalViewController {}// as? returns an optional
+//2
+if someController is CalViewController {...}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Functions&lt;/h2&gt;
+&lt;h3&gt;some Array&lt;t&gt; Methods&lt;/t&gt;&lt;/h3&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;+= [T]
+first -&amp;gt; T
+last -&amp;gt; T
+append
+slice
+insert
+remove Index/Range
+sort
+filter
+map 
+reduce
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;String&lt;/h2&gt;
+&lt;h3&gt;String.Index&lt;/h3&gt;
+&lt;p&gt;is &lt;strong&gt;NOT&lt;/strong&gt; Int&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;//1
+var s = "hello"
+let index = advance(s.startIndex, 2)// a String.Index to 3rd glyph, "l"
+s.splice("abc",index)// s= "heabcllo"
+//2
+let num = "56.25"
+if let decimalRange = num.rangeOfString(".")
+{
+    let wholeNumberPart = num[num.startIndex..&amp;lt;decimalRange.startindex]
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;Other methods
+Notice : NO &lt;code&gt;toDouble&lt;/code&gt;&lt;/p&gt;
+&lt;h2&gt;Type Conversion&lt;/h2&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;//1
+let d: Double = 37.5
+let f: Float = 37.5
+let x = Int(d)
+let cd = Double(x)
+//2: notice here
+let a = Array("abc")// a = ["a","b","c"]
+let s = String("a","b","c"]) //s = "abc"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Assertions&lt;/h2&gt;
+&lt;h3&gt;Debugging Aid&lt;/h3&gt;
+&lt;h2&gt;Other Functions&lt;/h2&gt;
+&lt;h3&gt;Bridging&lt;/h3&gt;</summary><category term="swift"></category><category term="iOS"></category></entry><entry><title>swift学习之struct ——前三课总结</title><link href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="alternate"></link><updated>2015-04-05T14:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-04-05:swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html</id><summary type="html">&lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;During the course, a lot of swift details are touched from Lesson 1 to 3 and the classical MVC is practised in Lesson 3.&lt;br/&gt;
 本篇侧重swift的强类型特性以及struct的特点。&lt;/p&gt;
 &lt;h2&gt;Strong type language&lt;/h2&gt;
