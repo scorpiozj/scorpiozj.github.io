@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>WWDC2014-235 Notes</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/wwdc2014-235-notes.html" rel="bookmark"
+                   title="Permalink to WWDC2014-235 Notes">WWDC2014-235 Notes</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-04-20T22:00:00+08:00">
+                Mon 20 April 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>Author: Charles Zhu<br/>
+Summary: notes for 223</p>
+<h3>Intro</h3>
+<p><code>UIScrollView</code> 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 <code>advanced_scrollviews_and_touch_handling_techniques</code>，主要包括：</p>
+<ol>
+<li>Hit testing</li>
+<li>gesture recoginizers</li>
+<li>touch delivery</li>
+<li>ransparent overlayers</li>
+<li>dragging while scrolling</li>
+<li>highlighting objects</li>
+</ol>
+<p>下面会按着视频中的demo，一步一步讲解。</p>
+<h3>transparent overlayers</h3>
+<p>demo: 仿照搜索页面，添加下拉手势，手势触发出现一Scroll View， 该scroll view 部分遮挡原先的 view<br/>
+存在的问题：</p>
+<ol>
+<li>原先的view可以点击，添加了 scroll view后在scroll view没有出现的时候也不能点击 (因为demo中scroll view是一直添加在原先页面上， 通过contentOffset来移动内容，即 transparent overlayer)</li>
+<li>scroll view 禁止 useraction后，下拉手势无法响应</li>
+</ol>
+<p>解决之道：</p>
+<ol>
+<li>scroll view 禁止 useraction</li>
+<li>“转交”scroll的pan手势：<code>[superView addGestureRecognizer:scrollView.panGestureRecognizer]</code></li>
+</ol>
+<p>5.0开始，scroll有了一些手势属性，利用它们可以简化很多实现。  </p>
+<p>问题进化： 上述方法简单粗暴，因为scroll view上如果需要能接受点击操作呢(这种情况多见)？</p>
+<h3>histTest:withEvent:</h3>
+<p>该函数的作用就是检测 view或者哪个view的subview接收event，一般的处理流程：</p>
+<ol>
+<li>check point in our bounds</li>
+<li>return self</li>
+<li>check subview(in reverse order) whether to got the hit or not</li>
+</ol>
+<p>需要注意的是在处理subview时的顺序，因为通常总是最上面的view最先接受event。<br/>
+下图是demo中的view 架构：<br/>
+<img alt="hitTest" src="./imgs/20150421/hitTest.png"/><br/>
+从下往上依次是： 父view(黄色，viewcontroller的view)， scrollview(透明色)，containerview(绿色)。<br/>
+图上的处理流程是：</p>
+<ol>
+<li>viewcontroller接收到event</li>
+<li>view检测subview，即scrollview</li>
+<li>scrollview检测subview，即containerview；如果点击位置在最左边的话，最后检测到的就是scrollview</li>
+</ol>
+<p>因此，在这个demo中，只有当view 是containerview时，才需要返回：</p>
+<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="nf">hitTest:</span><span class="p">(</span><span class="bp">CGPoint</span><span class="p">)</span><span class="nv">point</span> <span class="nf">withEvent:</span><span class="p">(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span>
+<span class="p">{</span>
+    <span class="bp">UIView</span> <span class="o">*</span><span class="n">hitView</span> <span class="o">=</span> <span class="p">[</span><span class="nb">super</span> <span class="nl">hitTest</span><span class="p">:</span><span class="n">point</span> <span class="nl">withEvent</span><span class="p">:</span><span class="n">event</span><span class="p">];</span>
+    <span class="k">if</span> <span class="p">(</span><span class="n">hitView</span> <span class="o">==</span> <span class="nb">self</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="k">return</span> <span class="nb">nil</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="n">hitView</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+<p>在自定义的scroll view中重载 <code>histTest:withEvent:</code>，当 <code>hitView</code>是scroll本身的时候，我们不需要响应event，所以返回 nil，以便通知父view继续寻找下一个子view。<br/>
+要注意的是，该方法会忽略透明色的view以及禁止useraction的view，因此这里需要开启scroll view的useraction。</p>
+<p>接下来实现 点view（dot view）可以接受long press gesture</p>
+<h2>LongPressGesture</h2>
+<p>添加LongPressGesture 是为了让 点view 可以随手势移动。直接给 点view添加guesture会有bug，因为默认的gesture在被确认的时候会cancel接下来的手势响应，因此需要设置手势的属性：</p>
+<div class="highlight"><pre>longPress.cancelsTouchesInView = NO;
+</pre></div>
+<p>补充下该属性的说明： </p>
+<blockquote>
+<p>default is YES. causes touchesCancelled:withEvent: to be sent to the view for all touches recognized as part of this gesture immediately before the action method is called  </p>
+</blockquote>
+<p>LongPress响应的处理，直接上图了：</p>
+<p><img alt="longPressGesture" src="./imgs/20150421/longPressGesture.png"/> <br/>
+<img alt="longPressGestureStart" src="./imgs/20150421/longPressGestureStart.png"/> <br/>
+<img alt="longPressGestureEnd" src="./imgs/20150421/longPressGestureEnd.png"/> </p>
+<p>说明：</p>
+<ol>
+<li>convertPoint:fromView: 适用于坐标在不同view下的切换，这里dot view有可能是从scroll view上的container中转移到 父view</li>
+<li>手势点击的时候，可能在 点view的边缘处，因此在grab中的animation中通过动画将点击位置转移到中心</li>
+</ol>
+<p>接下来： 点击多个 点view同时支持下拉scroll view
+当前不支持点击 点view同时支持下拉是因为 点view的longPress和scroll view的pan相冲突了。解决方法很简单，就是实现LongPress的一个delegate，：</p>
+<div class="highlight"><pre>- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return YES;
+}
+</pre></div>
+<p>此时的问题是：当longPress 点view，并向下移动时，会触发scroll的下拉，原因在于上述的delegate方法实现的过去粗暴。</p>
+<h3>Dragging while scrolling</h3>
+<p>解决上面问题的方法就是在longPress开始的时候：</p>
+<div class="highlight"><pre>scroll.panGestureRecognizer.enabled = NO;
+scroll.panGestureRecognizer.enabled = YES;
+</pre></div>
+<p>问题发生的原因在于LongPress和Pan是同一个接受者，因此我们在LongPress开始的时候先禁掉Pan的响应，这样当前的手势只会被LongPress处理。紧接着，我们要恢复pan的识别，以避免错过下一次正常手势响应。 </p>
+<p>新问题：当下拉的手势经过 点view时，点view会高亮一下。<br/>
+原因在于pan手势经过点view的时候会触发touchBegan:，当系统识别出来是pan向点view发出cancelTouch:的时候已晚矣。</p>
+<h3>highlighting objects</h3>
+<p>先看<code>UITableView</code>怎么解决类似问题，当手指点中cell快速滑动时，cell并不会有选中的状态；而当手指点击cell不滑动的时候，cell会呈选中状态。之所以会这样，是因为UIscrollView有默认值为YES的delaysContentTouches的属性。为了更好的理解这种特性，我们需要知道背后都有些什么，发生了些什么。<br/>
+首先UIscrollView除了 panGestureRecognizer 和 pinchGestureRecognizer， 还有 touchDelayGestureRecognizer，touchDelay的作用就在于：屏蔽event，使其他任何view或gesture都无法响应event。<br/>
+以点击uitableview cell然后滑动为例，页面上cell会呈选中状态，然后整个tableview滑动，同时选中的cell状态恢复。这其中发生的事情包括：  </p>
+<p><img alt="longPress" src="./imgs/20150421/longPress.png"/> </p>
+<ol>
+<li>手指点击cell，delay gesture启动，内部释放一个timer</li>
+<li>手指不动保持一定时间后，timer到点了，delay gesture失效，这时view和gesture可以正常接收event，因此cell接受到touchBegan，开始高亮选中</li>
+<li>手指滑动时，pan手势接管，cell接受cancel信息，恢复原状态</li>
+</ol>
+<p>如果直接滚动cell：</p>
+<p><img alt="touch" src="./imgs/20150421/touch.png"/> </p>
+<ol>
+<li>第一步同上</li>
+<li>手指滑动，pan手势接收，这时会重置delay gesture；因为pan先接收了，view不会受到touch事件</li>
+</ol>
+<p>因此，解决点view高亮的方法也有了思路：给view添加一个类似scroll view的delay gesture。结合上面2图，我们大致可以了解delay gesture的流程：</p>
+<ol>
+<li>设置 delaysContentTouches 为YES</li>
+<li>在touchesBegan中启动timer，在touchesEnded和touchesCancelled中置失败</li>
+<li>timer到点后置状态失败</li>
+<li>实现一个重置timer的方法</li>
+<li>初始化的时候，注意target为nil</li>
+</ol>
+<p>新问题：点击小物体</p>
+<h3>Touching Small Objects</h3>
+<p>还是使用<code>hitTest:withEvent:</code>，重载 <code>- (BOOL)pointInside:(CGPoint)point withEvent:(UIEvent *)event</code>(因为<code>hitTest:withEvent:</code>默认调用 <code>pointInside:withEvent:</code>)，如图：</p>
+<p><img alt="smallObject" src="./imgs/20150421/smallObject.png"/></p>
+<h3>总结</h3>
+<p>需要牢记的：</p>
+<ol>
+<li>touch event中：<code>hitTest:withEvent:</code>是最底层的，控制响应对象</li>
+<li><code>touchesBegan:</code>和 gesture 是较高级别的对touch event的响应</li>
+<li>UIScrollView的默认 gesture</li>
+</ol>
+<p>最近看过的WWDC视频，过段时间回顾，发现还是受益良多。由此想来还是要把之前看的几期的笔记整理出来，这样方能加深印象。</p>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/note-more-swift-and-foundation-frameworks.html">← Previous : Note: More Swift and Foundation Frameworks</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

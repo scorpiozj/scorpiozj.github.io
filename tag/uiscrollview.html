@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent - mvc</title>
+        <title>To be Independent - UIScrollView</title>
         <meta charset="utf-8" />
 
 
@@ -53,30 +53,37 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">MVVM模式初探</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">WWDC2014-235 Notes</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-17T13:00:00+08:00"> Thu 17 July 2014 </abbr>
+				                    <abbr class="published" title="2015-04-20T22:00:00+08:00"> Mon 20 April 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: 设计模式</p>
-<h2>MVC的无奈</h2>
-<p><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html">MVC</a>结构是学习iOS开发的人最先学习的一种开发模式，apple提倡以MVC为中心的开发模式。因为它很好的解构了应用场景中相关而又各自独立的部分：视图，视图控制器和数据模型。在MVC的世界里，控制器负责将模型中的数据以内容的形式展现到视图中，同时也把视图上产生的数据变化传递给模型从而将这种变化持久化。于是，在稍微复杂的app中，控制器中的内容会很庞大：网络操作，数据存储，手势响应等等。几乎可以确定，如果app需要添加新功能，超过一半的新增代码是添加在控制器中，这样不可避免的造成控制器的冗余以及大段无法重用的重复代码。<br/>
-在开始MVVM时，我们可以稍稍考虑下现有MVC的问题。</p>
-<h3>视图</h3>
-<p>毋庸置疑，视图的作用很重要，但在设计中，视图是否需要和控制器，数据模型同等的地位呢？要知道绝大多数情况下，视图是不会重用的，往往“耦合”在视图控制器中，所以往往代码中有几个view controller，就能知道程序会有几个页面。此外，视图中的UI元素也是直接作为变量存在在控制器代码中，因为只有这样才方便刷新。很显然，视图控制器就可以代表视图本身。  </p>
-<h3>控制器</h3>
-<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> </div><!-- /.entry-content -->
+Summary: notes for 223</p>
+<h3>Intro</h3>
+<p><code>UIScrollView</code> 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 <code>advanced_scrollviews_and_touch_handling_techniques</code>，主要包括：</p>
+<ol>
+<li>Hit testing</li>
+<li>gesture recoginizers</li>
+<li>touch delivery</li>
+<li>ransparent overlayers</li>
+<li>dragging while scrolling</li>
+<li>highlighting objects</li>
+</ol>
+<p>下面会按着视频中的demo，一步一步讲解。</p>
+<h3>transparent overlayers</h3>
+<p>demo: 仿照搜索页面，添加下拉手势，手势触发出现一Scroll View， 该scroll view 部分遮挡原先的 view<br/>
+存在的问题：</p>
+<ol>
+<li>原先的view可以点击，添加了 scroll view后在scroll view没有出现的时候也不能点击 (因为demo中scroll view是一直添加在原先页面上， 通过contentOffset来移动内容 ...</li></ol> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/mvvm.html">mvvm</a>
-											<a class="danger label" href="http://icocoa.tk/tag/mvc.html">mvc</a>
-											<a class="danger label" href="http://icocoa.tk/tag/pattern.html">pattern</a>
+											<a class="danger label" href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a>
+											<a class="danger label" href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a>
 								</div>
 
 
