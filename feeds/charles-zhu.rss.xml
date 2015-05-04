@@ -1,5 +1,166 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 20 Apr 2015 22:00:00 +0800</lastBuildDate><item><title>WWDC2014-235 Notes</title><link>http://icocoa.tk/wwdc2014-235-notes.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 04 May 2015 13:00:00 +0800</lastBuildDate><item><title>WWDC2014-419 Notes</title><link>http://icocoa.tk/wwdc2014-419-notes.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+Summary: notes for 419&lt;/p&gt;
+&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="Framework" src="./imgs/20150504/Framework.png"/&gt; &lt;/p&gt;
+&lt;h2&gt;Core animation pipeline&lt;/h2&gt;
+&lt;p&gt;Core animation为iOS动画提供了很多便利，调用以及之后发生的事情如下图：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="pipeline" src="./imgs/20150504/pipeLine.png"/&gt; &lt;/p&gt;
+&lt;p&gt;在App中调用CA，CA会encode显示的view，交由CA内的一个渲染服务器。
+渲染服务器收到指令后，会先decode view，在下一帧刷新的时候去绘制，然后交由GPU去渲染。
+CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。&lt;br/&gt;
+由于除了App以外的部分都是iOS系统完成的，因此我们将注意力放在App的相关部分。 &lt;/p&gt;
+&lt;h3&gt;Commit Transation&lt;/h3&gt;
+&lt;p&gt;this part affect application developers the most， 包含4步：
+&lt;img alt="commitTransaction4Phase" src="./imgs/20150504/commitTransaction4Phase.png"/&gt; &lt;/p&gt;
+&lt;p&gt;4 phases&lt;/p&gt;
+&lt;h4&gt;layout:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;layoutSubviews overrides are invoked&lt;/li&gt;
+&lt;li&gt;View creation, addSubview:&lt;/li&gt;
+&lt;li&gt;Populate content, database lookups &lt;/li&gt;
+&lt;li&gt;Usually CPU bound or I/O bound
+注：database指的是需要本地化的UI控件&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Display:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Draw contents via drawRect: if it is overridden &lt;/li&gt;
+&lt;li&gt;String drawing&lt;/li&gt;
+&lt;li&gt;Usually CPU or memory bound&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h4&gt;Prepare:&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Image decoding &lt;/li&gt;
+&lt;li&gt;Image conversion&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;注：要使用推荐的png，如果是gpu不支持的格式就需要进行此部分消耗，也是cpu bounds&lt;/p&gt;
+&lt;h4&gt;Commit&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;Package up layers and send to render server &lt;/li&gt;
+&lt;li&gt;Recursive&lt;/li&gt;
+&lt;li&gt;Expensive if layer tree is complex&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Rendering Conceptes&lt;/h3&gt;
+&lt;p&gt;介绍渲染的基本概念，涉及gpu概念较多，不太明白。&lt;/p&gt;
+&lt;h4&gt;Tile based rendering&lt;/h4&gt;
+&lt;p&gt;页面划分成小格，每个小格细分成2个三角形，三角形再细分成更小的三角形...(离散化)，这样gpu就可以单独处理每一个tile。这样在hue系统下，可以决定哪些像素可见，并呈现何种形状(what pixel shade to run).
+all GPU&lt;/p&gt;
+&lt;h4&gt;Render passes&lt;/h4&gt;
+&lt;ul&gt;
+&lt;li&gt;command buffer: render server generate with OpenGL command and submitted to GPU  &lt;/li&gt;
+&lt;li&gt;Tiler: real tiling work, output is written in Parameter Buffer   &lt;/li&gt;
+&lt;li&gt;Parameter Buffer: all geometry is processed or buffer is full, and then will go to next phase  &lt;/li&gt;
+&lt;li&gt;Render: output is written in render buffer&lt;/li&gt;
+&lt;li&gt;render buffer&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;&lt;img alt="renderingPass" src="./imgs/20150504/renderingPass.png"/&gt; &lt;/p&gt;
+&lt;h4&gt;Example masking&lt;/h4&gt;
+&lt;p&gt;a masking example to show how render processing&lt;br/&gt;
+&lt;img alt="masking" src="./imgs/20150504/masking.png"/&gt; &lt;/p&gt;
+&lt;p&gt;这样基本上可以了解gpu的渲染过程。  &lt;/p&gt;
+&lt;h2&gt;UIBlurEffect&lt;/h2&gt;
+&lt;h3&gt;UIVisualEffectView with UIBlurEffect&lt;/h3&gt;
+&lt;p&gt;UIBlurEffect style会影响渲染过程
+渲染的过程：  &lt;/p&gt;
+&lt;p&gt;&lt;img alt="BlurRenderPass" src="./imgs/20150504/BlurRenderPass.png"/&gt; &lt;/p&gt;
+&lt;p&gt;Performance considerations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UIBlurEffect adds multiple offscreen passes depending on style  &lt;/li&gt;
+&lt;li&gt;Only dirty regions are redrawn  &lt;/li&gt;
+&lt;li&gt;Effect is very costly:
+   --&amp;gt;UI can easily be GPU bound  &lt;br/&gt;
+   --&amp;gt;Keep bounds of view as small as possible&lt;br/&gt;
+   --&amp;gt;Make sure to budget for effect&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h2&gt;UIVibrancyEffect&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="VibranceRenderPass" src="./imgs/20150504/VibranceRenderPass.png"/&gt;&lt;br/&gt;
+注：先做blur effect &lt;br/&gt;
+Performance considerations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;UIVibrancyEffect adds two offscreen passes   &lt;/li&gt;
+&lt;li&gt;UIVibrancyEffect uses expensive compositing filter for content   &lt;/li&gt;
+&lt;li&gt;Use UIVibrancyEffect on small regions   &lt;/li&gt;
+&lt;li&gt;Only dirty regions are redrawn&lt;/li&gt;
+&lt;li&gt;UIVibrancyEffect is very costly on &lt;strong&gt;all&lt;/strong&gt; devices&lt;br/&gt;
+   --&amp;gt;UI can easily be GPU bound&lt;br/&gt;
+   --&amp;gt;Keep bounds of view as small as possible&lt;br/&gt;
+   --&amp;gt;Make sure to budget for effects&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h3&gt;Rasterization&lt;/h3&gt;
+&lt;p&gt;Performance considerations:  &lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Use to composite to image once with GPU&lt;/li&gt;
+&lt;li&gt;Enable with shouldRasterize property on CALayer&lt;/li&gt;
+&lt;li&gt;Extra offscreen passes when updating content&lt;/li&gt;
+&lt;li&gt;Do not overuse, cache size is limited to 2.5x of screen size&lt;/li&gt;
+&lt;li&gt;Rasterized images evicted from cache if unused for more than 100ms&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;typical use case&lt;/p&gt;
+&lt;h3&gt;Group Opacity&lt;/h3&gt;
+&lt;p&gt;Performance considerations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;Disable with allowsGroupOpacity property on CALayer&lt;/li&gt;
+&lt;li&gt;Will introduce offscreen passes:
+    If layer is not opaque (opacity != 1.0)
+    And if layer has nontrivial content (child layers or background image)&lt;/li&gt;
+&lt;li&gt;Sub view hierarchy needs to be composited before being blended Always turn it off if not needed
+注： offscreen 非常消耗gpu&lt;/li&gt;
+&lt;/ul&gt;
+&lt;h1&gt;Tools&lt;/h1&gt;
+&lt;p&gt;&lt;img alt="Tools" src="./imgs/20150504/Tools.png"/&gt;&lt;br/&gt;
+检测性能工具&lt;/p&gt;
+&lt;h2&gt;Performance Investigation Mindset&lt;/h2&gt;
+&lt;p&gt;&lt;img alt="PerformanceInvestigationMindset" src="./imgs/20150504/PerformanceInvestigationMindset.png"/&gt;&lt;/p&gt;
+&lt;p&gt;使用Instruments中core animation模版，查看当前的layer
+注：补充debug option说明：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;Color Blended Layers&lt;/strong&gt;: Shows blended view layers. Multiple view layers that are drawn on top of each other with blending enabled are highlighted in red. Reducing the amount of red in your app when this option is selected can dramatically improve your apps performance. Blended view layers are often the cause for slow table scrolling.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color Hits Green and Misses Red&lt;/strong&gt;: Marks views in green or red. A view that is able to use a cached rasterization is marked in green.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color Copied Images&lt;/strong&gt;: Shows images that are copied by Core Animation in blue.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color Immediately&lt;/strong&gt;: When selected, removes the 10 ms delay when performing color-flush operations.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color Misaligned Images&lt;/strong&gt;: Places a magenta overlay over images where the source pixels are not aligned to the destination pixels.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color Offscreen-Rendered Yellow&lt;/strong&gt;: Places a yellow overlay over content that is rendered offscreen.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Color OpenGL Fast Path Blue&lt;/strong&gt;: Places a blue overlay over content that is detached from the compositor.&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Flash Updated Regions&lt;/strong&gt;: Colors regions on your iOS device in yellow when that region is updated by the graphics processor.&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;iPhone Simulator-&amp;gt;Debug，可以看到color xxx layer&lt;/p&gt;
+&lt;h2&gt;Case Studies&lt;/h2&gt;
+&lt;p&gt;几个常见问题&lt;/p&gt;
+&lt;h3&gt;Fictitious Photo Applications&lt;/h3&gt;
+&lt;ol&gt;
+&lt;li&gt;
+&lt;p&gt;shadow creating ： cell的阴影创建&lt;/p&gt;
+&lt;p&gt;//wrong
+CALayer *imageViewLayer = cell.imageView.layer;
+imageViewLayer.shadowColor = [UIColor blackColor].CGColor;
+imageViewLayer.shadowOpacity = 1.0;
+imageViewLayer.shadowRadius = 2.0;
+imageViewLayer.shadowOffset = CGSizeMake(1.0, 1.0);
+//right
+imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);
+2. round thumbnail: never use layer to create if there are many cells&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;solution:&lt;br/&gt;
+&lt;img alt="roundThumbnail" src="./imgs/20150504/roundThumbnail.png"/&gt;&lt;/p&gt;
+&lt;h2&gt;Summary&lt;/h2&gt;
+&lt;p&gt;(copy from ppt)
+Offscreen passes are expensive  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use Core Animation instrument to find them &lt;/li&gt;
+&lt;li&gt;Know what you can do to avoid them&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Measure performance across different devices  &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;Use OpenGL ES Driver instrument for GPU time  &lt;/li&gt;
+&lt;li&gt;Use Time Profiler instrument for CPU time&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;Know your view hierarchy and any hidden costs&lt;/p&gt;
+&lt;p&gt;1。 This is especially true for table cells and scrolling&lt;/p&gt;
+&lt;p&gt;Tools&lt;/p&gt;
+&lt;p&gt;&lt;img alt="toolMindset" src="./imgs/20150504/toolMindset.png"/&gt;&lt;/p&gt;
+&lt;p&gt;注：要实现流畅度好的app，offscreen render越少越好。利用本篇的方法，可以迅速的定位症结，从而提升app性能。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 04 May 2015 13:00:00 +0800</pubDate><guid>tag:icocoa.tk,2015-05-04:wwdc2014-419-notes.html</guid><category>wwdc 2014</category><category>UIScrollView</category></item><item><title>WWDC2014-235 Notes</title><link>http://icocoa.tk/wwdc2014-235-notes.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
 Summary: notes for 223&lt;/p&gt;
 &lt;h3&gt;Intro&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;UIScrollView&lt;/code&gt; 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 &lt;code&gt;advanced_scrollviews_and_touch_handling_techniques&lt;/code&gt;，主要包括：&lt;/p&gt;

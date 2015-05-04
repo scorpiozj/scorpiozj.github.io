@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>WWDC2014-419 Notes</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/wwdc2014-419-notes.html" rel="bookmark"
+                   title="Permalink to WWDC2014-419 Notes">WWDC2014-419 Notes</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-05-04T13:00:00+08:00">
+                Mon 04 May 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <p>Author: Charles Zhu<br/>
+Summary: notes for 419</p>
+<h2>Intro</h2>
+<p>主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  </p>
+<p><img alt="Framework" src="./imgs/20150504/Framework.png"/> </p>
+<h2>Core animation pipeline</h2>
+<p>Core animation为iOS动画提供了很多便利，调用以及之后发生的事情如下图：</p>
+<p><img alt="pipeline" src="./imgs/20150504/pipeLine.png"/> </p>
+<p>在App中调用CA，CA会encode显示的view，交由CA内的一个渲染服务器。
+渲染服务器收到指令后，会先decode view，在下一帧刷新的时候去绘制，然后交由GPU去渲染。
+CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。<br/>
+由于除了App以外的部分都是iOS系统完成的，因此我们将注意力放在App的相关部分。 </p>
+<h3>Commit Transation</h3>
+<p>this part affect application developers the most， 包含4步：
+<img alt="commitTransaction4Phase" src="./imgs/20150504/commitTransaction4Phase.png"/> </p>
+<p>4 phases</p>
+<h4>layout:</h4>
+<ul>
+<li>layoutSubviews overrides are invoked</li>
+<li>View creation, addSubview:</li>
+<li>Populate content, database lookups </li>
+<li>Usually CPU bound or I/O bound
+注：database指的是需要本地化的UI控件</li>
+</ul>
+<h4>Display:</h4>
+<ul>
+<li>Draw contents via drawRect: if it is overridden </li>
+<li>String drawing</li>
+<li>Usually CPU or memory bound</li>
+</ul>
+<h4>Prepare:</h4>
+<ul>
+<li>Image decoding </li>
+<li>Image conversion</li>
+</ul>
+<p>注：要使用推荐的png，如果是gpu不支持的格式就需要进行此部分消耗，也是cpu bounds</p>
+<h4>Commit</h4>
+<ul>
+<li>Package up layers and send to render server </li>
+<li>Recursive</li>
+<li>Expensive if layer tree is complex</li>
+</ul>
+<h3>Rendering Conceptes</h3>
+<p>介绍渲染的基本概念，涉及gpu概念较多，不太明白。</p>
+<h4>Tile based rendering</h4>
+<p>页面划分成小格，每个小格细分成2个三角形，三角形再细分成更小的三角形...(离散化)，这样gpu就可以单独处理每一个tile。这样在hue系统下，可以决定哪些像素可见，并呈现何种形状(what pixel shade to run).
+all GPU</p>
+<h4>Render passes</h4>
+<ul>
+<li>command buffer: render server generate with OpenGL command and submitted to GPU  </li>
+<li>Tiler: real tiling work, output is written in Parameter Buffer   </li>
+<li>Parameter Buffer: all geometry is processed or buffer is full, and then will go to next phase  </li>
+<li>Render: output is written in render buffer</li>
+<li>render buffer</li>
+</ul>
+<p><img alt="renderingPass" src="./imgs/20150504/renderingPass.png"/> </p>
+<h4>Example masking</h4>
+<p>a masking example to show how render processing<br/>
+<img alt="masking" src="./imgs/20150504/masking.png"/> </p>
+<p>这样基本上可以了解gpu的渲染过程。  </p>
+<h2>UIBlurEffect</h2>
+<h3>UIVisualEffectView with UIBlurEffect</h3>
+<p>UIBlurEffect style会影响渲染过程
+渲染的过程：  </p>
+<p><img alt="BlurRenderPass" src="./imgs/20150504/BlurRenderPass.png"/> </p>
+<p>Performance considerations:</p>
+<ul>
+<li>UIBlurEffect adds multiple offscreen passes depending on style  </li>
+<li>Only dirty regions are redrawn  </li>
+<li>Effect is very costly:
+   --&gt;UI can easily be GPU bound  <br/>
+   --&gt;Keep bounds of view as small as possible<br/>
+   --&gt;Make sure to budget for effect</li>
+</ul>
+<h2>UIVibrancyEffect</h2>
+<p><img alt="VibranceRenderPass" src="./imgs/20150504/VibranceRenderPass.png"/><br/>
+注：先做blur effect <br/>
+Performance considerations:</p>
+<ul>
+<li>UIVibrancyEffect adds two offscreen passes   </li>
+<li>UIVibrancyEffect uses expensive compositing filter for content   </li>
+<li>Use UIVibrancyEffect on small regions   </li>
+<li>Only dirty regions are redrawn</li>
+<li>UIVibrancyEffect is very costly on <strong>all</strong> devices<br/>
+   --&gt;UI can easily be GPU bound<br/>
+   --&gt;Keep bounds of view as small as possible<br/>
+   --&gt;Make sure to budget for effects</li>
+</ul>
+<h3>Rasterization</h3>
+<p>Performance considerations:  </p>
+<ul>
+<li>Use to composite to image once with GPU</li>
+<li>Enable with shouldRasterize property on CALayer</li>
+<li>Extra offscreen passes when updating content</li>
+<li>Do not overuse, cache size is limited to 2.5x of screen size</li>
+<li>Rasterized images evicted from cache if unused for more than 100ms</li>
+</ul>
+<p>typical use case</p>
+<h3>Group Opacity</h3>
+<p>Performance considerations:</p>
+<ul>
+<li>Disable with allowsGroupOpacity property on CALayer</li>
+<li>Will introduce offscreen passes:
+    If layer is not opaque (opacity != 1.0)
+    And if layer has nontrivial content (child layers or background image)</li>
+<li>Sub view hierarchy needs to be composited before being blended Always turn it off if not needed
+注： offscreen 非常消耗gpu</li>
+</ul>
+<h1>Tools</h1>
+<p><img alt="Tools" src="./imgs/20150504/Tools.png"/><br/>
+检测性能工具</p>
+<h2>Performance Investigation Mindset</h2>
+<p><img alt="PerformanceInvestigationMindset" src="./imgs/20150504/PerformanceInvestigationMindset.png"/></p>
+<p>使用Instruments中core animation模版，查看当前的layer
+注：补充debug option说明：</p>
+<ul>
+<li><strong>Color Blended Layers</strong>: Shows blended view layers. Multiple view layers that are drawn on top of each other with blending enabled are highlighted in red. Reducing the amount of red in your app when this option is selected can dramatically improve your apps performance. Blended view layers are often the cause for slow table scrolling.</li>
+<li><strong>Color Hits Green and Misses Red</strong>: Marks views in green or red. A view that is able to use a cached rasterization is marked in green.</li>
+<li><strong>Color Copied Images</strong>: Shows images that are copied by Core Animation in blue.</li>
+<li><strong>Color Immediately</strong>: When selected, removes the 10 ms delay when performing color-flush operations.</li>
+<li><strong>Color Misaligned Images</strong>: Places a magenta overlay over images where the source pixels are not aligned to the destination pixels.</li>
+<li><strong>Color Offscreen-Rendered Yellow</strong>: Places a yellow overlay over content that is rendered offscreen.</li>
+<li><strong>Color OpenGL Fast Path Blue</strong>: Places a blue overlay over content that is detached from the compositor.</li>
+<li><strong>Flash Updated Regions</strong>: Colors regions on your iOS device in yellow when that region is updated by the graphics processor.</li>
+</ul>
+<p>iPhone Simulator-&gt;Debug，可以看到color xxx layer</p>
+<h2>Case Studies</h2>
+<p>几个常见问题</p>
+<h3>Fictitious Photo Applications</h3>
+<ol>
+<li>
+<p>shadow creating ： cell的阴影创建</p>
+<p>//wrong
+CALayer *imageViewLayer = cell.imageView.layer;
+imageViewLayer.shadowColor = [UIColor blackColor].CGColor;
+imageViewLayer.shadowOpacity = 1.0;
+imageViewLayer.shadowRadius = 2.0;
+imageViewLayer.shadowOffset = CGSizeMake(1.0, 1.0);
+//right
+imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);
+2. round thumbnail: never use layer to create if there are many cells</p>
+</li>
+</ol>
+<p>solution:<br/>
+<img alt="roundThumbnail" src="./imgs/20150504/roundThumbnail.png"/></p>
+<h2>Summary</h2>
+<p>(copy from ppt)
+Offscreen passes are expensive  </p>
+<ol>
+<li>Use Core Animation instrument to find them </li>
+<li>Know what you can do to avoid them</li>
+</ol>
+<p>Measure performance across different devices  </p>
+<ol>
+<li>Use OpenGL ES Driver instrument for GPU time  </li>
+<li>Use Time Profiler instrument for CPU time</li>
+</ol>
+<p>Know your view hierarchy and any hidden costs</p>
+<p>1。 This is especially true for table cells and scrolling</p>
+<p>Tools</p>
+<p><img alt="toolMindset" src="./imgs/20150504/toolMindset.png"/></p>
+<p>注：要实现流畅度好的app，offscreen render越少越好。利用本篇的方法，可以迅速的定位症结，从而提升app性能。</p>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/wwdc2014-235-notes.html">← Previous : WWDC2014-235 Notes</a></li>
+        
+        <li class="next"><a href="/">Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

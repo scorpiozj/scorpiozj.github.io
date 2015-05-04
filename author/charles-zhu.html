@@ -53,6 +53,45 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-419-notes.html" rel="bookmark" title="Permalink to WWDC2014-419 Notes">WWDC2014-419 Notes</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-05-04T13:00:00+08:00"> Mon 04 May 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+Summary: notes for 419</p>
+<h2>Intro</h2>
+<p>主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  </p>
+<p><img alt="Framework" src="./imgs/20150504/Framework.png"/> </p>
+<h2>Core animation pipeline</h2>
+<p>Core animation为iOS动画提供了很多便利，调用以及之后发生的事情如下图：</p>
+<p><img alt="pipeline" src="./imgs/20150504/pipeLine.png"/> </p>
+<p>在App中调用CA，CA会encode显示的view，交由CA内的一个渲染服务器。
+渲染服务器收到指令后，会先decode view，在下一帧刷新的时候去绘制，然后交由GPU去渲染。
+CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。<br/>
+由于除了App以外的部分都是iOS系统完成的，因此我们将注意力放在App的相关部分。 </p>
+<h3>Commit Transation</h3>
+<p>this part affect application developers the most， 包含4步：
+<img alt="commitTransaction4Phase" src="./imgs/20150504/commitTransaction4Phase.png"/> </p>
+<p>4 phases</p>
+<h4>layout:</h4>
+<ul>
+<li>layoutSubviews overrides are invoked</li>
+<li>View creation, addSubview ...</li></ul> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-419-notes.html" rel="bookmark" title="Permalink to WWDC2014-419 Notes">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a>
+											<a class="danger label" href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">WWDC2014-235 Notes</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-04-20T22:00:00+08:00"> Mon 20 April 2015 </abbr>
@@ -354,30 +393,6 @@ enumerating</p>
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">过去一周的思考</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2015-02-13T22:30:00+08:00"> Fri 13 February 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>简介</h2>
-<p>过去的一周可以算是波澜起伏，主要关于两方面：一个是app的下载，另一个是app的发布。</p>
-<h2>app的下载</h2>
-<p>ASO是一个至今不得窥其入门的东西，某个收费的app自上线至今约3个月的时间保持平均每天3个的下载节奏。期间在app中集成的分享平台中发过带app的tag的链接（主要是国外的分享平台），这种方式可以引起用户的注意，可以算是营销的一种方式。只是一个人势单力薄，无法做到每天的更新。这种方式和app的下载互为因果，因为很难单纯的通过这种方式提高下载量，相反这种推广的效果还取决于app的下载基数。因此，我认为这属于“锦上添花”增加用户基数型的营销模式。<br/>
-虽然推广没有花费大力气，但是本周还是发生了下载量突变的情形。5-10日之间下载量分别是个位数，2位数，3位数，3位数，2位数，个位数。至此，恢复以往的平静。在此期间，做到分类付费和畅销排名前三。虽然之前也油锅这样的经历，但这次的app是收费的，意义不同寻常。此外，这样的一个过山车的表现也很让我诧异。是什么导致下载量突然的上升呢？我搜索了一下相关的分享平台，没有大量的使用app的痕迹。通过Appannie的变化追踪来看，我倾向于Apple调整了app的排名算法（如果这些下载量不是黑卡造成的话）。线索就在于5日以及之前的排名已经落后到不知什么地步，而后突然就排名上升。考虑到下载量在相应的category中中规中矩，评价几乎没有的情况，才做出算法调整的判断。<br/>
-这个 ...</br/></br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -404,41 +419,41 @@ enumerating</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
 	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
 	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
 </ul>
 
 
@@ -453,7 +468,7 @@ enumerating</p>
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-    Page 1 / 4
+    Page 1 / 5
         <a href="http://icocoa.tk/author/charles-zhu2.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

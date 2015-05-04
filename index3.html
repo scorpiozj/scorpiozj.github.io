@@ -53,6 +53,34 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Git版本库管理</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-18T10:30:00+08:00"> Tue 18 November 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>在开发过程中往往会使用第三方库，可有时候会因为某种原因不使用了，我们可以使用 <code>reset</code>或是直接删除的方式将库删除，比如开发中用到了某度的SDK，可是发现crash的概率太大需要舍弃之。可是，这些库的影子还在版本库的历史中可以找到，会增大库的体积。这时候我们就需要完全清楚这些“残留”文件。<br/>
+本篇内容可在<a href="http://www.amazon.cn/gp/product/B0058FLC40/ref=as_li_ss_tl?ie=UTF8&amp;camp=536&amp;creative=3132&amp;creativeASIN=B0058FLC40&amp;linkCode=as2&amp;tag=scorpiozj-23">Git权威指南</a>第14章中找到。</p>
+<h4>松散对象</h4>
+<p>Git中对于以SHA1值作为目录名和文件保存的对象称之为松散对象。因此 add，commit等操作都会产生一系列的松散对象。大量的松散对象会造成访问效率低下，占用过多存储空间。在Git中可以通过打包的方式提高访问效率，同时也方便通过增量更新的方式节省存储空间。</p>
+<h4>暂存区中的临时对象</h4>
+<p>添加到暂存区的文件发现不需要了，我们应该怎么办？
+首先我们复制2个稍大的(10M)的文件到工作区，然后添加到暂存区：</p>
+<div class="highlight"><pre><span class="nv">$ </span>cp /Users/xxxxx/Desktop/test.zip bigfile
+<span class="nv">$ </span>cp /Users/xxxxx/Desktop/test.zip bigfile.dup
+<span class="nv">$ </span>git add bigfile ...</pre></div> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">App Extension Study 3</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-14T16:00:00+08:00"> Fri 14 November 2014 </abbr>
@@ -328,37 +356,6 @@ git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-conten
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-09-22T14:00:00+08:00"> Mon 22 September 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: git 错误理解</p>
-<h2>SVN下的项目管理</h2>
-<p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
-<h2>git下的误区</h2>
-<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
-接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
-On branch master
-
-Initial ...</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -385,41 +382,41 @@ Initial ...</pre></div> </div><!-- /.entry-content -->
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
 	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
 	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
 </ul>
 
 
@@ -435,7 +432,7 @@ Initial ...</pre></div> </div><!-- /.entry-content -->
 
 <p class="paginator">
             <a href="http://icocoa.tk/index2.html"><i class="icon-arrow-left"></i></a>
-    Page 3 / 4
+    Page 3 / 5
         <a href="http://icocoa.tk/index4.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
