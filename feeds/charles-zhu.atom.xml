@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-05-04T13:00:00+08:00</updated><entry><title>WWDC2014-419 Notes</title><link href="http://icocoa.tk/wwdc2014-419-notes.html" rel="alternate"></link><updated>2015-05-04T13:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-05-04:wwdc2014-419-notes.html</id><summary type="html">&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-05-11T12:00:00+08:00</updated><entry><title>随感</title><link href="http://icocoa.tk/sui-gan.html" rel="alternate"></link><updated>2015-05-11T12:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-05-11:sui-gan.html</id><summary type="html">&lt;p&gt;Author: Charles Zhu  &lt;/p&gt;
+&lt;p&gt;书桌上放着本 &amp;lt;&amp;lt;守望灯塔&amp;gt;&amp;gt;，看了快一半。买的时候，看书名以为是个励志型的故事，看了以后才知道不是，——大概和爱情，和人生有关。额，可是有什么又是和人生无关的呢。那好吧，我还是说我没看懂的好。&lt;br/&gt;
+买了两盒迷你果园，一盒葫芦，一盒黄瓜，不需要额外的土，不需要施肥，只需要浇水，晒太阳，就能结果。种子同一天放进去的，水每天都浇，阳光每天都晒。就这样过了四五天，葫芦先发芽了，而且一发芽，叶子就显得很大。过了一个星期，长出来的叶子，就能分辨出是葫芦娃头上戴的样子了。而那黄瓜呢，不知怎么的，一个星期后才发芽。破土而出后，小小的叶子，就像一个早产儿。而且，三四天过去了，和最初破土而出时相比，就大了一点。&lt;br/&gt;
+和葫芦的生长比，黄瓜差很多。可是，我不会认为黄瓜没有葫芦好，因为两者没有可比性。葫芦应该和葫芦去比，黄瓜要和黄瓜比。中国的葫芦可以和美国的葫芦比，美国的黄瓜也不能和中国的葫芦相比。  &lt;/p&gt;
+&lt;p&gt;人过了而立，不知不觉就会有压力。看多了听多了他人的风云灿烂，总免不了暗自相比。尤其是90，00开始踏上舞台的时候，内心的压迫与紧张莫名的突出。只好自我安慰自我阿q的说，总有一天，你的同龄人中会出现主席。难道不是么？&lt;/p&gt;
+&lt;p&gt;不知道内心的压抑，是怎么如入夜弥漫的黑暗般弥漫开来的。如果，黑暗中有座灯塔，那么，至少不会窒息在黑暗里。更重要的是，不会迷失。我想，我是不会沉沦在黑夜里的。因为，我的灯塔，就在那里。&lt;/p&gt;
+&lt;p&gt;——最近所思所感，写出来晒晒，顿时心里舒服多了。&lt;/p&gt;</summary><category term=""></category></entry><entry><title>WWDC2014-419 Notes</title><link href="http://icocoa.tk/wwdc2014-419-notes.html" rel="alternate"></link><updated>2015-05-04T13:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-05-04:wwdc2014-419-notes.html</id><summary type="html">&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
 Summary: notes for 419&lt;/p&gt;
 &lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  &lt;/p&gt;

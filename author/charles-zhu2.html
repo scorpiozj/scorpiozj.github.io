@@ -53,6 +53,35 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">个人App发布前的测试</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-25T00:00:00+08:00"> Wed 25 February 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <h2>前言</h2>
+<p>假期里原本想好好的放松，多看几本书，多运动，不曾想一半的时间花费在修改bug上了。算上假期前提交的版本，整个春节期间发布了3个小版本的更新，申请了2次紧急提交审核。其中经历不可谓不惊心动魄，虽然未必对下载量有所帮助，但至少也让用户感觉到：这大过年的也在更新，也是蛮拼的了:-)。</p>
+<h2>测试流程</h2>
+<p>言归正传，春节期间提交的紧急修复起因都是程序出了严重的bug，而且都是在修复某个bug的过程中引入的bug。这说明即使是个人开发者，对于提交前的测试流程必须要重视。不管是养成一个好习惯，或者是开发出较高质量的程序，完备的测试是不可或缺的。下面结合自身的情况，把相应的测试守则完备下，督促自己执行。</p>
+<h3>功能设计和实现阶段</h3>
+<p>在分解App的功能的设计阶段，或者在实现功能的阶段，根据功能点，撰写相应的测试内容。具体来说就是针对每一个功能点，设计测试步骤；功能复杂的时候测试步骤也要细化。这里尤其要注意的是务必覆盖所有的功能点。此外，针对边界情况的测试，基本也包含在此阶段。</p>
+<h3>模块化集成阶段</h3>
+<p>当完成几个模块后，可以着手集成测试，这个阶段主要侧重运行时模块之间的运行情况。有时候单独的功能使用没有任何问题，但是当和其他模块功能一起使用的过程中，会发生问题。</p>
+<h3>测试环境</h3>
+<p>发布前的App必须完整经历Ad hoc版本的测试，因为developer模式下有些bug不会产生。这一点，相信很多人都深有体会 ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ce-shi.html">测试</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">过去一周的思考</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-02-13T22:30:00+08:00"> Fri 13 February 2015 </abbr>
@@ -284,38 +313,6 @@
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">App Extension Study 4</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-19T10:00:00+08:00"> Wed 19 November 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: ios8 app extension</p>
-<h3>1 开始</h3>
-<p>本篇介绍剩下的<code>Custom Keyboard</code>，之前的3篇： </p>
-<ul>
-<li><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>: 介绍了Extension的基本概念/运行周期/数据共享等通用技术细节  </li>
-<li><a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践:widget，share，action和Photo Editing</li>
-<li><a href="http://github.icocoa.tk/app-extension-study-3.html">第三篇</a>介绍并实践了Sync和File Procvider</li>
-</ul>
-<h3>2 Custom Keyboard</h3>
-<p>iOS8终于对第三方输入法开放，引起一片毋需越狱的呼声，这就是通过extension实现的。在以前，app可以单独实现适合自己的文本输入法；而iOS8上，如果用户在设置中添加第三方的键盘，就会对所有app可见(如果app没有禁止使用第三方输入法的话)。对于重视用户隐私的苹果公司而言，虽然开放了输入法的扩展，但是对于用户数据和隐私的保护是非常重视，因此在开发的时候要时刻关注。</p>
-<h4>2.1 第三方输入法要具备的特征</h4>
-<p>输入法的核心是要对用户的点击等手势及时的响应，提供可选的文本和插入文本等。除此之外，重要的就是要能够切换到下一个输入法。苹果文档中列出了一些特征 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
-											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -334,6 +331,7 @@ Summary: ios8 app extension</p>
 		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -342,41 +340,41 @@ Summary: ios8 app extension</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
 	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
 	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
 	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
 </ul>
 
 
