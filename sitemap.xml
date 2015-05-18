@@ -5,30 +5,37 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/index.html</loc>
-<lastmod>2015-05-11T12:59:08-00:00</lastmod>
+<lastmod>2015-05-18T09:29:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/archives.html</loc>
-<lastmod>2015-05-11T12:59:08-00:00</lastmod>
+<lastmod>2015-05-18T09:29:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tags.html</loc>
-<lastmod>2015-05-11T12:59:08-00:00</lastmod>
+<lastmod>2015-05-18T09:29:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/categories.html</loc>
-<lastmod>2015-05-11T12:59:08-00:00</lastmod>
+<lastmod>2015-05-18T09:29:59-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html</loc>
+<lastmod>2015-05-17T13:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -334,7 +341,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/category/ios.html</loc>
-<lastmod>2015-05-04T13:00:00+08:06</lastmod>
+<lastmod>2015-05-17T13:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -501,6 +508,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/tag/quartzcore.html</loc>
+<lastmod>2015-05-17T13:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/tag/ce-shi.html</loc>
 <lastmod>2015-03-08T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -635,7 +649,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/author/charles-zhu.html</loc>
-<lastmod>2015-05-11T12:00:00+08:06</lastmod>
+<lastmod>2015-05-17T13:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

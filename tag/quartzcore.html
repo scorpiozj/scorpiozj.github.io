@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent - objc</title>
+        <title>To be Independent - quartzcore</title>
         <meta charset="utf-8" />
 
 
@@ -53,74 +53,42 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">[Tips]NSTimer对Target的强引用</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html" rel="bookmark" title="Permalink to 仿手机QQ消息小红点动画1">仿手机QQ消息小红点动画1</a></h2> </header>
 				                <footer class="post-info">
-				                    <abbr class="published" title="2015-01-22T17:30:00+08:00"> Thu 22 January 2015 </abbr>
+				                    <abbr class="published" title="2015-05-17T13:00:00+08:00"> Sun 17 May 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>NSTimer对Target的强引用</h2>
-<p>这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。</p>
-<div class="highlight"><pre>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
-</pre></div>
-<p>其中，API文档中清楚地解释到：</p>
-<blockquote>
-<p>The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is ...</p></blockquote> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+Summary: 动画学习</p>
+<h2>前言</h2>
+<p>偶然发现iPhone QQ 显示消息条数的小红点可以响应动作事件，也有人问我这样的动画该怎么做，这里就把实现的思路简单的描述一下。在实现的过程中，同样发现该功能并没有看到的那么简单，要做一个完备的动画效果需要有一定的功底。因此，本篇会先侧重于实现思路，并不会实现一个一模一样的效果。<br/>
+下面是iPhone QQ小红点的动作交互效果：<br/>
+<img alt="iPhoneQQ" src="./imgs/20150517/QQSpring.gif"/></p>
+<h2>分析</h2>
+<p>首先我们分析拖拽时候的表现：</p>
+<ol>
+<li>原先的小红点顺着手指移动，并与原来所处位置通过一个小尾巴(即移动的轨迹)连接</li>
+<li>与原先位置在一定范围内时，小尾巴出现；超过一定范围时，小尾巴不出现</li>
+<li>释放手指，小红点回到原先位置，并有弹簧动画效果</li>
+<li>释放手指时离原先位置超过一定范围则不返回原点，而是有消失的泡沫动画</li>
+</ol>
+<p>抛开细节，抓住要点，我归纳了几个要点：</p>
+<ol>
+<li>小原点随手指移动</li>
+<li>小尾巴分情况出现</li>
+<li>手指释放后，小红点弹回原先位置</li>
+</ol>
+<p>除此之外，红点上的文字，消失等情形的处理不是主要问题，我们先缓一缓。</p>
+<h2>实现</h2>
+<h3>红点的移动</h3>
+<p>首先实现一个圆形的view，并且可以随手指移动。在一定移动范围内 ...</p> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html" rel="bookmark" title="Permalink to 仿手机QQ消息小红点动画1">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">限制文本输入长度</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2015-01-09T22:30:00+08:00"> Fri 09 January 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>需求</h2>
-<p>限制字符输入长度是个常见的需求，比如注册的账号或者密码。通常，从用户体验的角度，iOS App中当输入超过制定长度的字符时不需要显式的弹出提示，而只需要让超过的字符不显示即可。这个功能看似简单，但是考虑到一些输入系统例如中文输入法的联想功能，就不那么简单。</p>
-<h2>一般的实现</h2>
-<p>以UITextField为例，通常的做法是在delegate中做文章。这样的解决方案很多，stackflow上一个比较全面的解答：<a href="http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield">Set the maximum character length of a UITextField</a>，大致的思路就是在输入即将要替换的时候，计算最终要显示的字符串。这个方法对于英文输入是没有问题的，但是对于其他语言如中文输入就会存在问题。举例来说中文拼音输入“的”时，用户需要输入de，在未选中“的”时，de以选中的状态在输入框中显示，并作为输入框的内容，如下图：</p>
-<p><img alt="input1" src="./imgs/20150109/IMG_0040.png"/><img alt="input2" src="./imgs/20150109/IMG_0041.png"/></p>
-<p>按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">NSZombierEnable</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-12-18T10:30:00+08:00"> Thu 18 December 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>今天在cocoachina上看到一篇关于实现NSZombier的翻译贴，原文来自<a href="https://mikeash.com/">Mike Ash</a>。此人是(Friday Q&amp;A)的作者，更为神奇的是他白天是飞行员，晚上是程序员，这在天朝不可想像。本文主要是基于他以下两篇文章的笔记。<br/>
-<a href="https://mikeash.com/pyblog/friday-qa-2014-11-07-lets-build-nszombie.html">Friday Q&amp;A 2011-05-20: The Inner Life of Zombies</a><br/>
-<a href="https://mikeash.com/pyblog/friday-qa-2011-05-20-the-inner-life-of-zombies.html">Friday Q&amp;A 2014-11-07: Let's Build NSZombie</a></p>
-<h3>启用NSZombier对象</h3>
-<p>有经验的开发者在遇到诸如<code>EXC_BAD_ACCESS</code>的错误时往往会设置<code>NSZombieEnabled</code>为<code>YES</code>，这样类似的错误发生后，就可以定位到出错的位置，从而便于诊断问题所在。<br/>
-诸如此类的内存错误不管是MRC还是ARC下，都是会发生的。发生的原因在于：一个已经release的指针对象，又收到了某个消息，这时就会发生古怪。在MRC下，alloc一个对象A，然后release后，该对象所指向的内存被系统回收 ...</br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
+											<a class="danger label" href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a>
 								</div>
 
 
