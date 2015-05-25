@@ -1,5 +1,82 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Sun, 17 May 2015 13:00:00 +0800</lastBuildDate><item><title>仿手机QQ消息小红点动画1</title><link>http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 25 May 2015 11:00:00 +0800</lastBuildDate><item><title>仿手机QQ消息小红点动画2</title><link>http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+Summary: 动画学习&lt;/p&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;&lt;a href="http://iloveanan.com/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html"&gt;上一篇&lt;/a&gt;把动画的实现步骤大致理清，需要确认小尾巴的绘制区域，关键就是确定4个顶点的位置。大家可以根据需要，选择不同的计算方式。&lt;br/&gt;
+今天，要实现：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;文字的添加&lt;/li&gt;
+&lt;li&gt;尾巴拉长用弧形代替直线&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;下面是现在的效果图：&lt;br/&gt;
+&lt;img alt="QQ2_1.gif" src="./imgs/20150525/QQ2_1.gif"/&gt;&lt;/p&gt;
+&lt;h2&gt;文字添加&lt;/h2&gt;
+&lt;p&gt;为了简单，这里对文字的颜色字体等属性不提供接口，而只是在内部设置固定的值；提供一个类方法生成对象。如：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="o"&gt;(&lt;/span&gt;&lt;span class="nt"&gt;instancetype&lt;/span&gt;&lt;span class="o"&gt;)&lt;/span&gt;&lt;span class="nt"&gt;zzspringViewWithText&lt;/span&gt;&lt;span class="o"&gt;:(&lt;/span&gt;&lt;span class="nt"&gt;NSString&lt;/span&gt; &lt;span class="o"&gt;*)&lt;/span&gt;&lt;span class="nt"&gt;text&lt;/span&gt;&lt;span class="o"&gt;;&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;在这个方法里面需要做：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;根据text内容，确定文字绘制的图形区域&lt;/li&gt;
+&lt;li&gt;根据文字的绘制区域，确定view对象的bounds&lt;/li&gt;
+&lt;li&gt;可能的情况下，限制文字的长度（QQ上消息数最多显示99+）&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在&lt;code&gt;drawRect&lt;/code&gt;中，需要做的事：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;绘制带圆角的view&lt;/li&gt;
+&lt;li&gt;绘制文字&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;如下所示：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="c1"&gt;//draw corner round rectangle&lt;/span&gt;
+&lt;span class="p"&gt;-(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;p_drawRoundedRectWithContext:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CGContextRef&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;context&lt;/span&gt; &lt;span class="nf"&gt;withRect:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="bp"&gt;CGRect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;rect&lt;/span&gt;
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="n"&gt;CGContextSaveGState&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;CGFloat&lt;/span&gt; &lt;span class="n"&gt;radius&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGRectGetMaxY&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mf"&gt;0.4&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;CGFloat&lt;/span&gt; &lt;span class="n"&gt;puffer&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGRectGetMaxY&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="mf"&gt;0.10&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;CGFloat&lt;/span&gt; &lt;span class="n"&gt;maxX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGRectGetMaxX&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;puffer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;CGFloat&lt;/span&gt; &lt;span class="n"&gt;maxY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGRectGetMaxY&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="n"&gt;puffer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;CGFloat&lt;/span&gt; &lt;span class="n"&gt;minX&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGRectGetMinX&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;puffer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="n"&gt;CGFloat&lt;/span&gt; &lt;span class="n"&gt;minY&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGRectGetMinY&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;+&lt;/span&gt; &lt;span class="n"&gt;puffer&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+
+    &lt;span class="n"&gt;CGContextBeginPath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;CGContextSetFillColorWithColor&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;UIColor&lt;/span&gt; &lt;span class="n"&gt;redColor&lt;/span&gt;&lt;span class="p"&gt;].&lt;/span&gt;&lt;span class="bp"&gt;CGColor&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;CGContextAddArc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maxX&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;minY&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;CGContextAddArc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maxX&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maxY&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;CGContextAddArc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;minX&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;maxY&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="n"&gt;CGContextAddArc&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;minX&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;minY&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;radius&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;+&lt;/span&gt;&lt;span class="n"&gt;M_PI&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="mi"&gt;0&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;CGContextFillPath&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+    &lt;span class="n"&gt;CGContextRestoreGState&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;context&lt;/span&gt;&lt;span class="p"&gt;);&lt;/span&gt;
+
+&lt;span class="p"&gt;}&lt;/span&gt;
+&lt;span class="p"&gt;-(&lt;/span&gt;&lt;span class="kt"&gt;void&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="nf"&gt;p_drawTextWithContext:&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CGContextRef&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt;&lt;span class="nv"&gt;context&lt;/span&gt; 
+&lt;span class="p"&gt;{&lt;/span&gt;
+    &lt;span class="bp"&gt;NSDictionary&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;fontAttr&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="l"&gt;@{&lt;/span&gt;
+                                   &lt;span class="nl"&gt;NSFontAttributeName&lt;/span&gt; &lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="n"&gt;fontText&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt;
+                                   &lt;span class="nl"&gt;NSForegroundColorAttributeName&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;UIColor&lt;/span&gt; &lt;span class="n"&gt;whiteColor&lt;/span&gt;&lt;span class="p"&gt;]&lt;/span&gt;
+                                   &lt;span class="l"&gt;}&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+    &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;CGSizeEqualToSize&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;bgTextSize&lt;/span&gt;&lt;span class="p"&gt;,&lt;/span&gt; &lt;span class="n"&gt;CGSizeZero&lt;/span&gt;&lt;span class="p"&gt;))&lt;/span&gt;
+    &lt;span class="p"&gt;{&lt;/span&gt;
+        &lt;span class="n"&gt;bgTextSize&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;badgeText&lt;/span&gt; &lt;span class="nl"&gt;sizeWithAttributes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;fontAttr&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+    &lt;span class="p"&gt;}&lt;/span&gt;
+
+    &lt;span class="bp"&gt;CGPoint&lt;/span&gt; &lt;span class="n"&gt;textPoint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="n"&gt;CGPointMake&lt;/span&gt;&lt;span class="p"&gt;((&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bgTextSize&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;width&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;),&lt;/span&gt; &lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="n"&gt;rect&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;size&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="o"&gt;-&lt;/span&gt;&lt;span class="n"&gt;bgTextSize&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;height&lt;/span&gt;&lt;span class="o"&gt;/&lt;/span&gt;&lt;span class="mi"&gt;2&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;-&lt;/span&gt; &lt;span class="mi"&gt;1&lt;/span&gt; &lt;span class="p"&gt;);&lt;/span&gt;
+    &lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;badgeText&lt;/span&gt; &lt;span class="nl"&gt;drawAtPoint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;textPoint&lt;/span&gt; &lt;span class="nl"&gt;withAttributes&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;fontAttr&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+ &lt;span class="p"&gt;}&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;其中，&lt;code&gt;bgTextSize&lt;/code&gt;是之前计算过的文字的size。&lt;/p&gt;
+&lt;h2&gt;弧线&lt;/h2&gt;
+&lt;p&gt;绘制曲线，这里使用&lt;code&gt;CGContextAddQuadCurveToPoint&lt;/code&gt;，这里的控制点&lt;code&gt;controlPoint&lt;/code&gt;取自两圆心之间的某点(见&lt;a href="http://iloveanan.com/imgs/20150517/Drag.png"&gt;图&lt;/a&gt;)，这里我取了圆心长度的黄金分割点处作为控制点。从实际的运行情况下，可能弧度不是太明显，需要后期再调配参数。&lt;br/&gt;
+这里还要纠正一下，上一篇计算切点时的方法有误：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;三角函数忘记开根号&lt;/li&gt;
+&lt;li&gt;求切点的公式算错了&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;这里需要说明的是，因为添加了文字，在这里确定P1圆上2个顶点位置的时候，要注意不要覆盖到文字区域，否则移动的时候，文字会被覆盖。&lt;br/&gt;
+另外，我发现QQ中，拖拽弹回的动画中，小红点上会出现很多纵横交错的白线(bug吗)，估计是用于计算连接点用的。&lt;/p&gt;
+&lt;h2&gt;总结&lt;/h2&gt;
+&lt;p&gt;本身这个动画没有什么技术难度(意思是涉及到的框架内容不实特别复杂)，复杂得是一些关键数值的确定：主要就是拖拽时尾巴的绘制区域的确定。把这一部分解决了，动画也就没有实现的难度了。当然，如果要封装成一个库来调用，还需要再精进：接口的设计，可配置的参数（颜色，字体，阴影等），这些就留给大伙自定义吧 。&lt;/p&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 25 May 2015 11:00:00 +0800</pubDate><guid>tag:icocoa.tk,2015-05-25:fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html</guid><category>quartzcore</category></item><item><title>仿手机QQ消息小红点动画1</title><link>http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
 Summary: 动画学习&lt;/p&gt;
 &lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;偶然发现iPhone QQ 显示消息条数的小红点可以响应动作事件，也有人问我这样的动画该怎么做，这里就把实现的思路简单的描述一下。在实现的过程中，同样发现该功能并没有看到的那么简单，要做一个完备的动画效果需要有一定的功底。因此，本篇会先侧重于实现思路，并不会实现一个一模一样的效果。&lt;br/&gt;
