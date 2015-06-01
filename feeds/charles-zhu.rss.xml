@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 25 May 2015 11:00:00 +0800</lastBuildDate><item><title>仿手机QQ消息小红点动画2</title><link>http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><atom:link href="http://icocoa.tk/feeds/charles-zhu.rss.xml" rel="self"></atom:link><lastBuildDate>Mon, 01 Jun 2015 15:00:00 +0800</lastBuildDate><item><title>Autolayout中Hugging和Compression使用注意</title><link>http://icocoa.tk/autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+Summary: autolayout概念加深&lt;/p&gt;
+&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;本文主要侧重&lt;code&gt;Autolayout&lt;/code&gt;使用过程中，通过代码和SB添加含有&lt;code&gt;intrinsicSize&lt;/code&gt;属性控件约束的一些细节。  &lt;/p&gt;
+&lt;h2&gt;Hugging和Compression 属性&lt;/h2&gt;
+&lt;p&gt;有很多关于这两个概念的文章，比如stackoverflow上&lt;a href="http://stackoverflow.com/a/16281229/371974"&gt;Cocoa Autolayout: content hugging vs content compression resistance priority&lt;/a&gt;。我觉得很形象的说明了设置了有什么用，但是还欠缺什么时候使用，即和｀intrinsicSize`的关系。先来看下文档上的说明：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;- contentCompressionResistancePriorityForAxis:
+Returns the priority with which a view resists being made smaller than its intrinsic size.
+
+- contentHuggingPriorityForAxis:
+Returns the priority with which a view resists being made larger than its intrinsic size.
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;这么一看，就很明了：对于有 intrinsicSize 属性的控件(如UILabel，UIButton等)，如果当前的frame比显示的content范围大，那么设置的Hugging属性起作用，否则设置的Compression属性起作用。对于相应的数值，越大表明优先级越高，意味着当前的属性占优。简单的说，对于需要Hugging的情形，hugging属性的值越大(优先级越高)，那么表明控件需要紧凑的显示。&lt;br/&gt;
+Hugging和Compression属性值有默认值：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;对于纯代码添加的控件，Hugging默认250.0f，Compression默认 750.0f&lt;/li&gt;
+&lt;li&gt;通过SB添加，Hugging默认251.0f，Compression默认750.0f&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;为什么会有不一样的值？那么先看一下 UILayoutPriority的取值：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriority&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriorityRequired&lt;/span&gt; &lt;span class="n"&gt;NS_AVAILABLE_IOS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="n"&gt;_0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;1000&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// A required constraint.  Do not exceed this.&lt;/span&gt;
+
+&lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriority&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriorityDefaultHigh&lt;/span&gt; &lt;span class="n"&gt;NS_AVAILABLE_IOS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="n"&gt;_0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;750&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// This is the priority level with which a button resists compressing its content.&lt;/span&gt;
+
+&lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriority&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriorityDefaultLow&lt;/span&gt; &lt;span class="n"&gt;NS_AVAILABLE_IOS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="n"&gt;_0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;250&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt; &lt;span class="c1"&gt;// This is the priority level at which a button hugs its contents horizontally.&lt;/span&gt;
+
+&lt;span class="k"&gt;static&lt;/span&gt; &lt;span class="k"&gt;const&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriority&lt;/span&gt; &lt;span class="n"&gt;UILayoutPriorityFittingSizeLevel&lt;/span&gt; &lt;span class="n"&gt;NS_AVAILABLE_IOS&lt;/span&gt;&lt;span class="p"&gt;(&lt;/span&gt;&lt;span class="mi"&gt;6&lt;/span&gt;&lt;span class="n"&gt;_0&lt;/span&gt;&lt;span class="p"&gt;)&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;&lt;span class="c1"&gt;// When you send -[UIView systemLayoutSizeFittingSize:], the size fitting most closely to the target size (the argument) is computed.  UILayoutPriorityFittingSizeLevel is the priority level with which the view wants to conform to the target size in that computation.  It's quite low.  It is generally not appropriate to make a constraint at exactly this priority.  You want to be higher or lower.&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;由此可见，在设计的时候，iOS的开发人员考虑到类似UILabel的控件首要的是显示所有的内容。&lt;/p&gt;
+&lt;h2&gt;编程实现&lt;/h2&gt;
+&lt;p&gt;通过一段代码，加载一个button：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span class="bp"&gt;UIButton&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;UIButton&lt;/span&gt; &lt;span class="nl"&gt;buttonWithType&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;UIButtonTypeRoundedRect&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;translatesAutoresizingMaskIntoConstraints&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="nb"&gt;NO&lt;/span&gt;&lt;span class="p"&gt;;&lt;/span&gt;
+&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;backgroundColor&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;UIColor&lt;/span&gt; &lt;span class="n"&gt;redColor&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="nl"&gt;setTitle&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="s"&gt;@"a long long title"&lt;/span&gt; &lt;span class="nl"&gt;forState&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;UIControlStateNormal&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+
+
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;addSubview&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+
+&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="o"&gt;*&lt;/span&gt;&lt;span class="n"&gt;constraint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="nl"&gt;constraintWithItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeLeading&lt;/span&gt; &lt;span class="nl"&gt;relatedBy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutRelationEqual&lt;/span&gt; &lt;span class="nl"&gt;toItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeLeading&lt;/span&gt; &lt;span class="nl"&gt;multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.0f&lt;/span&gt; &lt;span class="nl"&gt;constant&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;100.0f&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;addConstraint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;constraint&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+
+&lt;span class="n"&gt;constraint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="nl"&gt;constraintWithItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeTop&lt;/span&gt; &lt;span class="nl"&gt;relatedBy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutRelationEqual&lt;/span&gt; &lt;span class="nl"&gt;toItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeTop&lt;/span&gt; &lt;span class="nl"&gt;multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.0f&lt;/span&gt; &lt;span class="nl"&gt;constant&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;100.0f&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;addConstraint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;constraint&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+
+&lt;span class="n"&gt;constraint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="nl"&gt;constraintWithItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button1&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeWidth&lt;/span&gt; &lt;span class="nl"&gt;relatedBy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutRelationEqual&lt;/span&gt; &lt;span class="nl"&gt;toItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;nil&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeWidth&lt;/span&gt; &lt;span class="nl"&gt;multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nl"&gt;constant&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;addConstraint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;constraint&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如上添加的constraint，使得button的frame不足以显示标题内容，注意上述constraint默认的优先级都是UILayoutPriorityRequired。因此我们可以通过修改最后一个宽度的constraint：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;constraint.priority = UILayoutPriorityDefaultHigh - 1;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;对于用SB添加的控件，也可以用类似的方法修改。至于为什么，SB中添加的如UILable的控件，当给其添加某个约束后，SB中Hugging属性的值是251呢？这是为了默认可以显示全内容。此时，你可以在sb中手动把空间尺寸变小，再把控件的某个属性的constriant(width或tailing)的优先级设置为low。这时，你也可以在SB中发现相应的约束由蓝色实线变成了蓝色虚线。当然，如果compression约束起作用的情况下，约束也是蓝色虚线。 &lt;/p&gt;
+&lt;h2&gt;与其它控件一起使用&lt;/h2&gt;
+&lt;p&gt;如上单个控件可以正常使用，如果设置一个相邻的控件，会有什么需要注意的吗？答案是NO，什么都不需要操心，仍旧按之前的方法添加约束，这极大的简化了工作量。&lt;br/&gt;
+另外，这里需要说明的是，需要更新控件上文字的时候，为了有一个较好的动画效果，需要： &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;[label.superView layoutIfNeeded];
+&lt;/pre&gt;&lt;/div&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 01 Jun 2015 15:00:00 +0800</pubDate><guid>tag:icocoa.tk,2015-06-01:autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</guid><category>iOS</category><category>Autolayout</category></item><item><title>仿手机QQ消息小红点动画2</title><link>http://icocoa.tk/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html</link><description>&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
 Summary: 动画学习&lt;/p&gt;
 &lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://iloveanan.com/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html"&gt;上一篇&lt;/a&gt;把动画的实现步骤大致理清，需要确认小尾巴的绘制区域，关键就是确定4个顶点的位置。大家可以根据需要，选择不同的计算方式。&lt;br/&gt;
@@ -531,8 +586,10 @@ imageViewLayer.shadowOpacity = 1.0;
 imageViewLayer.shadowRadius = 2.0;
 imageViewLayer.shadowOffset = CGSizeMake(1.0, 1.0);
 //right
-imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);
-2. round thumbnail: never use layer to create if there are many cells&lt;/p&gt;
+imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;
+&lt;p&gt;round thumbnail: never use layer to create if there are many cells&lt;/p&gt;
 &lt;/li&gt;
 &lt;/ol&gt;
 &lt;p&gt;solution:&lt;br/&gt;
