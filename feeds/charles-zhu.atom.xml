@@ -1,5 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-06-01T15:00:00+08:00</updated><entry><title>Autolayout中Hugging和Compression使用注意</title><link href="http://icocoa.tk/autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html" rel="alternate"></link><updated>2015-06-01T15:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-06-01:autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</id><summary type="html">&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2015-06-17T17:00:00+08:00</updated><entry><title>6月工作总结</title><link href="http://icocoa.tk/6yue-gong-zuo-zong-jie.html" rel="alternate"></link><updated>2015-06-17T17:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-06-17:6yue-gong-zuo-zong-jie.html</id><summary type="html">&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
+Summary: 近期工作总结&lt;/p&gt;
+&lt;h3&gt;前言&lt;/h3&gt;
+&lt;p&gt;因为一些原因，下了100%的决心：换工作。换工作倒也不难，只是找一份匹配度高的工作，的确很难，尤其是在所处的二线城市。个中滋味，——如鱼饮水，通过这些经历，对自己的发展和定位，有了一个较为明晰的看法。&lt;br/&gt;
+最近在整理工作内容准备交接，倒是找出了一些工作中遇到的记录，准备整理出来，晒晒自己的一些经历。&lt;/p&gt;
+&lt;h3&gt;一些纪录&lt;/h3&gt;
+&lt;p&gt;工作中遇到的问题，往往会由问题A牵涉到问题Z。下次再遇到或许没那么快想起该怎么做，所以记在记事本还是个不错的&lt;/p&gt;
+&lt;h4&gt;project.pbxproj的git冲突合并&lt;/h4&gt;
+&lt;p&gt;开发过程中，当前功能未开发完版本有更新时：
+    git stash //保存当前的工作内容，并将工作区置于上一次提交的HEAD
+    git pull origin master//获取更新
+    git stash pop //恢复当前工作内容&lt;/p&gt;
+&lt;p&gt;以上过程中git会进行自动合并，但有时候需要人工合并。比如 project.pbxproj有冲突的时候。这时打开相应的冲突文件，通过"&amp;lt;&amp;lt;&amp;lt;"找到冲突区域进行修改。然后执行命令：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git commit file_path -i -m "fix merge confilic"
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;另外，找到个处理 &lt;code&gt;project.pbxproj&lt;/code&gt; 的&lt;a href="https://github.com/truebit/xUnique"&gt;脚本&lt;/a&gt;，没有使用，有兴趣可以一试。&lt;/p&gt;
+&lt;h4&gt;git 查看某个commit的详细内容&lt;/h4&gt;
+&lt;p&gt;通过 &lt;code&gt;git log&lt;/code&gt; 可以查看提交历史，当需要查看某个commit受影响的文件以及文件的修改时：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;git commit commit_id -p
+git commit commit_id --stat
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;"commi_id"通过 &lt;code&gt;git log&lt;/code&gt; 获得，是一个hash字符串，在实际运用的时候，取前几位(4位)即可。&lt;/p&gt;
+&lt;h4&gt;iOS code signing is required for product type 'Unit Test Bundle' in SDK 'iOS 8.2'&lt;/h4&gt;
+&lt;p&gt;最近遇到的问题，当你对 test target做相应设置时，还是会报错。这时需要做的是，在工程的 "Build Settings"中选择正确的账号证书和provision。&lt;/p&gt;
+&lt;h4&gt;iOS Crash: 'Auto Layout still required after executing -layoutSubviews.'&lt;/h4&gt;
+&lt;p&gt;完整的crash log：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;blockquote&gt;
+&lt;p&gt;&lt;strong&gt;&lt;em&gt; Assertion failure in -[UITableView layoutSublayersOfLayer:], /SourceCache/UIKit/UIKit-2935.137/UIView.m:8794
+2015-xx-xx xx:xx:xx.xxx xx[xxxx:60b] &lt;/em&gt;&lt;/strong&gt; Terminating app due to uncaught exception 'NSInternalInconsistencyException',
+ reason: 'Auto Layout still required after executing -layoutSubviews. UITableView's implementation of -layoutSubviews needs to call super.'&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;该crash是 显示一个 UITableView 的时候出现。我的情况是 使用UITableView(没有继承)，所以应该不会直接操作 &lt;code&gt;layoutSubviews&lt;/code&gt;。而且该crash只在iOS7上出现，iOS8＋上则没有。注意到断言出错的方法是 &lt;code&gt;-[UITableView layoutSublayersOfLayer:]&lt;/code&gt;， 出错的异常却是 &lt;code&gt;layoutSubviews&lt;/code&gt;，考虑使用API有误：少传参数，或者调用顺序出错之类。 google后，发现有位同仁遇到类似的&lt;a href="http://www.cnblogs.com/xyzaijing/p/4104157.html"&gt;问题&lt;/a&gt;。 细细想来，还是没有思路。经过排查，发现是在 UITableView 上添加了 subview 导致的。具体原因不详。&lt;br/&gt;
+此外，github上有一则&lt;a href="http://stackoverflow.com/questions/19837097/why-am-i-getting-a-auto-layout-still-required-after-executing-layoutsubviews"&gt;讨论&lt;/a&gt;，也可以看看。&lt;/p&gt;
+&lt;h4&gt;strip&lt;/h4&gt;
+&lt;p&gt;在CentOS为类NAS设备开发固件程序的时候，对程序大小有要求。我们在makefile文件中添加 &lt;code&gt;-s&lt;/code&gt; 参数，用于减小程序的体积。该参数意即使用strip命令，通过除去绑定程序和符号调试程序使用的信息，减少扩展公共对象文件格式（XCOFF）的对象文件的大小。&lt;/p&gt;
+&lt;h4&gt;CentOS上创建静态库和动态库&lt;/h4&gt;
+&lt;p&gt;假设文件 &lt;code&gt;test.c&lt;/code&gt;&lt;br/&gt;
+创建并使用静态库：  &lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gcc -c test.c
+ar rcs libtest.a test.o
+//use the libxxx.a
+gcc -o main main.c -L. -ltest
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;创建并使用动态库：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;gcc -shared -fPIC -o libtest.so test.o
+//use the libxxx.so
+gcc -o main main.c -L. -ltest
+LD_LIBRARY_PATH=. ./main
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意库的命名，使用库时参数 &lt;code&gt;-L&lt;/code&gt; &lt;code&gt;-l&lt;/code&gt; 的涵义。&lt;br/&gt;
+ar有丰富的内涵，也需要对程序从编译，链接，生成可执行程序有较深的了解。&lt;/p&gt;
+&lt;h4&gt;otool&lt;/h4&gt;
+&lt;p&gt;&lt;code&gt;ldd&lt;/code&gt; 可以查看链接库的各种信息，在Mac OS X平台上由&lt;code&gt;otool&lt;/code&gt;替代。&lt;br/&gt;
+&lt;code&gt;size&lt;/code&gt; 可以查看可执行文件/库等的各个段的size信息。  &lt;/p&gt;</summary><category term="iOS"></category><category term="git"></category></entry><entry><title>Autolayout中Hugging和Compression使用注意</title><link href="http://icocoa.tk/autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html" rel="alternate"></link><updated>2015-06-01T15:00:00+08:00</updated><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2015-06-01:autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</id><summary type="html">&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
 Summary: autolayout概念加深&lt;/p&gt;
 &lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;本文主要侧重&lt;code&gt;Autolayout&lt;/code&gt;使用过程中，通过代码和SB添加含有&lt;code&gt;intrinsicSize&lt;/code&gt;属性控件约束的一些细节。  &lt;/p&gt;
@@ -43,7 +98,7 @@ Hugging和Compression属性值有默认值：&lt;/p&gt;
 &lt;span class="n"&gt;constraint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="nl"&gt;constraintWithItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeTop&lt;/span&gt; &lt;span class="nl"&gt;relatedBy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutRelationEqual&lt;/span&gt; &lt;span class="nl"&gt;toItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeTop&lt;/span&gt; &lt;span class="nl"&gt;multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;1.0f&lt;/span&gt; &lt;span class="nl"&gt;constant&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;100.0f&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;addConstraint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;constraint&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
 
-&lt;span class="n"&gt;constraint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="nl"&gt;constraintWithItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button1&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeWidth&lt;/span&gt; &lt;span class="nl"&gt;relatedBy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutRelationEqual&lt;/span&gt; &lt;span class="nl"&gt;toItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;nil&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeWidth&lt;/span&gt; &lt;span class="nl"&gt;multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nl"&gt;constant&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;50&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
+&lt;span class="n"&gt;constraint&lt;/span&gt; &lt;span class="o"&gt;=&lt;/span&gt; &lt;span class="p"&gt;[[&lt;/span&gt;&lt;span class="bp"&gt;NSLayoutConstraint&lt;/span&gt; &lt;span class="nl"&gt;constraintWithItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;button1&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeWidth&lt;/span&gt; &lt;span class="nl"&gt;relatedBy&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutRelationEqual&lt;/span&gt; &lt;span class="nl"&gt;toItem&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="nb"&gt;nil&lt;/span&gt; &lt;span class="nl"&gt;attribute&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;NSLayoutAttributeWidth&lt;/span&gt; &lt;span class="nl"&gt;multiplier&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mi"&gt;0&lt;/span&gt; &lt;span class="nl"&gt;constant&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="mf"&gt;50.0f&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
 &lt;span class="p"&gt;[&lt;/span&gt;&lt;span class="nb"&gt;self&lt;/span&gt;&lt;span class="p"&gt;.&lt;/span&gt;&lt;span class="n"&gt;view&lt;/span&gt; &lt;span class="nl"&gt;addConstraint&lt;/span&gt;&lt;span class="p"&gt;:&lt;/span&gt;&lt;span class="n"&gt;constraint&lt;/span&gt;&lt;span class="p"&gt;];&lt;/span&gt;
 &lt;/pre&gt;&lt;/div&gt;
 &lt;p&gt;如上添加的constraint，使得button的frame不足以显示标题内容，注意上述constraint默认的优先级都是UILayoutPriorityRequired。因此我们可以通过修改最后一个宽度的constraint：&lt;/p&gt;
