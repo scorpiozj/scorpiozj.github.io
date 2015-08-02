@@ -53,6 +53,30 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">限制文本输入长度</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-01-09T22:30:00+08:00"> 五 09 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <h2>需求</h2>
+<p>限制字符输入长度是个常见的需求，比如注册的账号或者密码。通常，从用户体验的角度，iOS App中当输入超过制定长度的字符时不需要显式的弹出提示，而只需要让超过的字符不显示即可。这个功能看似简单，但是考虑到一些输入系统例如中文输入法的联想功能，就不那么简单。</p>
+<h2>一般的实现</h2>
+<p>以UITextField为例，通常的做法是在delegate中做文章。这样的解决方案很多，stackflow上一个比较全面的解答：<a href="http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield">Set the maximum character length of a UITextField</a>，大致的思路就是在输入即将要替换的时候，计算最终要显示的字符串。这个方法对于英文输入是没有问题的，但是对于其他语言如中文输入就会存在问题。举例来说中文拼音输入“的”时，用户需要输入de，在未选中“的”时，de以选中的状态在输入框中显示，并作为输入框的内容，如下图：</p>
+<p><img alt="input1" src="./imgs/20150109/IMG_0040.png"/><img alt="input2" src="./imgs/20150109/IMG_0041.png"/></p>
+<p>按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确 ...</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xin-nian-kai-pian.html" rel="bookmark" title="Permalink to 新年开篇">新年开篇</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-01-05T22:30:00+08:00"> 一 05 一月 2015 </abbr>
@@ -301,37 +325,6 @@ WARNING: Could not process content/output/authors.html
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">iOS8下控件的旋转</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-07T16:00:00+08:00"> 五 07 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>由起</h4>
-<p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
-<h4>修复</h4>
-<p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
-<div class="highlight"><pre>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
-    {
-        switch (interfaceOrientation) {
-            case UIInterfaceOrientationLandscapeLeft:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
-                break;
-
-            case UIInterfaceOrientationLandscapeRight:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -359,43 +352,45 @@ WARNING: Could not process content/output/authors.html
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
 	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/autolayout.html">Autolayout</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
 	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
 	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
+	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
+	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
+	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
 </ul>
 
 
