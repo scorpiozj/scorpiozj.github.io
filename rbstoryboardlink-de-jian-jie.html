@@ -64,12 +64,12 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h3>1. Intro</h3>
+              <html><body><h3>1. Intro</h3>
 <p>今天简单介绍一下<a href="https://github.com/rob-brown/RBStoryboardLink">RBStoryboardLink</a>，这是一个方便在某个storyboard(下面我要用SB代之)中调用其他 SB 中的viewcontroller的项目  </p>
 <h3>2. RBStoryboardLink</h3>
 <h4>2.1 为什么要使用</h4>
 <p>当Apple越来越重视的SB时候，设计师们也愈发喜欢 SB 。如果你有一位喜欢使用SB的设计师，那么恭喜你，你可以少做很多开发准备了。然而，从项目的组织结构来考虑，不管是设计师或是开发人员，都不会使用单一SB(项目简单的除外)。我们往往会使用模块化的方式来分解，比如tab结构的app，每一个tab就可以视为一个模块。而sb文件中页面的跳转不能离开当前的sb文件，这时涉及到模块间页面跳转的情形，在sb中就无能为力了。通常的做法，就需要在代码中实现：  </p>
-<div class="highlight"><pre>//生成一个sb对象
+<div class="highlight"><pre><span></span>//生成一个sb对象
 //获取此sb对象中的某一个scene
 //push/present该scene
 </pre></div>
@@ -79,7 +79,7 @@
 <p>内部的实现说起来不复杂，但是有很多细节需要注意。<br/>
 使用方法中，需要在当前的sb文件中新建一个scene A，然后把该scene连接到其他sb文件中的scene B中。这在代码中就依赖于: 首先通过在SB中给 A 添加的<code>User Defined Runtime Attributes</code>中的属性将其他的SB文件以及相应的scene的identifier(如果有)获取到，然后生成sb对象和scene；接下来就通过<code>addChildViewController</code>，把B作为子类加到A上去，这样的话A就相当于母板的功能。此外，还需要把A的一些属性转移到B，比如是<code>UINavigationItem</code>和<code>UIBarButtonItem</code> 的属性。这样，B就获得了pop到A的前一页面的能力。更多需要设置的细节，请阅读源码，相信会有不少的收获。</p>
 <h3>3 其余收获</h3>
-<p>主要指的是 <code>User Defined Runtime Attributes</code>，这个在cocoa开发的时候经常会用到，在iOS上也有不少geek的用法。这里不做讨论，只是做个记录，提醒自己不要忘记了。大家google下，就能发现很多。  </p>
+<p>主要指的是 <code>User Defined Runtime Attributes</code>，这个在cocoa开发的时候经常会用到，在iOS上也有不少geek的用法。这里不做讨论，只是做个记录，提醒自己不要忘记了。大家google下，就能发现很多。  </p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -111,12 +111,14 @@
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -125,47 +127,6 @@
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

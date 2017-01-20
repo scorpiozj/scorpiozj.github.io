@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <html><body><p>Author: Charles Zhu<br/>
 Summary: 动画学习</p>
 <h2>前言</h2>
 <p>偶然发现iPhone QQ 显示消息条数的小红点可以响应动作事件，也有人问我这样的动画该怎么做，这里就把实现的思路简单的描述一下。在实现的过程中，同样发现该功能并没有看到的那么简单，要做一个完备的动画效果需要有一定的功底。因此，本篇会先侧重于实现思路，并不会实现一个一模一样的效果。<br/>
@@ -89,7 +89,7 @@ Summary: 动画学习</p>
 <h3>红点的移动</h3>
 <p>首先实现一个圆形的view，并且可以随手指移动。在一定移动范围内，手指离开后，view返回原处并带有弹簧效果；超出范围，view则停留在手指离开处。<br/>
 我们通过drawRect:来画一个圆；设置一个CGPoint的对象来记录开始触摸时的位置；接着就是实现相关的touchEvent:。因为都是很基本的内容，直接上代码。</p>
-<div class="highlight"><pre><span class="c1">//头文件</span>
+<div class="highlight"><pre><span></span><span class="c1">//头文件</span>
 <span class="k">@interface</span> <span class="nc">ZZSpringView</span> : <span class="bp">UIView</span>
 <span class="p">-</span> <span class="p">(</span><span class="kt">instancetype</span><span class="p">)</span><span class="nf">initWithSquareLength:</span><span class="p">(</span><span class="n">CGFloat</span><span class="p">)</span><span class="nv">length</span> <span class="nf">originPoint:</span><span class="p">(</span><span class="bp">CGPoint</span><span class="p">)</span><span class="nv">oPoint</span><span class="p">;</span>
 <span class="k">@end</span>
@@ -206,7 +206,7 @@ Summary: 动画学习</p>
 <p>鉴于此，我们需要求出的是两对切点的位置，使之成为一个封闭图形进行填充。同时，虚线位置的小圆也进行填充。这样，就基本完成类似的功能。<br/>
 首先我们需要扩展当前context的范围，为了简便，通过添加尾巴的子view来实线，这样可以利用原先的红点view。现在我们已知P0，P1，以及各自的半径，然后求外围矩形的位置和长度。因为可以按任意方向拖拽，按当前的计算方式，需要分四种情况讨论。按笛卡尔坐标系的划分，图例是第一象限的情形。同理还有二三四的可能。为了迅速验证方案的可行性，这里只对第一象限进行讨论和模拟。<br/>
 定义新view：</p>
-<div class="highlight"><pre><span class="k">typedef</span> <span class="k">enum</span> <span class="o">:</span> <span class="n">NSUInteger</span> <span class="p">{</span>
+<div class="highlight"><pre><span></span><span class="k">typedef</span> <span class="k">enum</span> <span class="o">:</span> <span class="n">NSUInteger</span> <span class="p">{</span>
     <span class="n">ZZLineDirection1</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span><span class="c1">//northease</span>
     <span class="n">ZZLineDirection2</span><span class="p">,</span><span class="c1">//northwest</span>
     <span class="n">ZZLineDirection3</span><span class="p">,</span><span class="c1">//southwest</span>
@@ -221,7 +221,7 @@ Summary: 动画学习</p>
 </pre></div>
 <p>ZZLineDirection代表的是某象限，radius是P0的半径，moveRadius为P1半径。
 我们在touchMove事件中添加一个view，在此之前，我们会在ZZSpringView中添加一个ZZSpringTailView实例，用于内部访问。touchMove的实现更新为：</p>
-<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">touchesMoved:</span><span class="p">(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">touches</span> <span class="nf">withEvent:</span><span class="p">(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">touchesMoved:</span><span class="p">(</span><span class="bp">NSSet</span> <span class="o">*</span><span class="p">)</span><span class="nv">touches</span> <span class="nf">withEvent:</span><span class="p">(</span><span class="bp">UIEvent</span> <span class="o">*</span><span class="p">)</span><span class="nv">event</span>
 <span class="p">{</span>
 
     <span class="bp">UITouch</span> <span class="o">*</span><span class="n">touch</span> <span class="o">=</span>  <span class="p">[</span><span class="n">touches</span> <span class="n">anyObject</span><span class="p">];</span>
@@ -299,7 +299,7 @@ Summary: 动画学习</p>
 <li>绘制2对切点构成的封闭图形</li>
 </ol>
 <p>drawRect的部分实现：</p>
-<div class="highlight"><pre><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawRect:</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">)</span><span class="nv">rect</span>
+<div class="highlight"><pre><span></span><span class="p">-</span> <span class="p">(</span><span class="kt">void</span><span class="p">)</span><span class="nf">drawRect:</span><span class="p">(</span><span class="bp">CGRect</span><span class="p">)</span><span class="nv">rect</span>
 <span class="p">{</span>
 
     <span class="n">CGContextRef</span> <span class="n">context</span> <span class="o">=</span> <span class="n">UIGraphicsGetCurrentContext</span><span class="p">();</span>
@@ -374,7 +374,7 @@ Summary: 动画学习</p>
 <p>从运行效果看，还是差强人意的。这显示了方案的可行性。<br/>
 那么相应二三四象限的情况也能做类似的处理，这里就不贴代码了。  </p>
 <p>由于时间的关系，暂时研究到此，下一篇会把功能逐步完善。主要会包含添加文字的情形等内容，敬请期待。<br/>
-如果有更好的实现方式，也请大家赐教！</p>
+如果有更好的实现方式，也请大家赐教！</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -406,12 +406,14 @@ Summary: 动画学习</p>
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -420,47 +422,6 @@ Summary: 动画学习</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

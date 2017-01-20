@@ -53,11 +53,260 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">iOS8之UIAlertController</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-05T11:00:00+08:00"> 三 05 十一月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h4>由起</h4>
+<p><code>UIAlertController</code>是iOS8中引入的，用于整合<code>UIAlertView</code>和<code>UIActionSheet</code>的新类，在实现中抛弃了之前的delegate用法，而采用了block的方式，从而使得使用和可读性都简化了不少。<br/>
+使用iOS8SDK编译的项目，大多数情况使用之前的<code>UIAlertView</code>或<code>UIActionSheet</code>都不会产生问题，如果有问题了，那就需要使用新类了。比如，一个项目中iPad上调用<code>[actionSheet showFromToolbar:]</code>产生错误：</p>
+<div class="highlight"><pre><span></span>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
+2014-11-05 10:50:26.762 XXXXXX[467 ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-03T10:00:00+08:00"> 一 03 十一月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
+<h4>git revert</h4>
+<p>对应的中文术语叫反转提交，基本的用法：</p>
+<div class="highlight"><pre><span></span>git revert commit-ish
+</pre></div>
+<p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
+<h4>svn revert</h4>
+<p>svn中revert即回滚，基本用法</p>
+<div class="highlight"><pre><span></span>svn revert PATH
+</pre></div>
+<p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
+<h4>svn实现git revert的功能</h4>
+<p>如果要向用svn实现git revert的功能那么就需要：</p>
+<div class="highlight"><pre><span></span>svn update
+//确保版本库最新
+svn log
+//找到想要“回复”的版本号
+svn merge -r currentID ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark" title="Permalink to git revert && svn revert的不同">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/revert.html">revert</a>
+											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
+											<a class="danger label" href="http://icocoa.tk/tag/svn.html">svn</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-2.html" rel="bookmark" title="Permalink to App Extension Study 2">App Extension Study 2</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-31T14:00:00+08:00"> 五 31 十月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: ios8 app extension</p>
+<h3>1 开始</h3>
+<p><a href="http://github.icocoa.tk/app-extension-study-1.html">上一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，这节开始实践。需要说明的本文不会覆盖所有类型，比如<strong>Finder Sync</strong>类型是OS X独有的，这里会一带而过。</p>
+<h3>2 Widget</h3>
+<p>Widget就是Today extension，这个大家比较熟悉：下拉通知中显示的股票信息就是一个widget。从这里我们也可以看出widget的特点：  </p>
+<ol>
+<li>可以自定义UI</li>
+<li>必定和containing app有着数据共享</li>
+</ol>
+<h4>2.1 widget 工程模版</h4>
+<p>在已有工程中新建一个target，选择<code>Application Extension</code>中的<code>Today Extension</code>，这时工程中增加了如下文件：<br/>
+<img alt="widgetImg" src="./imgs/20141031/widget_template.png"/><br/>
+先来看<code>Info.plist</code>，主要增加了NSExtenstion的key，内容如下：</p>
+<div class="highlight"><pre><span></span><span class="nt">&lt;key ...</span></pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-2.html" rel="bookmark" title="Permalink to App Extension Study 2">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">App Extension Study 1</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-16T14:00:00+08:00"> 四 16 十月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: ios8 app extension</p>
+<h2>Intro</h2>
+<p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
+<h2>App Extension</h2>
+<p>有很多关于App Extension的介绍，所以就不详细介绍，这里侧重介绍Extension的生命周期以及和其他app的通信。</p>
+<h3>术语</h3>
+<ul>
+<li>host app: 用户在某个app中启用了extension，该app就叫host app</li>
+<li>containing app: extension不能单独作为target存在，必须依附在某个具有普通app的工程内，该app就是containing app。一个containing app可以有多个extension。</li>
+<li>app extension: </li>
+</ul>
+<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">git bisect查找xcode6工程在iOS7下不全屏的问题</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-10-16T10:00:00+08:00"> 四 16 十月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: launch screen,xcode6,git</p>
+<h2>xcode6工程在iOS7下未全屏</h2>
+<p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
+<h2>git bisect</h2>
+<p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br/>
+bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
+<div class="highlight"><pre><span></span>git log --oneline //列出提交记录
+git bisect start //开始查找
+git bisect bad //标记当前（master ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
+											<a class="danger label" href="http://icocoa.tk/tag/launch-screen.html">launch screen</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-22T14:00:00+08:00"> 一 22 九月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: git 错误理解</p>
+<h2>SVN下的项目管理</h2>
+<p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
+<h2>git下的误区</h2>
+<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
+接下来我们来做一些操作：</p>
+<div class="highlight"><pre><span></span>$ git init
+$ <span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
+$ git status
+On branch master
+
+Initial ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">QuartzComposer基本概念</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-08-25T14:00:00+08:00"> 一 25 八月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: a guide to QuartzComposer</p>
+<p>Processors are green, providers are blue, and consumers are pink
+最近才发现QuartzComposer也是一款用来设计交互的工具，原来Xcode自带，现在从Xcode中分离成为单独的app。之所以会关注是发现facebook的设计师也比较推崇该工具。在官网上搜索相关文档，内容都比较陈旧，或许说明这个工具比较成熟吧。</p>
+<h3>基本概念</h3>
+<h4>1. composition</h4>
+<p>Composer中创建的文件叫Quartz composition ， 其中最基本的单元（module）叫patch。</p>
+<h4>2. patch</h4>
+<p>patch是最基本的单元，苹果准备了丰富的库来完成一系列操作。patch库可以通过cmd＋enter的方式调用，然后找到需要的patch直接拖即可。patch相当于是一个程序，函数原型相当于：  </p>
+<div class="highlight"><pre><span></span>Result = function (time, {0 or more input parameters ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">MVVM初实践</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-08-25T10:00:00+08:00"> 一 25 八月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: a sample project practising MVVM</p>
+<p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br/>
+考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br/>
+另外需要说明的，这里的网盘其实是一个带有系统的SD卡，自身带有AP，可以无线连接访问。同时，提供了API接口获取相关的数据。</p>
+<h3>MVVM 的角色分配</h3>
+<p>视图无疑是用<code>UITableView</code>, 控制器自然选择<code>UITableViewController</code>,自然这里需要建立一个<code>ViewModel</code>来监视一切变化并把这种变化传递给控制器。</p>
+<h3>已知的VM任务</h3>
+<ol>
+<li>获取文件夹列表
+ VM需要知道当前所在的路径。另外获取到的数据需要重组：比如去掉隐藏文件，进行排序等。这个操作可以封装在某个数据访问层。</li>
+<li>cell的点击操作
+对于文件，需要把文件内容显示出来(为了方便，这里只对图片文件显示)。  </li>
+</ol>
+<h3>控制器的任务 ...</h3></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/mvvm.html">MVVM</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-23T10:00:00+08:00"> 三 23 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: install eclipse on centos6.5</p>
 <p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
 <h3>eclipse 下载</h3>
@@ -69,7 +318,7 @@ Summary: install eclipse on centos6.5</p>
 <p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
 <ol>
 <li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看 ...</li></ol> </div><!-- /.entry-content -->
+<li>退出su，查看 ...</li></ol></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -90,7 +339,7 @@ Summary: install eclipse on centos6.5</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-17T17:00:00+08:00"> 四 17 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: design笔记</p>
 <ol>
 <li>
@@ -107,7 +356,7 @@ normal #FAC3FF 10%
 添加圆形，斜对角渐变</p>
 </li>
 <li></li>
-</ol> </div><!-- /.entry-content -->
+</ol></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -118,208 +367,6 @@ normal #FAC3FF 10%
 											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
 											<a class="danger label" href="http://icocoa.tk/tag/design.html">design</a>
 											<a class="danger label" href="http://icocoa.tk/tag/sketch.html">sketch</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">MVVM模式初探</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-17T13:00:00+08:00"> 四 17 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: 设计模式</p>
-<h2>MVC的无奈</h2>
-<p><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html">MVC</a>结构是学习iOS开发的人最先学习的一种开发模式，apple提倡以MVC为中心的开发模式。因为它很好的解构了应用场景中相关而又各自独立的部分：视图，视图控制器和数据模型。在MVC的世界里，控制器负责将模型中的数据以内容的形式展现到视图中，同时也把视图上产生的数据变化传递给模型从而将这种变化持久化。于是，在稍微复杂的app中，控制器中的内容会很庞大：网络操作，数据存储，手势响应等等。几乎可以确定，如果app需要添加新功能，超过一半的新增代码是添加在控制器中，这样不可避免的造成控制器的冗余以及大段无法重用的重复代码。<br/>
-在开始MVVM时，我们可以稍稍考虑下现有MVC的问题。</p>
-<h3>视图</h3>
-<p>毋庸置疑，视图的作用很重要，但在设计中，视图是否需要和控制器，数据模型同等的地位呢？要知道绝大多数情况下，视图是不会重用的，往往“耦合”在视图控制器中，所以往往代码中有几个view controller，就能知道程序会有几个页面。此外，视图中的UI元素也是直接作为变量存在在控制器代码中，因为只有这样才方便刷新。很显然，视图控制器就可以代表视图本身。  </p>
-<h3>控制器</h3>
-<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/mvvm.html">mvvm</a>
-											<a class="danger label" href="http://icocoa.tk/tag/mvc.html">mvc</a>
-											<a class="danger label" href="http://icocoa.tk/tag/pattern.html">pattern</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">umeng 友盟错误报告处理</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-14T10:00:00+08:00"> 一 14 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: 错误报告处理</p>
-<p>今天发现友盟的后台中出现了app crash，打开一看：</p>
-<div class="highlight"><pre>Application received signal SIGSEGV
-(null)
-(
-    0   CoreFoundation                      0x2e44bf23  + 154
-    1   libobjc.A.dylib                     0x38bdece7 objc_exception_throw + 38
-    2   CoreFoundation                      0x2e44be4d  + 0
-    3   ?????????                           0x00107a51 ????????? + 735825
-    4   libsystem_platform.dylib            0x391f671b _sigtramp + 34
-    5   UIKit                               0x30f20765  + 64
-    6   UIKit                               0x30c9a7bd  + 604
-    7   UIKit                               0x30f216db  + 1398
-    8 ...</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/sketch-tutorials-study-1.html" rel="bookmark" title="Permalink to Sketch Tutorials Study 1">Sketch Tutorials Study 1</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-08T14:00:00+08:00"> 二 08 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: some tutorials of sketch</p>
-<p>sketch是Mac上优秀的设计软件，堪称一把利剑。可好剑还得配好剑法，才能发挥威力。最近做的app，在界面上欠缺不少，正好借助sketch进行优化。下面是根据几个tutorial学习了sketch和设计的相关步骤。</p>
-<h3>Flat Styled Icon</h3>
-<p>原文在此：<a href="https://medium.com/@sokratus/how-to-create-a-flat-styled-icon-in-sketch-3-27c4bd09989">flat styled icon </a> <br/>
-该示例主要展示了<strong>相交</strong>运算的作用，以及锚点的使用。很多图形，仔细观察，都可以通过各种图形进行布尔运算而实现。通过形状的运算实现，还方便给各个部分填色。不过这一部分对我还是有点难，需要多练习。<br/>
-另外，sketch中可以通过双击来激活编辑状态，然后编辑锚点。但是我发现有时候对组合过的图像，这个方法有点不太灵。这时，可以先在左边选中图形，然后点击上方状态栏的"Edit"，然后就可以自由添加锚点了。</p>
-<h3>Shadow Effect</h3>
-<p>原文在此：<a href="http://brilliantsketch.com/make-long-shadow-effect-sketch/">shadow effect</a> <br/>
-该示例主要讲解了模糊 ...</br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/sketch-tutorials-study-1.html" rel="bookmark" title="Permalink to Sketch Tutorials Study 1">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/sketch.html">sketch</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">WWDC2014-223 Notes Protyping</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-03T22:00:00+08:00"> 四 03 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br/>
-这一讲的内容分为下面几个部分：</p>
-<ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br/>
-<img alt="relations icon" src="./imgs/20140703/how-relations.png"/><br/>
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we ...</li></ul> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ui.html">ui</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">ios</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">WWDC2014-211 Notes designing_intuitive_user_experiences</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-06-30T14:20:00+08:00"> 一 30 六月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: Notes for 211</p>
-<h1>intuitive</h1>
-<p>字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  </p>
-<p>开篇就举了设计 <em>“笔”</em> 的例子：长度，宽度等元素</p>
-<p>Being ituitive is not intuitive<br/>
-记住设计不是为自己(已知者)设计，是为其他人设计</p>
-<p>以下按5部分，进行阐述  </p>
-<h2>platform savvy</h2>
-<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ui.html">ui</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">ios</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ux.html">ux</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-06-29T14:00:00+08:00"> 日 29 六月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: notes for 221</p>
-<p>本场主要分4个议题： </p>
-<ul>
-<li>Spring animations</li>
-<li>Vibrancy and blur</li>
-<li>Shape layers</li>
-<li>Dynamic Core Animation behaviors</li>
-</ul>
-<h2>Spring animations</h2>
-<p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
-<div class="highlight"><pre>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished ...</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ui.html">ui</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">ios</a>
 								</div>
 
 
@@ -338,12 +385,14 @@ Summary: notes for 221</p>
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -352,47 +401,6 @@ Summary: notes for 221</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 
@@ -408,7 +416,8 @@ Summary: notes for 221</p>
 
 <p class="paginator">
             <a href="http://icocoa.tk/author/charles-zhu4.html"><i class="icon-arrow-left"></i></a>
-    Page 5 / 5
+    Page 5 / 6
+        <a href="http://icocoa.tk/author/charles-zhu6.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
 

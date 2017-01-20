@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h3>1. Intro</h3>
+              <html><body><h3>1. Intro</h3>
 <p>本周业余时间，主要在研究如何使用Appium，内容包括Appium是什么，架构，安装，使用以及测试用例的写法。  </p>
 <h3>2. Appium简介</h3>
 <p>Appium的<a href="http://appium.io/introduction.html">Introduction</a>页面介绍了Appium，采用经典的CS架构，利用 WebDriver 封装调用各平台的测试框架(现在支持iOS，Android，FirefoxOS)，因此在使用的时候需要先启动服务器再在客户端进行测试。<br/>
@@ -73,89 +73,89 @@
 <p>为了上手，可以看<a href="http://appium.io/slate/en/master/#README.md">GetStarted</a>或者<a href="http://appium.io/slate/en/tutorial/ios.html">iOS Tutorial</a>。因为我只侧重iOS，因此下面把tutorial中涉及到的内容摘录出来。  </p>
 <h4>3.1 Environment(环境配置)</h4>
 <p>Install the latest stable release of Ruby.</p>
-<div class="highlight"><pre>\curl -sSL https://get.rvm.io | bash -s stable
+<div class="highlight"><pre><span></span>\curl -sSL https://get.rvm.io | bash -s stable
 
 source /Users/xxxx/.rvm/scripts/rvm
 rvm install ruby
 </pre></div>
 <p>Make sure RVM is using the correct Ruby by default</p>
-<div class="highlight"><pre>rvm list
+<div class="highlight"><pre><span></span>rvm list
 rvm install ruby-2.1.1
 rvm --default use 2.1.1
 </pre></div>
 <p>If you have an old ruby/rvm, you can upgrade with</p>
-<div class="highlight"><pre>rvm get head
+<div class="highlight"><pre><span></span>rvm get head
 rvm autolibs homebrew
 rvm install ruby
 </pre></div>
 <p>Update RubyGems and Bundler.</p>
-<div class="highlight"><pre>gem update --system
+<div class="highlight"><pre><span></span>gem update --system
 gem install --no-rdoc --no-ri bundler
 gem update
 gem cleanup
 </pre></div>
 <p>Install appium_console gem.</p>
-<div class="highlight"><pre>gem uninstall -aIx appium_lib
+<div class="highlight"><pre><span></span>gem uninstall -aIx appium_lib
 gem uninstall -aIx appium_console
 gem install --no-rdoc --no-ri appium_console
 </pre></div>
 <p>Install flaky gem.</p>
-<div class="highlight"><pre>gem uninstall -aIx flaky
+<div class="highlight"><pre><span></span>gem uninstall -aIx flaky
 gem install --no-rdoc --no-ri flaky
 </pre></div>
 <p>Install brew(if installed, ignore)
     ruby -e "$(curl -fsSL https://raw.github.com/Homebrew/homebrew/go/install)"</p>
 <p>Install nodejs using brew.(if installed, ignore)</p>
-<div class="highlight"><pre>brew update
+<div class="highlight"><pre><span></span>brew update
 brew upgrade node
 brew install node
 </pre></div>
 <p>此处<strong>注意</strong>：如果以前已经安装过node的，可能使用了<code>sudo</code>权限，这里会对Appium的启用有影响，需要安装Appium的方式安装node。
 check versions:</p>
-<div class="highlight"><pre>node --version
+<div class="highlight"><pre><span></span>node --version
 npm --version
 </pre></div>
 <p>Install grunt.</p>
-<div class="highlight"><pre>npm install -g grunt grunt-cli
+<div class="highlight"><pre><span></span>npm install -g grunt grunt-cli
 </pre></div>
 <p>Run the version command from the appium folder. If you’re not in that folder, the grunt version will not display.</p>
-<div class="highlight"><pre>grunt --version
+<div class="highlight"><pre><span></span>grunt --version
 grunt-cli v0.1.13
 grunt v0.4.2
 </pre></div>
 <p>install ant &amp;&amp; maven</p>
-<div class="highlight"><pre>brew install ant
+<div class="highlight"><pre><span></span>brew install ant
 
 brew install maven
 </pre></div>
 <h4>3.2 Appium&amp;&amp;Authorize (安装与授权)</h4>
 <p>此处操作是在源码中进行的
 get appium</p>
-<div class="highlight"><pre>git clone git://github.com/appium/appium.git
+<div class="highlight"><pre><span></span>git clone git://github.com/appium/appium.git
 cd appium; ./reset.sh --ios//只做iOS测试
 </pre></div>
 <p>Authorize:</p>
-<div class="highlight"><pre>sudo node bin/authorize-ios.js
+<div class="highlight"><pre><span></span>sudo node bin/authorize-ios.js
 </pre></div>
 <p>Start </p>
-<div class="highlight"><pre>node .
+<div class="highlight"><pre><span></span>node .
 </pre></div>
 <p>除了命令行启动的方式，Appium也提供了App启动方式，官网下载后直接安装。打开后，可以根据点击需要的测试平台填入相应App的信息，启动即可。Appium的app还内置了inspector，可以连接app的时候查看各个页面元素，也提供了多种语言获取元素，方便测试用例的撰写。</p>
 <h4>3.3 Install client library</h4>
 <p>https://github.com/appium/sample-code/tree/master/sample-code/examples/python
 因为用python写用例，需要安装：</p>
-<div class="highlight"><pre>pip install Appium-Python-Client
+<div class="highlight"><pre><span></span>pip install Appium-Python-Client
 pip install pytest
 </pre></div>
 <p>使用方法：</p>
-<div class="highlight"><pre>py.test ios_simple.py
+<div class="highlight"><pre><span></span>py.test ios_simple.py
 py.test -n2 --boxed ios_simple.py
 </pre></div>
 <p>其中的python文件需要遵循一定的写法。<br/>
 使用其他语言的可以在<a href="https://github.com/appium/sample-code/tree/master/sample-code/examples">这里</a>查看，目前支持的语言还是挺多的。</p>
 <h3>4. sample(demo实战)</h3>
 <p>进入源码的<code>sample-code</code>文件夹，其中<code>apps</code>中是待测程序，<code>examples</code>中是不同语言版本的测试用例。其中<code>/example/python/ios_simple.py</code>是征对<code>/apps/TestApp</code>的测试用例，我们如下进行测试：</p>
-<div class="highlight"><pre>//启动Appium
+<div class="highlight"><pre><span></span>//启动Appium
 //启动方式1
 appium
 //启动方式2
@@ -170,17 +170,17 @@ py.test ios_simple.py
 另外，详细的测试语法还要继续学习。</p>
 <h4>4.1 真机测试</h4>
 <p>首先安装：</p>
-<div class="highlight"><pre>brew install --HEAD ideviceinstaller
+<div class="highlight"><pre><span></span>brew install --HEAD ideviceinstaller
 </pre></div>
 <p>详见<a href="https://discuss.appium.io/t/ideviceinstaller-could-not-initialize-ideviceinstaller/3000/2">这里</a>。</p>
 <p>然后就可以启动appium：</p>
-<div class="highlight"><pre>appium -U "udid" --app "bundle-id"
+<div class="highlight"><pre><span></span>appium -U "udid" --app "bundle-id"
 </pre></div>
 <p>启动成功后，新开terminal，启动测试脚本：</p>
-<div class="highlight"><pre>py.test ios_test.py
+<div class="highlight"><pre><span></span>py.test ios_test.py
 </pre></div>
 <p>其中，测试脚本中<code>desired_capabilities</code>需要更新：</p>
-<div class="highlight"><pre>desired_capabilities={
+<div class="highlight"><pre><span></span>desired_capabilities={
             'app': app,
             'platformName': 'iOS',
             'platformVersion': '8.1',
@@ -193,7 +193,7 @@ py.test ios_simple.py
 使用py.test客户端启动测试的过程中，就包含了部署的部分，当然待测试的app需要先安装到真机。  </p>
 <h3>5 展望</h3>
 <p>这个自动化测试的平台搭建成功后，还是很兴奋的。下一步就是学习case怎么写，虽然一开始会感觉负担比较重，但是会节省以后的空间。
-另外，还发现一个论坛<a href="http://testerhome.com/">testerhome</a>--测试员的家，看英文累的可以参考这里。</p>
+另外，还发现一个论坛<a href="http://testerhome.com/">testerhome</a>--测试员的家，看英文累的可以参考这里。</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -225,12 +225,14 @@ py.test ios_simple.py
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -239,47 +241,6 @@ py.test ios_simple.py
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

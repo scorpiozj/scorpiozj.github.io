@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <html><body><p>Author: Charles Zhu<br/>
 Summary: 近期工作总结</p>
 <h3>前言</h3>
 <p>因为一些原因，下了100%的决心：换工作。换工作倒也不难，只是找一份匹配度高的工作，的确很难，尤其是在所处的二线城市。个中滋味，——如鱼饮水，通过这些经历，对自己的发展和定位，有了一个较为明晰的看法。<br/>
@@ -77,12 +77,12 @@ Summary: 近期工作总结</p>
     git pull origin master//获取更新
     git stash pop //恢复当前工作内容</p>
 <p>以上过程中git会进行自动合并，但有时候需要人工合并。比如 project.pbxproj有冲突的时候。这时打开相应的冲突文件，通过"&lt;&lt;&lt;"找到冲突区域进行修改。然后执行命令：</p>
-<div class="highlight"><pre>git commit file_path -i -m "fix merge confilic"
+<div class="highlight"><pre><span></span>git commit file_path -i -m "fix merge confilic"
 </pre></div>
 <p>另外，找到个处理 <code>project.pbxproj</code> 的<a href="https://github.com/truebit/xUnique">脚本</a>，没有使用，有兴趣可以一试。</p>
 <h4>git 查看某个commit的详细内容</h4>
 <p>通过 <code>git log</code> 可以查看提交历史，当需要查看某个commit受影响的文件以及文件的修改时：</p>
-<div class="highlight"><pre>git commit commit_id -p
+<div class="highlight"><pre><span></span>git commit commit_id -p
 git commit commit_id --stat
 </pre></div>
 <p>"commi_id"通过 <code>git log</code> 获得，是一个hash字符串，在实际运用的时候，取前几位(4位)即可。</p>
@@ -104,13 +104,13 @@ git commit commit_id --stat
 <h4>CentOS上创建静态库和动态库</h4>
 <p>假设文件 <code>test.c</code><br/>
 创建并使用静态库：  </p>
-<div class="highlight"><pre>gcc -c test.c
+<div class="highlight"><pre><span></span>gcc -c test.c
 ar rcs libtest.a test.o
 //use the libxxx.a
 gcc -o main main.c -L. -ltest
 </pre></div>
 <p>创建并使用动态库：</p>
-<div class="highlight"><pre>gcc -shared -fPIC -o libtest.so test.o
+<div class="highlight"><pre><span></span>gcc -shared -fPIC -o libtest.so test.o
 //use the libxxx.so
 gcc -o main main.c -L. -ltest
 LD_LIBRARY_PATH=. ./main
@@ -119,7 +119,7 @@ LD_LIBRARY_PATH=. ./main
 ar有丰富的内涵，也需要对程序从编译，链接，生成可执行程序有较深的了解。</p>
 <h4>otool</h4>
 <p><code>ldd</code> 可以查看链接库的各种信息，在Mac OS X平台上由<code>otool</code>替代。<br/>
-<code>size</code> 可以查看可执行文件/库等的各个段的size信息。  </p>
+<code>size</code> 可以查看可执行文件/库等的各个段的size信息。  </p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -151,12 +151,14 @@ ar有丰富的内涵，也需要对程序从编译，链接，生成可执行程
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -165,47 +167,6 @@ ar有丰富的内涵，也需要对程序从编译，链接，生成可执行程
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

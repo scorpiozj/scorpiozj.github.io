@@ -57,7 +57,7 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-19T10:00:00+08:00"> 三 19 十一月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p>本篇介绍剩下的<code>Custom Keyboard</code>，之前的3篇： </p>
@@ -69,7 +69,7 @@ Summary: ios8 app extension</p>
 <h3>2 Custom Keyboard</h3>
 <p>iOS8终于对第三方输入法开放，引起一片毋需越狱的呼声，这就是通过extension实现的。在以前，app可以单独实现适合自己的文本输入法；而iOS8上，如果用户在设置中添加第三方的键盘，就会对所有app可见(如果app没有禁止使用第三方输入法的话)。对于重视用户隐私的苹果公司而言，虽然开放了输入法的扩展，但是对于用户数据和隐私的保护是非常重视，因此在开发的时候要时刻关注。</p>
 <h4>2.1 第三方输入法要具备的特征</h4>
-<p>输入法的核心是要对用户的点击等手势及时的响应，提供可选的文本和插入文本等。除此之外，重要的就是要能够切换到下一个输入法。苹果文档中列出了一些特征 ...</p> </div><!-- /.entry-content -->
+<p>输入法的核心是要对用户的点击等手势及时的响应，提供可选的文本和插入文本等。除此之外，重要的就是要能够切换到下一个输入法。苹果文档中列出了一些特征 ...</p></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -89,7 +89,7 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-14T16:00:00+08:00"> 五 14 十一月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
@@ -100,7 +100,7 @@ Summary: ios8 app extension</p>
 <code>Finder Sync</code>可以：</p>
 <ul>
 <li>注册一系列文件夹进行同步</li>
-<li>当用户打开 ...</li></ul> </div><!-- /.entry-content -->
+<li>当用户打开 ...</li></ul></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -120,11 +120,11 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-07T16:00:00+08:00"> 五 07 十一月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>由起</h4>
+				                <div class="entry-content"> <html><body><h4>由起</h4>
 <p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
 <h4>修复</h4>
 <p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
-<div class="highlight"><pre>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
+<div class="highlight"><pre><span></span>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
     {
         switch (interfaceOrientation) {
             case UIInterfaceOrientationLandscapeLeft:
@@ -132,7 +132,7 @@ Summary: ios8 app extension</p>
                 break;
 
             case UIInterfaceOrientationLandscapeRight:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div> </div><!-- /.entry-content -->
+                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -151,11 +151,11 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-05T11:00:00+08:00"> 三 05 十一月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>由起</h4>
+				                <div class="entry-content"> <html><body><h4>由起</h4>
 <p><code>UIAlertController</code>是iOS8中引入的，用于整合<code>UIAlertView</code>和<code>UIActionSheet</code>的新类，在实现中抛弃了之前的delegate用法，而采用了block的方式，从而使得使用和可读性都简化了不少。<br/>
 使用iOS8SDK编译的项目，大多数情况使用之前的<code>UIAlertView</code>或<code>UIActionSheet</code>都不会产生问题，如果有问题了，那就需要使用新类了。比如，一个项目中iPad上调用<code>[actionSheet showFromToolbar:]</code>产生错误：</p>
-<div class="highlight"><pre>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
-2014-11-05 10:50:26.762 XXXXXX[467 ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
+2014-11-05 10:50:26.762 XXXXXX[467 ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -174,7 +174,7 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-10-31T14:00:00+08:00"> 五 31 十月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p><a href="http://github.icocoa.tk/app-extension-study-1.html">上一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，这节开始实践。需要说明的本文不会覆盖所有类型，比如<strong>Finder Sync</strong>类型是OS X独有的，这里会一带而过。</p>
@@ -188,7 +188,7 @@ Summary: ios8 app extension</p>
 <p>在已有工程中新建一个target，选择<code>Application Extension</code>中的<code>Today Extension</code>，这时工程中增加了如下文件：<br/>
 <img alt="widgetImg" src="./imgs/20141031/widget_template.png"/><br/>
 先来看<code>Info.plist</code>，主要增加了NSExtenstion的key，内容如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;key ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span><span class="nt">&lt;key ...</span></pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-2.html" rel="bookmark" title="Permalink to App Extension Study 2">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -208,7 +208,7 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-10-16T14:00:00+08:00"> 四 16 十月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
 <p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
@@ -220,7 +220,7 @@ Summary: ios8 app extension</p>
 <li>containing app: extension不能单独作为target存在，必须依附在某个具有普通app的工程内，该app就是containing app。一个containing app可以有多个extension。</li>
 <li>app extension: </li>
 </ul>
-<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p> </div><!-- /.entry-content -->
+<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -240,16 +240,16 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-10-16T10:00:00+08:00"> 四 16 十月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: launch screen,xcode6,git</p>
 <h2>xcode6工程在iOS7下未全屏</h2>
 <p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
 <h2>git bisect</h2>
 <p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br/>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
-<div class="highlight"><pre>git log --oneline //列出提交记录
+<div class="highlight"><pre><span></span>git log --oneline //列出提交记录
 git bisect start //开始查找
-git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-content -->
+git bisect bad //标记当前（master ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -278,12 +278,14 @@ git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-conten
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -292,47 +294,6 @@ git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-conten
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

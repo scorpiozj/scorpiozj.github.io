@@ -5,30 +5,86 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/index.html</loc>
-<lastmod>2015-09-01T06:46:36-00:00</lastmod>
+<lastmod>2017-01-20T15:47:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/archives.html</loc>
-<lastmod>2015-09-01T06:46:36-00:00</lastmod>
+<lastmod>2017-01-20T15:47:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/tags.html</loc>
-<lastmod>2015-09-01T06:46:36-00:00</lastmod>
+<lastmod>2017-01-20T15:47:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://icocoa.tk/categories.html</loc>
-<lastmod>2015-09-01T06:46:36-00:00</lastmod>
+<lastmod>2017-01-20T15:47:32-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/Access Control Summary.html</loc>
+<lastmod>2017-01-04T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/a study of UITableView State Changes.html</loc>
+<lastmod>2016-09-09T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/atsjia-zai-tao-bao-ye-mian.html</loc>
+<lastmod>2016-03-18T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/error-cannot-form-weak-reference.html</loc>
+<lastmod>2016-03-17T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/assert-in-swift.html</loc>
+<lastmod>2016-03-10T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/mo-ni-qi-xiang-guan-ming-ling.html</loc>
+<lastmod>2015-12-02T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/she-bei-sizece-shi.html</loc>
+<lastmod>2015-11-25T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/appzhong-qian-ming.html</loc>
+<lastmod>2015-11-24T21:20:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -368,6 +424,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/category/app.html</loc>
+<lastmod>2016-03-18T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/category/design.html</loc>
 <lastmod>2014-08-25T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -376,7 +439,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/category/ios.html</loc>
-<lastmod>2015-08-31T11:20:00+08:06</lastmod>
+<lastmod>2016-09-09T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -410,6 +473,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/category/swift.html</loc>
+<lastmod>2017-01-04T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/category/swiftstudy.html</loc>
 <lastmod>2015-04-13T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -431,13 +501,6 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://icocoa.tk/tag/.html</loc>
-<lastmod>2015-05-11T12:00:00+08:06</lastmod>
-<changefreq>daily</changefreq>
-<priority>0.5</priority>
-</url>
-
-<url>
 <loc>http://icocoa.tk/tag/pelican.html</loc>
 <lastmod>2014-11-09T16:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -447,6 +510,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://icocoa.tk/tag/appium.html</loc>
 <lastmod>2015-03-08T14:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/tag/codesign.html</loc>
+<lastmod>2015-11-24T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/tag/uitableview.html</loc>
+<lastmod>2016-09-09T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -522,6 +599,20 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/tag/size.html</loc>
+<lastmod>2015-11-25T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/tag/accesscontrol.html</loc>
+<lastmod>2017-01-04T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/tag/git.html</loc>
 <lastmod>2015-06-17T17:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -564,8 +655,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://icocoa.tk/tag/ce-shi.html</loc>
-<lastmod>2015-03-08T14:00:00+08:06</lastmod>
+<loc>http://icocoa.tk/tag/os-x.html</loc>
+<lastmod>2016-03-17T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/tag/launch-screen.html</loc>
+<lastmod>2014-10-16T10:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -592,8 +690,15 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/tag/viewcontroller.html</loc>
+<lastmod>2016-09-09T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/tag/ios.html</loc>
-<lastmod>2015-08-01T17:00:00+08:06</lastmod>
+<lastmod>2016-03-18T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -601,6 +706,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://icocoa.tk/tag/pjsip.html</loc>
 <lastmod>2015-01-18T22:30:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://icocoa.tk/tag/assert.html</loc>
+<lastmod>2016-03-10T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -621,7 +733,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/tag/swift.html</loc>
-<lastmod>2015-04-13T14:00:00+08:06</lastmod>
+<lastmod>2016-03-10T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -634,8 +746,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://icocoa.tk/tag/launch-screen.html</loc>
-<lastmod>2014-10-16T10:00:00+08:06</lastmod>
+<loc>http://icocoa.tk/tag/ce-shi.html</loc>
+<lastmod>2015-03-08T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -711,6 +823,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://icocoa.tk/tag/ats.html</loc>
+<lastmod>2016-03-18T21:20:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://icocoa.tk/tag/distribution.html</loc>
 <lastmod>2015-02-28T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -719,7 +838,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://icocoa.tk/author/charles-zhu.html</loc>
-<lastmod>2015-08-31T11:20:00+08:06</lastmod>
+<lastmod>2017-01-04T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

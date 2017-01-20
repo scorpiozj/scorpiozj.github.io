@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>设备Size测试</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/she-bei-sizece-shi.html" rel="bookmark"
+                   title="Permalink to 设备Size测试">设备Size测试</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-11-25T21:20:00+08:00">
+                三 25 十一月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <html><body><p>设备的bounds， scale，真机测试结果如下：</p>
+<table>
+<thead>
+<tr>
+<th align="center">设备</th>
+<th align="center">bounds</th>
+<th align="center">nativeBounds</th>
+<th align="center">scale</th>
+<th align="center">nativeScale</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center">iPhone6 normal</td>
+<td align="center"><code>{{ 0, 0}, {375, 667}}</code></td>
+<td align="center"><code>{{0, 0}, {750, 1334}}</code></td>
+<td align="center">2.00000</td>
+<td align="center">2.0000</td>
+</tr>
+<tr>
+<td align="center">iPhone6 zoom</td>
+<td align="center"><code>{{0, 0}, {320, 568}}</code></td>
+<td align="center"><code>{{0, 0}, {750, 1331.25}}</code></td>
+<td align="center">2.00000</td>
+<td align="center">2.343750</td>
+</tr>
+<tr>
+<td align="center">iPhone6 Plus normal</td>
+<td align="center"><code>{{0, 0}, {414, 736}}</code></td>
+<td align="center"><code>{{0, 0}, {1080, 1920}}</code></td>
+<td align="center">3.00000</td>
+<td align="center">2.608696</td>
+</tr>
+<tr>
+<td align="center">iPhone6 Plus zoom</td>
+<td align="center"><code>{{0, 0}, {375, 667}}</code></td>
+<td align="center"><code>{{0, 0}, {1080, 1920}}</code></td>
+<td align="center">3.00000</td>
+<td align="center">2.880000</td>
+</tr>
+</tbody>
+</table>
+<p>bounds in point, nativeBounds in pixel;<br/>
+scale for screen, native for physical screen.</p>
+<p>模拟器 iPhone6
+2015-11-25 16:47:44.930 SizeClassDemo[29750:425396] bounds= <code _0_="{0,">{{0, 0}, {375, 667}}
+2015-11-25 16:47:44.930 SizeClassDemo[29750:425396] scale=2.000000
+2015-11-25 16:47:44.931 SizeClassDemo[29750:425396] nativeBounds=</code>, {750, 1334}}
+2015-11-25 16:47:44.931 SizeClassDemo[29750:425396] nativeScale=2.000000</p>
+<p>真机 iPhone6 normal
+2015-11-25 16:17:39.587 SizeClassDemo[270:20538] bounds= <code _0_="{0,">{{0, 0}, {375, 667}}
+2015-11-25 16:17:39.588 SizeClassDemo[270:20538] scale=2.000000
+2015-11-25 16:17:39.588 SizeClassDemo[270:20538] nativeBounds=</code>, {750, 1334}}
+2015-11-25 16:17:39.588 SizeClassDemo[270:20538] nativeScale=2.000000</p>
+<p>真机 iPhone6 zoom
+2015-11-25 16:16:33.455 SizeClassDemo[22862:4690224] bounds= <code _0_="{0,">{{0, 0}, {320, 568}}
+2015-11-25 16:16:33.456 SizeClassDemo[22862:4690224] scale=2.000000
+2015-11-25 16:16:33.456 SizeClassDemo[22862:4690224] nativeBounds=</code>, {750, 1331.25}}
+2015-11-25 16:16:33.456 SizeClassDemo[22862:4690224] nativeScale=2.343750</p>
+<p>模拟器 iPhone6 Plus
+2015-11-25 16:19:00.893 SizeClassDemo[29508:414511] bounds= <code _0_="{0,">{{0, 0}, {414, 736}}
+2015-11-25 16:19:00.894 SizeClassDemo[29508:414511] scale=3.000000
+2015-11-25 16:19:00.895 SizeClassDemo[29508:414511] nativeBounds=</code>, {1242, 2208}}
+2015-11-25 16:19:00.895 SizeClassDemo[29508:414511] nativeScale=3.000000</p>
+<p>真机 iPhone6 Plus normal
+2015-11-25 16:30:38.465 SizeClassDemo[1046:416308] bounds= <code _0_="{0,">{{0, 0}, {414, 736}}
+2015-11-25 16:30:38.467 SizeClassDemo[1046:416308] scale=3.000000
+2015-11-25 16:30:38.467 SizeClassDemo[1046:416308] nativeBounds=</code>, {1080, 1920}}
+2015-11-25 16:30:38.467 SizeClassDemo[1046:416308] nativeScale=2.608696</p>
+<p>真机 iPhone6 Plus zoom
+2015-11-25 16:31:43.935 SizeClassDemo[1067:417588] bounds= <code _0_="{0,">{{0, 0}, {375, 667}}
+2015-11-25 16:31:43.936 SizeClassDemo[1067:417588] scale=3.000000
+2015-11-25 16:31:43.936 SizeClassDemo[1067:417588] nativeBounds=</code>, {1080, 1920}}
+2015-11-25 16:31:43.936 SizeClassDemo[1067:417588] nativeScale=2.880000</p></body></html>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/appzhong-qian-ming.html">← Previous : App重签名</a></li>
+        
+        <li class="next"><a href="http://icocoa.tk/mo-ni-qi-xiang-guan-ming-ling.html">模拟器相关命令:Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

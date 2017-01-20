@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>利用TableView的状态变化实现页面切换</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/a study of UITableView State Changes.html" rel="bookmark"
+                   title="Permalink to 利用TableView的状态变化实现页面切换">利用TableView的状态变化实现页面切换</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2016-09-09T21:20:00+08:00">
+                五 09 九月 2016
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <html><body><h3>引子</h3>
+<p>在medium上看到一篇文章，关于自己App登录/注册相关页面的实现，具体的页面切换：<br/>
+<img alt="sample" src="./imgs/20160909/StorySample.gif"/></p>
+<p>这种页面切换，按照之前的经验，会使用几个viewcontroller，通过navigationcontroller进行管理；同时会涉及页面间的传值——或protocol或block实现。现在，这个团队使用了tableview，这样就只需一个viewcontroller，即可实现。<br/>
+我觉得很有意思，自己先想了想，和他们的思路差不多，不过也有没有考虑到的地方。下面，我们一步一步来实现它。</p>
+<h3>准备工作</h3>
+<p>原文是swift实现，这里用ObjC来实现，需要的准备：tableview，定义几个状态，拆分cell类型。<br/>
+状态主要指当前页面是默认界面，邮箱登陆／注册界面，或是其它。这里为了简便，只做三种状态，定义如下：  </p>
+<div class="highlight"><pre><span></span>typedef enum : NSUInteger {
+    ZZHTableStateDefault = 1,
+    ZZHTableStateSignupEmail,
+    ZZHTableStateLogin,
+} ZZHTableState;
+</pre></div>
+<p>cell的拆分，这里根据实际的页面，以及页面间切换的动画，找到“最小”的cell。这里定义了：</p>
+<ul>
+<li>ZZHSpaceCell: 用于占位</li>
+<li>ZZHTitleCell: 用于显示大标题，如首页的“注册”字样</li>
+<li>ZZHDescriptionCell: 文字描述单元格</li>
+<li>ZZHButtonCell: 按钮单元格</li>
+<li>ZZHTextFieldCell: 输入文字单元格</li>
+</ul>
+<p>为了便于说明，将简化的状态迁移图展示如下：</p>
+<p><img alt="stateChanges" src="./imgs/20160909/StateChanges.png"/></p>
+<p>Default 页面，设置的cell依次为 Title, Description, Button, Button, Description.<br/>
+Login 页面，设置的cell依次为 Space, Button, Space, TextField, TextField, Button, Description. 
+SignupEmail 页面，设置的cell依次为 Space, TextField, TextField, Button. </p>
+<h3>TableView的datasource和delegate</h3>
+<p>首先实现tableview需要实现几个协议：返回cell的协议、cell数量以及高度的协议。这里高度需要征对每一个cell给出具体的参数。<br/>
+接下来，就是实现select协议，重点是厘清某个状态下，哪个cell可以点击，点击后进入哪个状态。当你提前设计好状态切换后，这些都是水到渠成的。</p>
+<h3>状态迁移</h3>
+<p>这部分的重点就是比较两种状态，找出哪些cell要delete，哪些要insert。这里以状态：Default-&gt;Login的迁移为例进行说明。通过比较，可以得出：</p>
+<ul>
+<li>删除：0,1,3,4</li>
+<li>插入：0,2,3,4,5,6</li>
+</ul>
+<p>各位可以尝试一下，看一下效果。接着问题来了：对于每一种状态迁移，都需要通过hardcode的方式吗？这个问题的求解其实是最长公告序列的问题，通过比较前后状态的cell内容，自动计算出删/插的cell，这样，即便以后添加新的状态，也不用再修改这部分内容了。这里，需要提醒下的是，在状态更新的时候，除了删除/插入的动作，有可能还需要reload不变的cell，原因就不多说了。<br/>
+最后，看一下demo效果：</p>
+<p><img alt="demo.gif" src="./imgs/20160909/demo.gif"/></p></body></html>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/atsjia-zai-tao-bao-ye-mian.html">← Previous : ATS:加载淘宝页面</a></li>
+        
+        <li class="next"><a href="http://icocoa.tk/Access Control Summary.html">Swift中Access控制相关关键字:Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

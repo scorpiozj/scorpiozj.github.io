@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>App重签名</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/appzhong-qian-ming.html" rel="bookmark"
+                   title="Permalink to App重签名">App重签名</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2015-11-24T21:20:00+08:00">
+                二 24 十一月 2015
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <html><body><h3>Intro</h3>
+<p>由于跨区合作，新买的设备无法及时的添加进账户，可又当天需要展示，只好使用个人账号对已交付的ipa重签名。</p>
+<h3>具体实现步骤</h3>
+<p>签名打包使用了<a href="https://github.com/maciekish/iReSign">iResign</a>，还需要：证书，provision文件和entitlement。另外，还需要修改app的bundle identifier。<br/>
+provision文件需要包含待测试的设备，这里主要说明下entitlements.plist文件的生成。一个打包好的ipa中，本身包含了这种信息，我们可以使用工具导出：</p>
+<div class="highlight"><pre><span></span>/usr/libexec/PlistBuddy -x -c "print :Entitlements " /dev/stdin &lt;&lt;&lt; $(security cms -D -i ./Payload/Mobile\ Site\ Solutions.app/embedded.mobileprovision) &gt; entitlements.plist
+</pre></div>
+<p>修改后，需要将<code>com.apple.developer.team-identifier</code> 值修改为你自己证书的信息。 
+还有一个需要修改的地方是：<code>get-task-allow</code> 需要设置为 <code>false</code>，意为不允许其他进程依附程序(一般情况，adhoc和release版，该值或为空或为true)。 <br/>
+接下来，就使用iResign，依次选择相应的文件即可。安装重签名ipa失败时，设备在身边的话，可以查看console信息，一般情况下都有说明。常见的错误就是provision和entitlement之间的验证信息匹配失败。  </p>
+<h3>参考</h3>
+<p>顺便学习了下(签名知识)[http://objccn.io/issue-17-2/]，摘取了几个重要命令：</p>
+<div class="highlight"><pre><span></span>//查看证书信息
+security find-identity -v -p codesigning
+
+//查看app签名信息
+codesign -vv -d Payload/yourApp.app/
+
+验证签名信息
+codesign --verify Example.app
+
+//查看已签名app的entitlements信息，即app开启的capability的能力信息
+codesign -d --entitlements - Payload/yourApp.app/
+
+//查看provision 配置文件的信息
+security cms -D -i Payload/yourApp.app/embedded.mobileprovision
+</pre></div></body></html>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/my-super-post.html">← Previous : Localization中的复数处理</a></li>
+        
+        <li class="next"><a href="http://icocoa.tk/she-bei-sizece-shi.html">设备Size测试:Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <html><body><p>Author: Charles Zhu<br/>
 Summary: notes for 221</p>
 <p>本场主要分4个议题： </p>
 <ul>
@@ -75,7 +75,7 @@ Summary: notes for 221</p>
 </ul>
 <h2>Spring animations</h2>
 <p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
-<div class="highlight"><pre>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion
+<div class="highlight"><pre><span></span>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished))completion
 </pre></div>
 <p>这是iOS7中就有的API，它和UIKit提供的普通animation API很类似，增加的两个参数：<code>dampingRatio</code>就是弹性系数，范围在0-1之间，通常取接近1的值；<code>velocity</code>就是动画的初始速度，这个参数可以用下图来理解：<br/>
 <img alt="spring icon" src="./imgs/20140629/spring.png"/><br/>
@@ -83,10 +83,10 @@ Summary: notes for 221</p>
 Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉出设置页面，就带有spring效果。而且从这个API的设计接口来看，估计以后UIView 的普通animation API是会被spring所取代了。所以，在自定义控件的动画中，要注意使用spring动画，以符合iOS的风格</p>
 <h2>Vibrancy and blur</h2>
 <p>iOS7中有用于创建blur view的API：  </p>
-<div class="highlight"><pre>-drawViewHierarchyInRect:afterScreenUpdates:, 
+<div class="highlight"><pre><span></span>-drawViewHierarchyInRect:afterScreenUpdates:, 
 </pre></div>
 <p>通过该API可以将当前view的状态以UIImage绘制出来：</p>
-<div class="highlight"><pre><span class="c1">//https://developer.apple.com/library/ios/qa/qa1817/_index.html</span>
+<div class="highlight"><pre><span></span><span class="c1">//https://developer.apple.com/library/ios/qa/qa1817/_index.html</span>
   <span class="o">-</span> <span class="p">(</span><span class="bp">UIImage</span> <span class="o">*</span><span class="p">)</span><span class="nl">snapshot</span><span class="p">:(</span><span class="bp">UIView</span> <span class="o">*</span><span class="p">)</span><span class="n">view</span>
  <span class="p">{</span>
      <span class="n">UIGraphicsBeginImageContextWithOptions</span><span class="p">(</span><span class="n">view</span><span class="p">.</span><span class="n">bounds</span><span class="p">.</span><span class="n">size</span><span class="p">,</span> <span class="nb">YES</span><span class="p">,</span>  <span class="mi">0</span><span class="p">);</span>
@@ -97,7 +97,7 @@ Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉�
 <span class="p">}</span>
 </pre></div>
 <p>而去年的wwdc中有对UIImage进行blur的例子，两者结合就可以对UIView进行blur化。这种方式用官方语言描述就是：fast&amp;&amp;static. 而如今Apple提供了直接的API——<code>UIVisualEffectView</code>，使用方式很简单，就是先创建一个effect，然后再提供给view进行初始化,然后把它添加到要blur的view上。</p>
-<div class="highlight"><pre><span class="bp">UIVisualEffect</span> <span class="o">*</span><span class="n">blurEffect</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIBlurEffect</span> <span class="nl">effectWithStyle</span><span class="p">:</span><span class="n">UIBlurEffectStyleLight</span><span class="p">];</span>
+<div class="highlight"><pre><span></span><span class="bp">UIVisualEffect</span> <span class="o">*</span><span class="n">blurEffect</span> <span class="o">=</span> <span class="p">[</span><span class="bp">UIBlurEffect</span> <span class="nl">effectWithStyle</span><span class="p">:</span><span class="n">UIBlurEffectStyleLight</span><span class="p">];</span>
 
     <span class="bp">UIVisualEffectView</span> <span class="o">*</span><span class="n">visualEffectView</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">UIVisualEffectView</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithEffect</span><span class="p">:</span><span class="n">blurEffect</span><span class="p">];</span>
 
@@ -113,7 +113,7 @@ Spring动画在iOS7中就已经是很多控件的标配，比如在屏幕上拉�
 <img alt="UIView Animation" src="./imgs/20140629/dynamic_core_animation.png"/> <br/>
 UIView会去查找是否实现<code>CAAction</code>协议，没有实现的话就会调用：<br/>
 <code>[super actionForLayer:layer key:event]</code>。因此，如果实现了<code>CAAction</code>协议就可以定制动画。</p>
-<p><a href="https://github.com/scorpiozj/blogproject/tree/master/WWDC2014_221">项目地址</a></p>
+<p><a href="https://github.com/scorpiozj/blogproject/tree/master/WWDC2014_221">项目地址</a></p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -145,12 +145,14 @@ UIView会去查找是否实现<code>CAAction</code>协议，没有实现的话�
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -159,47 +161,6 @@ UIView会去查找是否实现<code>CAAction</code>协议，没有实现的话�
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

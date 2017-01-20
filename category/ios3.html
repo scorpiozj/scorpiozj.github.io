@@ -53,15 +53,46 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">App Extension Study 3</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-14T16:00:00+08:00"> 五 14 十一月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: ios8 app extension</p>
+<h3>1 开始</h3>
+<p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
+<h3>2 Finder Sync (OS X)</h3>
+<p>因为extension要运行在10.10的OS X上，由于没升级，所以本节就侧重“理论”了。  </p>
+<h4>2.1 含义</h4>
+<p>顾名思义，就是保持本地的某些文件夹和远程的文件夹内容保持一致。它可以让用户在Finder实时察觉同步的状态并随时控制同步的进程。比如说可以在文件夹上加badge或是文字来告诉用户当前的状态，或是在Finder窗口添加工具栏方便打开监视的文件夹或强制退出同步(不知道网盘类的应用如何集成该extension呢)。因此，<code>Finder Sync</code>的host app只能是<code>Finder</code>。<br/>
+<code>Finder Sync</code>可以：</p>
+<ul>
+<li>注册一系列文件夹进行同步</li>
+<li>当用户打开 ...</li></ul></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">iOS8下控件的旋转</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-07T16:00:00+08:00"> 五 07 十一月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>由起</h4>
+				                <div class="entry-content"> <html><body><h4>由起</h4>
 <p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
 <h4>修复</h4>
 <p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
-<div class="highlight"><pre>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
+<div class="highlight"><pre><span></span>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
     {
         switch (interfaceOrientation) {
             case UIInterfaceOrientationLandscapeLeft:
@@ -69,7 +100,7 @@
                 break;
 
             case UIInterfaceOrientationLandscapeRight:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div> </div><!-- /.entry-content -->
+                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -88,11 +119,11 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-05T11:00:00+08:00"> 三 05 十一月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h4>由起</h4>
+				                <div class="entry-content"> <html><body><h4>由起</h4>
 <p><code>UIAlertController</code>是iOS8中引入的，用于整合<code>UIAlertView</code>和<code>UIActionSheet</code>的新类，在实现中抛弃了之前的delegate用法，而采用了block的方式，从而使得使用和可读性都简化了不少。<br/>
 使用iOS8SDK编译的项目，大多数情况使用之前的<code>UIAlertView</code>或<code>UIActionSheet</code>都不会产生问题，如果有问题了，那就需要使用新类了。比如，一个项目中iPad上调用<code>[actionSheet showFromToolbar:]</code>产生错误：</p>
-<div class="highlight"><pre>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
-2014-11-05 10:50:26.762 XXXXXX[467 ...</pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span>2014-11-05 10:50:26.614 XXXXXX[467:78104] Presenting view controllers on detached view controllers is discouraged &lt;UIViewController: 0x17ea3470&gt;.
+2014-11-05 10:50:26.762 XXXXXX[467 ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -111,7 +142,7 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-10-31T14:00:00+08:00"> 五 31 十月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h3>1 开始</h3>
 <p><a href="http://github.icocoa.tk/app-extension-study-1.html">上一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，这节开始实践。需要说明的本文不会覆盖所有类型，比如<strong>Finder Sync</strong>类型是OS X独有的，这里会一带而过。</p>
@@ -125,7 +156,7 @@ Summary: ios8 app extension</p>
 <p>在已有工程中新建一个target，选择<code>Application Extension</code>中的<code>Today Extension</code>，这时工程中增加了如下文件：<br/>
 <img alt="widgetImg" src="./imgs/20141031/widget_template.png"/><br/>
 先来看<code>Info.plist</code>，主要增加了NSExtenstion的key，内容如下：</p>
-<div class="highlight"><pre><span class="nt">&lt;key ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span><span class="nt">&lt;key ...</span></pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-2.html" rel="bookmark" title="Permalink to App Extension Study 2">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -145,7 +176,7 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-10-16T14:00:00+08:00"> 四 16 十月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
 <p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
@@ -157,7 +188,7 @@ Summary: ios8 app extension</p>
 <li>containing app: extension不能单独作为target存在，必须依附在某个具有普通app的工程内，该app就是containing app。一个containing app可以有多个extension。</li>
 <li>app extension: </li>
 </ul>
-<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p> </div><!-- /.entry-content -->
+<p>当下载了含有extension的containing app，那么如果某个app可以使用该extension ...</p></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-1.html" rel="bookmark" title="Permalink to App Extension Study 1">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -177,16 +208,16 @@ Summary: ios8 app extension</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-10-16T10:00:00+08:00"> 四 16 十月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: launch screen,xcode6,git</p>
 <h2>xcode6工程在iOS7下未全屏</h2>
 <p>使用xcode6创建的工程在iOS7下运行，居然出现了未全屏的现象，仿佛一下子回到了iPhone5发布的时代。因为提交了多次，不清楚是哪次引入的问题。所幸使用了git管理版本，想找到出错的提交，就靠git了。</p>
 <h2>git bisect</h2>
 <p>在不知道bisect之前，我能想到的办法是通过 <code>reset hard</code> 或者<code>archive</code> “恢复”到逐个提交，然后运行看结果。可是强大的git提供了bisect，于是一切都好办了。<br/>
 bisect的使用就是标记两个版本，一个正确一个错误，然后git会自动找中间某个提交，由用户来确认是正确还是错误。如此反复，就能定位到引入错误的提交，具体执行过程演示如下：</p>
-<div class="highlight"><pre>git log --oneline //列出提交记录
+<div class="highlight"><pre><span></span>git log --oneline //列出提交记录
 git bisect start //开始查找
-git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-content -->
+git bisect bad //标记当前（master ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/git-bisectcha-zhao-xcode6gong-cheng-zai-ios7xia-bu-quan-ping-de-wen-ti.html" rel="bookmark" title="Permalink to git bisect查找xcode6工程在iOS7下不全屏的问题">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -207,7 +238,7 @@ git bisect bad //标记当前（master ...</pre></div> </div><!-- /.entry-conten
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-08-25T10:00:00+08:00"> 一 25 八月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: a sample project practising MVVM</p>
 <p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br/>
 考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br/>
@@ -221,7 +252,7 @@ Summary: a sample project practising MVVM</p>
 <li>cell的点击操作
 对于文件，需要把文件内容显示出来(为了方便，这里只对图片文件显示)。  </li>
 </ol>
-<h3>控制器的任务 ...</h3> </div><!-- /.entry-content -->
+<h3>控制器的任务 ...</h3></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -240,7 +271,7 @@ Summary: a sample project practising MVVM</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-17T17:00:00+08:00"> 四 17 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: design笔记</p>
 <ol>
 <li>
@@ -257,7 +288,7 @@ normal #FAC3FF 10%
 添加圆形，斜对角渐变</p>
 </li>
 <li></li>
-</ol> </div><!-- /.entry-content -->
+</ol></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -278,7 +309,7 @@ normal #FAC3FF 10%
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-17T13:00:00+08:00"> 四 17 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: 设计模式</p>
 <h2>MVC的无奈</h2>
 <p><a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/CocoaEncyclopedia/Model-View-Controller/Model-View-Controller.html">MVC</a>结构是学习iOS开发的人最先学习的一种开发模式，apple提倡以MVC为中心的开发模式。因为它很好的解构了应用场景中相关而又各自独立的部分：视图，视图控制器和数据模型。在MVC的世界里，控制器负责将模型中的数据以内容的形式展现到视图中，同时也把视图上产生的数据变化传递给模型从而将这种变化持久化。于是，在稍微复杂的app中，控制器中的内容会很庞大：网络操作，数据存储，手势响应等等。几乎可以确定，如果app需要添加新功能，超过一半的新增代码是添加在控制器中，这样不可避免的造成控制器的冗余以及大段无法重用的重复代码。<br/>
@@ -286,7 +317,7 @@ Summary: 设计模式</p>
 <h3>视图</h3>
 <p>毋庸置疑，视图的作用很重要，但在设计中，视图是否需要和控制器，数据模型同等的地位呢？要知道绝大多数情况下，视图是不会重用的，往往“耦合”在视图控制器中，所以往往代码中有几个view controller，就能知道程序会有几个页面。此外，视图中的UI元素也是直接作为变量存在在控制器代码中，因为只有这样才方便刷新。很显然，视图控制器就可以代表视图本身。  </p>
 <h3>控制器</h3>
-<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p> </div><!-- /.entry-content -->
+<p>控制器需要把模型代表的数据以合适的形式显示在视图上，这样免不了需要处理（当然也有不需要处理的简单情况 ...</p></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/mvvmmo-shi-chu-tan.html" rel="bookmark" title="Permalink to MVVM模式初探">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -308,10 +339,10 @@ Summary: 设计模式</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-14T10:00:00+08:00"> 一 14 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
 Summary: 错误报告处理</p>
 <p>今天发现友盟的后台中出现了app crash，打开一看：</p>
-<div class="highlight"><pre>Application received signal SIGSEGV
+<div class="highlight"><pre><span></span>Application received signal SIGSEGV
 (null)
 (
     0   CoreFoundation                      0x2e44bf23  + 154
@@ -322,7 +353,7 @@ Summary: 错误报告处理</p>
     5   UIKit                               0x30f20765  + 64
     6   UIKit                               0x30c9a7bd  + 604
     7   UIKit                               0x30f216db  + 1398
-    8 ...</pre></div> </div><!-- /.entry-content -->
+    8 ...</pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -332,53 +363,6 @@ Summary: 错误报告处理</p>
 										<span>Tagged as : </span>
 											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
 											<a class="danger label" href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">WWDC2014-223 Notes Protyping</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-03T22:00:00+08:00"> 四 03 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br/>
-这一讲的内容分为下面几个部分：</p>
-<ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br/>
-<img alt="relations icon" src="./imgs/20140703/how-relations.png"/><br/>
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we ...</li></ul> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ui.html">ui</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">ios</a>
 								</div>
 
 
@@ -397,12 +381,14 @@ Summary: notes for 223</p>
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -411,47 +397,6 @@ Summary: notes for 223</p>
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

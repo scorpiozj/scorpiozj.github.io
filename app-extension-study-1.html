@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <html><body><p>Author: Charles Zhu<br/>
 Summary: ios8 app extension</p>
 <h2>Intro</h2>
 <p>app extension是iOS8引入的功能，使得iOS8也有了“插件”系统。虽然一时还不知道可以做些什么应用，但我相信会有杀手级的extension出现而且某种程度会影响到app的生态系统发展。所以，我们需要了解并熟悉如何制作app extension。本系列会以<a href="https://developer.apple.com/library/ios/documentation/General/Conceptual/ExtensibilityPG/index.html">官方文档</a>为指引，按图索骥，拨开app extension的面纱(主要侧重iOS)。</p>
@@ -122,7 +122,7 @@ extension的组成很简单：</p>
 添加完库后，要将target的"Require Only App-Extension-Safe API"设置为"YES"。  </p>
 <h3>shared resources</h3>
 <p>前面说过extension和containing可以共享数据。这时分别对containing 和extension target启用"App Group"。Xcode6会自动获取group名，当然也可以自行添加。共享数据的读写是通过老朋友<code>NSUserDefault</code>:</p>
-<div class="highlight"><pre><span class="c1">// Create and share access to an NSUserDefaults object.</span>
+<div class="highlight"><pre><span></span><span class="c1">// Create and share access to an NSUserDefaults object.</span>
 <span class="bp">NSUserDefaults</span> <span class="o">*</span><span class="n">mySharedDefaults</span> <span class="o">=</span> <span class="p">[[</span><span class="bp">NSUserDefaults</span> <span class="n">alloc</span><span class="p">]</span> <span class="nl">initWithSuiteName</span><span class="p">:</span><span class="s">@"com.example.domain.MyShareExtension"</span><span class="p">];</span>
 <span class="c1">// Use the shared user defaults object to update the user's account.</span>
 <span class="p">[</span><span class="n">mySharedDefaults</span> <span class="nl">setObject</span><span class="p">:</span><span class="n">theAccountName</span> <span class="nl">forKey</span><span class="p">:</span><span class="s">@"lastAccountName"</span><span class="p">];</span>
@@ -138,7 +138,7 @@ extension的组成很简单：</p>
 <li>iOS中如果要传递给js文件参数， 也通过 <code>NSItemProvider</code></li>
 </ol>
 <p>为了让safari响应extension的js文件，需要添加：</p>
-<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
     <span class="nt">&lt;dict&gt;</span>
         <span class="nt">&lt;key&gt;</span>NSExtensionJavaScriptPreprocessingFile<span class="nt">&lt;/key&gt;</span>
         <span class="nt">&lt;string&gt;</span>MyJavaScriptFile<span class="nt">&lt;/string&gt;</span> <span class="c">&lt;!-- Do not include the ".js" filename extension --&gt;</span>
@@ -146,7 +146,7 @@ extension的组成很简单：</p>
 </pre></div>
 <h4>js文件的写法</h4>
 <p>sample: </p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">MyExtensionJavaScriptClass</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{};</span>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">MyExtensionJavaScriptClass</span> <span class="o">=</span> <span class="n">function</span><span class="p">()</span> <span class="p">{};</span>
 <span class="n">MyExtensionJavaScriptClass</span><span class="p">.</span><span class="n">prototype</span> <span class="o">=</span> <span class="p">{</span>
 <span class="nl">run</span><span class="p">:</span> <span class="n">function</span><span class="p">(</span><span class="n">arguments</span><span class="p">)</span> <span class="p">{</span>
   <span class="c1">// Pass the baseURI of the webpage to the extension.</span>
@@ -189,7 +189,7 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
 <p>使用<code>NSURLSession</code>，经过测试，<code>upload task session</code> 不能在extension中使用。</p>
 <h3>声明Share/Action extension支持的数据类型</h3>
 <p>sample：  </p>
-<div class="highlight"><pre><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
+<div class="highlight"><pre><span></span><span class="nt">&lt;key&gt;</span>NSExtensionAttributes<span class="nt">&lt;/key&gt;</span>
 <span class="nt">&lt;dict&gt;</span>
     <span class="nt">&lt;key&gt;</span>NSExtensionActivationRule<span class="nt">&lt;/key&gt;</span>
     <span class="nt">&lt;dict&gt;</span>
@@ -205,7 +205,7 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
 <p>不支持的数据类型设置值为0或者移除该键。 </p>
 <h3>适配iOS8前的containing app</h3>
 <p>使用了嵌入式框架后，也能继续兼容iOS8之前的系统。这就要使用<code>dlopen</code>，该命令可以在编译时条件链接和加载库。注意要在objc使用<code>dlopen</code>。在containing执行的时候，检测系统只有是iOS8及以后的系统，才加载库。 </p>
-<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p>
+<p>下面会依次实现各种类型的extension，并将其中遇到的问题说明(待续)。</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -237,12 +237,14 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -251,47 +253,6 @@ extensionItem.attachments = @[[[NSItemProvider alloc] initWithItem:@{NSExtension
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

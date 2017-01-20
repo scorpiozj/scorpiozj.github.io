@@ -64,15 +64,15 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h3>Requirements</h3>
+              <html><body><h3>Requirements</h3>
 <p>We have a project which uses <code>NSLocalizedString</code> macro but some strings  are not localized in the <code>Localizable.strings</code> file. What we do is to find all these strings and implement the <code>Localizable.strings</code> file.</p>
 <h3>Apple's Tool</h3>
 <p>As I refered <a href="http://stackoverflow.com/a/27266522/371974">here</a>, Apple has a built-in tool but is for Appkit application. Open the scheme, and in the <code>Arguments</code> tab, input the following strings to <code>Arguments Passed On Launch</code>:  </p>
-<div class="highlight"><pre> -NSShowNonLocalizedStrings YES
+<div class="highlight"><pre><span></span> -NSShowNonLocalizedStrings YES
 </pre></div>
 <p>Then, build and run your <strong>Cocoa</strong> application, the unlocalized string will be shown in console.<br/>
 Now the good news is that with iOS8 the console can also print the unlocalized string for the iOS app. For example:</p>
-<div class="highlight"><pre> 2014-12-16 15:53:44.073 iOSUnlocalizedTest[6251:1015330] Localizable string "name" not found in strings table "Localizable" of bundle CFBundle 0x7f9fe3515b80 &lt;/Users/XXXXX/Library/Developer/CoreSimulator/Devices/F7E36A7E-14FF-4D2A-8881-A62C14CB66DE/data/Containers/Bundle/Application/18EB0513-5162-4CEC-9823-17AC3B513EFB/iOSUnlocalizedTest.app&gt; (executable, loaded)
+<div class="highlight"><pre><span></span> 2014-12-16 15:53:44.073 iOSUnlocalizedTest[6251:1015330] Localizable string "name" not found in strings table "Localizable" of bundle CFBundle 0x7f9fe3515b80 &lt;/Users/XXXXX/Library/Developer/CoreSimulator/Devices/F7E36A7E-14FF-4D2A-8881-A62C14CB66DE/data/Containers/Bundle/Application/18EB0513-5162-4CEC-9823-17AC3B513EFB/iOSUnlocalizedTest.app&gt; (executable, loaded)
 </pre></div>
 <p>However, this is not the final answer as it is just a runtime checking not a static checking(As the setting above is under the <code>Run</code>). You can't get all expected results at a glance.</p>
 <h3>What we do</h3>
@@ -83,11 +83,11 @@ Now the good news is that with iOS8 the console can also print the unlocalized s
 </ol>
 <p>So let's start!<br/>
 Open a shell, cd to the project and then run:</p>
-<div class="highlight"><pre>grep -n -h "LocalizedString" -r ./ &gt;&gt;../result
+<div class="highlight"><pre><span></span>grep -n -h "LocalizedString" -r ./ &gt;&gt;../result
 </pre></div>
 <p>it will save all the lines including "LocalizedString" to the result. In the result file, it will list the file name and line number so that we can recheck it.<br/>
 Then we try to get the targeted string which is the first parameter of <code>NSLocalizedString</code> macro:</p>
-<div class="highlight"><pre>grep -o -n "\"\w\{1,\}\"" ./result &gt;&gt; singleWord
+<div class="highlight"><pre><span></span>grep -o -n "\"\w\{1,\}\"" ./result &gt;&gt; singleWord
 </pre></div>
 <p>it will save all the words to <code>singleWord</code> file.<br/>
 Then we copy the content from <code>Localizable.String</code> to a txt file and then using the following script <strong>find.sh</strong>:</p>
@@ -102,11 +102,11 @@ Then we copy the content from <code>Localizable.String</code> to a txt file and 
  9
 10
 11
-12</pre></div></td><td class="code"><div class="highlight"><pre><span class="c">#!/bin/sh</span>
+12</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
 
-cat <span class="nv">$1</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read </span>line
+cat <span class="nv">$1</span> <span class="p">|</span> <span class="k">while</span> <span class="nb">read</span> line
 <span class="k">do</span>
-<span class="c"># echo $line</span>
+<span class="c1"># echo $line</span>
     grep  <span class="nv">$line</span> ./japios.txt &gt;&gt; ./has.txt
     <span class="k">if</span> <span class="o">[</span> <span class="nv">$?</span> <span class="o">==</span> <span class="m">0</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
         <span class="nb">echo</span> <span class="nv">$line</span> &gt;&gt; ./has.txt
@@ -124,7 +124,7 @@ Notice in the script, japios.txt should be created from the <code>Localizable.St
 <li>the comment code still be figured out</li>
 <li>there are the duplicated words </li>
 <li>can't figure out those which not use <code>NSLocalizedString</code> macro</li>
-</ol>
+</ol></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -156,12 +156,14 @@ Notice in the script, japios.txt should be created from the <code>Localizable.St
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -170,47 +172,6 @@ Notice in the script, japios.txt should be created from the <code>Localizable.St
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

@@ -64,17 +64,17 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h2>Intro</h2>
+              <html><body><h2>Intro</h2>
 <p>During the course, a lot of swift details are touched from Lesson 1 to 3 and the classical MVC is practised in Lesson 3.<br/>
 本篇侧重swift的强类型特性以及struct的特点。</p>
 <h2>Strong type language</h2>
 <p>Swift is smart enough to know the type and you can ommit the type in decalaring, function parameters and son on. For example, instance declaring:</p>
-<div class="highlight"><pre>var userIsInTheMiddleOfTypingANumber: Bool = false
+<div class="highlight"><pre><span></span>var userIsInTheMiddleOfTypingANumber: Bool = false
 var userIsInTheMiddleOfTypingANumber = false
 </pre></div>
 <p>Because in swift class, all the instances need an intialization and swift can infer the instance type from its value. <br/>
 Below is the example for <code>Array</code> and <code>Dictionary</code> declaring:  </p>
-<div class="highlight"><pre><span class="n">var</span> <span class="n">testStack</span> <span class="o">=</span> <span class="p">[</span><span class="n">Int</span><span class="p">]()</span> <span class="c1">// perferred style</span>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="n">testStack</span> <span class="o">=</span> <span class="p">[</span><span class="n">Int</span><span class="p">]()</span> <span class="c1">// perferred style</span>
 <span class="n">var</span> <span class="n">testStack</span> <span class="o">=</span> <span class="n">Array</span><span class="o">&lt;</span><span class="n">Int</span><span class="o">&gt;</span><span class="p">()</span>
 
 <span class="n">var</span> <span class="n">testDic</span> <span class="o">=</span> <span class="p">[</span><span class="nl">String</span> <span class="p">:</span> <span class="n">Int</span><span class="p">]()</span> <span class="c1">// perferred style</span>
@@ -88,10 +88,10 @@ However, in swift, <code>struct</code> is much like <code>class</code>, and  it 
 <li><code>struct</code> is passed by value as parameters while <code>class</code> is passed by reference</li>
 </ol>
 <p>Here we talk a little more about <code>struct</code> passed by value. </p>
-<div class="highlight"><pre>func testFunc(operand: [Int])
+<div class="highlight"><pre><span></span>func testFunc(operand: [Int])
 </pre></div>
 <p>In <code>testFunc</code>, there will be a copy of <code>operand</code> and this copy is immutable. Why? The reason is that ther is always a hidden <code>let</code> before every func's parameter. As a result, if we want to do something on the Array, we need make it mutable, like:</p>
-<div class="highlight"><pre>func testFunc(operand: [Int])
+<div class="highlight"><pre><span></span>func testFunc(operand: [Int])
 {
     var localOperand = operand //1
     let op = localOperand.removeLast() //2
@@ -99,7 +99,7 @@ However, in swift, <code>struct</code> is much like <code>class</code>, and  it 
 </pre></div>
 <p>In Line 1, there is a local copy of <code>operand</code> and  <code>localOperand</code> is mutable. Although there is a copy, swift may not do the really copy of <code>operand</code> in implementation and swift may still make a reference of that array. In this way, it can be much effency. <br/>
 In Line 2, we make changes on <code>localOperand</code>, and at this time swift <strong>still</strong> not do a copy. It can only remember the change and reuse the unchanged one. It is really amasing when I first learn it and it indicates swift is a smart enough language.  </p>
-<p>All in all, swift is really a smart language and is valuable to learn!</p>
+<p>All in all, swift is really a smart language and is valuable to learn!</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -131,12 +131,14 @@ In Line 2, we make changes on <code>localOperand</code>, and at this time swift 
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -145,47 +147,6 @@ In Line 2, we make changes on <code>localOperand</code>, and at this time swift 
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

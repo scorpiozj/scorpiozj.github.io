@@ -64,16 +64,16 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <html><body><p>Author: Charles Zhu<br/>
 Summary: git 错误理解</p>
 <h2>SVN下的项目管理</h2>
 <p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
 <h2>git下的误区</h2>
 <p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
 接下来我们来做一些操作：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git init
-<span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
-<span class="nv">$ </span>git status
+<div class="highlight"><pre><span></span>$ git init
+$ <span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
+$ git status
 On branch master
 
 Initial commit
@@ -86,12 +86,12 @@ Untracked files:
 nothing added to commit but untracked files present <span class="o">(</span>use <span class="s2">"git add"</span> to track<span class="o">)</span>
 </pre></div>
 <p>很显然，我们需要先“添加” 文件到版本库（注意这个add在git中不是添加到版本库），然后进行提交：</p>
-<div class="highlight"><pre><span class="nv">$ </span>git add .
-<span class="nv">$ </span>git commit -m <span class="s2">"init commit"</span>
+<div class="highlight"><pre><span></span>$ git add .
+$ git commit -m <span class="s2">"init commit"</span>
 </pre></div>
 <p>接下来修改文件：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"add a line"</span> &gt;&gt; hello.txt 
-<span class="nv">$ </span>git status
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">"add a line"</span> &gt;&gt; hello.txt 
+$ git status
 On branch master
 Changes not staged <span class="k">for</span> commit:
 <span class="o">(</span>use <span class="s2">"git add &lt;file&gt;..."</span> to update what will be committed<span class="o">)</span>
@@ -104,8 +104,8 @@ no changes added to commit <span class="o">(</span>use <span class="s2">"git add
 <p>仔细看log，它提示我们先进行add操作再进行commit（如果确定要提交的情形下），但是等一下，add操作不是已经做了吗？难道add的含义不是添加文件到版本库以便进行追踪？</p>
 <h2>git add到底是什么意思</h2>
 <p>我们先接着上面继续操作：  </p>
-<div class="highlight"><pre><span class="nv">$ </span>git add hello.txt 
-<span class="nv">$ </span>git status
+<div class="highlight"><pre><span></span>$ git add hello.txt 
+$ git status
 On branch master
 Changes to be committed:
 <span class="o">(</span>use <span class="s2">"git reset HEAD &lt;file&gt;..."</span> to unstage<span class="o">)</span>
@@ -113,7 +113,7 @@ Changes to be committed:
     modified:   hello.txt
 </pre></div>
 <p>这时的log和之前相比，没有了add的建议操作，为了更明显显示这种区别：</p>
-<div class="highlight"><pre><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"difference"</span> &gt;&gt;hello.txt
+<div class="highlight"><pre><span></span>$ <span class="nb">echo</span> <span class="s2">"difference"</span> &gt;&gt;hello.txt
 <span class="nv">$git</span> status 
 On branch master
 Changes to be committed:
@@ -128,14 +128,14 @@ Changes not staged <span class="k">for</span> commit:
     modified:   hello.txt
 </pre></div>
 <p>或者用－s参数：</p>
-<div class="highlight"><pre><span class="p">$</span><span class="nv">git</span><span class="x"> status -s</span>
+<div class="highlight"><pre><span></span><span class="p">$</span><span class="nv">git</span><span class="x"> status -s</span>
 <span class="x">MM hello.txt //在shell中2个M的颜色显示不一样</span>
 </pre></div>
 <p>这里可以明白，git中的add操作和svn中的add操作是完全不一样的意思。<br/>
 在git中， 执行add操作后是把文件加入版本库的暂存区，而commit针对的内容就只是暂存区。<br/>
 而 <code>git commit -a</code> 其实会先执行add操作再提交暂存区的内容，所以这样做是一个非常不好的实践，因为add到暂存区的操作实际是需要我们严格控制的。至于git上为什么要有这样的设计，那么需要知道 <code>reset</code> 命令。这个下次再讲。</p>
 <h2>反思</h2>
-<p>很早就知道“暂存区”的概念，可是一直没有深入。git 的 <code>add</code> 和 <code>commit</code> 一直使用，可是却没有想到背后的涵义。所谓 “知其然不知其所以然”，实是大忌！</p>
+<p>很早就知道“暂存区”的概念，可是一直没有深入。git 的 <code>add</code> 和 <code>commit</code> 一直使用，可是却没有想到背后的涵义。所谓 “知其然不知其所以然”，实是大忌！</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -167,12 +167,14 @@ Changes not staged <span class="k">for</span> commit:
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -181,47 +183,6 @@ Changes not staged <span class="k">for</span> commit:
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

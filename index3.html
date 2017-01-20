@@ -53,19 +53,266 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">RBStoryboardLink 的简介</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-03-13T17:30:00+08:00"> 五 13 三月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h3>1. Intro</h3>
+<p>今天简单介绍一下<a href="https://github.com/rob-brown/RBStoryboardLink">RBStoryboardLink</a>，这是一个方便在某个storyboard(下面我要用SB代之)中调用其他 SB 中的viewcontroller的项目  </p>
+<h3>2. RBStoryboardLink</h3>
+<h4>2.1 为什么要使用</h4>
+<p>当Apple越来越重视的SB时候，设计师们也愈发喜欢 SB 。如果你有一位喜欢使用SB的设计师，那么恭喜你，你可以少做很多开发准备了。然而，从项目的组织结构来考虑，不管是设计师或是开发人员，都不会使用单一SB(项目简单的除外)。我们往往会使用模块化的方式来分解，比如tab结构的app，每一个tab就可以视为一个模块。而sb文件中页面的跳转不能离开当前的sb文件，这时涉及到模块间页面跳转的情形，在sb中就无能为力了。通常的做法，就需要在代码中实现：  </p>
+<div class="highlight"><pre><span></span>//生成一个sb对象
+//获取此sb对象中的某一个scene
+//push/present该scene
+</pre></div>
+<p>而 RBStoryboardLink 就可以让你不依赖于代码，直接在sb文件中进行简单的“连接”即可。<br/>
+详细的使用方法见<a href="https://github.com/rob-brown/RBStoryboardLink#how-to-use">How to Use</a>(这里不做搬运苦力活了)。</p>
+<h4>2.2 ...</h4></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/storyboard.html">storyboard</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/appiumde-shi-yong.html" rel="bookmark" title="Permalink to Appium的使用">Appium的使用</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-03-08T14:00:00+08:00"> 日 08 三月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h3>1. Intro</h3>
+<p>本周业余时间，主要在研究如何使用Appium，内容包括Appium是什么，架构，安装，使用以及测试用例的写法。  </p>
+<h3>2. Appium简介</h3>
+<p>Appium的<a href="http://appium.io/introduction.html">Introduction</a>页面介绍了Appium，采用经典的CS架构，利用 WebDriver 封装调用各平台的测试框架(现在支持iOS，Android，FirefoxOS)，因此在使用的时候需要先启动服务器再在客户端进行测试。<br/>
+对技术细节及背后的实现感兴趣的，可以深入看源码。现在，我们的目标是运行Appium并成功进行测试。</p>
+<h3>3. Tutorial</h3>
+<p>为了上手，可以看<a href="http://appium.io/slate/en/master/#README.md">GetStarted</a>或者<a href="http://appium.io/slate/en/tutorial/ios.html">iOS Tutorial</a>。因为我只侧重iOS，因此下面把tutorial中涉及到的内容摘录出来。  </p>
+<h4>3.1 Environment(环境配置)</h4>
+<p>Install the latest stable release of Ruby.</p>
+<div class="highlight"><pre><span></span>\curl -sSL https://get ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/appiumde-shi-yong.html" rel="bookmark" title="Permalink to Appium的使用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ce-shi.html">测试</a>
+											<a class="danger label" href="http://icocoa.tk/tag/appium.html">appium</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Optional of swift</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-28T17:00:00+08:00"> 六 28 二月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h3>Intro</h3>
+<p>This is a category of study&amp;&amp;notes of swift, program and so on during the study of [Developing iOS8 Apps with Swift] on the <strong>iTunes U</strong>.<br/>
+此系列为学习stanford课程：Developing iOS8 Apps with Swift过程中，对语言，程序设计，编程能力等部分的学习和记录。</p>
+<h3>Optional</h3>
+<p>The simple way to declare a optional value:</p>
+<div class="highlight"><pre><span></span>var testString: String?
+</pre></div>
+<p>It means ...</p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/swift.html">swift</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/compare-of-testflightenterprise-distribution.html" rel="bookmark" title="Permalink to Compare of Testflight&&Enterprise Distribution">Compare of Testflight&&Enterprise Distribution</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-28T14:00:00+08:00"> 六 28 二月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h3>前言</h3>
+<p>应要求整理的分发方式比较。可惜了有enterprise的我们，还是没有充分利用enterprise的特点。<br/>
+下面从是否需要review，UDID以及下载方式进行比较，最后简单介绍利用dropbox进行wireless下载in-house app的过程。</p>
+<h3>1 Compare</h3>
+<p>First of all, a simple comparing of Tesftflight and Enterprise distribution is listed below.</p>
+<table>
+<thead>
+<tr>
+<th>Type</th>
+<th>TestFlight</th>
+<th>Enterprise</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Review by Apple</td>
+<td>Required</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>Device UDID</td>
+<td>Required</td>
+<td>NO</td>
+</tr>
+<tr>
+<td>Download</td>
+<td>TestFlight iOS App(iOS8)</td>
+<td>Custom Server</td>
+</tr>
+</tbody>
+</table>
+<h3>2 Testflight distribution</h3>
+<h4>2.1 Review</h4>
+<p>It ...</p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/compare-of-testflightenterprise-distribution.html" rel="bookmark" title="Permalink to Compare of Testflight&&Enterprise Distribution">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://icocoa.tk/tag/distribution.html">distribution</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">个人App发布前的测试</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-25T00:00:00+08:00"> 三 25 二月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>前言</h2>
+<p>假期里原本想好好的放松，多看几本书，多运动，不曾想一半的时间花费在修改bug上了。算上假期前提交的版本，整个春节期间发布了3个小版本的更新，申请了2次紧急提交审核。其中经历不可谓不惊心动魄，虽然未必对下载量有所帮助，但至少也让用户感觉到：这大过年的也在更新，也是蛮拼的了:-)。</p>
+<h2>测试流程</h2>
+<p>言归正传，春节期间提交的紧急修复起因都是程序出了严重的bug，而且都是在修复某个bug的过程中引入的bug。这说明即使是个人开发者，对于提交前的测试流程必须要重视。不管是养成一个好习惯，或者是开发出较高质量的程序，完备的测试是不可或缺的。下面结合自身的情况，把相应的测试守则完备下，督促自己执行。</p>
+<h3>功能设计和实现阶段</h3>
+<p>在分解App的功能的设计阶段，或者在实现功能的阶段，根据功能点，撰写相应的测试内容。具体来说就是针对每一个功能点，设计测试步骤；功能复杂的时候测试步骤也要细化。这里尤其要注意的是务必覆盖所有的功能点。此外，针对边界情况的测试，基本也包含在此阶段。</p>
+<h3>模块化集成阶段</h3>
+<p>当完成几个模块后，可以着手集成测试，这个阶段主要侧重运行时模块之间的运行情况。有时候单独的功能使用没有任何问题，但是当和其他模块功能一起使用的过程中，会发生问题。</p>
+<h3>测试环境</h3>
+<p>发布前的App必须完整经历Ad hoc版本的测试，因为developer模式下有些bug不会产生。这一点，相信很多人都深有体会 ...</p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ce-shi.html">测试</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">过去一周的思考</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-13T22:30:00+08:00"> 五 13 二月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>简介</h2>
+<p>过去的一周可以算是波澜起伏，主要关于两方面：一个是app的下载，另一个是app的发布。</p>
+<h2>app的下载</h2>
+<p>ASO是一个至今不得窥其入门的东西，某个收费的app自上线至今约3个月的时间保持平均每天3个的下载节奏。期间在app中集成的分享平台中发过带app的tag的链接（主要是国外的分享平台），这种方式可以引起用户的注意，可以算是营销的一种方式。只是一个人势单力薄，无法做到每天的更新。这种方式和app的下载互为因果，因为很难单纯的通过这种方式提高下载量，相反这种推广的效果还取决于app的下载基数。因此，我认为这属于“锦上添花”增加用户基数型的营销模式。<br/>
+虽然推广没有花费大力气，但是本周还是发生了下载量突变的情形。5-10日之间下载量分别是个位数，2位数，3位数，3位数，2位数，个位数。至此，恢复以往的平静。在此期间，做到分类付费和畅销排名前三。虽然之前也油锅这样的经历，但这次的app是收费的，意义不同寻常。此外，这样的一个过山车的表现也很让我诧异。是什么导致下载量突然的上升呢？我搜索了一下相关的分享平台，没有大量的使用app的痕迹。通过Appannie的变化追踪来看，我倾向于Apple调整了app的排名算法（如果这些下载量不是黑卡造成的话）。线索就在于5日以及之前的排名已经落后到不知什么地步，而后突然就排名上升。考虑到下载量在相应的category中中规中矩，评价几乎没有的情况，才做出算法调整的判断。<br/>
+这个 ...</br/></br/></p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="bookmark" title="Permalink to Xcode6制作iOS Framework">Xcode6制作iOS Framework</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-02-05T14:30:00+08:00"> 四 05 二月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>简介</h2>
+<p>最近需要用到Framework，在Xcode6上实践了一下，虽然制作原理没有变化，但在Xcode6中操作还是有一些不一样。我遇到的问题在<a href="http://www.raywenderlich.com/65964/create-a-framework-for-ios">raywenderlich</a>上都有解决。<br/>
+使用过第三方如统计之类工具的，对framework不会陌生。所以framework最大的一个好处就是提供接口但隐藏代码，在开发SDK过程中经常使用。</p>
+<h2>静态库模板</h2>
+<p>选择如下的静态模板创建工程，当然也可以在已有工程下创建新的target。这里可以看到Xcode6中新加了<code>Cocoa Touch Framework</code>，但是这里我们还是选择静态库模板。<br/>
+<img alt="static_template" src="./imgs/20150205/static_template.png"/></p>
+<h2>添加文件</h2>
+<p>Framework本身包含库头文件和静态库，所以首先我们要把需要打包成framework的文件添加的工程，注意添加的时候确认target对象是否正确。接下来，查看文件引用了哪些系统库，在<code>build phase-&gt;Link Binary With Libraries</code>中将系统库添加进去，通常会添加Foundation或是UIKit库。然后添加相应的代码，添加的时候注意target是库对象。再在<code>build phase-&gt;Headers</code>中找到头文件，将需要设置为public的文件拖到<code>Public</code>一榄。
+这时build一下，可以发现已经生成一个.a文件了。但此时还没有完成framework的制作：
+1 ...</p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="bookmark" title="Permalink to Xcode6制作iOS Framework">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://icocoa.tk/tag/framework.html">framework</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">[Tips]NSTimer对Target的强引用</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-01-22T17:30:00+08:00"> 四 22 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>NSTimer对Target的强引用</h2>
+<p>这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。</p>
+<div class="highlight"><pre><span></span>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
+</pre></div>
+<p>其中，API文档中清楚地解释到：</p>
+<blockquote>
+<p>The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is ...</p></blockquote></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark" title="Permalink to VOIP:pjsip的编译和使用">VOIP:pjsip的编译和使用</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-01-18T22:30:00+08:00"> 日 18 一月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>1pjsip简介</h2>
+				                <div class="entry-content"> <html><body><h2>1pjsip简介</h2>
 <p><a href="http://www.pjsip.org/">pjsip</a>是免费开源的多媒体通信库，纯c编写，可移植性非常好，支持多种协议，多种编/解码方式。对iOS的后台支持的很好(按文档的所说)，v2.3已经支持iOS上的视频传输。鉴于此，pjsip是实现VOIP比较好的选择。</p>
 <h2>2pjsip编译</h2>
 <p>可移植性(portable)是pjsip宣称的一大<a href="http://www.pjsip.org/about.htm#portable">特性</a>。在iOS上的使用方法，有详细的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/iPhone">使用手册</a>，这里会简单的记录下需要注意的地方。</p>
 <h3>2.1 准备</h3>
 <p>编译首先需要有源码，请到<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">这里</a>查看。对于想直接使用pjsip的建议直接下载release的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">稳定版本</a>，win系统请下zip格式，其余的请下tar格式。<br/>
 源码下载好后，进入其中的<code>./pjlib/include/pj/</code>，创建文件<code>config_site.h</code>， 内容如下：</p>
-<div class="highlight"><pre><span class="cp">#define PJ_CONFIG_IPHONE 1</span>
-<span class="cp">#include &lt;pj/config_site_sample.h ...</span></pre></div> </div><!-- /.entry-content -->
+<div class="highlight"><pre><span></span><span class="cp">#define PJ_CONFIG_IPHONE 1</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pj/config_site_sample.h ...</span></pre></div></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark" title="Permalink to VOIP:pjsip的编译和使用">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -85,12 +332,12 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-01-09T22:30:00+08:00"> 五 09 一月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>需求</h2>
+				                <div class="entry-content"> <html><body><h2>需求</h2>
 <p>限制字符输入长度是个常见的需求，比如注册的账号或者密码。通常，从用户体验的角度，iOS App中当输入超过制定长度的字符时不需要显式的弹出提示，而只需要让超过的字符不显示即可。这个功能看似简单，但是考虑到一些输入系统例如中文输入法的联想功能，就不那么简单。</p>
 <h2>一般的实现</h2>
 <p>以UITextField为例，通常的做法是在delegate中做文章。这样的解决方案很多，stackflow上一个比较全面的解答：<a href="http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield">Set the maximum character length of a UITextField</a>，大致的思路就是在输入即将要替换的时候，计算最终要显示的字符串。这个方法对于英文输入是没有问题的，但是对于其他语言如中文输入就会存在问题。举例来说中文拼音输入“的”时，用户需要输入de，在未选中“的”时，de以选中的状态在输入框中显示，并作为输入框的内容，如下图：</p>
 <p><img alt="input1" src="./imgs/20150109/IMG_0040.png"/><img alt="input2" src="./imgs/20150109/IMG_0041.png"/></p>
-<p>按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确 ...</p> </div><!-- /.entry-content -->
+<p>按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确 ...</p></body></html> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -99,227 +346,6 @@
 								<div class="row tag-row">
 										<span>Tagged as : </span>
 											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xin-nian-kai-pian.html" rel="bookmark" title="Permalink to 新年开篇">新年开篇</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2015-01-05T22:30:00+08:00"> 一 05 一月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>转眼间，又进入了新的一年。虽然农历新年尚有不到两个月，但年的氛围已经起来了。此时，尤其适合回顾过去，展望未来。</p>
-<h2>过去的2014年</h2>
-<p>过去的一年，收获还是颇多的。借鉴前几次计划的不足，2014年初制订计划的时候，没有那么“严格”。比如，要求看书的数量为两本，这样年尾的时候，不至于完不成目标还给自己太大的心里负担。</p>
-<h2>iOS</h2>
-<p>iOS的开发是主打，iOS8新特性的extension总算搞明白并使用在自己的app里。
-个人app今年终于上线，总共3个，分别对应不同的类型。原先打算通过挂广告赚点零花钱，却不曾想这条路对于我是那么艰难。反倒是一个付费的app，有不俗的表现，起码明年的续费不用担心了。这给我很大的感触，就是创造的东西要解决用户的实际需求，说的好看点就是时下流行的“抓住用户的痛点”。这个怎么抓，只能各自去体会。自己的经验而言，首要的是行动，想那么多不如先做一点点；在实际航行的时候，再一点点的调整方向。等有了经验以后，有些东西就会水到渠成了。</p>
-<h2>SAE</h2>
-<p>sae上搭建了一些小服务，主要是用于app中的版本检查之类。服务端的开发没有深入，这一块可能会在今年加快实施的步伐，不过现在还没有得到明确的消息。之前搭建的wordpress偷偷的浪费了不少云豆，索性停了 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/xin-nian-kai-pian.html" rel="bookmark" title="Permalink to 新年开篇">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">NSZombierEnable</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-12-18T10:30:00+08:00"> 四 18 十二月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>今天在cocoachina上看到一篇关于实现NSZombier的翻译贴，原文来自<a href="https://mikeash.com/">Mike Ash</a>。此人是(Friday Q&amp;A)的作者，更为神奇的是他白天是飞行员，晚上是程序员，这在天朝不可想像。本文主要是基于他以下两篇文章的笔记。<br/>
-<a href="https://mikeash.com/pyblog/friday-qa-2014-11-07-lets-build-nszombie.html">Friday Q&amp;A 2011-05-20: The Inner Life of Zombies</a><br/>
-<a href="https://mikeash.com/pyblog/friday-qa-2011-05-20-the-inner-life-of-zombies.html">Friday Q&amp;A 2014-11-07: Let's Build NSZombie</a></p>
-<h3>启用NSZombier对象</h3>
-<p>有经验的开发者在遇到诸如<code>EXC_BAD_ACCESS</code>的错误时往往会设置<code>NSZombieEnabled</code>为<code>YES</code>，这样类似的错误发生后，就可以定位到出错的位置，从而便于诊断问题所在。<br/>
-诸如此类的内存错误不管是MRC还是ARC下，都是会发生的。发生的原因在于：一个已经release的指针对象，又收到了某个消息，这时就会发生古怪。在MRC下，alloc一个对象A，然后release后，该对象所指向的内存被系统回收 ...</br/></p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/nszombierenable.html" rel="bookmark" title="Permalink to NSZombierEnable">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/find-all-unlocalized-strings.html" rel="bookmark" title="Permalink to Find All Unlocalized Strings">Find All Unlocalized Strings</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-12-16T17:30:00+08:00"> 二 16 十二月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h3>Requirements</h3>
-<p>We have a project which uses <code>NSLocalizedString</code> macro but some strings  are not localized in the <code>Localizable.strings</code> file. What we do is to find all these strings and implement the <code>Localizable.strings</code> file.</p>
-<h3>Apple's Tool</h3>
-<p>As I refered <a href="http://stackoverflow.com/a/27266522/371974">here</a>, Apple has a built-in tool but is for ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/find-all-unlocalized-strings.html" rel="bookmark" title="Permalink to Find All Unlocalized Strings">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/localized.html">Localized</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/dong-de-zhi-sun.html" rel="bookmark" title="Permalink to 懂得止损">懂得止损</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-12-08T22:30:00+08:00"> 一 08 十二月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <h2>缘起</h2>
-<p>止损一词似乎在股市中运用的颇多，大概是直接和金钱有联系的缘故。可是大家不要忘记，在当下，每个人的实践也是笔巨大的财富。想想首富们一分钟能赚的钱，就知道此言不虚。虽然你我离首富尚有些距离，但时间的宝贵会随着年龄的增长与日俱增。<br/>
-最近在做app的分享功能，使用的是<code>Umeng</code>的组件，之所以使用Umeng是因为：</p>
-<ol>
-<li>之前在技术群中，经常见到有人对shareSDK的诟病</li>
-<li>使用umeng的统计组件，对其印象不错
-可是，偏偏这个分享，花费了整整一周的时间。<br/>
-虽然我在这里直接列出了umeng和sharesdk，但是绝无软广的意思，想表达的是在浪费了一定宝贵时间的时候，个人应该如何选择分析并做出决策的重要性。</li>
-</ol>
-<h2>事件过程</h2>
-<p>分享的问题主要是facebook分享失败。在facebook的开发页面注册好app，申请并通过了pulic_action(是post wall的必须)的权限。由于疏忽，使用了Test User进行share的测试，没有任何问题。可是，使用了一个普通账号——既不是admin，也不是developer或tester的账号进行测试时，就会发现分享失败。经过排查，发现在第一次授权的时候，facebook授权页面上显示<code>该app不能post wall</code>。我的第一直觉先是排查app的设置，未果后联系umeng的客服(这里需要点名一下 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/dong-de-zhi-sun.html" rel="bookmark" title="Permalink to 懂得止损">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/.html"></a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">App Extension Study 4</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-19T10:00:00+08:00"> 三 19 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: ios8 app extension</p>
-<h3>1 开始</h3>
-<p>本篇介绍剩下的<code>Custom Keyboard</code>，之前的3篇： </p>
-<ul>
-<li><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>: 介绍了Extension的基本概念/运行周期/数据共享等通用技术细节  </li>
-<li><a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践:widget，share，action和Photo Editing</li>
-<li><a href="http://github.icocoa.tk/app-extension-study-3.html">第三篇</a>介绍并实践了Sync和File Procvider</li>
-</ul>
-<h3>2 Custom Keyboard</h3>
-<p>iOS8终于对第三方输入法开放，引起一片毋需越狱的呼声，这就是通过extension实现的。在以前，app可以单独实现适合自己的文本输入法；而iOS8上，如果用户在设置中添加第三方的键盘，就会对所有app可见(如果app没有禁止使用第三方输入法的话)。对于重视用户隐私的苹果公司而言，虽然开放了输入法的扩展，但是对于用户数据和隐私的保护是非常重视，因此在开发的时候要时刻关注。</p>
-<h4>2.1 第三方输入法要具备的特征</h4>
-<p>输入法的核心是要对用户的点击等手势及时的响应，提供可选的文本和插入文本等。除此之外，重要的就是要能够切换到下一个输入法。苹果文档中列出了一些特征 ...</p> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-4.html" rel="bookmark" title="Permalink to App Extension Study 4">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
-											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Git版本库管理</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-18T10:30:00+08:00"> 二 18 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>在开发过程中往往会使用第三方库，可有时候会因为某种原因不使用了，我们可以使用 <code>reset</code>或是直接删除的方式将库删除，比如开发中用到了某度的SDK，可是发现crash的概率太大需要舍弃之。可是，这些库的影子还在版本库的历史中可以找到，会增大库的体积。这时候我们就需要完全清楚这些“残留”文件。<br/>
-本篇内容可在<a href="http://www.amazon.cn/gp/product/B0058FLC40/ref=as_li_ss_tl?ie=UTF8&amp;camp=536&amp;creative=3132&amp;creativeASIN=B0058FLC40&amp;linkCode=as2&amp;tag=scorpiozj-23">Git权威指南</a>第14章中找到。</p>
-<h4>松散对象</h4>
-<p>Git中对于以SHA1值作为目录名和文件保存的对象称之为松散对象。因此 add，commit等操作都会产生一系列的松散对象。大量的松散对象会造成访问效率低下，占用过多存储空间。在Git中可以通过打包的方式提高访问效率，同时也方便通过增量更新的方式节省存储空间。</p>
-<h4>暂存区中的临时对象</h4>
-<p>添加到暂存区的文件发现不需要了，我们应该怎么办？
-首先我们复制2个稍大的(10M)的文件到工作区，然后添加到暂存区：</p>
-<div class="highlight"><pre><span class="nv">$ </span>cp /Users/xxxxx/Desktop/test.zip bigfile
-<span class="nv">$ </span>cp /Users/xxxxx/Desktop/test.zip bigfile.dup
-<span class="nv">$ </span>git add bigfile ...</pre></div> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/gitban-ben-ku-guan-li.html" rel="bookmark" title="Permalink to Git版本库管理">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/git.html">git</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">App Extension Study 3</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-14T16:00:00+08:00"> 五 14 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>Author: Charles Zhu<br/>
-Summary: ios8 app extension</p>
-<h3>1 开始</h3>
-<p><a href="http://github.icocoa.tk/app-extension-study-1.html">第一篇</a>介绍了Extension的基本概念，Extension的运行周期，和containing app的数据共享等细节，<a href="http://github.icocoa.tk/app-extension-study-2.html">第二篇</a>介绍并实践了4种extension，而本篇就要介绍Sync和File Provider。 </p>
-<h3>2 Finder Sync (OS X)</h3>
-<p>因为extension要运行在10.10的OS X上，由于没升级，所以本节就侧重“理论”了。  </p>
-<h4>2.1 含义</h4>
-<p>顾名思义，就是保持本地的某些文件夹和远程的文件夹内容保持一致。它可以让用户在Finder实时察觉同步的状态并随时控制同步的进程。比如说可以在文件夹上加badge或是文字来告诉用户当前的状态，或是在Finder窗口添加工具栏方便打开监视的文件夹或强制退出同步(不知道网盘类的应用如何集成该extension呢)。因此，<code>Finder Sync</code>的host app只能是<code>Finder</code>。<br/>
-<code>Finder Sync</code>可以：</p>
-<ul>
-<li>注册一系列文件夹进行同步</li>
-<li>当用户打开 ...</li></ul> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/app-extension-study-3.html" rel="bookmark" title="Permalink to App Extension Study 3">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
-											<a class="danger label" href="http://icocoa.tk/tag/appextension.html">AppExtension</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Pelican若干问题汇总</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <p>前几天感冒，鼻塞导致做任何事情都没有精力，只能花点时间整理pelican使用中遇到的一些问题。</p>
-<h4>WARNING: No valid files found in content.</h4>
-<p>使用<code>fab build</code>后命令行中出现如下的警告:</p>
-<blockquote>
-<p>[localhost] local: pelican -s pelicanconf.py
-WARNING: No valid files found in content.
-WARNING: Could not process content/output/archives.html
-'NoneType' object has no attribute 'lower'
-WARNING: Could not process content/output/authors.html
-'NoneType ...</p></blockquote> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/python.html">python</a>
-											<a class="danger label" href="http://icocoa.tk/tag/pelican.html">pelican</a>
 								</div>
 
 
@@ -338,12 +364,14 @@ WARNING: Could not process content/output/authors.html
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -352,47 +380,6 @@ WARNING: Could not process content/output/authors.html
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 
@@ -408,7 +395,7 @@ WARNING: Could not process content/output/authors.html
 
 <p class="paginator">
             <a href="http://icocoa.tk/index2.html"><i class="icon-arrow-left"></i></a>
-    Page 3 / 5
+    Page 3 / 6
         <a href="http://icocoa.tk/index4.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->

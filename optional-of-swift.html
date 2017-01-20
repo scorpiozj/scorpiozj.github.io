@@ -64,12 +64,12 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <h3>Intro</h3>
+              <html><body><h3>Intro</h3>
 <p>This is a category of study&amp;&amp;notes of swift, program and so on during the study of [Developing iOS8 Apps with Swift] on the <strong>iTunes U</strong>.<br/>
 此系列为学习stanford课程：Developing iOS8 Apps with Swift过程中，对语言，程序设计，编程能力等部分的学习和记录。</p>
 <h3>Optional</h3>
 <p>The simple way to declare a optional value:</p>
-<div class="highlight"><pre>var testString: String?
+<div class="highlight"><pre><span></span>var testString: String?
 </pre></div>
 <p>It means: <code>testString</code> is an <strong>optional value</strong> and if <code>testString</code> has a value, it must be a string; if not, it is <code>nil</code>. Notice:</p>
 <ol>
@@ -78,7 +78,7 @@
 <li>using <code>!</code> to unwrapped the optional value to get/set</li>
 </ol>
 <p>From the above, for the normal <code>var</code>, we don't need to check like:</p>
-<div class="highlight"><pre>var testString: String = "demo"
+<div class="highlight"><pre><span></span>var testString: String = "demo"
 if testString {
 
 }
@@ -86,10 +86,10 @@ if testString {
 <p>It will have an error. <br/>
 nil is different from that in ObjC.  </p>
 <p>During the course, there is another way to declare optional:</p>
-<div class="highlight"><pre>@IBOutlet weak var label: UILabel!
+<div class="highlight"><pre><span></span>@IBOutlet weak var label: UILabel!
 </pre></div>
 <p>The <code>Paul</code> says it is called <code>implicit optional value</code>. The difference of optional between using ? and ! only lies in usage, for example:</p>
-<div class="highlight"><pre>var label: UILabel?
+<div class="highlight"><pre><span></span>var label: UILabel?
 label!.text!= label!.text! + digit
 
 var label2: UILabel!
@@ -102,7 +102,7 @@ label2.text! = label2.text! + digit
 <p>Optional chaining is a process for querying and calling properties, methods, and subscripts on an optional that might currently be nil.</p>
 </blockquote>
 <p>Just grab the example from the book:</p>
-<div class="highlight"><pre>if​ ​let​ ​johnsStreet​ = ​john​.​residence​?.​address​?.​street​ {
+<div class="highlight"><pre><span></span>if​ ​let​ ​johnsStreet​ = ​john​.​residence​?.​address​?.​street​ {
 ​    ​println​(​"John's street name is ​\(​johnsStreet​)​."​)
 ​} ​else​ {
 ​    ​println​(​"Unable to retrieve the address."​)
@@ -114,7 +114,7 @@ There is an important thing: any method,property called in the <code>optional ch
 <h3>Why we need optional</h3>
 <p>In swift, <code>nil</code> is not a <strong>value</strong>, and hence the normal var can't have the value of <code>nil</code>. But we do need leave the var empty(without value), and <code>optional</code> comes for that.</p>
 <h3></h3>
-<h3></h3>
+<h3></h3></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -146,12 +146,14 @@ There is an important thing: any method,property called in the <code>optional ch
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -160,47 +162,6 @@ There is an important thing: any method,property called in the <code>optional ch
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 

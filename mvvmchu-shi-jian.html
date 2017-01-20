@@ -64,7 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <p>Author: Charles Zhu<br/>
+              <html><body><p>Author: Charles Zhu<br/>
 Summary: a sample project practising MVVM</p>
 <p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br/>
 考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br/>
@@ -85,7 +85,7 @@ Summary: a sample project practising MVVM</p>
 <li><code>UITableView</code>的 <code>dataSource</code>
 dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上的文件名也要通过VM来获取</li>
 <li>数据获取的时机
-一般是在VM的信号didBecomeActiveSignal中去注册相应的事件。当事件完成后（获取列表任务），发送更新signal去通知控制器更新页面，因此在控制器中也要注册更新signal收到时相应的事件。整个伪代码逻辑：  <div class="highlight"><pre><span class="c1">//ViewController</span>
+一般是在VM的信号didBecomeActiveSignal中去注册相应的事件。当事件完成后（获取列表任务），发送更新signal去通知控制器更新页面，因此在控制器中也要注册更新signal收到时相应的事件。整个伪代码逻辑：  <div class="highlight"><pre><span></span><span class="c1">//ViewController</span>
     <span class="p">@</span><span class="n">weakify</span><span class="p">(</span><span class="nb">self</span><span class="p">)</span>
 <span class="p">[</span><span class="nb">self</span><span class="p">.</span><span class="n">viewModel</span><span class="p">.</span><span class="n">updatedContentSignal</span> <span class="nl">subscribeNext</span><span class="p">:</span><span class="o">^</span><span class="p">(</span><span class="kt">id</span> <span class="n">x</span><span class="p">)</span> <span class="p">{</span>
 <span class="p">@</span><span class="n">strongify</span><span class="p">(</span><span class="nb">self</span><span class="p">);</span>
@@ -116,7 +116,7 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
 <h3>Cell的点击</h3>
 <p>由于有文件和文件夹的区别，cell无法在storyboard中创建2个push的segue，所以先利用对于文件夹的点击在<code>UITableView</code>的点击delegate事件中进行操作，而文件的点击则通过<code>performSegueWithIdentifier</code>来实现。</p>
 <h3>总结</h3>
-<p>总体来说，实践基本按循MVVM的原则来进行，控制器中的内容变得很清爽，基本上只包含对view的控制，和VM的通信则是通过响应式的方式实现的。同时VM中包含了很多数据处理的内容，基本上逻辑的部分都转移到了VM中进行。在这种情况下，一个controller就要配一个VM，不知道会不会又造成VM的臃肿？</p>
+<p>总体来说，实践基本按循MVVM的原则来进行，控制器中的内容变得很清爽，基本上只包含对view的控制，和VM的通信则是通过响应式的方式实现的。同时VM中包含了很多数据处理的内容，基本上逻辑的部分都转移到了VM中进行。在这种情况下，一个controller就要配一个VM，不知道会不会又造成VM的臃肿？</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
@@ -148,12 +148,14 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
 
 <h4>Categories</h4>
 <ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
 		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">[iOSTips]</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
 		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
 		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
 		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
@@ -162,47 +164,6 @@ dataSource相应的接口需要由VM来实现。在实现cell的时候，cell上
 
 <h4>Tags</h4>
 	<ul>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pjsip.html">pjsip</a></li>
-	    <li class="tag-1"><a href="http://icocoa.tk/tag/ios.html">iOS</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/objc.html">objc</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pattern.html">pattern</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ios8.html">ios8</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/mvvm.html">MVVM</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/framework.html">framework</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/swift.html">swift</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uitableviewcell.html">UITableViewCell</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/appium.html">appium</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/linux.html">linux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/distribution.html">distribution</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/zong-jie-ji-hua.html">总结 计划</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/wwdc-2014.html">wwdc 2014</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/svn.html">svn</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/quartzcomposer.html">QuartzComposer</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/stringsdict.html">stringsdict</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/ui.html">ui</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/sketch.html">sketch</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/quartzcore.html">quartzcore</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/storyboard.html">storyboard</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/python.html">python</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/ux.html">ux</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/revert.html">revert</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/autolayout.html">autolayout</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/eclipse.html">eclipse</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/security.html">security</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/appextension.html">AppExtension</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/pelican.html">pelican</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localized.html">Localized</a></li>
-	    <li class="tag-2"><a href="http://icocoa.tk/tag/git.html">git</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/jdk.html">jdk</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/uilabel.html">UILabel</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/mvc.html">mvc</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/.html"></a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/sigsegv.html">sigsegv</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/design.html">design</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/launch-screen.html">launch screen</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/uiscrollview.html">UIScrollView</a></li>
-	    <li class="tag-3"><a href="http://icocoa.tk/tag/ce-shi.html">测试</a></li>
-	    <li class="tag-4"><a href="http://icocoa.tk/tag/localization.html">Localization</a></li>
 </ul>
 
 
