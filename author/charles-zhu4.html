@@ -53,6 +53,84 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">[Tips]NSTimer对Target的强引用</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-01-22T17:30:00+08:00"> 四 22 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>NSTimer对Target的强引用</h2>
+<p>这是一个老坑，虽然app发生错误后经过一些调试很快定位到NSTimer，还是觉得有必要记录下。</p>
+<div class="highlight"><pre><span></span>+ (NSTimer *)scheduledTimerWithTimeInterval:(NSTimeInterval)ti target:(id)aTarget selector:(SEL)aSelector userInfo:(id)userInfo repeats:(BOOL)yesOrNo
+</pre></div>
+<p>其中，API文档中清楚地解释到：</p>
+<blockquote>
+<p>The object to which to send the message specified by aSelector when the timer fires. The timer maintains a strong reference to target until it (the timer) is ...</p></blockquote></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/tipsnstimerdui-targetde-qiang-yin-yong.html" rel="bookmark" title="Permalink to [Tips]NSTimer对Target的强引用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark" title="Permalink to VOIP:pjsip的编译和使用">VOIP:pjsip的编译和使用</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-01-18T22:30:00+08:00"> 日 18 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>1pjsip简介</h2>
+<p><a href="http://www.pjsip.org/">pjsip</a>是免费开源的多媒体通信库，纯c编写，可移植性非常好，支持多种协议，多种编/解码方式。对iOS的后台支持的很好(按文档的所说)，v2.3已经支持iOS上的视频传输。鉴于此，pjsip是实现VOIP比较好的选择。</p>
+<h2>2pjsip编译</h2>
+<p>可移植性(portable)是pjsip宣称的一大<a href="http://www.pjsip.org/about.htm#portable">特性</a>。在iOS上的使用方法，有详细的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/iPhone">使用手册</a>，这里会简单的记录下需要注意的地方。</p>
+<h3>2.1 准备</h3>
+<p>编译首先需要有源码，请到<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">这里</a>查看。对于想直接使用pjsip的建议直接下载release的<a href="http://trac.pjsip.org/repos/wiki/Getting-Started/Download-Source">稳定版本</a>，win系统请下zip格式，其余的请下tar格式。<br/>
+源码下载好后，进入其中的<code>./pjlib/include/pj/</code>，创建文件<code>config_site.h</code>， 内容如下：</p>
+<div class="highlight"><pre><span></span><span class="cp">#define PJ_CONFIG_IPHONE 1</span>
+<span class="cp">#include</span> <span class="cpf">&lt;pj/config_site_sample.h ...</span></pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/voippjsipde-bian-yi-he-shi-yong.html" rel="bookmark" title="Permalink to VOIP:pjsip的编译和使用">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://icocoa.tk/tag/pjsip.html">pjsip</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">限制文本输入长度</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-01-09T22:30:00+08:00"> 五 09 一月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h2>需求</h2>
+<p>限制字符输入长度是个常见的需求，比如注册的账号或者密码。通常，从用户体验的角度，iOS App中当输入超过制定长度的字符时不需要显式的弹出提示，而只需要让超过的字符不显示即可。这个功能看似简单，但是考虑到一些输入系统例如中文输入法的联想功能，就不那么简单。</p>
+<h2>一般的实现</h2>
+<p>以UITextField为例，通常的做法是在delegate中做文章。这样的解决方案很多，stackflow上一个比较全面的解答：<a href="http://stackoverflow.com/questions/433337/set-the-maximum-character-length-of-a-uitextfield">Set the maximum character length of a UITextField</a>，大致的思路就是在输入即将要替换的时候，计算最终要显示的字符串。这个方法对于英文输入是没有问题的，但是对于其他语言如中文输入就会存在问题。举例来说中文拼音输入“的”时，用户需要输入de，在未选中“的”时，de以选中的状态在输入框中显示，并作为输入框的内容，如下图：</p>
+<p><img alt="input1" src="./imgs/20150109/IMG_0040.png"/><img alt="input2" src="./imgs/20150109/IMG_0041.png"/></p>
+<p>按照中文的输入法，de两个字符并不是最终显示在UITextField控件中，所以背景有选中区域，但此时UITextFiled的属性<em>text</em>的内容包含de。然后，右图显示的是输入“的”后产生的联想，注意此时点击“确 ...</p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/xian-zhi-wen-ben-shu-ru-chang-du.html" rel="bookmark" title="Permalink to 限制文本输入长度">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/objc.html">objc</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xin-nian-kai-pian.html" rel="bookmark" title="Permalink to 新年开篇">新年开篇</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-01-05T22:30:00+08:00"> 一 05 一月 2015 </abbr>
@@ -242,94 +320,6 @@ Summary: ios8 app extension</p>
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Pelican若干问题汇总</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>前几天感冒，鼻塞导致做任何事情都没有精力，只能花点时间整理pelican使用中遇到的一些问题。</p>
-<h4>WARNING: No valid files found in content.</h4>
-<p>使用<code>fab build</code>后命令行中出现如下的警告:</p>
-<blockquote>
-<p>[localhost] local: pelican -s pelicanconf.py
-WARNING: No valid files found in content.
-WARNING: Could not process content/output/archives.html
-'NoneType' object has no attribute 'lower'
-WARNING: Could not process content/output/authors.html
-'NoneType ...</p></blockquote></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/python.html">python</a>
-											<a class="danger label" href="http://icocoa.tk/tag/pelican.html">pelican</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">文件权限</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><h4>权限</h4>
-<p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
-    ls -l README
-    -rw-r--r--   1 xxxx  staff    234 Nov  9 11:27 README
-说明：<br/>
-第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br/>
-第二列数字1表示索引节点的目录连接。
-第三列就是文件拥有者的名字，第四列则是共享文件所在组。
-第五列是文件的字节数，第六、七、八列是时间，最后一列是名字。
-其中文件权限可以用二进制表达，该例对应的则是： <code>110100100</code>，用十进制表达则是： <code>644</code>。因此，有时候修改权限 <code>777</code>的时候，就一定要小心了 ...</br/></br/></p></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/security.html">security</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">iOS8下控件的旋转</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-11-07T16:00:00+08:00"> 五 07 十一月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><h4>由起</h4>
-<p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
-<h4>修复</h4>
-<p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
-<div class="highlight"><pre><span></span>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
-    {
-        switch (interfaceOrientation) {
-            case UIInterfaceOrientationLandscapeLeft:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
-                break;
-
-            case UIInterfaceOrientationLandscapeRight:
-                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -348,6 +338,7 @@ WARNING: Could not process content/output/authors.html
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
 		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/oauth20.html">OAuth2.0</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
 		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>

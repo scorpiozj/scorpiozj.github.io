@@ -53,6 +53,94 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Pelican若干问题汇总</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>前几天感冒，鼻塞导致做任何事情都没有精力，只能花点时间整理pelican使用中遇到的一些问题。</p>
+<h4>WARNING: No valid files found in content.</h4>
+<p>使用<code>fab build</code>后命令行中出现如下的警告:</p>
+<blockquote>
+<p>[localhost] local: pelican -s pelicanconf.py
+WARNING: No valid files found in content.
+WARNING: Could not process content/output/archives.html
+'NoneType' object has no attribute 'lower'
+WARNING: Could not process content/output/authors.html
+'NoneType ...</p></blockquote></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/pelicanruo-gan-wen-ti-hui-zong.html" rel="bookmark" title="Permalink to Pelican若干问题汇总">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/python.html">python</a>
+											<a class="danger label" href="http://icocoa.tk/tag/pelican.html">pelican</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">文件权限</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-09T16:00:00+08:00"> 日 09 十一月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h4>权限</h4>
+<p>Linux系统中对文件/目录的权限设置是很重要的部分，通常通过<code>ls</code>来查看：
+    ls -l README
+    -rw-r--r--   1 xxxx  staff    234 Nov  9 11:27 README
+说明：<br/>
+第一列就是权限，有10位，从左至右第一位表示文件的类型，<strong>-__表示是文件，__d__表示是目录。接下来的9位分成3组，分别对应文件拥有者，共享文件所在组以及其他用户拥有的权限。__r__表示可读，__w__表示可写，__x__表示可执行，</strong>-__表示没有该项权限。<br/>
+第二列数字1表示索引节点的目录连接。
+第三列就是文件拥有者的名字，第四列则是共享文件所在组。
+第五列是文件的字节数，第六、七、八列是时间，最后一列是名字。
+其中文件权限可以用二进制表达，该例对应的则是： <code>110100100</code>，用十进制表达则是： <code>644</code>。因此，有时候修改权限 <code>777</code>的时候，就一定要小心了 ...</br/></br/></p></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/wen-jian-quan-xian.html" rel="bookmark" title="Permalink to 文件权限">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/security.html">security</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">iOS8下控件的旋转</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-11-07T16:00:00+08:00"> 五 07 十一月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><h4>由起</h4>
+<p>使用iOS8 SDK编译后的项目在ipad上运行发现某些控件如HUD弹出后它的位置有了旋转，但是该现象在iOS8的iphone设备上却没有出现。果断认为是iOS8SDK引起的，需要做紧急修复。</p>
+<h4>修复</h4>
+<p>代码中迅速找到<code>rotation</code>的相关部分，发现已经是使用<code>[[UIApplication sharedApplication] statusBarOrientation]</code>，那应该不会是方向获取错误导致的。那姑且以为是iPad上特有的现象，于是加了设备的判断，测试通过！可惜在iOS7的iPad上还是有问题，正当烦恼之际，突然想起之前的某个<a href="https://github.com/wimagguc/ios-custom-alertview/issues/50">issue</a>，果然是同样的问题，最终的解决方案是: </p>
+<div class="highlight"><pre><span></span>if (floor(NSFoundationVersionNumber) &lt;= NSFoundationVersionNumber_iOS_7_1)
+    {
+        switch (interfaceOrientation) {
+            case UIInterfaceOrientationLandscapeLeft:
+                self.transform = CGAffineTransformMakeRotation(M_PI * 270.0 / 180.0);
+                break;
+
+            case UIInterfaceOrientationLandscapeRight:
+                self.transform = CGAffineTransformMakeRotation(M_PI * 90.0 / 180 ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://icocoa.tk/ios8xia-kong-jian-de-xuan-zhuan.html" rel="bookmark" title="Permalink to iOS8下控件的旋转">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://icocoa.tk/tag/ios8.html">ios8</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html" rel="bookmark" title="Permalink to iOS8之UIAlertController">iOS8之UIAlertController</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-11-05T11:00:00+08:00"> 三 05 十一月 2014 </abbr>
@@ -268,110 +356,6 @@ Summary: a guide to QuartzComposer</p>
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">MVVM初实践</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-08-25T10:00:00+08:00"> 一 25 八月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: a sample project practising MVVM</p>
-<p>之前已经初步了解了一些MVVM的概念，需要在实践中体会这种设计模式，并理解“响应式”带来的优越性。<br/>
-考虑到最近一直在做网盘类产品，于是决定：获取网盘的内容，并可以浏览内容。如果是文件夹的话，则可以点击查看内容。这样，就相当于实现了一个小型的文件查看器。<br/>
-另外需要说明的，这里的网盘其实是一个带有系统的SD卡，自身带有AP，可以无线连接访问。同时，提供了API接口获取相关的数据。</p>
-<h3>MVVM 的角色分配</h3>
-<p>视图无疑是用<code>UITableView</code>, 控制器自然选择<code>UITableViewController</code>,自然这里需要建立一个<code>ViewModel</code>来监视一切变化并把这种变化传递给控制器。</p>
-<h3>已知的VM任务</h3>
-<ol>
-<li>获取文件夹列表
- VM需要知道当前所在的路径。另外获取到的数据需要重组：比如去掉隐藏文件，进行排序等。这个操作可以封装在某个数据访问层。</li>
-<li>cell的点击操作
-对于文件，需要把文件内容显示出来(为了方便，这里只对图片文件显示)。  </li>
-</ol>
-<h3>控制器的任务 ...</h3></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/mvvmchu-shi-jian.html" rel="bookmark" title="Permalink to MVVM初实践">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/mvvm.html">MVVM</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">CentOS6.5 安装eclipse</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-23T10:00:00+08:00"> 三 23 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: install eclipse on centos6.5</p>
-<p>最近要开始折腾centos了，需要用eclipse，下面记录下安装中遇到的问题。</p>
-<h3>eclipse 下载</h3>
-<p>直接在<a href="https://www.eclipse.org/downloads/">官网</a>下载，选择合适的版本：网站会识别操作系统，主要注意是32位还是64位<br/>
-下载后，解压打开，双击eclipse的可执行程序，发现不能启动。弹出的提示说系统的jvm是1.6，而最新luna版需要1.7或以上。</p>
-<h3>jdk安装</h3>
-<p>主要参考了<a href="http://www.cnblogs.com/zhoulf/archive/2013/02/04/2891608.html">这篇文章</a>，具体过程就不多说了，注意操作要在su账号下。</p>
-<h4>source /etc/profile 不生效</h4>
-<p>虽然具体步骤不需多讲，不过我遇到了一个以前偶尔也碰到过的问题，就是执行完source后环境变量没有生效的问题。具体的状况是：  </p>
-<ol>
-<li>在su下，执行完source /etc/profile，查看$PATH，添加的变量已经生效</li>
-<li>退出su，查看 ...</li></ol></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/centos65-an-zhuang-eclipse.html" rel="bookmark" title="Permalink to CentOS6.5 安装eclipse">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/linux.html">linux</a>
-											<a class="danger label" href="http://icocoa.tk/tag/eclipse.html">eclipse</a>
-											<a class="danger label" href="http://icocoa.tk/tag/jdk.html">jdk</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">design+code tutorial1 笔记</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-07-17T17:00:00+08:00"> 四 17 七月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: design笔记</p>
-<ol>
-<li>
-<p>背景<br/>
-添加2个overlay层渲染，分别斜对角线性和圆渐变</p>
-</li>
-<li>
-<p>iOS7模板文件
-normal #FAC3FF 10%</p>
-</li>
-<li>
-<p>base shape
-normal #FAC3FF 10%
-添加圆形，斜对角渐变</p>
-</li>
-<li></li>
-</ol></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/designcode-tutorial1-bi-ji.html" rel="bookmark" title="Permalink to design+code tutorial1 笔记">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/design.html">design</a>
-											<a class="danger label" href="http://icocoa.tk/tag/sketch.html">sketch</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -390,6 +374,7 @@ normal #FAC3FF 10%
 		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
 		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/oauth20.html">OAuth2.0</a></li>
 		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
 		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
 		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>

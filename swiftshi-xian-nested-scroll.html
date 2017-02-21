@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Swift实现Nested Scroll</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/swiftshi-xian-nested-scroll.html" rel="bookmark"
+                   title="Permalink to Swift实现Nested Scroll">Swift实现Nested Scroll</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-01-20T20:20:00+08:00">
+                五 20 一月 2017
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <html><body><h2>概述</h2>
+<p>2016年终于把学习swift的计划付诸行动，在班车上把v3.0.1版本的Programming Language看完了。但是，“纸上得来终觉浅，绝知此事要躬行”，于是打算用swift把经典的nested scroll实现一遍。
+WWDC2013-217的主题是<code>探索(explore) scroll</code>，包含实现imessage中消息滚动时的动画和nested scroll，个中的原理不多说，只简单罗列实现步骤，侧重的还是swift在项目中的应用。</p>
+<h2>imessage式消息滚动弹性动画</h2>
+<p><code>UICollectionView</code>的实现是<code>layout</code> 和 <code>UICollectionReusableView</code>的结合，因此该动画的实现主要是基于layout的操作。基本步骤如下：   </p>
+<ol>
+<li>实现layout子类</li>
+<li>给cell添加动画：UIAttachmentBehavior</li>
+<li>滚动的时候，更改动画的锚点并更新动画：锚点的变化取决于锚点先前位置和手指滑动位置</li>
+</ol>
+<h2>nested scroll</h2>
+<p>nested scroll，顾名思义，即几个scroll叠加。滑动的时候，View Tree上处于叶节点位置的view先滑动，滑动到一定程度后，该view的父view继续滚动。基本思路： </p>
+<ol>
+<li>检测滑动的边际，是否超出阈值；未超出阈值的情况下，要让父view禁止滑动</li>
+<li>超出阈值，根据滚动速度计算父view的偏移量，并更新</li>
+<li>滑动停止后，让父view再次响应滑动</li>
+</ol>
+<p>在第二步中，设置父view偏移的时候如果使用<code>setContentOffset(_ contentOffset: CGPoint, animated: Bool)</code>, animated需为false。</p>
+<h2>swift相关内容</h2>
+<h3>type casting</h3>
+<p>swift中数值类型如Float，Double等都是struct；CG中的类型也进行了struct重写。因此，数值之间的转换需要显式转换，否则编译器会报错。<br/>
+类型检查的时候，直接使用：</p>
+<div class="highlight"><pre><span></span>if instance is ClassA {
+}
+</pre></div>
+<p>需要downcast(从父类转成某一子类)，通过<code>as</code>:</p>
+<div class="highlight"><pre><span></span>for item in itemArray {
+            if let attri = item as? UICollectionViewLayoutAttributes {
+            }
+}
+</pre></div>
+<p>如果确定是某一类型，也可以直接使用 <code>as!</code>。</p>
+<h3>常量定义</h3>
+<p>需要多个文件共享的常量，可以定义一个文件，然后定义struct，把常量作为变量。为某一类定义的常量，可以通过extension。</p>
+<p>示例工程：<a href="https://github.com/scorpiozj/MessageScrollDynamic">MessageScrollDynamic</a>和<a href="https://github.com/scorpiozj/nestedScroll">NestedScrollView</a>。</p></body></html>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/Access Control Summary.html">← Previous : Swift中Access控制相关关键字</a></li>
+        
+        <li class="next"><a href="http://icocoa.tk/swiftzhong-instance-methodshi-curriedhan-shu.html">Swift中instance method是curried函数:Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>

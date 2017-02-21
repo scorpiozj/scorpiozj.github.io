@@ -1,5 +1,174 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2017-01-04T21:20:00+08:00</updated><entry><title>Swift中Access控制相关关键字</title><link href="http://icocoa.tk/Access%20Control%20Summary.html" rel="alternate"></link><published>2017-01-04T21:20:00+08:00</published><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2017-01-04:Access Control Summary.html</id><summary type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;open&lt;/h2&gt;
+<feed xmlns="http://www.w3.org/2005/Atom"><title>To be Independent</title><link href="http://icocoa.tk/" rel="alternate"></link><link href="http://icocoa.tk/feeds/charles-zhu.atom.xml" rel="self"></link><id>http://icocoa.tk/</id><updated>2017-02-21T19:20:00+08:00</updated><entry><title>关于OAuth2.0的些许记录</title><link href="http://icocoa.tk/guan-yu-oauth20de-xie-xu-ji-lu.html" rel="alternate"></link><published>2017-02-21T19:20:00+08:00</published><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2017-02-21:guan-yu-oauth20de-xie-xu-ji-lu.html</id><summary type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;背景&lt;/h2&gt;
+&lt;p&gt;在一个现有系统T中，需要提供数据给应用F，F没有自己的账号系统。因此，为了保持我方系统数据的安全性，采用OAuth2.0授权机制，以使F可以获取数据。&lt;/p&gt;
+&lt;h2&gt;OAuth简介&lt;/h2&gt;
+&lt;p&gt;OAuth解决的问题：&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;平台用户量大，资源丰富&lt;/li&gt;
+&lt;li&gt;新应用公信度低；用户不愿意注册&lt;/li&gt;
+&lt;li&gt;用户的信息资源在多个不同应用下，实现了“共享”&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;OAuth2.0的流程如图：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ProtocolFlow" src="./imgs/20170221/OAuthProtocolFlow.png"/&gt;&lt;/p&gt;
+&lt;p&gt;主要步骤:&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;client向Resource owner发起Authorization Request。这个请求中，client会把预先在开放平台注册的client id告诉资源服务器，以表明自己的来源。另外，client也需要将数据访问权限发送给资源方&lt;/li&gt;
+&lt;li&gt;Resource 返回Authorization Grant。这个批准中，会返回user code，verification code/URI&lt;/li&gt;
+&lt;li&gt;client将grant发送到 Authorization server&lt;/li&gt;
+&lt;li&gt;如果授权服务器验证通过，返回Access Token&lt;/li&gt;
+&lt;li&gt;client访问Resource Server并附上 token&lt;/li&gt;
+&lt;li&gt;资源服务器如果通过token的验证，就处理请求返回结果&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;以上是OAuth2.0的基本运作流程。为了便于理解，可以简化：&lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;向平台提交门卡(client ID)，申请办理出入证&lt;/li&gt;
+&lt;li&gt;平台初步申核后，给你一些必要信息: verification/user Code, redirect URI&lt;/li&gt;
+&lt;li&gt;拿着这些信息，到平台的授权部办出入证&lt;/li&gt;
+&lt;li&gt;信息无误，得到出入证&lt;/li&gt;
+&lt;li&gt;凭借出入证，可以访问/修改权限允许下的资源&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;Implicit Grant&lt;/h2&gt;
+&lt;p&gt;现在OAuth2.0已经成为业界主流，盛行于App和website。而当前开放平台都使用implicit grant的方式：
+点击登录，弹出页面(通常是web网页)，上面会写清楚哪个应用访问哪些数据的信息，用户输入正确的帐号密码选择登录后，当前页面会重定向，token
+就包含在这个链接后。取出token，并返回给当前App。我们的App也采用这种方式，implicit grant具体的流程如图：&lt;/p&gt;
+&lt;p&gt;&lt;img alt="ImplicitGrant" src="./imgs/20170221/ImplicitGrantFlow.png"/&gt;&lt;/p&gt;
+&lt;p&gt;各步骤说明：&lt;/p&gt;
+&lt;p&gt;a. client通过user-agent用户代理发起authorization授权请求, 发送的参数:client id, scope, redirection URI &lt;br/&gt;
+b. 授权服务器通过用户代理告诉用户发起了某个授权，并等待用户响应 &lt;br/&gt;
+c. 用户同意后，授权服务器重定向到a中的URI，并加上access token &lt;br/&gt;
+d. 用户代理向web-hosted client resource发起重定向；用户代理会在本地保存token &lt;br/&gt;
+e. eb-hosted client resource返回一个网页，该网页能够获取到用户代理保存的token &lt;br/&gt;
+f. 用户代理执行e中网页返回的脚本，获取到token &lt;br/&gt;
+g. 用户代理返回token给client   &lt;/p&gt;
+&lt;h2&gt;引用&lt;/h2&gt;
+&lt;p&gt;文中图片使用Visio制作，内容来源于：&lt;a href="https://tools.ietf.org/html/rfc6749"&gt;RFC 6749&lt;/a&gt;。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</summary><category term="authotication"></category></entry><entry><title>Swift中instance method是curried函数</title><link href="http://icocoa.tk/swiftzhong-instance-methodshi-curriedhan-shu.html" rel="alternate"></link><published>2017-02-20T20:20:00+08:00</published><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2017-02-20:swiftzhong-instance-methodshi-curriedhan-shu.html</id><summary type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;概述&lt;/h2&gt;
+&lt;p&gt;最近看到&lt;a href="https://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/?utm_campaign=iOS_Dev_Weekly_Issue_157&amp;amp;utm_medium=email&amp;amp;utm_source=iOS%252BDev%252BWeekly"&gt;Ole Begemann&lt;/a&gt;的文章，先把要点列一下：&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;An instance method in Swift is just a type method that takes the instance as an argument and returns a function which will then be applied to the instance.&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;意思是说，实例方法是一种类型方法，该类型方法的参数是该类型实例，返回作用于该实例的函数。&lt;br/&gt;
+如果有ObjC经验的，会将type method和ObjC的类方法联系在一起——并且，官方文档上也是这么类比的。但是，却没有指出instance和type method这种"本质"的联系。  &lt;/p&gt;
+&lt;h2&gt;Curried function 柯里化函数&lt;/h2&gt;
+&lt;p&gt;柯里化函数是将多参数的函数转化为单个参数(首个参数)的函数，并返回接受剩余参数且返回结果的新函数。举个&lt;a href="https://itunes.apple.com/us/book/the-swift-programming-language-swift-3-0-1/id881256329?mt=11"&gt;SwiftProgrammingLanguage&lt;/a&gt;中的例子：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;func makeIncrementer(forIncrement amount: Int) -&amp;gt; () -&amp;gt; Int {
+var runningTotal = 0
+    func incrementer() -&amp;gt; Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+let incrementByTen = makeIncrementer(forIncrement: 10)
+let incrementByTwenty = makeIncrementer(forIncrement: 20)
+&lt;/pre&gt;&lt;/div&gt;
+&lt;h2&gt;Instance Methods 实例方法本质&lt;/h2&gt;
+&lt;p&gt;先把oleb中的代码挪过来：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class="k"&gt;class&lt;/span&gt; &lt;span class="n"&gt;BankAccount&lt;/span&gt; {
+    &lt;span class="n"&gt;var&lt;/span&gt; &lt;span class="n"&gt;balance:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt; = &lt;span class="mf"&gt;0.0&lt;/span&gt;
+    &lt;span class="n"&gt;func&lt;/span&gt; &lt;span class="n"&gt;deposit&lt;/span&gt;(&lt;span class="n"&gt;amount:&lt;/span&gt; &lt;span class="n"&gt;Double&lt;/span&gt;) {
+        &lt;span class="n"&gt;balance&lt;/span&gt; += &lt;span class="n"&gt;amount&lt;/span&gt;
+    }
+}
+//&lt;span class="mi"&gt;1&lt;/span&gt;
+&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="n"&gt;account&lt;/span&gt; = &lt;span class="n"&gt;BankAccount&lt;/span&gt;()
+&lt;span class="n"&gt;account&lt;/span&gt;.&lt;span class="n"&gt;deposit&lt;/span&gt;(&lt;span class="mi"&gt;100&lt;/span&gt;) // &lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="mi"&gt;100&lt;/span&gt;
+//&lt;span class="mi"&gt;2&lt;/span&gt;
+&lt;span class="k"&gt;let&lt;/span&gt; &lt;span class="n"&gt;depositor&lt;/span&gt; = &lt;span class="n"&gt;BankAccount&lt;/span&gt;.&lt;span class="n"&gt;deposit&lt;/span&gt;
+&lt;span class="n"&gt;depositor&lt;/span&gt;(&lt;span class="n"&gt;account&lt;/span&gt;)(&lt;span class="mi"&gt;100&lt;/span&gt;) // &lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="mi"&gt;200&lt;/span&gt;
+//&lt;span class="mi"&gt;3&lt;/span&gt;
+&lt;span class="n"&gt;BankAccount&lt;/span&gt;.&lt;span class="n"&gt;deposit&lt;/span&gt;(&lt;span class="n"&gt;account&lt;/span&gt;)(&lt;span class="mi"&gt;100&lt;/span&gt;) // &lt;span class="n"&gt;balance&lt;/span&gt; &lt;span class="k"&gt;is&lt;/span&gt; &lt;span class="n"&gt;now&lt;/span&gt; &lt;span class="mi"&gt;300&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;1是我们通常使用instance method的场景，2中则是先定义了一个function，该函数以BankAccount实例为参数，返回一个带参数的新函数。其中，depositor的类型是： &lt;code&gt;BankAccount -&amp;gt; (Double) -&amp;gt; ()&lt;/code&gt;。 3则是2的直接调用形式。&lt;/p&gt;
+&lt;h2&gt;Target-Action的Swift实现&lt;/h2&gt;
+&lt;p&gt;Target-Action是iOS／Cocoa开发中最常见的模式。ObjC时代，该模式的实现依赖于ObjC的runtime特性。在Swift中，使用selector需要添加&lt;code&gt;@objc&lt;/code&gt;关键字。下面采用curried function的概念，
+实现一个纯Swift版本的target-action。&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;protocol TargetAction {
+    func performAction()
+}
+
+struct TargetActionWrapper&amp;lt;T: AnyObject&amp;gt; : TargetAction {
+    weak var target: T?
+    let action: (T) -&amp;gt; () -&amp;gt; ()
+
+    func performAction() -&amp;gt; () {
+        if let t = target {
+            action(t)()
+        }
+    }
+}
+
+enum ControlEvent {
+    case TouchUpInside
+    case ValueChanged
+    // ...
+}
+
+class Control {
+    var actions = [ControlEvent: TargetAction]()
+
+    func setTarget&amp;lt;T: AnyObject&amp;gt;(target: T, action: @escaping (T) -&amp;gt; () -&amp;gt; (), controlEvent: ControlEvent) {
+        actions[controlEvent] = TargetActionWrapper(target: target, action: action)
+    }
+
+    func removeTargetForControlEvent(controlEvent: ControlEvent) {
+        actions[controlEvent] = nil
+    }
+
+    func performActionForControlEvent(controlEvent: ControlEvent) {
+        actions[controlEvent]?.performAction()
+    }
+}
+
+class MyViewController {
+    let button = Control()
+
+    func viewDidLoad() {
+        button.setTarget(self, action: MyViewController.onButtonTap, controlEvent: .TouchUpInside)
+    }
+
+    func onButtonTap() {
+        println("Button was tapped")
+    }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;注意，escaping必不可少，因为closure作为一个参数，并且该closure在函数返回后才会被执行——这也就是escaping closure。&lt;/p&gt;
+&lt;p&gt;最后，文中代码都可以在Xcode8.2.1， Swift3正确运行。&lt;/p&gt;
+&lt;h2&gt;补充说明&lt;/h2&gt;
+&lt;p&gt;另外，查阅 SwiftProgrammingLanguage 修改历史， 发现在1.1版本中引入的curried function描述，在2.2版本中移除了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</summary><category term="curried"></category></entry><entry><title>Swift实现Nested Scroll</title><link href="http://icocoa.tk/swiftshi-xian-nested-scroll.html" rel="alternate"></link><published>2017-01-20T20:20:00+08:00</published><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2017-01-20:swiftshi-xian-nested-scroll.html</id><summary type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;概述&lt;/h2&gt;
+&lt;p&gt;2016年终于把学习swift的计划付诸行动，在班车上把v3.0.1版本的Programming Language看完了。但是，“纸上得来终觉浅，绝知此事要躬行”，于是打算用swift把经典的nested scroll实现一遍。
+WWDC2013-217的主题是&lt;code&gt;探索(explore) scroll&lt;/code&gt;，包含实现imessage中消息滚动时的动画和nested scroll，个中的原理不多说，只简单罗列实现步骤，侧重的还是swift在项目中的应用。&lt;/p&gt;
+&lt;h2&gt;imessage式消息滚动弹性动画&lt;/h2&gt;
+&lt;p&gt;&lt;code&gt;UICollectionView&lt;/code&gt;的实现是&lt;code&gt;layout&lt;/code&gt; 和 &lt;code&gt;UICollectionReusableView&lt;/code&gt;的结合，因此该动画的实现主要是基于layout的操作。基本步骤如下：   &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;实现layout子类&lt;/li&gt;
+&lt;li&gt;给cell添加动画：UIAttachmentBehavior&lt;/li&gt;
+&lt;li&gt;滚动的时候，更改动画的锚点并更新动画：锚点的变化取决于锚点先前位置和手指滑动位置&lt;/li&gt;
+&lt;/ol&gt;
+&lt;h2&gt;nested scroll&lt;/h2&gt;
+&lt;p&gt;nested scroll，顾名思义，即几个scroll叠加。滑动的时候，View Tree上处于叶节点位置的view先滑动，滑动到一定程度后，该view的父view继续滚动。基本思路： &lt;/p&gt;
+&lt;ol&gt;
+&lt;li&gt;检测滑动的边际，是否超出阈值；未超出阈值的情况下，要让父view禁止滑动&lt;/li&gt;
+&lt;li&gt;超出阈值，根据滚动速度计算父view的偏移量，并更新&lt;/li&gt;
+&lt;li&gt;滑动停止后，让父view再次响应滑动&lt;/li&gt;
+&lt;/ol&gt;
+&lt;p&gt;在第二步中，设置父view偏移的时候如果使用&lt;code&gt;setContentOffset(_ contentOffset: CGPoint, animated: Bool)&lt;/code&gt;, animated需为false。&lt;/p&gt;
+&lt;h2&gt;swift相关内容&lt;/h2&gt;
+&lt;h3&gt;type casting&lt;/h3&gt;
+&lt;p&gt;swift中数值类型如Float，Double等都是struct；CG中的类型也进行了struct重写。因此，数值之间的转换需要显式转换，否则编译器会报错。&lt;br/&gt;
+类型检查的时候，直接使用：&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;if instance is ClassA {
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;需要downcast(从父类转成某一子类)，通过&lt;code&gt;as&lt;/code&gt;:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;for item in itemArray {
+            if let attri = item as? UICollectionViewLayoutAttributes {
+            }
+}
+&lt;/pre&gt;&lt;/div&gt;
+&lt;p&gt;如果确定是某一类型，也可以直接使用 &lt;code&gt;as!&lt;/code&gt;。&lt;/p&gt;
+&lt;h3&gt;常量定义&lt;/h3&gt;
+&lt;p&gt;需要多个文件共享的常量，可以定义一个文件，然后定义struct，把常量作为变量。为某一类定义的常量，可以通过extension。&lt;/p&gt;
+&lt;p&gt;示例工程：&lt;a href="https://github.com/scorpiozj/MessageScrollDynamic"&gt;MessageScrollDynamic&lt;/a&gt;和&lt;a href="https://github.com/scorpiozj/nestedScroll"&gt;NestedScrollView&lt;/a&gt;。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</summary><category term="UIScrollView"></category><category term="nested"></category></entry><entry><title>Swift中Access控制相关关键字</title><link href="http://icocoa.tk/Access%20Control%20Summary.html" rel="alternate"></link><published>2017-01-04T21:20:00+08:00</published><author><name>Charles Zhu</name></author><id>tag:icocoa.tk,2017-01-04:Access Control Summary.html</id><summary type="html">&lt;html&gt;&lt;body&gt;&lt;h2&gt;open&lt;/h2&gt;
 &lt;p&gt;最高访问权限(即限制最少)，所属module或导入该module的地方都能访问open。只能修饰class和class memeber。&lt;/p&gt;
 &lt;h2&gt;public&lt;/h2&gt;
 &lt;p&gt;所属module或导入该module的地方都能访问open。但是对于子类的影响和open不同：  &lt;/p&gt;

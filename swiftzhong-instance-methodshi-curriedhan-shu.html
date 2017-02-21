@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+        <title>Swift中instance method是curried函数</title>
+        <meta charset="utf-8" />
+
+
+        <!-- Mobile viewport optimized: j.mp/bplateviewport -->
+        <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+
+        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+
+
+
+
+
+
+</head>
+
+<body id="index" class="home">
+
+
+    <div class="container">
+
+        <div class="row">
+
+          <header id="banner" class="body">
+                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+          </header><!-- /#banner -->
+
+            <div id="navigation" class="navbar row">
+              <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
+             
+              <ul class="columns">
+                <li><a href="http://icocoa.tk/">Home</a></li>
+
+
+              </ul>
+            </div>
+
+<section id="content" class="body">
+
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/swiftzhong-instance-methodshi-curriedhan-shu.html" rel="bookmark"
+                   title="Permalink to Swift中instance method是curried函数">Swift中instance method是curried函数</a></h2>
+           
+            </header>
+            <footer class="post-info">
+              <abbr class="published" title="2017-02-20T20:20:00+08:00">
+                一 20 二月 2017
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <html><body><h2>概述</h2>
+<p>最近看到<a href="https://oleb.net/blog/2014/07/swift-instance-methods-curried-functions/?utm_campaign=iOS_Dev_Weekly_Issue_157&amp;utm_medium=email&amp;utm_source=iOS%252BDev%252BWeekly">Ole Begemann</a>的文章，先把要点列一下：</p>
+<blockquote>
+<p>An instance method in Swift is just a type method that takes the instance as an argument and returns a function which will then be applied to the instance.</p>
+</blockquote>
+<p>意思是说，实例方法是一种类型方法，该类型方法的参数是该类型实例，返回作用于该实例的函数。<br/>
+如果有ObjC经验的，会将type method和ObjC的类方法联系在一起——并且，官方文档上也是这么类比的。但是，却没有指出instance和type method这种"本质"的联系。  </p>
+<h2>Curried function 柯里化函数</h2>
+<p>柯里化函数是将多参数的函数转化为单个参数(首个参数)的函数，并返回接受剩余参数且返回结果的新函数。举个<a href="https://itunes.apple.com/us/book/the-swift-programming-language-swift-3-0-1/id881256329?mt=11">SwiftProgrammingLanguage</a>中的例子：</p>
+<div class="highlight"><pre><span></span>func makeIncrementer(forIncrement amount: Int) -&gt; () -&gt; Int {
+var runningTotal = 0
+    func incrementer() -&gt; Int {
+        runningTotal += amount
+        return runningTotal
+    }
+    return incrementer
+}
+let incrementByTen = makeIncrementer(forIncrement: 10)
+let incrementByTwenty = makeIncrementer(forIncrement: 20)
+</pre></div>
+<h2>Instance Methods 实例方法本质</h2>
+<p>先把oleb中的代码挪过来：</p>
+<div class="highlight"><pre><span></span><span class="k">class</span> <span class="n">BankAccount</span> {
+    <span class="n">var</span> <span class="n">balance:</span> <span class="n">Double</span> = <span class="mf">0.0</span>
+    <span class="n">func</span> <span class="n">deposit</span>(<span class="n">amount:</span> <span class="n">Double</span>) {
+        <span class="n">balance</span> += <span class="n">amount</span>
+    }
+}
+//<span class="mi">1</span>
+<span class="k">let</span> <span class="n">account</span> = <span class="n">BankAccount</span>()
+<span class="n">account</span>.<span class="n">deposit</span>(<span class="mi">100</span>) // <span class="n">balance</span> <span class="k">is</span> <span class="n">now</span> <span class="mi">100</span>
+//<span class="mi">2</span>
+<span class="k">let</span> <span class="n">depositor</span> = <span class="n">BankAccount</span>.<span class="n">deposit</span>
+<span class="n">depositor</span>(<span class="n">account</span>)(<span class="mi">100</span>) // <span class="n">balance</span> <span class="k">is</span> <span class="n">now</span> <span class="mi">200</span>
+//<span class="mi">3</span>
+<span class="n">BankAccount</span>.<span class="n">deposit</span>(<span class="n">account</span>)(<span class="mi">100</span>) // <span class="n">balance</span> <span class="k">is</span> <span class="n">now</span> <span class="mi">300</span>
+</pre></div>
+<p>1是我们通常使用instance method的场景，2中则是先定义了一个function，该函数以BankAccount实例为参数，返回一个带参数的新函数。其中，depositor的类型是： <code>BankAccount -&gt; (Double) -&gt; ()</code>。 3则是2的直接调用形式。</p>
+<h2>Target-Action的Swift实现</h2>
+<p>Target-Action是iOS／Cocoa开发中最常见的模式。ObjC时代，该模式的实现依赖于ObjC的runtime特性。在Swift中，使用selector需要添加<code>@objc</code>关键字。下面采用curried function的概念，
+实现一个纯Swift版本的target-action。</p>
+<div class="highlight"><pre><span></span>protocol TargetAction {
+    func performAction()
+}
+
+struct TargetActionWrapper&lt;T: AnyObject&gt; : TargetAction {
+    weak var target: T?
+    let action: (T) -&gt; () -&gt; ()
+
+    func performAction() -&gt; () {
+        if let t = target {
+            action(t)()
+        }
+    }
+}
+
+enum ControlEvent {
+    case TouchUpInside
+    case ValueChanged
+    // ...
+}
+
+class Control {
+    var actions = [ControlEvent: TargetAction]()
+
+    func setTarget&lt;T: AnyObject&gt;(target: T, action: @escaping (T) -&gt; () -&gt; (), controlEvent: ControlEvent) {
+        actions[controlEvent] = TargetActionWrapper(target: target, action: action)
+    }
+
+    func removeTargetForControlEvent(controlEvent: ControlEvent) {
+        actions[controlEvent] = nil
+    }
+
+    func performActionForControlEvent(controlEvent: ControlEvent) {
+        actions[controlEvent]?.performAction()
+    }
+}
+
+class MyViewController {
+    let button = Control()
+
+    func viewDidLoad() {
+        button.setTarget(self, action: MyViewController.onButtonTap, controlEvent: .TouchUpInside)
+    }
+
+    func onButtonTap() {
+        println("Button was tapped")
+    }
+}
+</pre></div>
+<p>注意，escaping必不可少，因为closure作为一个参数，并且该closure在函数返回后才会被执行——这也就是escaping closure。</p>
+<p>最后，文中代码都可以在Xcode8.2.1， Swift3正确运行。</p>
+<h2>补充说明</h2>
+<p>另外，查阅 SwiftProgrammingLanguage 修改历史， 发现在1.1版本中引入的curried function描述，在2.2版本中移除了。</p></body></html>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/swiftshi-xian-nested-scroll.html">← Previous : Swift实现Nested Scroll</a></li>
+        
+        <li class="next"><a href="http://icocoa.tk/guan-yu-oauth20de-xie-xu-ji-lu.html">关于OAuth2.0的些许记录:Next →</a></li>
+      </ul>
+    </div>
+
+
+
+            
+
+
+
+
+        </div><!-- /.eleven.columns -->
+        
+        
+
+<div class="three columns">
+
+<h4>Pages</h4>
+
+ <ul>
+  </ul>
+
+<h4>Categories</h4>
+<ul>
+		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
+		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
+		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
+		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
+		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
+		<li><a href="http://icocoa.tk/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
+		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
+		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
+		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
+		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+</ul>
+
+
+<h4>Tags</h4>
+	<ul>
+</ul>
+
+
+<nav class="widget">
+  <h4>Social</h4>
+  <ul>
+    <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
+    <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+</div> </div><!-- /.row -->
+
+
+</section>
+
+       </div><!-- /.row -->
+    </div><!-- /.container -->
+
+
+       <div class="container.nopad bg">
+
+    
+        <footer id="credits" class="row">
+          <div class="seven columns left-center">
+
+                   <address id="about" class="vcard body">
+                    Proudly powered by <a href="http://getpelican.com/">Pelican</a>,
+                    which takes great advantage of <a href="http://python.org">Python</a>.
+                    <br />
+                    Based on the <a target="_blank" href="http://gumbyframework.com">Gumby Framework</a>
+                    </address>
+          </div>
+
+
+          <div class="seven columns">
+            <div class="row">
+              <ul class="socbtns">
+
+
+
+
+
+              </ul>
+            </div>
+          </div>
+        </footer>
+
+    </div>
+
+
+  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
+  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+</body>
+</html>
