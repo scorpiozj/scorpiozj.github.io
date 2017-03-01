@@ -9,11 +9,11 @@
         <!-- Mobile viewport optimized: j.mp/bplateviewport -->
         <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
 
-        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/gumby.css" />
-        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/style.css" />
-        <link rel="stylesheet" type="text/css" href="http://icocoa.tk/theme/pygment.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/gumby.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/style.css" />
+        <link rel="stylesheet" type="text/css" href="http://127.0.0.1:8000/theme/pygment.css" />
 
-        <script src="http://icocoa.tk/theme/js/libs/modernizr-2.6.2.min.js"></script>
+        <script src="http://127.0.0.1:8000/theme/js/libs/modernizr-2.6.2.min.js"></script>
 
 
 
@@ -30,14 +30,14 @@
         <div class="row">
 
           <header id="banner" class="body">
-                  <h1><a href="http://icocoa.tk/">To be Independent <strong></strong></a></h1>
+                  <h1><a href="http://127.0.0.1:8000/">To be Independent <strong></strong></a></h1>
           </header><!-- /#banner -->
 
             <div id="navigation" class="navbar row">
               <a href="#" gumby-trigger="#navigation &gt; ul" class="toggle"><i class="icon-menu"></i></a>
              
               <ul class="columns">
-                <li><a href="http://icocoa.tk/">Home</a></li>
+                <li><a href="http://127.0.0.1:8000/">Home</a></li>
 
 
               </ul>
@@ -53,10 +53,47 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/note-more-swift-and-foundation-frameworks.html" rel="bookmark" title="Permalink to Note: More Swift and Foundation Frameworks">Note: More Swift and Foundation Frameworks</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">WWDC2014-235 Notes</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-04-20T22:00:00+08:00"> 一 20 四月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: notes for 223</p>
+<h3>Intro</h3>
+<p><code>UIScrollView</code> 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 <code>advanced_scrollviews_and_touch_handling_techniques</code>，主要包括：</p>
+<ol>
+<li>Hit testing</li>
+<li>gesture recoginizers</li>
+<li>touch delivery</li>
+<li>ransparent overlayers</li>
+<li>dragging while scrolling</li>
+<li>highlighting objects</li>
+</ol>
+<p>下面会按着视频中的demo，一步一步讲解。</p>
+<h3>transparent overlayers</h3>
+<p>demo: 仿照搜索页面，添加下拉手势，手势触发出现一Scroll View， 该scroll view 部分遮挡原先的 view<br/>
+存在的问题：</p>
+<ol>
+<li>原先的view可以点击，添加了 scroll view后在scroll view没有出现的时候也不能点击 (因为demo中scroll view是一直添加在原先页面上， 通过contentOffset来移动内容 ...</li></ol></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/uiscrollview.html">UIScrollView</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/note-more-swift-and-foundation-frameworks.html" rel="bookmark" title="Permalink to Note: More Swift and Foundation Frameworks">Note: More Swift and Foundation Frameworks</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-04-13T14:00:00+08:00"> 一 13 四月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h2>Intro</h2>
 <p>Note of More Swift and Foundation Frameworks, not detail described.<br/>
 Lesson4的要点记录，有些没有展开，侧重于“点”。看完后觉得需要注意的地方：基本数据类型如Optional/Array/Dictionary等的特点；class与struct的异同；class中的属性和方法；常见数据类型的常用方法(Array/String有很多新增的方法，功能比对应的ObjC强大)</p>
@@ -74,48 +111,48 @@ immutable<br/>
 enumerating</p>
 <h2>Dictionary ...</h2></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/note-more-swift-and-foundation-frameworks.html" rel="bookmark" title="Permalink to Note: More Swift and Foundation Frameworks">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/note-more-swift-and-foundation-frameworks.html" rel="bookmark" title="Permalink to Note: More Swift and Foundation Frameworks">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/swift.html">swift</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/swift.html">swift</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="bookmark" title="Permalink to swift学习之struct ——前三课总结">swift学习之struct ——前三课总结</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="bookmark" title="Permalink to swift学习之struct ——前三课总结">swift学习之struct ——前三课总结</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-04-05T14:00:00+08:00"> 日 05 四月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h2>Intro</h2>
 <p>During the course, a lot of swift details are touched from Lesson 1 to 3 and the classical MVC is practised in Lesson 3.<br/>
 本篇侧重swift的强类型特性以及struct的特点。</p>
 <h2>Strong type language</h2>
 <p>Swift is smart enough to know the type and you can ommit the type in decalaring, function parameters and son on ...</p></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="bookmark" title="Permalink to swift学习之struct ——前三课总结">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/swiftxue-xi-zhi-struct-qian-san-ke-zong-jie.html" rel="bookmark" title="Permalink to swift学习之struct ——前三课总结">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/swift.html">swift</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/swift.html">swift</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="bookmark" title="Permalink to Xcode6中批量添加矢量图">Xcode6中批量添加矢量图</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="bookmark" title="Permalink to Xcode6中批量添加矢量图">Xcode6中批量添加矢量图</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-03-23T11:00:00+08:00"> 一 23 三月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h3>1. Xcode6添加矢量图的问题</h3>
 <p>Xcode6中支持添加矢量图，然后在编译期Xcode6自动生成@2x和@3x的图片，可是添加的过程有些繁琐。<br/>
 首先，直接把矢量图拖到 <code>xcassets</code>文件中是不行的，添加的步骤：</p>
@@ -137,23 +174,23 @@ enumerating</p>
     {
       "idiom" : "universal ...</pre></div></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="bookmark" title="Permalink to Xcode6中批量添加矢量图">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/xcode6zhong-pi-liang-tian-jia-shi-liang-tu.html" rel="bookmark" title="Permalink to Xcode6中批量添加矢量图">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">RBStoryboardLink 的简介</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">RBStoryboardLink 的简介</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-03-13T17:30:00+08:00"> 五 13 三月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h3>1. Intro</h3>
 <p>今天简单介绍一下<a href="https://github.com/rob-brown/RBStoryboardLink">RBStoryboardLink</a>，这是一个方便在某个storyboard(下面我要用SB代之)中调用其他 SB 中的viewcontroller的项目  </p>
 <h3>2. RBStoryboardLink</h3>
@@ -167,23 +204,23 @@ enumerating</p>
 详细的使用方法见<a href="https://github.com/rob-brown/RBStoryboardLink#how-to-use">How to Use</a>(这里不做搬运苦力活了)。</p>
 <h4>2.2 ...</h4></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/rbstoryboardlink-de-jian-jie.html" rel="bookmark" title="Permalink to RBStoryboardLink 的简介">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/storyboard.html">storyboard</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/storyboard.html">storyboard</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/appiumde-shi-yong.html" rel="bookmark" title="Permalink to Appium的使用">Appium的使用</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/appiumde-shi-yong.html" rel="bookmark" title="Permalink to Appium的使用">Appium的使用</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-03-08T14:00:00+08:00"> 日 08 三月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h3>1. Intro</h3>
 <p>本周业余时间，主要在研究如何使用Appium，内容包括Appium是什么，架构，安装，使用以及测试用例的写法。  </p>
 <h3>2. Appium简介</h3>
@@ -195,24 +232,24 @@ enumerating</p>
 <p>Install the latest stable release of Ruby.</p>
 <div class="highlight"><pre><span></span>\curl -sSL https://get ...</pre></div></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/appiumde-shi-yong.html" rel="bookmark" title="Permalink to Appium的使用">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/appiumde-shi-yong.html" rel="bookmark" title="Permalink to Appium的使用">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ce-shi.html">测试</a>
-											<a class="danger label" href="http://icocoa.tk/tag/appium.html">appium</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ce-shi.html">测试</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/appium.html">appium</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Optional of swift</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Optional of swift</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-02-28T17:00:00+08:00"> 六 28 二月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h3>Intro</h3>
 <p>This is a category of study&amp;&amp;notes of swift, program and so on during the study of [Developing iOS8 Apps with Swift] on the <strong>iTunes U</strong>.<br/>
 此系列为学习stanford课程：Developing iOS8 Apps with Swift过程中，对语言，程序设计，编程能力等部分的学习和记录。</p>
@@ -222,24 +259,24 @@ enumerating</p>
 </pre></div>
 <p>It means ...</p></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/optional-of-swift.html" rel="bookmark" title="Permalink to Optional of swift">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/swift.html">swift</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/swift.html">swift</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/compare-of-testflightenterprise-distribution.html" rel="bookmark" title="Permalink to Compare of Testflight&&Enterprise Distribution">Compare of Testflight&&Enterprise Distribution</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/compare-of-testflightenterprise-distribution.html" rel="bookmark" title="Permalink to Compare of Testflight&&Enterprise Distribution">Compare of Testflight&&Enterprise Distribution</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-02-28T14:00:00+08:00"> 六 28 二月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h3>前言</h3>
 <p>应要求整理的分发方式比较。可惜了有enterprise的我们，还是没有充分利用enterprise的特点。<br/>
 下面从是否需要review，UDID以及下载方式进行比较，最后简单介绍利用dropbox进行wireless下载in-house app的过程。</p>
@@ -275,24 +312,24 @@ enumerating</p>
 <h4>2.1 Review</h4>
 <p>It ...</p></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/compare-of-testflightenterprise-distribution.html" rel="bookmark" title="Permalink to Compare of Testflight&&Enterprise Distribution">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/compare-of-testflightenterprise-distribution.html" rel="bookmark" title="Permalink to Compare of Testflight&&Enterprise Distribution">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/distribution.html">distribution</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/distribution.html">distribution</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">个人App发布前的测试</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">个人App发布前的测试</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-02-25T00:00:00+08:00"> 三 25 二月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h2>前言</h2>
 <p>假期里原本想好好的放松，多看几本书，多运动，不曾想一半的时间花费在修改bug上了。算上假期前提交的版本，整个春节期间发布了3个小版本的更新，申请了2次紧急提交审核。其中经历不可谓不惊心动魄，虽然未必对下载量有所帮助，但至少也让用户感觉到：这大过年的也在更新，也是蛮拼的了:-)。</p>
 <h2>测试流程</h2>
@@ -304,24 +341,24 @@ enumerating</p>
 <h3>测试环境</h3>
 <p>发布前的App必须完整经历Ad hoc版本的测试，因为developer模式下有些bug不会产生。这一点，相信很多人都深有体会 ...</p></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/ge-ren-appfa-bu-qian-de-ce-shi.html" rel="bookmark" title="Permalink to 个人App发布前的测试">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/ce-shi.html">测试</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ce-shi.html">测试</a>
 								</div>
 
 
 
 				        </article></li>
 				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">过去一周的思考</a></h2> </header>
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">过去一周的思考</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-02-13T22:30:00+08:00"> 五 13 二月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
 				                <div class="entry-content"> <html><body><h2>简介</h2>
 <p>过去的一周可以算是波澜起伏，主要关于两方面：一个是app的下载，另一个是app的发布。</p>
 <h2>app的下载</h2>
@@ -329,42 +366,13 @@ enumerating</p>
 虽然推广没有花费大力气，但是本周还是发生了下载量突变的情形。5-10日之间下载量分别是个位数，2位数，3位数，3位数，2位数，个位数。至此，恢复以往的平静。在此期间，做到分类付费和畅销排名前三。虽然之前也油锅这样的经历，但这次的app是收费的，意义不同寻常。此外，这样的一个过山车的表现也很让我诧异。是什么导致下载量突然的上升呢？我搜索了一下相关的分享平台，没有大量的使用app的痕迹。通过Appannie的变化追踪来看，我倾向于Apple调整了app的排名算法（如果这些下载量不是黑卡造成的话）。线索就在于5日以及之前的排名已经落后到不知什么地步，而后突然就排名上升。考虑到下载量在相应的category中中规中矩，评价几乎没有的情况，才做出算法调整的判断。<br/>
 这个 ...</br/></br/></p></body></html> </div><!-- /.entry-content -->
 
-								<div class="medium primary btn"><a href="http://icocoa.tk/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">Read more <i class="icon-arrow-right"></i></a></div>
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">Read more <i class="icon-arrow-right"></i></a></div>
 
 
 
 								<div class="row tag-row">
 										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="bookmark" title="Permalink to Xcode6制作iOS Framework">Xcode6制作iOS Framework</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2015-02-05T14:30:00+08:00"> 四 05 二月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><h2>简介</h2>
-<p>最近需要用到Framework，在Xcode6上实践了一下，虽然制作原理没有变化，但在Xcode6中操作还是有一些不一样。我遇到的问题在<a href="http://www.raywenderlich.com/65964/create-a-framework-for-ios">raywenderlich</a>上都有解决。<br/>
-使用过第三方如统计之类工具的，对framework不会陌生。所以framework最大的一个好处就是提供接口但隐藏代码，在开发SDK过程中经常使用。</p>
-<h2>静态库模板</h2>
-<p>选择如下的静态模板创建工程，当然也可以在已有工程下创建新的target。这里可以看到Xcode6中新加了<code>Cocoa Touch Framework</code>，但是这里我们还是选择静态库模板。<br/>
-<img alt="static_template" src="./imgs/20150205/static_template.png"/></p>
-<h2>添加文件</h2>
-<p>Framework本身包含库头文件和静态库，所以首先我们要把需要打包成framework的文件添加的工程，注意添加的时候确认target对象是否正确。接下来，查看文件引用了哪些系统库，在<code>build phase-&gt;Link Binary With Libraries</code>中将系统库添加进去，通常会添加Foundation或是UIKit库。然后添加相应的代码，添加的时候注意target是库对象。再在<code>build phase-&gt;Headers</code>中找到头文件，将需要设置为public的文件拖到<code>Public</code>一榄。
-这时build一下，可以发现已经生成一个.a文件了。但此时还没有完成framework的制作：
-1 ...</p></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/xcode6zhi-zuo-ios-framework.html" rel="bookmark" title="Permalink to Xcode6制作iOS Framework">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/ios.html">iOS</a>
-											<a class="danger label" href="http://icocoa.tk/tag/framework.html">framework</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
 								</div>
 
 
@@ -383,18 +391,19 @@ enumerating</p>
 
 <h4>Categories</h4>
 <ul>
-		<li><a href="http://icocoa.tk/category/app.html">App</a></li>
-		<li><a href="http://icocoa.tk/category/design.html">Design</a></li>
-		<li><a href="http://icocoa.tk/category/ios.html">iOS</a></li>
-		<li><a href="http://icocoa.tk/category/iostips.html">iOSTips</a></li>
-		<li><a href="http://icocoa.tk/category/linux.html">Linux</a></li>
-		<li><a href="http://icocoa.tk/category/oauth20.html">OAuth2.0</a></li>
-		<li><a href="http://icocoa.tk/category/python.html">Python</a></li>
-		<li><a href="http://icocoa.tk/category/sui-gan.html">随感</a></li>
-		<li><a href="http://icocoa.tk/category/swift.html">swift</a></li>
-		<li><a href="http://icocoa.tk/category/swiftstudy.html">SwiftStudy</a></li>
-		<li><a href="http://icocoa.tk/category/version.html">Version</a></li>
-		<li><a href="http://icocoa.tk/category/voip.html">VOIP</a></li>
+		<li><a href="http://127.0.0.1:8000/category/app.html">App</a></li>
+		<li><a href="http://127.0.0.1:8000/category/design.html">Design</a></li>
+		<li><a href="http://127.0.0.1:8000/category/ios.html">iOS</a></li>
+		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
+		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
+		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
+		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
+		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
+		<li><a href="http://127.0.0.1:8000/category/swiftstudy.html">SwiftStudy</a></li>
+		<li><a href="http://127.0.0.1:8000/category/uiscrollviewswift.html">UIScrollView,Swift</a></li>
+		<li><a href="http://127.0.0.1:8000/category/version.html">Version</a></li>
+		<li><a href="http://127.0.0.1:8000/category/voip.html">VOIP</a></li>
 </ul>
 
 
@@ -414,9 +423,9 @@ enumerating</p>
 </div> </div><!-- /.row -->
 
 <p class="paginator">
-            <a href="http://icocoa.tk/author/charles-zhu2.html"><i class="icon-arrow-left"></i></a>
+            <a href="http://127.0.0.1:8000/author/charles-zhu2.html"><i class="icon-arrow-left"></i></a>
     Page 3 / 6
-        <a href="http://icocoa.tk/author/charles-zhu4.html"><i class="icon-arrow-right"></i></a>
+        <a href="http://127.0.0.1:8000/author/charles-zhu4.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
 
@@ -455,8 +464,8 @@ enumerating</p>
     </div>
 
 
-  <script src="http://icocoa.tk/theme/js/libs/jquery-1.9.1.min.js"></script>
-  <script src="http://icocoa.tk/theme/js/libs/gumby.min.js"></script>
-  <script src="http://icocoa.tk/theme/js/plugins.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/libs/jquery-1.9.1.min.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/libs/gumby.min.js"></script>
+  <script src="http://127.0.0.1:8000/theme/js/plugins.js"></script>
 </body>
 </html>
