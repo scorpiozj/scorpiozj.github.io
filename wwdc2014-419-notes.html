@@ -64,9 +64,7 @@
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <html><body><p>Author: Charles Zhu<br/>
-Summary: notes for 419</p>
-<h2>Intro</h2>
+              <html><body><h2>Intro</h2>
 <p>主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  </p>
 <p><img alt="Framework" src="./imgs/20150504/Framework.png"/> </p>
 <h2>Core animation pipeline</h2>
@@ -85,9 +83,9 @@ CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。<br/>
 <li>layoutSubviews overrides are invoked</li>
 <li>View creation, addSubview:</li>
 <li>Populate content, database lookups </li>
-<li>Usually CPU bound or I/O bound
-注：database指的是需要本地化的UI控件</li>
+<li>Usually CPU bound or I/O bound</li>
 </ul>
+<p>注：database指的是需要本地化的UI控件</p>
 <h4>Display:</h4>
 <ul>
 <li>Draw contents via drawRect: if it is overridden </li>
@@ -169,15 +167,15 @@ Performance considerations:</p>
 <li>Will introduce offscreen passes:
     If layer is not opaque (opacity != 1.0)
     And if layer has nontrivial content (child layers or background image)</li>
-<li>Sub view hierarchy needs to be composited before being blended Always turn it off if not needed
-注： offscreen 非常消耗gpu</li>
+<li>Sub view hierarchy needs to be composited before being blended Always turn it off if not needed</li>
 </ul>
+<p>注： offscreen 非常消耗gpu</p>
 <h1>Tools</h1>
 <p><img alt="Tools" src="./imgs/20150504/Tools.png"/><br/>
 检测性能工具</p>
 <h2>Performance Investigation Mindset</h2>
 <p><img alt="PerformanceInvestigationMindset" src="./imgs/20150504/PerformanceInvestigationMindset.png"/></p>
-<p>使用Instruments中core animation模版，查看当前的layer
+<p>使用Instruments中core animation模版，查看当前的layer    <br/>
 注：补充debug option说明：</p>
 <ul>
 <li><strong>Color Blended Layers</strong>: Shows blended view layers. Multiple view layers that are drawn on top of each other with blending enabled are highlighted in red. Reducing the amount of red in your app when this option is selected can dramatically improve your apps performance. Blended view layers are often the cause for slow table scrolling.</li>
@@ -196,14 +194,14 @@ Performance considerations:</p>
 <ol>
 <li>
 <p>shadow creating ： cell的阴影创建</p>
-<p>//wrong
+<p><code>//wrong
 CALayer *imageViewLayer = cell.imageView.layer;
 imageViewLayer.shadowColor = [UIColor blackColor].CGColor;
 imageViewLayer.shadowOpacity = 1.0;
 imageViewLayer.shadowRadius = 2.0;
 imageViewLayer.shadowOffset = CGSizeMake(1.0, 1.0);
 //right
-imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);</p>
+imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);</code></p>
 </li>
 <li>
 <p>round thumbnail: never use layer to create if there are many cells</p>
@@ -265,6 +263,7 @@ Offscreen passes are expensive  </p>
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -285,6 +284,13 @@ Offscreen passes are expensive  </p>
   <ul>
     <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
     <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
   </ul>
 </nav>
 

@@ -57,26 +57,7 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-05-04T13:00:00+08:00"> 一 04 五月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: notes for 419</p>
-<h2>Intro</h2>
-<p>主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  </p>
-<p><img alt="Framework" src="./imgs/20150504/Framework.png"/> </p>
-<h2>Core animation pipeline</h2>
-<p>Core animation为iOS动画提供了很多便利，调用以及之后发生的事情如下图：</p>
-<p><img alt="pipeline" src="./imgs/20150504/pipeLine.png"/> </p>
-<p>在App中调用CA，CA会encode显示的view，交由CA内的一个渲染服务器。
-渲染服务器收到指令后，会先decode view，在下一帧刷新的时候去绘制，然后交由GPU去渲染。
-CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。<br/>
-由于除了App以外的部分都是iOS系统完成的，因此我们将注意力放在App的相关部分。 </p>
-<h3>Commit Transation</h3>
-<p>this part affect application developers the most， 包含4步：
-<img alt="commitTransaction4Phase" src="./imgs/20150504/commitTransaction4Phase.png"/> </p>
-<p>4 phases</p>
-<h4>layout:</h4>
-<ul>
-<li>layoutSubviews overrides are invoked</li>
-<li>View creation, addSubview ...</li></ul></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>notes for 419</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-419-notes.html" rel="bookmark" title="Permalink to WWDC2014-419 Notes">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -96,24 +77,7 @@ CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。<br/>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-04-20T22:00:00+08:00"> 一 20 四月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: notes for 223</p>
-<h3>Intro</h3>
-<p><code>UIScrollView</code> 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 <code>advanced_scrollviews_and_touch_handling_techniques</code>，主要包括：</p>
-<ol>
-<li>Hit testing</li>
-<li>gesture recoginizers</li>
-<li>touch delivery</li>
-<li>ransparent overlayers</li>
-<li>dragging while scrolling</li>
-<li>highlighting objects</li>
-</ol>
-<p>下面会按着视频中的demo，一步一步讲解。</p>
-<h3>transparent overlayers</h3>
-<p>demo: 仿照搜索页面，添加下拉手势，手势触发出现一Scroll View， 该scroll view 部分遮挡原先的 view<br/>
-存在的问题：</p>
-<ol>
-<li>原先的view可以点击，添加了 scroll view后在scroll view没有出现的时候也不能点击 (因为demo中scroll view是一直添加在原先页面上， 通过contentOffset来移动内容 ...</li></ol></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>notes for 223</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -133,33 +97,7 @@ Summary: notes for 223</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-03T22:00:00+08:00"> 四 03 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br/>
-这一讲的内容分为下面几个部分：</p>
-<ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br/>
-<img alt="relations icon" src="./imgs/20140703/how-relations.png"/><br/>
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we ...</li></ul></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>notes for 223</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -180,16 +118,7 @@ Summary: notes for 223</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-06-30T14:20:00+08:00"> 一 30 六月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: Notes for 211</p>
-<h1>intuitive</h1>
-<p>字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  </p>
-<p>开篇就举了设计 <em>“笔”</em> 的例子：长度，宽度等元素</p>
-<p>Being ituitive is not intuitive<br/>
-记住设计不是为自己(已知者)设计，是为其他人设计</p>
-<p>以下按5部分，进行阐述  </p>
-<h2>platform savvy</h2>
-<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体 ...</p></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>Notes for 211</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -211,18 +140,7 @@ Summary: Notes for 211</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-06-29T14:00:00+08:00"> 日 29 六月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: notes for 221</p>
-<p>本场主要分4个议题： </p>
-<ul>
-<li>Spring animations</li>
-<li>Vibrancy and blur</li>
-<li>Shape layers</li>
-<li>Dynamic Core Animation behaviors</li>
-</ul>
-<h2>Spring animations</h2>
-<p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
-<div class="highlight"><pre><span></span>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished ...</pre></div></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>notes for 221</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -257,6 +175,7 @@ Summary: notes for 221</p>
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -277,6 +196,13 @@ Summary: notes for 221</p>
   <ul>
     <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
     <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
   </ul>
 </nav>
 

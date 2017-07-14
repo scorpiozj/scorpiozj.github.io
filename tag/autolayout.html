@@ -57,30 +57,7 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-08-01T17:00:00+08:00"> 六 01 八月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: UITableVIewCell中两列UILabel的布局总结</p>
-<h3>前言</h3>
-<p>一眨眼，六月底新入职现在公司已一月有余，期间工作节奏比之前一家增加许多，像是回到若干年前昼夜奋战几周完成一个app的状态。唯一不同的是，现在更需注重效率，复用原有的经验。</p>
-<h3>UITableViewCell中水平分布的两列UILabel</h3>
-<p>比如，在最近的项目中遇到UITableViewCell中水平分布两个Label，每个 label 都有可能有多行。根据不同的情况，两个lable的文字需要上/中/下对齐，如图：</p>
-<p><img alt="top" src="./imgs/20150801/Top.png"/><br/>
-上对齐  <br/>
-<img alt="center" src="./imgs/20150801/Center.png"/><br/>
-中对齐<br/>
-<img alt="bottom" src="./imgs/20150801/Bottom.png"/> <br/>
-下对齐  </p>
-<p>由于是单兵作战——iOS端就我一个人，所以大多数界面布局在SB中进行，可是当具有上述布局的页面多了后，通过代码来实现反而会高效。鉴于此，封装了一个Cell类以支持三种布局。具体的实现代码和使用方法见：<a href="https://github.com/scorpiozj/ZZHorizontalLabelsCell">ZZHorizontalLabelsCell</a>，不多做解释了。有不懂的，可以留言。</p>
-<h3>布局的SB实现</h3>
-<p>为了方便使用SB布局的情况，这里也把三种布局下lable的约束说明：</p>
-<h4>上对齐</h4>
-<p><img alt="left" src="./imgs/20150801/TopLeft.png"/><br/>
-Left<br/>
-<img alt="right" src="./imgs/20150801/TopRight.png"/><br/>
-Right 
-其中，右边Label的bottom的约束优先级设为 749.</p>
-<h4>中对齐</h4>
-<p><img alt="left" src="./imgs/20150801/CenterLeft.png"/><br/>
-Left ...</br/></p></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>UITableVIewCell中两列UILabel的布局总结</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/autolayout-uitableviewcellzhong-uilabelde-shui-ping-bu-ju.html" rel="bookmark" title="Permalink to Autolayout: UITableViewCell中UILabel的水平布局">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -102,17 +79,7 @@ Left ...</br/></p></body></html> </div><!-- /.entry-content -->
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-06-01T15:00:00+08:00"> 一 01 六月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: autolayout概念加深</p>
-<h2>前言</h2>
-<p>本文主要侧重<code>Autolayout</code>使用过程中，通过代码和SB添加含有<code>intrinsicSize</code>属性控件约束的一些细节。  </p>
-<h2>Hugging和Compression 属性</h2>
-<p>有很多关于这两个概念的文章，比如stackoverflow上<a href="http://stackoverflow.com/a/16281229/371974">Cocoa Autolayout: content hugging vs content compression resistance priority</a>。我觉得很形象的说明了设置了有什么用，但是还欠缺什么时候使用，即和｀intrinsicSize`的关系。先来看下文档上的说明：</p>
-<div class="highlight"><pre><span></span>- contentCompressionResistancePriorityForAxis:
-Returns the priority with which a view resists being made smaller than its intrinsic size.
-
-- contentHuggingPriorityForAxis:
-Returns the ...</pre></div></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>autolayout概念加深</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html" rel="bookmark" title="Permalink to Autolayout中Hugging和Compression使用注意">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -146,6 +113,7 @@ Returns the ...</pre></div></body></html> </div><!-- /.entry-content -->
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -166,6 +134,13 @@ Returns the ...</pre></div></body></html> </div><!-- /.entry-content -->
   <ul>
     <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
     <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
   </ul>
 </nav>
 

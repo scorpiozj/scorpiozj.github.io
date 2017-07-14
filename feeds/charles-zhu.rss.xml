@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>To be Independent</title><link>http://127.0.0.1:8000/</link><description></description><lastBuildDate>Tue, 28 Feb 2017 19:20:00 +0800</lastBuildDate><item><title>Swift：实现ScrollView中菜单栏的驻留</title><link>http://127.0.0.1:8000/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;前言&lt;/h2&gt;
+<rss version="2.0"><channel><title>To be Independent</title><link>http://127.0.0.1:8000/</link><description></description><lastBuildDate>Wed, 05 Jul 2017 19:00:00 +0800</lastBuildDate><item><title>PMP学习心得</title><link>http://127.0.0.1:8000/pmpxue-xi-xin-de.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;引子&lt;/h2&gt;
+&lt;p&gt;4月底开始,主要忙于准备PMP考试。在学习PMP之余，通过freecodecamp学习Bootstrap，通过iTunesU学习Swift，由此技术心得总结没有以前那么频繁了。在学习PMP中，发现PMP中的一般通用理论，对工作、项目以及公司人际交往等都有帮助。下面，就自己的经历发表下个人的浅薄看法（虽然考试成绩还未出来，有可能没有通过:-(）。&lt;/p&gt;
+&lt;h2&gt;PMP项目管理&lt;/h2&gt;
+&lt;p&gt;生活、工作中的事，无论大小，都可以当作一个项目。因此，做事的时候，项目管理的通用理念无疑可以运用其中。简单的事情，可以省略某些环节、步骤，但不意味着处理事情的思路也可以省略。我建议，每一件小事，每一个项目，都能完整地以项目管理的思路去对待，那么个人的职业能力和专业素养会得到很大的提高。&lt;br/&gt;
+下面，结合所学所思所想，把自己的些许心得记录下来。&lt;/p&gt;
+&lt;h3&gt;干系人&lt;/h3&gt;
+&lt;p&gt;所谓干系人，就是和项目有关系的人。准确的定义囊括两方面的意思：和项目有关的人；受项目影响和自认为受项目影响的人。有利益的地方，就会有纷争，而这说到底，还是由人引起的。所以，识别“人”，识别他们的期望和利益，很重要。而且，越早识别越有利，识别得越充分越有利。 &lt;br/&gt;
+以最近遇到的事情为例：收到某部门求助遇到某issue求解决的邮件，邮件同时抄送了产品支持组和市场组。当时，刚收到邮件的时候，我以为是个技术问题。正准备理清头绪，然后交由产品支持组接手时，我突然想了下，为什么也抄送了市场组。进一步调查才发现，这个issue不单是纯技术性的问题，还兼有业务调整——市场组在两周前对某个环节进行了修改。因此，接下来的步骤，就是召集该部门和市场组代表讨论后进行处理。&lt;/p&gt;
+&lt;h3&gt;沟通&lt;/h3&gt;
+&lt;p&gt;沟通在一个组织中的重要性不言而喻。沟通的目的是弄清干系人的需求，当前发生的问题，和成员共享信息。挖掘需求有很多的方法，如会议、图表、直接谈话。会议怎么开一直是个永恒的话题。就我的经验而言，开会前最好准备个材料（涉及商业机密的不要发），告知开会的主体和议程，带着问题和目的去开户，效率会比较高。还有一个重要的地方，就是会上内容和团队共享。实际中，经常发生团队代表参加了会议，但却没有很好的会议结论和各自团队共享。这种情况下，建议预先定义相关术语，使大家对业务和技术的理解一致。如果是纯技术的沟通，那就会相对简单：技术文档是技师人员的利器，不容易造成误解和盲点。&lt;/p&gt;
+&lt;h3&gt;风险&lt;/h3&gt;
+&lt;p&gt;风险是项目绕不开的问题。对于技术出身的人员来说，最大的问题就是只认为技术上的可行/可能与非作为风险的单一来源。而其实在实践中，技术上造成的风险，可以通过变更范围/时间/技术方案来解决。倒是和组织相关的政策流程、行业约束相关的风险，需要多多分析，免得考虑不全，影响项目进度。&lt;/p&gt;
+&lt;h3&gt;团队建设&lt;/h3&gt;
+&lt;p&gt;一个高效的团队，必定有一位高情商的项目经理。在没有系统学习PMP之前，就深深地体会到团队建设的成败直接影响到项目的成功。团队建设的成功与否，直接取决于项目经理的情商——和不同的人，用不同的方式，说不同的话，解决不同的问题。实际项目中经常会遇到技术“牛人”——就是觉得技术我最牛，没我项目就黄的nerd，与此同时，还经常鄙视不懂技术的PM。和这样的人打交道就要注意既发挥其所长，又在团队中体现出PM的领导力。这样不单单是人际技巧的范畴，更多的是个人的情商。
+以冲突解决为例，我印象最深刻的是，在一个开发进入倒数周期的项目，主力前端和后台开发吵起来了。当时，我当机立断，了解情况后，凭着自己的经验，同他们二位一起立马定下方案，避免了延期的风险。这种情况下，立马下决断是必须的选择。后来，我也反思，如果是设计阶段或者开发开始阶段，我又该怎么处理？我想，此时应该收集各方意见，开会讨论，比较论证再做判断。&lt;/p&gt;
+&lt;h3&gt;一些方法和图表工具&lt;/h3&gt;
+&lt;p&gt;我们常见的头脑风暴，鱼骨图，思维导图等工具在PMP都有介绍，主要侧重方法／工具的特点，和应用场合。学习过后，决不意味着掌握了这些方法／工具。比如思维导图，我之前看过相关的书；平时看书的时候，也会用思维导图记录笔记，但我还是觉得没有深刻的理解这个工具。同样的，在学习质量管理的时候，龙卷风图，决策树图等等，都是需要在实践中深入的。就像大家都有一块生铁，需要各自修炼才能铸造成你的利器。&lt;/p&gt;
+&lt;h2&gt;结语&lt;/h2&gt;
+&lt;p&gt;以上是迄今个人的一点体悟，可能不够完成，也有点浅薄，但我个人是深感裨益。正如书中所说：提供了项目管理的一般理念和方法论。运用到实际的时候，还是要根据现状灵活处理。但我想说明的是，运用项目管理的思想来思考问题，处理工作，的确可以大大提高人的思维、工作和业务能力。
+其实，原本想打算成绩出来以后再写本文。后来一想，如果考试没过，我就不总结了吗？至少，我还是学到知识的，想到这里，就厚脸皮的把浅见拿出来曝曝光了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 05 Jul 2017 19:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2017-07-05:pmpxue-xi-xin-de.html</guid><category>pmp</category><category>职业考试</category></item><item><title>Swift：实现ScrollView中菜单栏的驻留</title><link>http://127.0.0.1:8000/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;继续使用swift来实现一些常见的页面，本篇要实现的页面效果如图：&lt;br/&gt;
 &lt;img alt="NestedScroll" src="./imgs/20170228/NestedScroll.gif"/&gt;&lt;/p&gt;
 &lt;p&gt;之所以选择实现这样的效果，是不经意间看到一篇&lt;a href="https://sexyswift.wordpress.com/2016/08/25/swift-parallax-scrolling-with-header-sticking-at-top-nested-uiscrollview/"&gt;blog&lt;/a&gt;, 它不是使用TableView的header来实现，而是纯粹使用了&lt;code&gt;UIScrollView&lt;/code&gt;。因此，为了实现这样的效果，需要对contentOffset有较深刻的认识，正好可以加深对ScrollView的理解。此外，该实现还有几个问题，需要修复。&lt;br/&gt;
@@ -255,7 +274,7 @@ SignupEmail 页面，设置的cell依次为 Space, TextField, TextField, Button.
 &lt;li&gt;删除：0,1,3,4&lt;/li&gt;
 &lt;li&gt;插入：0,2,3,4,5,6&lt;/li&gt;
 &lt;/ul&gt;
-&lt;p&gt;各位可以尝试一下，看一下效果。接着问题来了：对于每一种状态迁移，都需要通过hardcode的方式吗？这个问题的求解其实是最长公告序列的问题，通过比较前后状态的cell内容，自动计算出删/插的cell，这样，即便以后添加新的状态，也不用再修改这部分内容了。这里，需要提醒下的是，在状态更新的时候，除了删除/插入的动作，有可能还需要reload不变的cell，原因就不多说了。&lt;br/&gt;
+&lt;p&gt;各位可以尝试一下，看一下效果。接着问题来了：对于每一种状态迁移，都需要通过hardcode的方式吗？这个问题的求解其实是最长公共序列的问题，通过比较前后状态的cell内容，自动计算出删/插的cell，这样，即便以后添加新的状态，也不用再修改这部分内容了。这里，需要提醒下的是，在状态更新的时候，除了删除/插入的动作，有可能还需要reload不变的cell，原因就不多说了。&lt;br/&gt;
 最后，看一下demo效果：&lt;/p&gt;
 &lt;p&gt;&lt;img alt="demo.gif" src="./imgs/20160909/demo.gif"/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Fri, 09 Sep 2016 21:20:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2016-09-09:a study of UITableView State Changes.html</guid><category>uitableview</category><category>viewcontroller</category></item><item><title>ATS:加载淘宝页面</title><link>http://127.0.0.1:8000/atsjia-zai-tao-bao-ye-mian.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;问题描述&lt;/h2&gt;
 &lt;p&gt;项目中需要在App中加载一个淘宝网页，现在的问题是在iOS9上&lt;code&gt;WebView&lt;/code&gt;呈空白状。淘宝链接如下：&lt;a href="http://lsh-cat.taobao.com"&gt;http://lsh-cat.taobao.com&lt;/a&gt;&lt;/p&gt;
@@ -405,7 +424,7 @@ f({42})
 &lt;a href="https://developer.apple.com/swift/blog/?id=4"&gt;https://developer.apple.com/swift/blog/?id=4&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Thu, 10 Mar 2016 21:20:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2016-03-10:assert-in-swift.html</guid><category>iOS</category><category>swift</category><category>assert</category></item><item><title>模拟器相关命令</title><link>http://127.0.0.1:8000/mo-ni-qi-xiang-guan-ming-ling.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;/Applications/Xcode.app/Contents/Developer/Applications/Simulator.app&lt;/p&gt;
 &lt;p&gt;模拟器中安装app：&lt;/p&gt;
 &lt;p&gt;/Applications/Xcode.app/Contents/Developer/usr/bin/simctl install booted demo.app
-该demo.app位置处在过程的derivedData文件夹内&lt;/p&gt;
+该demo.app位置处在工程的derivedData文件夹内&lt;/p&gt;
 &lt;p&gt;xcrun simctl openurl booted taobao://h5.m.taobao.com/guang/index.html
 模拟打开app的web页面&lt;/p&gt;
 &lt;p&gt;xcrun simctl list
@@ -495,7 +514,7 @@ provision文件需要包含待测试的设备，这里主要说明下entitlement
 还有一个需要修改的地方是：&lt;code&gt;get-task-allow&lt;/code&gt; 需要设置为 &lt;code&gt;false&lt;/code&gt;，意为不允许其他进程依附程序(一般情况，adhoc和release版，该值或为空或为true)。 &lt;br/&gt;
 接下来，就使用iResign，依次选择相应的文件即可。安装重签名ipa失败时，设备在身边的话，可以查看console信息，一般情况下都有说明。常见的错误就是provision和entitlement之间的验证信息匹配失败。  &lt;/p&gt;
 &lt;h3&gt;参考&lt;/h3&gt;
-&lt;p&gt;顺便学习了下(签名知识)[http://objccn.io/issue-17-2/]，摘取了几个重要命令：&lt;/p&gt;
+&lt;p&gt;顺便学习了下&lt;a href="http://objccn.io/issue-17-2/"&gt;签名知识&lt;/a&gt;，摘取了几个重要命令：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;//查看证书信息
 security find-identity -v -p codesigning
 
@@ -563,9 +582,7 @@ security cms -D -i Payload/yourApp.app/embedded.mobileprovision
 &lt;li&gt;英文系统中只需要 one, other&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;stringsdict&lt;/code&gt; 文件本地化后，需要清理缓存，并有可能需要删除后方能&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;官方文档：&lt;a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/StringsdictFileFormat/StringsdictFileFormat.html"&gt;StringsdictFileFormat&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 31 Aug 2015 11:20:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-08-31:my-super-post.html</guid><category>Localization</category><category>stringsdict</category></item><item><title>Autolayout: UITableViewCell中UILabel的水平布局</title><link>http://127.0.0.1:8000/autolayout-uitableviewcellzhong-uilabelde-shui-ping-bu-ju.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: UITableVIewCell中两列UILabel的布局总结&lt;/p&gt;
-&lt;h3&gt;前言&lt;/h3&gt;
+&lt;p&gt;官方文档：&lt;a href="https://developer.apple.com/library/ios/documentation/MacOSX/Conceptual/BPInternational/StringsdictFileFormat/StringsdictFileFormat.html"&gt;StringsdictFileFormat&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 31 Aug 2015 11:20:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-08-31:my-super-post.html</guid><category>Localization</category><category>stringsdict</category></item><item><title>Autolayout: UITableViewCell中UILabel的水平布局</title><link>http://127.0.0.1:8000/autolayout-uitableviewcellzhong-uilabelde-shui-ping-bu-ju.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h3&gt;前言&lt;/h3&gt;
 &lt;p&gt;一眨眼，六月底新入职现在公司已一月有余，期间工作节奏比之前一家增加许多，像是回到若干年前昼夜奋战几周完成一个app的状态。唯一不同的是，现在更需注重效率，复用原有的经验。&lt;/p&gt;
 &lt;h3&gt;UITableViewCell中水平分布的两列UILabel&lt;/h3&gt;
 &lt;p&gt;比如，在最近的项目中遇到UITableViewCell中水平分布两个Label，每个 label 都有可能有多行。根据不同的情况，两个lable的文字需要上/中/下对齐，如图：&lt;/p&gt;
@@ -600,9 +617,7 @@ Right&lt;/p&gt;
 &lt;li&gt;Autolayout下，UITableViewCell的高度自适应&lt;/li&gt;
 &lt;li&gt;Autolayout的概念理解，尤其是hugging/compression resistance的理解&lt;/li&gt;
 &lt;/ol&gt;
-&lt;p&gt;而代码和SB的两种实现都遵循相同的布局法则，这里分开来说明也是为了“兼容”纯代码和SB布局。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Sat, 01 Aug 2015 17:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-08-01:autolayout-uitableviewcellzhong-uilabelde-shui-ping-bu-ju.html</guid><category>iOS</category><category>autolayout</category><category>UITableViewCell</category><category>UILabel</category></item><item><title>6月工作总结</title><link>http://127.0.0.1:8000/6yue-gong-zuo-zong-jie.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: 近期工作总结&lt;/p&gt;
-&lt;h3&gt;前言&lt;/h3&gt;
+&lt;p&gt;而代码和SB的两种实现都遵循相同的布局法则，这里分开来说明也是为了“兼容”纯代码和SB布局。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Sat, 01 Aug 2015 17:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-08-01:autolayout-uitableviewcellzhong-uilabelde-shui-ping-bu-ju.html</guid><category>iOS</category><category>autolayout</category><category>UITableViewCell</category><category>UILabel</category></item><item><title>6月工作总结</title><link>http://127.0.0.1:8000/6yue-gong-zuo-zong-jie.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h3&gt;前言&lt;/h3&gt;
 &lt;p&gt;因为一些原因，下了100%的决心：换工作。换工作倒也不难，只是找一份匹配度高的工作，的确很难，尤其是在所处的二线城市。个中滋味，——如鱼饮水，通过这些经历，对自己的发展和定位，有了一个较为明晰的看法。&lt;br/&gt;
 最近在整理工作内容准备交接，倒是找出了一些工作中遇到的记录，准备整理出来，晒晒自己的一些经历。&lt;/p&gt;
 &lt;h3&gt;一些纪录&lt;/h3&gt;
@@ -655,9 +670,7 @@ LD_LIBRARY_PATH=. ./main
 ar有丰富的内涵，也需要对程序从编译，链接，生成可执行程序有较深的了解。&lt;/p&gt;
 &lt;h4&gt;otool&lt;/h4&gt;
 &lt;p&gt;&lt;code&gt;ldd&lt;/code&gt; 可以查看链接库的各种信息，在Mac OS X平台上由&lt;code&gt;otool&lt;/code&gt;替代。&lt;br/&gt;
-&lt;code&gt;size&lt;/code&gt; 可以查看可执行文件/库等的各个段的size信息。  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 17 Jun 2015 17:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-06-17:6yue-gong-zuo-zong-jie.html</guid><category>iOS</category><category>git</category></item><item><title>Autolayout中Hugging和Compression使用注意</title><link>http://127.0.0.1:8000/autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: autolayout概念加深&lt;/p&gt;
-&lt;h2&gt;前言&lt;/h2&gt;
+&lt;code&gt;size&lt;/code&gt; 可以查看可执行文件/库等的各个段的size信息。  &lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 17 Jun 2015 17:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-06-17:6yue-gong-zuo-zong-jie.html</guid><category>iOS</category><category>git</category></item><item><title>Autolayout中Hugging和Compression使用注意</title><link>http://127.0.0.1:8000/autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;本文主要侧重&lt;code&gt;Autolayout&lt;/code&gt;使用过程中，通过代码和SB添加含有&lt;code&gt;intrinsicSize&lt;/code&gt;属性控件约束的一些细节。  &lt;/p&gt;
 &lt;h2&gt;Hugging和Compression 属性&lt;/h2&gt;
 &lt;p&gt;有很多关于这两个概念的文章，比如stackoverflow上&lt;a href="http://stackoverflow.com/a/16281229/371974"&gt;Cocoa Autolayout: content hugging vs content compression resistance priority&lt;/a&gt;。我觉得很形象的说明了设置了有什么用，但是还欠缺什么时候使用，即和｀intrinsicSize`的关系。先来看下文档上的说明：&lt;/p&gt;
@@ -710,9 +723,7 @@ Hugging和Compression属性值有默认值：&lt;/p&gt;
 &lt;p&gt;如上单个控件可以正常使用，如果设置一个相邻的控件，会有什么需要注意的吗？答案是NO，什么都不需要操心，仍旧按之前的方法添加约束，这极大的简化了工作量。&lt;br/&gt;
 另外，这里需要说明的是，需要更新控件上文字的时候，为了有一个较好的动画效果，需要： &lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;[label.superView layoutIfNeeded];
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 01 Jun 2015 15:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-06-01:autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</guid><category>iOS</category><category>Autolayout</category></item><item><title>仿手机QQ消息小红点动画2</title><link>http://127.0.0.1:8000/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: 动画学习&lt;/p&gt;
-&lt;h2&gt;前言&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 01 Jun 2015 15:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-06-01:autolayoutzhong-hugginghe-compressionshi-yong-zhu-yi.html</guid><category>iOS</category><category>Autolayout</category></item><item><title>仿手机QQ消息小红点动画2</title><link>http://127.0.0.1:8000/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;&lt;a href="http://iloveanan.com/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html"&gt;上一篇&lt;/a&gt;把动画的实现步骤大致理清，需要确认小尾巴的绘制区域，关键就是确定4个顶点的位置。大家可以根据需要，选择不同的计算方式。&lt;br/&gt;
 今天，要实现：&lt;/p&gt;
 &lt;ol&gt;
@@ -1097,15 +1108,12 @@ Summary: 动画学习&lt;/p&gt;
 &lt;p&gt;从运行效果看，还是差强人意的。这显示了方案的可行性。&lt;br/&gt;
 那么相应二三四象限的情况也能做类似的处理，这里就不贴代码了。  &lt;/p&gt;
 &lt;p&gt;由于时间的关系，暂时研究到此，下一篇会把功能逐步完善。主要会包含添加文字的情形等内容，敬请期待。&lt;br/&gt;
-如果有更好的实现方式，也请大家赐教！&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Sun, 17 May 2015 13:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-05-17:fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html</guid><category>quartzcore</category></item><item><title>随感</title><link>http://127.0.0.1:8000/sui-gan.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu  &lt;/p&gt;
-&lt;p&gt;书桌上放着本 &amp;lt;&amp;lt;守望灯塔&amp;gt;&amp;gt;，看了快一半。买的时候，看书名以为是个励志型的故事，看了以后才知道不是，——大概和爱情，和人生有关。额，可是有什么又是和人生无关的呢。那好吧，我还是说我没看懂的好。&lt;br/&gt;
+如果有更好的实现方式，也请大家赐教！&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Sun, 17 May 2015 13:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-05-17:fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html</guid><category>quartzcore</category></item><item><title>随感</title><link>http://127.0.0.1:8000/sui-gan.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;书桌上放着本 &amp;lt;&amp;lt;守望灯塔&amp;gt;&amp;gt;，看了快一半。买的时候，看书名以为是个励志型的故事，看了以后才知道不是，——大概和爱情，和人生有关。额，可是有什么又是和人生无关的呢。那好吧，我还是说我没看懂的好。&lt;br/&gt;
 买了两盒迷你果园，一盒葫芦，一盒黄瓜，不需要额外的土，不需要施肥，只需要浇水，晒太阳，就能结果。种子同一天放进去的，水每天都浇，阳光每天都晒。就这样过了四五天，葫芦先发芽了，而且一发芽，叶子就显得很大。过了一个星期，长出来的叶子，就能分辨出是葫芦娃头上戴的样子了。而那黄瓜呢，不知怎么的，一个星期后才发芽。破土而出后，小小的叶子，就像一个早产儿。而且，三四天过去了，和最初破土而出时相比，就大了一点。&lt;br/&gt;
 和葫芦的生长比，黄瓜差很多。可是，我不会认为黄瓜没有葫芦好，因为两者没有可比性。葫芦应该和葫芦去比，黄瓜要和黄瓜比。中国的葫芦可以和美国的葫芦比，美国的黄瓜也不能和中国的葫芦相比。  &lt;/p&gt;
 &lt;p&gt;人过了而立，不知不觉就会有压力。看多了听多了他人的风云灿烂，总免不了暗自相比。尤其是90，00开始踏上舞台的时候，内心的压迫与紧张莫名的突出。只好自我安慰自我阿q的说，总有一天，你的同龄人中会出现主席。难道不是么？&lt;/p&gt;
 &lt;p&gt;不知道内心的压抑，是怎么如入夜弥漫的黑暗般弥漫开来的。如果，黑暗中有座灯塔，那么，至少不会窒息在黑暗里。更重要的是，不会迷失。我想，我是不会沉沦在黑夜里的。因为，我的灯塔，就在那里。&lt;/p&gt;
-&lt;p&gt;——最近所思所感，写出来晒晒，顿时心里舒服多了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 11 May 2015 12:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-05-11:sui-gan.html</guid></item><item><title>WWDC2014-419 Notes</title><link>http://127.0.0.1:8000/wwdc2014-419-notes.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: notes for 419&lt;/p&gt;
-&lt;h2&gt;Intro&lt;/h2&gt;
+&lt;p&gt;——最近所思所感，写出来晒晒，顿时心里舒服多了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 11 May 2015 12:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-05-11:sui-gan.html</guid></item><item><title>WWDC2014-419 Notes</title><link>http://127.0.0.1:8000/wwdc2014-419-notes.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;Intro&lt;/h2&gt;
 &lt;p&gt;主要从原理上剖析，教你如何检查程序性能瓶颈所在。涉及到的系统框架如下：  &lt;/p&gt;
 &lt;p&gt;&lt;img alt="Framework" src="./imgs/20150504/Framework.png"/&gt; &lt;/p&gt;
 &lt;h2&gt;Core animation pipeline&lt;/h2&gt;
@@ -1124,9 +1132,9 @@ CPU渲染结束后，会在下一次帧刷新的时候，显示到屏幕。&lt;b
 &lt;li&gt;layoutSubviews overrides are invoked&lt;/li&gt;
 &lt;li&gt;View creation, addSubview:&lt;/li&gt;
 &lt;li&gt;Populate content, database lookups &lt;/li&gt;
-&lt;li&gt;Usually CPU bound or I/O bound
-注：database指的是需要本地化的UI控件&lt;/li&gt;
+&lt;li&gt;Usually CPU bound or I/O bound&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;注：database指的是需要本地化的UI控件&lt;/p&gt;
 &lt;h4&gt;Display:&lt;/h4&gt;
 &lt;ul&gt;
 &lt;li&gt;Draw contents via drawRect: if it is overridden &lt;/li&gt;
@@ -1208,15 +1216,15 @@ Performance considerations:&lt;/p&gt;
 &lt;li&gt;Will introduce offscreen passes:
     If layer is not opaque (opacity != 1.0)
     And if layer has nontrivial content (child layers or background image)&lt;/li&gt;
-&lt;li&gt;Sub view hierarchy needs to be composited before being blended Always turn it off if not needed
-注： offscreen 非常消耗gpu&lt;/li&gt;
+&lt;li&gt;Sub view hierarchy needs to be composited before being blended Always turn it off if not needed&lt;/li&gt;
 &lt;/ul&gt;
+&lt;p&gt;注： offscreen 非常消耗gpu&lt;/p&gt;
 &lt;h1&gt;Tools&lt;/h1&gt;
 &lt;p&gt;&lt;img alt="Tools" src="./imgs/20150504/Tools.png"/&gt;&lt;br/&gt;
 检测性能工具&lt;/p&gt;
 &lt;h2&gt;Performance Investigation Mindset&lt;/h2&gt;
 &lt;p&gt;&lt;img alt="PerformanceInvestigationMindset" src="./imgs/20150504/PerformanceInvestigationMindset.png"/&gt;&lt;/p&gt;
-&lt;p&gt;使用Instruments中core animation模版，查看当前的layer
+&lt;p&gt;使用Instruments中core animation模版，查看当前的layer    &lt;br/&gt;
 注：补充debug option说明：&lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;&lt;strong&gt;Color Blended Layers&lt;/strong&gt;: Shows blended view layers. Multiple view layers that are drawn on top of each other with blending enabled are highlighted in red. Reducing the amount of red in your app when this option is selected can dramatically improve your apps performance. Blended view layers are often the cause for slow table scrolling.&lt;/li&gt;
@@ -1235,14 +1243,14 @@ Performance considerations:&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;
 &lt;p&gt;shadow creating ： cell的阴影创建&lt;/p&gt;
-&lt;p&gt;//wrong
+&lt;p&gt;&lt;code&gt;//wrong
 CALayer *imageViewLayer = cell.imageView.layer;
 imageViewLayer.shadowColor = [UIColor blackColor].CGColor;
 imageViewLayer.shadowOpacity = 1.0;
 imageViewLayer.shadowRadius = 2.0;
 imageViewLayer.shadowOffset = CGSizeMake(1.0, 1.0);
 //right
-imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);&lt;/p&gt;
+imageViewLayer.shadowPath = CGPathCreateWithRect(imageRect, NULL);&lt;/code&gt;&lt;/p&gt;
 &lt;/li&gt;
 &lt;li&gt;
 &lt;p&gt;round thumbnail: never use layer to create if there are many cells&lt;/p&gt;
@@ -1266,9 +1274,7 @@ Offscreen passes are expensive  &lt;/p&gt;
 &lt;p&gt;1。 This is especially true for table cells and scrolling&lt;/p&gt;
 &lt;p&gt;Tools&lt;/p&gt;
 &lt;p&gt;&lt;img alt="toolMindset" src="./imgs/20150504/toolMindset.png"/&gt;&lt;/p&gt;
-&lt;p&gt;注：要实现流畅度好的app，offscreen render越少越好。利用本篇的方法，可以迅速的定位症结，从而提升app性能。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 04 May 2015 13:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-05-04:wwdc2014-419-notes.html</guid><category>wwdc 2014</category><category>UIScrollView</category></item><item><title>WWDC2014-235 Notes</title><link>http://127.0.0.1:8000/wwdc2014-235-notes.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: notes for 223&lt;/p&gt;
-&lt;h3&gt;Intro&lt;/h3&gt;
+&lt;p&gt;注：要实现流畅度好的app，offscreen render越少越好。利用本篇的方法，可以迅速的定位症结，从而提升app性能。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 04 May 2015 13:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2015-05-04:wwdc2014-419-notes.html</guid><category>wwdc 2014</category><category>UIScrollView</category></item><item><title>WWDC2014-235 Notes</title><link>http://127.0.0.1:8000/wwdc2014-235-notes.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h3&gt;Intro&lt;/h3&gt;
 &lt;p&gt;&lt;code&gt;UIScrollView&lt;/code&gt; 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 &lt;code&gt;advanced_scrollviews_and_touch_handling_techniques&lt;/code&gt;，主要包括：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;Hit testing&lt;/li&gt;
@@ -3824,9 +3830,7 @@ Summary: 设计模式&lt;/p&gt;
 &lt;li&gt;易于动态映射&lt;/li&gt;
 &lt;/ul&gt;
 &lt;p&gt;本文是阅读了&lt;a href="http://www.objc.io/issue-13/mvvm.html"&gt;Model-View-ViewModel for iOS&lt;/a&gt;有感而发, 文中的图片也来源于此。&lt;br/&gt;
-其中文末给出的参考文章和示例代码，值得一看。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Thu, 17 Jul 2014 13:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-17:mvvmmo-shi-chu-tan.html</guid><category>iOS</category><category>mvvm</category><category>mvc</category><category>pattern</category></item><item><title>umeng 友盟错误报告处理</title><link>http://127.0.0.1:8000/umeng-you-meng-cuo-wu-bao-gao-chu-li.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: 错误报告处理&lt;/p&gt;
-&lt;p&gt;今天发现友盟的后台中出现了app crash，打开一看：&lt;/p&gt;
+其中文末给出的参考文章和示例代码，值得一看。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Thu, 17 Jul 2014 13:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-17:mvvmmo-shi-chu-tan.html</guid><category>iOS</category><category>mvvm</category><category>mvc</category><category>pattern</category></item><item><title>umeng 友盟错误报告处理</title><link>http://127.0.0.1:8000/umeng-you-meng-cuo-wu-bao-gao-chu-li.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;今天发现友盟的后台中出现了app crash，打开一看：&lt;/p&gt;
 &lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;Application received signal SIGSEGV
 (null)
 (
@@ -3867,9 +3871,7 @@ Base Address: 0x00054000
 &lt;p&gt;&lt;code&gt;/Products/Applications/YourAppName.app/YourAppName&lt;/code&gt;&lt;/p&gt;
 &lt;p&gt;然后使用命令：&lt;br/&gt;
 &lt;code&gt;atos -arch armv7s -o /Products/Applications/YourAppName.app/YourAppName 0x0007bfd3&lt;/code&gt;&lt;br/&gt;
-这样就会显示出是哪一个方法引起crash了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 14 Jul 2014 10:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-14:umeng-you-meng-cuo-wu-bao-gao-chu-li.html</guid><category>iOS</category><category>sigsegv</category></item><item><title>Sketch Tutorials Study 1</title><link>http://127.0.0.1:8000/sketch-tutorials-study-1.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: some tutorials of sketch&lt;/p&gt;
-&lt;p&gt;sketch是Mac上优秀的设计软件，堪称一把利剑。可好剑还得配好剑法，才能发挥威力。最近做的app，在界面上欠缺不少，正好借助sketch进行优化。下面是根据几个tutorial学习了sketch和设计的相关步骤。&lt;/p&gt;
+这样就会显示出是哪一个方法引起crash了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 14 Jul 2014 10:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-14:umeng-you-meng-cuo-wu-bao-gao-chu-li.html</guid><category>iOS</category><category>sigsegv</category></item><item><title>Sketch Tutorials Study 1</title><link>http://127.0.0.1:8000/sketch-tutorials-study-1.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;sketch是Mac上优秀的设计软件，堪称一把利剑。可好剑还得配好剑法，才能发挥威力。最近做的app，在界面上欠缺不少，正好借助sketch进行优化。下面是根据几个tutorial学习了sketch和设计的相关步骤。&lt;/p&gt;
 &lt;h3&gt;Flat Styled Icon&lt;/h3&gt;
 &lt;p&gt;原文在此：&lt;a href="https://medium.com/@sokratus/how-to-create-a-flat-styled-icon-in-sketch-3-27c4bd09989"&gt;flat styled icon &lt;/a&gt; &lt;br/&gt;
 该示例主要展示了&lt;strong&gt;相交&lt;/strong&gt;运算的作用，以及锚点的使用。很多图形，仔细观察，都可以通过各种图形进行布尔运算而实现。通过形状的运算实现，还方便给各个部分填色。不过这一部分对我还是有点难，需要多练习。&lt;br/&gt;
@@ -3877,9 +3879,7 @@ Summary: some tutorials of sketch&lt;/p&gt;
 &lt;h3&gt;Shadow Effect&lt;/h3&gt;
 &lt;p&gt;原文在此：&lt;a href="http://brilliantsketch.com/make-long-shadow-effect-sketch/"&gt;shadow effect&lt;/a&gt; &lt;br/&gt;
 该示例主要讲解了模糊、mask和锚点的使用。对于想做阴影效果，非常有帮助。我还依葫芦画瓢实现了文中文字的shadow效果。理解了这个方法，基本上阴影的实现就掌握了。&lt;/p&gt;
-&lt;p&gt;最后，我的练习地址：&lt;a href="https://github.com/scorpiozj/blogproject/tree/master/sketch"&gt;github&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Tue, 08 Jul 2014 14:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-08:sketch-tutorials-study-1.html</guid><category>sketch</category></item><item><title>WWDC2014-223 Notes Protyping</title><link>http://127.0.0.1:8000/wwdc2014-223-notes-protyping.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu
-Summary: notes for 223&lt;/p&gt;
-&lt;p&gt;原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。&lt;br/&gt;
+&lt;p&gt;最后，我的练习地址：&lt;a href="https://github.com/scorpiozj/blogproject/tree/master/sketch"&gt;github&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Tue, 08 Jul 2014 14:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-08:sketch-tutorials-study-1.html</guid><category>sketch</category></item><item><title>WWDC2014-223 Notes Protyping</title><link>http://127.0.0.1:8000/wwdc2014-223-notes-protyping.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。&lt;br/&gt;
 这一讲的内容分为下面几个部分：&lt;/p&gt;
 &lt;ol&gt;
 &lt;li&gt;原型的重要性&lt;/li&gt;
@@ -3939,9 +3939,7 @@ make的目的是为了给人看，那么就需要判断fake app中看上去更�
 &lt;li&gt;如何protype是最大的收获，但是这一过程需要多练。  &lt;/li&gt;
 &lt;li&gt;各种工具的灵活使用：谁知道keynote也可以protype呢？&lt;/li&gt;
 &lt;li&gt;制作fake app的技巧： 不局限于coding实现&lt;/li&gt;
-&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Thu, 03 Jul 2014 22:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-03:wwdc2014-223-notes-protyping.html</guid><category>wwdc 2014</category><category>ui</category><category>ios</category></item><item><title>WWDC2014-211 Notes designing_intuitive_user_experiences</title><link>http://127.0.0.1:8000/wwdc2014-211-notes-designing_intuitive_user_experiences.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: Notes for 211&lt;/p&gt;
-&lt;h1&gt;intuitive&lt;/h1&gt;
+&lt;/ul&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Thu, 03 Jul 2014 22:00:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-07-03:wwdc2014-223-notes-protyping.html</guid><category>wwdc 2014</category><category>ui</category><category>ios</category></item><item><title>WWDC2014-211 Notes designing_intuitive_user_experiences</title><link>http://127.0.0.1:8000/wwdc2014-211-notes-designing_intuitive_user_experiences.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h1&gt;intuitive&lt;/h1&gt;
 &lt;p&gt;字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  &lt;/p&gt;
 &lt;p&gt;开篇就举了设计 &lt;em&gt;“笔”&lt;/em&gt; 的例子：长度，宽度等元素&lt;/p&gt;
 &lt;p&gt;Being ituitive is not intuitive&lt;br/&gt;
@@ -3969,9 +3967,7 @@ Summary: Notes for 211&lt;/p&gt;
 &lt;p&gt;80/20法则，80%的用户只会使用app提供的20%功能&lt;/p&gt;
 &lt;h2&gt;focused&lt;/h2&gt;
 &lt;p&gt;简单的说，就是app的目的是什么，那么所有的操作都为然着这个目的而来。&lt;/p&gt;
-&lt;p&gt;设计真是门艺术——大家都能判断出体验的好坏，但却不能据此进行改良。这部分内容不仅对designer，对开发／产品人员，也大有裨益——虽然我的体会不是很深。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 30 Jun 2014 14:20:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-06-30:wwdc2014-211-notes-designing_intuitive_user_experiences.html</guid><category>wwdc 2014</category><category>ui</category><category>ios</category><category>ux</category></item><item><title>WWDC2014-221 Notes creating_custom_ios_user_interfaces</title><link>http://127.0.0.1:8000/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;Author: Charles Zhu&lt;br/&gt;
-Summary: notes for 221&lt;/p&gt;
-&lt;p&gt;本场主要分4个议题： &lt;/p&gt;
+&lt;p&gt;设计真是门艺术——大家都能判断出体验的好坏，但却不能据此进行改良。这部分内容不仅对designer，对开发／产品人员，也大有裨益——虽然我的体会不是很深。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 30 Jun 2014 14:20:00 +0800</pubDate><guid isPermaLink="false">tag:127.0.0.1:8000,2014-06-30:wwdc2014-211-notes-designing_intuitive_user_experiences.html</guid><category>wwdc 2014</category><category>ui</category><category>ios</category><category>ux</category></item><item><title>WWDC2014-221 Notes creating_custom_ios_user_interfaces</title><link>http://127.0.0.1:8000/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html</link><description>&lt;html&gt;&lt;body&gt;&lt;p&gt;本场主要分4个议题： &lt;/p&gt;
 &lt;ul&gt;
 &lt;li&gt;Spring animations&lt;/li&gt;
 &lt;li&gt;Vibrancy and blur&lt;/li&gt;

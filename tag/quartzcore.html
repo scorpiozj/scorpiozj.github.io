@@ -57,35 +57,7 @@
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-05-25T11:00:00+08:00"> 一 25 五月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: 动画学习</p>
-<h2>前言</h2>
-<p><a href="http://iloveanan.com/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-1.html">上一篇</a>把动画的实现步骤大致理清，需要确认小尾巴的绘制区域，关键就是确定4个顶点的位置。大家可以根据需要，选择不同的计算方式。<br/>
-今天，要实现：</p>
-<ol>
-<li>文字的添加</li>
-<li>尾巴拉长用弧形代替直线</li>
-</ol>
-<p>下面是现在的效果图：<br/>
-<img alt="QQ2_1.gif" src="./imgs/20150525/QQ2_1.gif"/></p>
-<h2>文字添加</h2>
-<p>为了简单，这里对文字的颜色字体等属性不提供接口，而只是在内部设置固定的值；提供一个类方法生成对象。如：</p>
-<div class="highlight"><pre><span></span><span class="o">+</span> <span class="o">(</span><span class="nt">instancetype</span><span class="o">)</span><span class="nt">zzspringViewWithText</span><span class="o">:(</span><span class="nt">NSString</span> <span class="o">*)</span><span class="nt">text</span><span class="o">;</span>
-</pre></div>
-<p>在这个方法里面需要做：</p>
-<ol>
-<li>根据text内容，确定文字绘制的图形区域</li>
-<li>根据文字的绘制区域，确定view对象的bounds</li>
-<li>可能的情况下，限制文字的长度（QQ上消息数最多显示99+）</li>
-</ol>
-<p>在<code>drawRect</code>中，需要做的事：</p>
-<ol>
-<li>绘制带圆角的view</li>
-<li>绘制文字</li>
-</ol>
-<p>如下所示：</p>
-<div class="highlight"><pre><span></span><span class="c1">//draw corner round rectangle</span>
-<span class="p">-(</span><span class="kt">void</span><span class="p">)</span> <span class="nf">p_drawRoundedRectWithContext:</span><span class="p">(</span><span class="n">CGContextRef</span><span class="p">)</span><span class="nv">context ...</span></pre></div></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>动画学习</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/fang-shou-ji-qqxiao-xi-xiao-hong-dian-dong-hua-2.html" rel="bookmark" title="Permalink to 仿手机QQ消息小红点动画2">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -160,6 +132,7 @@ Summary: 动画学习</p>
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -180,6 +153,13 @@ Summary: 动画学习</p>
   <ul>
     <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
     <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
   </ul>
 </nav>
 

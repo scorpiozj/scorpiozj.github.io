@@ -100,7 +100,7 @@ SignupEmail 页面，设置的cell依次为 Space, TextField, TextField, Button.
 <li>删除：0,1,3,4</li>
 <li>插入：0,2,3,4,5,6</li>
 </ul>
-<p>各位可以尝试一下，看一下效果。接着问题来了：对于每一种状态迁移，都需要通过hardcode的方式吗？这个问题的求解其实是最长公告序列的问题，通过比较前后状态的cell内容，自动计算出删/插的cell，这样，即便以后添加新的状态，也不用再修改这部分内容了。这里，需要提醒下的是，在状态更新的时候，除了删除/插入的动作，有可能还需要reload不变的cell，原因就不多说了。<br/>
+<p>各位可以尝试一下，看一下效果。接着问题来了：对于每一种状态迁移，都需要通过hardcode的方式吗？这个问题的求解其实是最长公共序列的问题，通过比较前后状态的cell内容，自动计算出删/插的cell，这样，即便以后添加新的状态，也不用再修改这部分内容了。这里，需要提醒下的是，在状态更新的时候，除了删除/插入的动作，有可能还需要reload不变的cell，原因就不多说了。<br/>
 最后，看一下demo效果：</p>
 <p><img alt="demo.gif" src="./imgs/20160909/demo.gif"/></p></body></html>
             </div><!-- /.entry-content -->
@@ -140,6 +140,7 @@ SignupEmail 页面，设置的cell依次为 Space, TextField, TextField, Button.
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -160,6 +161,13 @@ SignupEmail 页面，设置的cell依次为 Space, TextField, TextField, Button.
   <ul>
     <li><a href="https://github.com/scorpiozj">scorpiozj</a></li>
     <li><a href="https://twitter.com/charleszhu_">charleszhu_</a></li>
+  </ul>
+</nav>
+
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
   </ul>
 </nav>
 

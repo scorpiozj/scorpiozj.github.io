@@ -53,6 +53,37 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">git commit -a 的误区</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2014-09-22T14:00:00+08:00"> 一 22 九月 2014 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
+Summary: git 错误理解</p>
+<h2>SVN下的项目管理</h2>
+<p>在使用SVN进行版本管理的时候，我喜欢完成一个功能后进行提交。因为SVN设计的项目大多是在Linux系统，由于缺少较好的IDE，通常会先使用<code>svn status</code> 查看修改的文件，然后逐一确认，最后使用 <code>svn ci -a -m \"commit content\"</code> 进行提交。</p>
+<h2>git下的误区</h2>
+<p>大多数情况下，我一直按照SVN的方式处理git项目。我也一直感觉使用<code>git commit -a</code>很爽，直到有一天发现git的log显示...<br/>
+接下来我们来做一些操作：</p>
+<div class="highlight"><pre><span></span>$ git init
+$ <span class="nb">echo</span> <span class="s2">"this is a init text"</span> &gt;&gt; hello.txt
+$ git status
+On branch master
+
+Initial ...</pre></div></body></html> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/git-commit-a-de-wu-qu.html" rel="bookmark" title="Permalink to git commit -a 的误区">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/git.html">git</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/quartzcomposerji-ben-gai-nian.html" rel="bookmark" title="Permalink to QuartzComposer基本概念">QuartzComposer基本概念</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-08-25T14:00:00+08:00"> 一 25 八月 2014 </abbr>
@@ -219,21 +250,7 @@ Summary: 设计模式</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-14T10:00:00+08:00"> 一 14 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: 错误报告处理</p>
-<p>今天发现友盟的后台中出现了app crash，打开一看：</p>
-<div class="highlight"><pre><span></span>Application received signal SIGSEGV
-(null)
-(
-    0   CoreFoundation                      0x2e44bf23  + 154
-    1   libobjc.A.dylib                     0x38bdece7 objc_exception_throw + 38
-    2   CoreFoundation                      0x2e44be4d  + 0
-    3   ?????????                           0x00107a51 ????????? + 735825
-    4   libsystem_platform.dylib            0x391f671b _sigtramp + 34
-    5   UIKit                               0x30f20765  + 64
-    6   UIKit                               0x30c9a7bd  + 604
-    7   UIKit                               0x30f216db  + 1398
-    8 ...</pre></div></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>错误报告处理</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/umeng-you-meng-cuo-wu-bao-gao-chu-li.html" rel="bookmark" title="Permalink to umeng 友盟错误报告处理">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -253,16 +270,7 @@ Summary: 错误报告处理</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-08T14:00:00+08:00"> 二 08 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: some tutorials of sketch</p>
-<p>sketch是Mac上优秀的设计软件，堪称一把利剑。可好剑还得配好剑法，才能发挥威力。最近做的app，在界面上欠缺不少，正好借助sketch进行优化。下面是根据几个tutorial学习了sketch和设计的相关步骤。</p>
-<h3>Flat Styled Icon</h3>
-<p>原文在此：<a href="https://medium.com/@sokratus/how-to-create-a-flat-styled-icon-in-sketch-3-27c4bd09989">flat styled icon </a> <br/>
-该示例主要展示了<strong>相交</strong>运算的作用，以及锚点的使用。很多图形，仔细观察，都可以通过各种图形进行布尔运算而实现。通过形状的运算实现，还方便给各个部分填色。不过这一部分对我还是有点难，需要多练习。<br/>
-另外，sketch中可以通过双击来激活编辑状态，然后编辑锚点。但是我发现有时候对组合过的图像，这个方法有点不太灵。这时，可以先在左边选中图形，然后点击上方状态栏的"Edit"，然后就可以自由添加锚点了。</p>
-<h3>Shadow Effect</h3>
-<p>原文在此：<a href="http://brilliantsketch.com/make-long-shadow-effect-sketch/">shadow effect</a> <br/>
-该示例主要讲解了模糊 ...</br/></p></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>some tutorials of sketch</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/sketch-tutorials-study-1.html" rel="bookmark" title="Permalink to Sketch Tutorials Study 1">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -281,33 +289,7 @@ Summary: some tutorials of sketch</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-07-03T22:00:00+08:00"> 四 03 七月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu
-Summary: notes for 223</p>
-<p>原型设计的作用好比开发阶段设计的作用一样，不可缺少。它可以节约时间、成本，把有限的资源放到需要的地方。<br/>
-这一讲的内容分为下面几个部分：</p>
-<ol>
-<li>原型的重要性</li>
-<li>如何利用原型改进产品</li>
-<li>原型设计的工具</li>
-<li>制作fake app</li>
-</ol>
-<h2>重要性</h2>
-<p>它的重要性在于是点子到产品过程中的必经之路，做得越充分越有利用产品的形成。这个毋需多言。</p>
-<h2>步骤</h2>
-<p>How是进行原型的关键，通常就是结构任务，并带着问题去回答每一步。演讲者将过程分为3步：</p>
-<ul>
-<li>Make fake apps</li>
-<li>Show people</li>
-<li>Learn from their feedback
-三者的关系如下图：<br/>
-<img alt="relations icon" src="./imgs/20140703/how-relations.png"/><br/>
-这个闭环首先表明原型设计的无止境，同时也表明这是一个带有反馈的系统表达。</li>
-</ul>
-<h3>Make</h3>
-<p>演讲者给了3个问题来帮助剖析：</p>
-<ul>
-<li>What needs to be more real</li>
-<li>What can we ...</li></ul></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>notes for 223</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-223-notes-protyping.html" rel="bookmark" title="Permalink to WWDC2014-223 Notes Protyping">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -328,16 +310,7 @@ Summary: notes for 223</p>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2014-06-30T14:20:00+08:00"> 一 30 六月 2014 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: Notes for 211</p>
-<h1>intuitive</h1>
-<p>字面意思是“直觉”，意思就是看见页面后就知道该如何操作。这种“知道”可以来源于经验，惯例以及提示  </p>
-<p>开篇就举了设计 <em>“笔”</em> 的例子：长度，宽度等元素</p>
-<p>Being ituitive is not intuitive<br/>
-记住设计不是为自己(已知者)设计，是为其他人设计</p>
-<p>以下按5部分，进行阐述  </p>
-<h2>platform savvy</h2>
-<p>设计“intuitive”的交互，首先要熟悉所在系统的特性。以滑动cell出现操作选项为例，说明用户会进行“滑动”的操作——这种操作在iOS上是“周知”的。而你提供类似的功能时就要遵循一定的“规范”：背景色，长宽，文字说明，文字字体 ...</p></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>Notes for 211</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-211-notes-designing_intuitive_user_experiences.html" rel="bookmark" title="Permalink to WWDC2014-211 Notes designing_intuitive_user_experiences">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -349,38 +322,6 @@ Summary: Notes for 211</p>
 											<a class="danger label" href="http://127.0.0.1:8000/tag/ui.html">ui</a>
 											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">ios</a>
 											<a class="danger label" href="http://127.0.0.1:8000/tag/ux.html">ux</a>
-								</div>
-
-
-
-				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">WWDC2014-221 Notes creating_custom_ios_user_interfaces</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2014-06-29T14:00:00+08:00"> 日 29 六月 2014 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: notes for 221</p>
-<p>本场主要分4个议题： </p>
-<ul>
-<li>Spring animations</li>
-<li>Vibrancy and blur</li>
-<li>Shape layers</li>
-<li>Dynamic Core Animation behaviors</li>
-</ul>
-<h2>Spring animations</h2>
-<p>顾名思义指的是弹簧动画，很容易让人联想到UIKit Dynamic中的spring效果。但是，UIKit中就提供了API:  </p>
-<div class="highlight"><pre><span></span>+ (void)animateWithDuration:(NSTimeInterval)duration delay:(NSTimeInterval)delay usingSpringWithDamping:(CGFloat)dampingRatio initialSpringVelocity:(CGFloat)velocity options:(UIViewAnimationOptions)options animations:(void (^)(void))animations completion:(void (^)(BOOL finished ...</pre></div></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-221-notes-creating_custom_ios_user_interfaces.html" rel="bookmark" title="Permalink to WWDC2014-221 Notes creating_custom_ios_user_interfaces">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a>
-											<a class="danger label" href="http://127.0.0.1:8000/tag/ui.html">ui</a>
-											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">ios</a>
 								</div>
 
 
@@ -405,6 +346,7 @@ Summary: notes for 221</p>
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -428,11 +370,19 @@ Summary: notes for 221</p>
   </ul>
 </nav>
 
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
+  </ul>
+</nav>
+
 </div> </div><!-- /.row -->
 
 <p class="paginator">
             <a href="http://127.0.0.1:8000/author/charles-zhu5.html"><i class="icon-arrow-left"></i></a>
-    Page 6 / 6
+    Page 6 / 7
+        <a href="http://127.0.0.1:8000/author/charles-zhu7.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
 

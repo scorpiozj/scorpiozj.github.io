@@ -5,30 +5,37 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://127.0.0.1:8000/index.html</loc>
-<lastmod>2017-03-01T13:13:04-00:00</lastmod>
+<lastmod>2017-07-14T22:47:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://127.0.0.1:8000/archives.html</loc>
-<lastmod>2017-03-01T13:13:04-00:00</lastmod>
+<lastmod>2017-07-14T22:47:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://127.0.0.1:8000/tags.html</loc>
-<lastmod>2017-03-01T13:13:04-00:00</lastmod>
+<lastmod>2017-07-14T22:47:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
 
 <url>
 <loc>http://127.0.0.1:8000/categories.html</loc>
-<lastmod>2017-03-01T13:13:04-00:00</lastmod>
+<lastmod>2017-07-14T22:47:28-00:00</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://127.0.0.1:8000/pmpxue-xi-xin-de.html</loc>
+<lastmod>2017-07-05T19:00:00+08:00</lastmod>
+<changefreq>monthly</changefreq>
+<priority>0.7</priority>
 </url>
 
 <url>
@@ -494,6 +501,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://127.0.0.1:8000/category/pmp.html</loc>
+<lastmod>2017-07-05T19:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://127.0.0.1:8000/category/python.html</loc>
 <lastmod>2014-11-09T16:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -557,8 +571,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/codesign.html</loc>
-<lastmod>2015-11-24T21:20:00+08:06</lastmod>
+<loc>http://127.0.0.1:8000/tag/pmp.html</loc>
+<lastmod>2017-07-05T19:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -592,8 +606,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/sketch.html</loc>
-<lastmod>2014-07-17T17:00:00+08:06</lastmod>
+<loc>http://127.0.0.1:8000/tag/zhi-ye-kao-shi.html</loc>
+<lastmod>2017-07-05T19:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -636,6 +650,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 <url>
 <loc>http://127.0.0.1:8000/tag/linux.html</loc>
 <lastmod>2014-07-23T10:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
+<loc>http://127.0.0.1:8000/tag/codesign.html</loc>
+<lastmod>2015-11-24T21:20:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -711,8 +732,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/quartzcore.html</loc>
-<lastmod>2015-05-25T11:00:00+08:06</lastmod>
+<loc>http://127.0.0.1:8000/tag/uitableviewcell.html</loc>
+<lastmod>2015-08-01T17:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -732,8 +753,8 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
-<loc>http://127.0.0.1:8000/tag/uitableviewcell.html</loc>
-<lastmod>2015-08-01T17:00:00+08:06</lastmod>
+<loc>http://127.0.0.1:8000/tag/quartzcore.html</loc>
+<lastmod>2015-05-25T11:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>
@@ -900,6 +921,13 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 </url>
 
 <url>
+<loc>http://127.0.0.1:8000/tag/sketch.html</loc>
+<lastmod>2014-07-17T17:00:00+08:06</lastmod>
+<changefreq>daily</changefreq>
+<priority>0.5</priority>
+</url>
+
+<url>
 <loc>http://127.0.0.1:8000/tag/distribution.html</loc>
 <lastmod>2015-02-28T14:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
@@ -908,7 +936,7 @@ xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
 
 <url>
 <loc>http://127.0.0.1:8000/author/charles-zhu.html</loc>
-<lastmod>2017-02-28T19:20:00+08:06</lastmod>
+<lastmod>2017-07-05T19:00:00+08:06</lastmod>
 <changefreq>daily</changefreq>
 <priority>0.5</priority>
 </url>

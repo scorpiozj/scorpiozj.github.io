@@ -53,28 +53,31 @@
         <div class="eleven columns">
 		         <ol id="post-list">
 				        <li><article class="hentry">
+				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/wwdc2014-419-notes.html" rel="bookmark" title="Permalink to WWDC2014-419 Notes">WWDC2014-419 Notes</a></h2> </header>
+				                <footer class="post-info">
+				                    <abbr class="published" title="2015-05-04T13:00:00+08:00"> 一 04 五月 2015 </abbr>
+<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
+				                <div class="entry-content"> <p>notes for 419</p> </div><!-- /.entry-content -->
+
+								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-419-notes.html" rel="bookmark" title="Permalink to WWDC2014-419 Notes">Read more <i class="icon-arrow-right"></i></a></div>
+
+
+
+								<div class="row tag-row">
+										<span>Tagged as : </span>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/wwdc-2014.html">wwdc 2014</a>
+											<a class="danger label" href="http://127.0.0.1:8000/tag/uiscrollview.html">UIScrollView</a>
+								</div>
+
+
+
+				        </article></li>
+				        <li><article class="hentry">
 				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">WWDC2014-235 Notes</a></h2> </header>
 				                <footer class="post-info">
 				                    <abbr class="published" title="2015-04-20T22:00:00+08:00"> 一 20 四月 2015 </abbr>
 <address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><p>Author: Charles Zhu<br/>
-Summary: notes for 223</p>
-<h3>Intro</h3>
-<p><code>UIScrollView</code> 是比较重要的控件，每年的WWDC都会有专门的lecture来讲解scroll的新特性或者处理难点。WWDC2014也不例外，主题是 <code>advanced_scrollviews_and_touch_handling_techniques</code>，主要包括：</p>
-<ol>
-<li>Hit testing</li>
-<li>gesture recoginizers</li>
-<li>touch delivery</li>
-<li>ransparent overlayers</li>
-<li>dragging while scrolling</li>
-<li>highlighting objects</li>
-</ol>
-<p>下面会按着视频中的demo，一步一步讲解。</p>
-<h3>transparent overlayers</h3>
-<p>demo: 仿照搜索页面，添加下拉手势，手势触发出现一Scroll View， 该scroll view 部分遮挡原先的 view<br/>
-存在的问题：</p>
-<ol>
-<li>原先的view可以点击，添加了 scroll view后在scroll view没有出现的时候也不能点击 (因为demo中scroll view是一直添加在原先页面上， 通过contentOffset来移动内容 ...</li></ol></body></html> </div><!-- /.entry-content -->
+				                <div class="entry-content"> <p>notes for 223</p> </div><!-- /.entry-content -->
 
 								<div class="medium primary btn"><a href="http://127.0.0.1:8000/wwdc2014-235-notes.html" rel="bookmark" title="Permalink to WWDC2014-235 Notes">Read more <i class="icon-arrow-right"></i></a></div>
 
@@ -354,30 +357,6 @@ enumerating</p>
 
 
 				        </article></li>
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://127.0.0.1:8000/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">过去一周的思考</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2015-02-13T22:30:00+08:00"> 五 13 二月 2015 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://127.0.0.1:8000/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content"> <html><body><h2>简介</h2>
-<p>过去的一周可以算是波澜起伏，主要关于两方面：一个是app的下载，另一个是app的发布。</p>
-<h2>app的下载</h2>
-<p>ASO是一个至今不得窥其入门的东西，某个收费的app自上线至今约3个月的时间保持平均每天3个的下载节奏。期间在app中集成的分享平台中发过带app的tag的链接（主要是国外的分享平台），这种方式可以引起用户的注意，可以算是营销的一种方式。只是一个人势单力薄，无法做到每天的更新。这种方式和app的下载互为因果，因为很难单纯的通过这种方式提高下载量，相反这种推广的效果还取决于app的下载基数。因此，我认为这属于“锦上添花”增加用户基数型的营销模式。<br/>
-虽然推广没有花费大力气，但是本周还是发生了下载量突变的情形。5-10日之间下载量分别是个位数，2位数，3位数，3位数，2位数，个位数。至此，恢复以往的平静。在此期间，做到分类付费和畅销排名前三。虽然之前也油锅这样的经历，但这次的app是收费的，意义不同寻常。此外，这样的一个过山车的表现也很让我诧异。是什么导致下载量突然的上升呢？我搜索了一下相关的分享平台，没有大量的使用app的痕迹。通过Appannie的变化追踪来看，我倾向于Apple调整了app的排名算法（如果这些下载量不是黑卡造成的话）。线索就在于5日以及之前的排名已经落后到不知什么地步，而后突然就排名上升。考虑到下载量在相应的category中中规中矩，评价几乎没有的情况，才做出算法调整的判断。<br/>
-这个 ...</br/></br/></p></body></html> </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://127.0.0.1:8000/guo-qu-yi-zhou-de-si-kao.html" rel="bookmark" title="Permalink to 过去一周的思考">Read more <i class="icon-arrow-right"></i></a></div>
-
-
-
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://127.0.0.1:8000/tag/ios.html">iOS</a>
-								</div>
-
-
-
-				        </article></li>
 				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
@@ -397,6 +376,7 @@ enumerating</p>
 		<li><a href="http://127.0.0.1:8000/category/iostips.html">iOSTips</a></li>
 		<li><a href="http://127.0.0.1:8000/category/linux.html">Linux</a></li>
 		<li><a href="http://127.0.0.1:8000/category/oauth20.html">OAuth2.0</a></li>
+		<li><a href="http://127.0.0.1:8000/category/pmp.html">PMP</a></li>
 		<li><a href="http://127.0.0.1:8000/category/python.html">Python</a></li>
 		<li><a href="http://127.0.0.1:8000/category/sui-gan.html">随感</a></li>
 		<li><a href="http://127.0.0.1:8000/category/swift.html">swift</a></li>
@@ -420,11 +400,18 @@ enumerating</p>
   </ul>
 </nav>
 
+<nav class="widget">
+  <h4>Promotion</h4>
+  <ul>
+    <li><a href="https://promotion.aliyun.com/ntms/act/ambassador/sharetouser.html?userCode=gcaa6ry3&amp;amp;utm_source=gcaa6ry3"><img src="imgs/promotion_Ali.png"></a></li>
+  </ul>
+</nav>
+
 </div> </div><!-- /.row -->
 
 <p class="paginator">
             <a href="http://127.0.0.1:8000/author/charles-zhu2.html"><i class="icon-arrow-left"></i></a>
-    Page 3 / 6
+    Page 3 / 7
         <a href="http://127.0.0.1:8000/author/charles-zhu4.html"><i class="icon-arrow-right"></i></a>
 </p>
 </section><!-- /#content -->
