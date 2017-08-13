@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>To be Independent</title>
+        <title>Stanford iOS10 笔记-L6 Gestures, Multi-MVC</title>
         <meta charset="utf-8" />
 
 
@@ -47,8 +47,20 @@
               </ul>
             </div>
 
+<section id="content" class="body">
 
-<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+   <div class="row">
+        <div class="eleven columns">
+
+
+            <header>
+              <h2 class="entry-title">
+                <a href="http://icocoa.tk/stanford-ios10-bi-ji-l6-gestures-multi-mvc.html" rel="bookmark"
+                   title="Permalink to Stanford iOS10 笔记-L6 Gestures, Multi-MVC">Stanford iOS10 笔记-L6 Gestures, Multi-MVC</a></h2>
+           
+            </header>
+
+            <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
 <ins class="adsbygoogle"
      style="display:block"
      data-ad-format="fluid"
@@ -60,44 +72,49 @@
      (adsbygoogle = window.adsbygoogle || []).push({});
 </script>
 
-<script type="text/javascript">
-    /*960*90 创建于 2017/8/8*/
-    var cpro_id = "u3055835";
-</script>
-<script type="text/javascript" src="http://cpro.baidustatic.com/cpro/ui/c.js"></script>
+            <footer class="post-info">
+              <abbr class="published" title="2017-06-28T20:20:00+08:00">
+                三 28 六月 2017
+              </abbr>
+              <address class="vcard author">
+                By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
+              </address>
+            </footer><!-- /.post-info -->
+            <div class="entry-content">
+              <html><body><h2>Gestures</h2>
+<p>本节内容比较简单。前一节介绍了UIView以及如何绘制，本节先讲了如何添加手势操作。苹果抽象了 touch event操作，将他们简化为 Gesture。因此，包含单／多指点击、缩放、旋转和滑动等操作都能使用 <code>UIGestureRecognizer</code>的子类来实现。当然，如果你愿意的话，也可以使用touch event来实现不常见、非常规的手势操作。<br/>
+Gestures需要添加到 <code>View</code> 上，但是相关的 target 未必是 <code>View</code> 本身——往往是所在的VC。添加gesture的时机一般：</p>
+<ol>
+<li><code>View</code> 是在SB中添加：在 <code>didSet</code> 方法中添加</li>
+<li><code>View</code> 是代码生成的： 那就在生成后添加</li>
+</ol>
+<p>而相应action中的操作，需要秉承 <code>MVC</code> 的原则，不要直接去修改 <code>View</code> 。</p>
+<h2>容器类 VC</h2>
+<p>一个项目中往往会有多个 VC，在 MVC 法则下，这些VC都是通过 Controller 联系在一起。为了方便管理VC， iOS中有一类管理 VC 的 VC，即我们熟悉的 UINavigationController, UITabBarController, UISplitViewController。记得iOS的文档中这些VC称作 Container ，因此这里翻译成容器类控制器。 课程中介绍了这几类 VC的 特性，这里不多说了。</p>
+<h2>Swift</h2>
+<p>swift特有的语法特性，本节没有涉及。有个需要注意的地方是，变量初始化的时候， <code>didSet</code> 并不会触发；只有在后期有变化时，才会进入 <code>didSet</code> 。</p></body></html>
+            </div><!-- /.entry-content -->
+            
+            <!-- Neighbor -->
+            <div class="pagination">
+      <ul>
+        <li class="prev"><a href="http://icocoa.tk/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html">← Previous : Swift：实现ScrollView中菜单栏的驻留</a></li>
+        
+        <li class="next"><a href="http://icocoa.tk/pmpxue-xi-xin-de.html">PMP学习心得:Next →</a></li>
+      </ul>
+    </div>
 
-<section id="content">
-<h2>Articles in the OAuth2.0 category</h2>
 
 
-   <div class="row">
-
-
-        <div class="eleven columns">
-		         <ol id="post-list">
-				        <li><article class="hentry">
-				                <header> <h2 class="entry-title"><a href="http://icocoa.tk/guan-yu-oauth20de-xie-xu-ji-lu.html" rel="bookmark" title="Permalink to 关于OAuth2.0的些许记录">关于OAuth2.0的些许记录</a></h2> </header>
-				                <footer class="post-info">
-				                    <abbr class="published" title="2017-02-21T19:20:00+08:00"> 二 21 二月 2017 </abbr>
-<address class="vcard author">By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a></address>				                </footer><!-- /.post-info -->
-				                <div class="entry-content">  </div><!-- /.entry-content -->
-
-								<div class="medium primary btn"><a href="http://icocoa.tk/guan-yu-oauth20de-xie-xu-ji-lu.html" rel="bookmark" title="Permalink to 关于OAuth2.0的些许记录">Read more <i class="icon-arrow-right"></i></a></div>
+            
 
 
 
-								<div class="row tag-row">
-										<span>Tagged as : </span>
-											<a class="danger label" href="http://icocoa.tk/tag/authentication.html">authentication</a>
-								</div>
-
-
-
-				        </article></li>
-				</ol><!-- /#posts-list -->
 
         </div><!-- /.eleven.columns -->
         
+        
+
 <div class="three columns">
 
 <h4>Pages</h4>
@@ -146,10 +163,8 @@
 
 </div> </div><!-- /.row -->
 
-<p class="paginator">
-    Page 1 / 1
-</p>
-</section><!-- /#content -->
+
+</section>
 
        </div><!-- /.row -->
     </div><!-- /.container -->

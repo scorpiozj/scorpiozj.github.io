@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>git revert && svn revert的不同</title>
+        <title>Stanford iOS10 笔记-L6 多MVC等</title>
         <meta charset="utf-8" />
 
 
@@ -55,8 +55,8 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://icocoa.tk/git-revert-svn-revertde-bu-tong.html" rel="bookmark"
-                   title="Permalink to git revert && svn revert的不同">git revert && svn revert的不同</a></h2>
+                <a href="http://icocoa.tk/stanford-ios10-bi-ji-l6-duo-mvcdeng.html" rel="bookmark"
+                   title="Permalink to Stanford iOS10 笔记-L6 多MVC等">Stanford iOS10 笔记-L6 多MVC等</a></h2>
            
             </header>
 
@@ -73,44 +73,64 @@
 </script>
 
             <footer class="post-info">
-              <abbr class="published" title="2014-11-03T10:00:00+08:00">
-                一 03 十一月 2014
+              <abbr class="published" title="2017-07-31T20:20:00+08:00">
+                一 31 七月 2017
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <html><body><p>最近在看git，注意到revert命令，不禁想起svn的revert。于是把两者的功能进行了对比，以加深命令的理解。</p>
-<h4>git revert</h4>
-<p>对应的中文术语叫反转提交，基本的用法：</p>
-<div class="highlight"><pre><span></span>git revert commit-ish
+              <html><body><h2>多MVC</h2>
+<p>因为没有涉及delegate，notification等，本节主要是介绍两个MVC-master和detail VC间的 简单、单向通信方式。两个VC比较简单，并且使用了Storyboard，侧重介绍了<code>prepare(for segue: UIStoryboardSegue, sender: Any?)</code>： 在该方法中，每次都重新生成了一个新的VC。<br/>
+此外，还介绍了很多在Storyboard中的操作：</p>
+<ul>
+<li>entry除了在inspect中修改，还可以直接拖拽箭头</li>
+<li>添加NavigationController：选中某VC，Editor-&gt;Embedded in</li>
+<li>手动“连系”SplitViewController的master和detail</li>
+<li>添加segue，注意 show 和 show details的区别：show 只用在NavigationController中</li>
+</ul>
+<h2>VC的生命周期</h2>
+<p>不多说了，值得注意<code>awakeFromNib</code>：该方法调用表明系统开始加载 nib 或 Storyboard，  也就是说 IBOutlet（任何在storyboard中添加的对象） 尚未生成。<br/>
+需要再次强调的就是不要在 <code>viewDidLoad</code> 中修改frame。<br/>
+为了说明VC的生命周期，课程中实现了打印日志功能的类 <code>VCLLoggingViewController</code>。 该类在各关键周期函数中重载，这样通过继承该日志类即可看到 multi-VC中各VC的运行情况。这里思考一个问题：在ObjC时代，我们通过 runtime 特性来 "一劳永逸"的添加行为日志。那么在 swift中，如何实现呢？这个留待以后解决。</p>
+<h2>内存</h2>
+<p>ARC的内容不多说了：strong、weak 和 unowned 关键字好好理解。结合closure，给出了避免循环引用的方法以及几种写法。课程中的给的closure例子是trailing closure，几种写法包括：</p>
+<div class="highlight"><pre><span></span><span class="n">addUnaryOperation</span><span class="p">(</span><span class="s">"✅"</span><span class="p">){</span> <span class="p">[</span><span class="n">me</span><span class="o">=</span><span class="nb">self</span><span class="p">]</span> <span class="k">in</span> 
+    <span class="n">me</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">green</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">//local self will cover global self; unowned can be replaced with weak</span>
+<span class="n">addUnaryOperation</span><span class="p">(</span><span class="s">"✅"</span><span class="p">){</span> <span class="p">[</span><span class="n">unowned</span> <span class="nb">self</span> <span class="o">=</span> <span class="nb">self</span><span class="p">]</span> <span class="k">in</span> 
+    <span class="n">me</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">green</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
+<span class="c1">//weak also works</span>
+<span class="n">addUnaryOperation</span><span class="p">(</span><span class="s">"✅"</span><span class="p">){</span> <span class="p">[</span><span class="n">unowned</span> <span class="nb">self</span><span class="p">]</span> <span class="k">in</span> 
+    <span class="n">me</span><span class="p">.</span><span class="n">display</span><span class="p">.</span><span class="n">textColor</span> <span class="o">=</span> <span class="bp">UIColor</span><span class="p">.</span><span class="n">green</span>
+    <span class="k">return</span> <span class="n">sqrt</span><span class="p">(</span><span class="err">$</span><span class="mi">0</span><span class="p">)</span>
+<span class="p">}</span>
 </pre></div>
-<p>该命令运行后会新加一个提交，该提交的内容即commit-ish所指向提交的父提交，此时版本库的内容“回退”到之前的某个版本。注意在运行本命令前，当前工作区不能有未提交的改动。</p>
-<h4>svn revert</h4>
-<p>svn中revert即回滚，基本用法</p>
-<div class="highlight"><pre><span></span>svn revert PATH
-</pre></div>
-<p>其中PATH可以是单个文件，也可以是文件夹。如果是文件夹的话，就需要用-R参数，表示递归执行。执行完命令后，本地文件的所有修改都被放弃，所以此时执行时不需要联网。</p>
-<h4>svn实现git revert的功能</h4>
-<p>如果要向用svn实现git revert的功能那么就需要：</p>
-<div class="highlight"><pre><span></span>svn update
-//确保版本库最新
-svn log
-//找到想要“回复”的版本号
-svn merge -r currentID:revertID PATH
-//回滚到revertID所代表的版本
-svn commit -m "message"
-//确认后提交
+<h2>Swift语法</h2>
+<p><code>optional</code> 是swift的一大特色，所以在写代码的时候要注意关于optional的写法，注意总结。<br/>
+级联的 <code>if-let</code> 可以简化：</p>
+<div class="highlight"><pre><span></span>if let a = b as? ZZPerson {
+    if let c = a.address {
+    }
+}
+//可以写成如下形式: ,分隔，if省略
+if if let a = b as? ZZPerson,
+     let c = a.address {
+    }
 </pre></div></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://icocoa.tk/app-extension-study-2.html">← Previous : App Extension Study 2</a></li>
+        <li class="prev"><a href="http://icocoa.tk/pmpxue-xi-xin-de.html">← Previous : PMP学习心得</a></li>
         
-        <li class="next"><a href="http://icocoa.tk/ios8zhi-uialertcontroller.html">iOS8之UIAlertController:Next →</a></li>
+        <li class="next"><a href="/">Next →</a></li>
       </ul>
     </div>
 
