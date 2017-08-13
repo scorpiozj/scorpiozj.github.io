@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><lastBuildDate>Mon, 31 Jul 2017 20:20:00 +0800</lastBuildDate><item><title>Stanford iOS10 笔记-L6 多MVC等</title><link>http://icocoa.tk/stanford-ios10-bi-ji-l6-duo-mvcdeng.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;多MVC&lt;/h2&gt;
+<rss version="2.0"><channel><title>To be Independent</title><link>http://icocoa.tk/</link><description></description><lastBuildDate>Mon, 31 Jul 2017 20:20:00 +0800</lastBuildDate><item><title>Stanford iOS10 笔记-L6 Multi-MVC &amp;VC生命周期 等</title><link>http://icocoa.tk/stanford-ios10-bi-ji-l6-multi-mvc-vcsheng-ming-zhou-qi-deng.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;多MVC&lt;/h2&gt;
 &lt;p&gt;因为没有涉及delegate，notification等，本节主要是介绍两个MVC-master和detail VC间的 简单、单向通信方式。两个VC比较简单，并且使用了Storyboard，侧重介绍了&lt;code&gt;prepare(for segue: UIStoryboardSegue, sender: Any?)&lt;/code&gt;： 在该方法中，每次都重新生成了一个新的VC。&lt;br/&gt;
 此外，还介绍了很多在Storyboard中的操作：&lt;/p&gt;
 &lt;ul&gt;
@@ -40,7 +40,7 @@
 if if let a = b as? ZZPerson,
      let c = a.address {
     }
-&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 31 Jul 2017 20:20:00 +0800</pubDate><guid isPermaLink="false">tag:icocoa.tk,2017-07-31:stanford-ios10-bi-ji-l6-duo-mvcdeng.html</guid><category>stanford</category><category>iOS10</category></item><item><title>PMP学习心得</title><link>http://icocoa.tk/pmpxue-xi-xin-de.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;更新 2017-8-10&lt;/h2&gt;
+&lt;/pre&gt;&lt;/div&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Mon, 31 Jul 2017 20:20:00 +0800</pubDate><guid isPermaLink="false">tag:icocoa.tk,2017-07-31:stanford-ios10-bi-ji-l6-multi-mvc-vcsheng-ming-zhou-qi-deng.html</guid><category>stanford</category><category>iOS10</category></item><item><title>PMP学习心得</title><link>http://icocoa.tk/pmpxue-xi-xin-de.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;更新 2017-8-10&lt;/h2&gt;
 &lt;p&gt;上个月底收到邮件通知，考试已经通过，成绩差强人意：2P3M。&lt;br/&gt;
 从备考经历来看，考试通过不是问题(侧面反映出该证的含金量很低)，但学会PMP的思维并应用到工作中，是一长期项目。&lt;/p&gt;
 &lt;h2&gt;引子&lt;/h2&gt;
@@ -62,7 +62,7 @@ if if let a = b as? ZZPerson,
 &lt;p&gt;我们常见的头脑风暴，鱼骨图，思维导图等工具在PMP都有介绍，主要侧重方法／工具的特点，和应用场合。学习过后，决不意味着掌握了这些方法／工具。比如思维导图，我之前看过相关的书；平时看书的时候，也会用思维导图记录笔记，但我还是觉得没有深刻的理解这个工具。同样的，在学习质量管理的时候，龙卷风图，决策树图等等，都是需要在实践中深入的。就像大家都有一块生铁，需要各自修炼才能铸造成你的利器。&lt;/p&gt;
 &lt;h2&gt;结语&lt;/h2&gt;
 &lt;p&gt;以上是迄今个人的一点体悟，可能不够完成，也有点浅薄，但我个人是深感裨益。正如书中所说：提供了项目管理的一般理念和方法论。运用到实际的时候，还是要根据现状灵活处理。但我想说明的是，运用项目管理的思想来思考问题，处理工作，的确可以大大提高人的思维、工作和业务能力。
-其实，原本想打算成绩出来以后再写本文。后来一想，如果考试没过，我就不总结了吗？至少，我还是学到知识的，想到这里，就厚脸皮的把浅见拿出来曝曝光了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 05 Jul 2017 19:00:00 +0800</pubDate><guid isPermaLink="false">tag:icocoa.tk,2017-07-05:pmpxue-xi-xin-de.html</guid><category>pmp</category><category>职业考试</category></item><item><title>Stanford iOS10 笔记-L6 Gestures, Multi-MVC</title><link>http://icocoa.tk/stanford-ios10-bi-ji-l6-gestures-multi-mvc.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;Gestures&lt;/h2&gt;
+其实，原本想打算成绩出来以后再写本文。后来一想，如果考试没过，我就不总结了吗？至少，我还是学到知识的，想到这里，就厚脸皮的把浅见拿出来曝曝光了。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 05 Jul 2017 19:00:00 +0800</pubDate><guid isPermaLink="false">tag:icocoa.tk,2017-07-05:pmpxue-xi-xin-de.html</guid><category>pmp</category><category>职业考试</category></item><item><title>Stanford iOS10 笔记-L5 Gestures, Multi-MVC</title><link>http://icocoa.tk/stanford-ios10-bi-ji-l5-gestures-multi-mvc.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;Gestures&lt;/h2&gt;
 &lt;p&gt;本节内容比较简单。前一节介绍了UIView以及如何绘制，本节先讲了如何添加手势操作。苹果抽象了 touch event操作，将他们简化为 Gesture。因此，包含单／多指点击、缩放、旋转和滑动等操作都能使用 &lt;code&gt;UIGestureRecognizer&lt;/code&gt;的子类来实现。当然，如果你愿意的话，也可以使用touch event来实现不常见、非常规的手势操作。&lt;br/&gt;
 Gestures需要添加到 &lt;code&gt;View&lt;/code&gt; 上，但是相关的 target 未必是 &lt;code&gt;View&lt;/code&gt; 本身——往往是所在的VC。添加gesture的时机一般：&lt;/p&gt;
 &lt;ol&gt;
@@ -73,7 +73,7 @@ Gestures需要添加到 &lt;code&gt;View&lt;/code&gt; 上，但是相关的 targ
 &lt;h2&gt;容器类 VC&lt;/h2&gt;
 &lt;p&gt;一个项目中往往会有多个 VC，在 MVC 法则下，这些VC都是通过 Controller 联系在一起。为了方便管理VC， iOS中有一类管理 VC 的 VC，即我们熟悉的 UINavigationController, UITabBarController, UISplitViewController。记得iOS的文档中这些VC称作 Container ，因此这里翻译成容器类控制器。 课程中介绍了这几类 VC的 特性，这里不多说了。&lt;/p&gt;
 &lt;h2&gt;Swift&lt;/h2&gt;
-&lt;p&gt;swift特有的语法特性，本节没有涉及。有个需要注意的地方是，变量初始化的时候， &lt;code&gt;didSet&lt;/code&gt; 并不会触发；只有在后期有变化时，才会进入 &lt;code&gt;didSet&lt;/code&gt; 。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 28 Jun 2017 20:20:00 +0800</pubDate><guid isPermaLink="false">tag:icocoa.tk,2017-06-28:stanford-ios10-bi-ji-l6-gestures-multi-mvc.html</guid><category>stanford</category><category>iOS10</category></item><item><title>Swift：实现ScrollView中菜单栏的驻留</title><link>http://icocoa.tk/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;前言&lt;/h2&gt;
+&lt;p&gt;swift特有的语法特性，本节没有涉及。有个需要注意的地方是，变量初始化的时候， &lt;code&gt;didSet&lt;/code&gt; 并不会触发；只有在后期有变化时，才会进入 &lt;code&gt;didSet&lt;/code&gt; 。&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</description><dc:creator xmlns:dc="http://purl.org/dc/elements/1.1/">Charles Zhu</dc:creator><pubDate>Wed, 28 Jun 2017 20:20:00 +0800</pubDate><guid isPermaLink="false">tag:icocoa.tk,2017-06-28:stanford-ios10-bi-ji-l5-gestures-multi-mvc.html</guid><category>stanford</category><category>iOS10</category></item><item><title>Swift：实现ScrollView中菜单栏的驻留</title><link>http://icocoa.tk/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html</link><description>&lt;html&gt;&lt;body&gt;&lt;h2&gt;前言&lt;/h2&gt;
 &lt;p&gt;继续使用swift来实现一些常见的页面，本篇要实现的页面效果如图：&lt;br/&gt;
 &lt;img alt="NestedScroll" src="./imgs/20170228/NestedScroll.gif"/&gt;&lt;/p&gt;
 &lt;p&gt;之所以选择实现这样的效果，是不经意间看到一篇&lt;a href="https://sexyswift.wordpress.com/2016/08/25/swift-parallax-scrolling-with-header-sticking-at-top-nested-uiscrollview/"&gt;blog&lt;/a&gt;, 它不是使用TableView的header来实现，而是纯粹使用了&lt;code&gt;UIScrollView&lt;/code&gt;。因此，为了实现这样的效果，需要对contentOffset有较深刻的认识，正好可以加深对ScrollView的理解。此外，该实现还有几个问题，需要修复。&lt;br/&gt;

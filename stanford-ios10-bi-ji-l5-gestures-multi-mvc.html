@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 
-        <title>Swift：实现ScrollView中菜单栏的驻留</title>
+        <title>Stanford iOS10 笔记-L5 Gestures, Multi-MVC</title>
         <meta charset="utf-8" />
 
 
@@ -55,8 +55,8 @@
 
             <header>
               <h2 class="entry-title">
-                <a href="http://icocoa.tk/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html" rel="bookmark"
-                   title="Permalink to Swift：实现ScrollView中菜单栏的驻留">Swift：实现ScrollView中菜单栏的驻留</a></h2>
+                <a href="http://icocoa.tk/stanford-ios10-bi-ji-l5-gestures-multi-mvc.html" rel="bookmark"
+                   title="Permalink to Stanford iOS10 笔记-L5 Gestures, Multi-MVC">Stanford iOS10 笔记-L5 Gestures, Multi-MVC</a></h2>
            
             </header>
 
@@ -73,60 +73,34 @@
 </script>
 
             <footer class="post-info">
-              <abbr class="published" title="2017-02-28T19:20:00+08:00">
-                二 28 二月 2017
+              <abbr class="published" title="2017-06-28T20:20:00+08:00">
+                三 28 六月 2017
               </abbr>
               <address class="vcard author">
                 By <a class="url fn" href="http://icocoa.tk/author/charles-zhu.html">Charles Zhu</a>
               </address>
             </footer><!-- /.post-info -->
             <div class="entry-content">
-              <html><body><h2>前言</h2>
-<p>继续使用swift来实现一些常见的页面，本篇要实现的页面效果如图：<br/>
-<img alt="NestedScroll" src="./imgs/20170228/NestedScroll.gif"/></p>
-<p>之所以选择实现这样的效果，是不经意间看到一篇<a href="https://sexyswift.wordpress.com/2016/08/25/swift-parallax-scrolling-with-header-sticking-at-top-nested-uiscrollview/">blog</a>, 它不是使用TableView的header来实现，而是纯粹使用了<code>UIScrollView</code>。因此，为了实现这样的效果，需要对contentOffset有较深刻的认识，正好可以加深对ScrollView的理解。此外，该实现还有几个问题，需要修复。<br/>
-该文需要翻墙，为了便于查看，这里把原文的效果显示如下：<br/>
-<img alt="ezgif-com-video-to-gif" src="./imgs/20170228/ezgif-com-video-to-gif.gif"/></p>
-<p>原文的示例工程在此：<a href="https://github.com/bibekdari/DParallexScrolling">DParallexScrolling</a></p>
-<h2>定义实现的效果</h2>
-<p>首先，原文的实现效果有2个问题：  </p>
+              <html><body><h2>Gestures</h2>
+<p>本节内容比较简单。前一节介绍了UIView以及如何绘制，本节先讲了如何添加手势操作。苹果抽象了 touch event操作，将他们简化为 Gesture。因此，包含单／多指点击、缩放、旋转和滑动等操作都能使用 <code>UIGestureRecognizer</code>的子类来实现。当然，如果你愿意的话，也可以使用touch event来实现不常见、非常规的手势操作。<br/>
+Gestures需要添加到 <code>View</code> 上，但是相关的 target 未必是 <code>View</code> 本身——往往是所在的VC。添加gesture的时机一般：</p>
 <ol>
-<li>当tableView滚动到底部，再往上滚动的时候，黑色菜单栏会向上滚动，没有固定住</li>
-<li>当在imageView上向上滚动后，黑色菜单栏也会一并滚动到屏幕外，而不是始终固定在顶部</li>
+<li><code>View</code> 是在SB中添加：在 <code>didSet</code> 方法中添加</li>
+<li><code>View</code> 是代码生成的： 那就在生成后添加</li>
 </ol>
-<p>除了修复上述两个问题，我还添加了导航栏随着scrollView向上／下滑动而隐藏／显现，但是这一功能是使用了[LTNavigationBar]——因为其已经有了Swift版本，就拿过来用了。</p>
-<h2>页面元素的布局</h2>
-<p>新建工程，选择master-detail模版，然后修改，布局如图：<br/>
-<img alt="ViewLayout" src="./imgs/20170228/ViewLayout.png"/></p>
-<p>关于ScrollView的约束，需要注意：</p>
-<ol>
-<li>ScrollView和SuperView的约束，控制ScrollView本身的位置</li>
-<li>ScrollView的Subview的约束，控制ScrollView的contentSize</li>
-<li>ScrollView的Subview的约束，必须要添加到ScrollView的某一个SuperView上</li>
-</ol>
-<p>在Storyboard布局，如果约束不足或有错，系统会提示，再根据提示慢慢修改。 <br/>
-关于TableView的实现，这里不是重点，故略过。</p>
-<h2>scrollViewDidScroll的实现</h2>
-<p>为了实现最终的效果，必不可少的就是要实现代理： <code>scrollViewDidScroll(_ scrollView: UIScrollView)</code>。 在该方法中，判断不同滚动方向上，ScrollView和TableView的contentOffset。<br/>
-以向上滑动TableView为例，当黑色View没有到顶部的时候，控制黑色及绿色View跟随ScrollView一起滚动。当黑色View到达顶部的时候，ScrollView的contentOffset就不应该改变，相应的，TableView开始滚动。而向下滑动TableView的时候，首先检查TableView的contentOffset，如果TableView见顶了，就需要带动ScrollView滑动即设置ScrollView的contentOffset。<br/>
-与此同时，我们还添加了根据NavBar和StatueBar计算ScrollView的最大Offset，便于以后的扩展。</p>
-<p>关于导航栏的隐藏/显现，前文已说是使用了某开源库，这里就不浪费笔墨在如何使用上了。</p>
-<h2>原文问题的解决</h2>
-<h3>问题1</h3>
-<p>该问题只需要当TableView见底的时候，设置ScrollView不能滑动。需要注意的就是在某个时刻把ScrollView可以滑动的属性打开，否则页面就无法滑动了。</p>
-<h3>问题2</h3>
-<p>该问题也是设置ScrollView的滑动属性“暂时”解决。之所以是“暂时”，是因为原本希望的效果应当是滑动绿色View，当黑色View到达顶部的时候，TableView继续向上滚动。而现在的版本，黑色View到达顶部后，TableView不会有滚动（如下图）：   <br/>
-<img alt="NestedScroll2" src="./imgs/20170228/NestedScroll2.gif"/><br/>
-要实现这一效果，未实践的思路是：此刻固定黑色View和ScrollView的superView的位置关系，同时让tableView和ScrollView一起滚动。这样做的话，还需要很多额外工作，而且感觉在自己实现一个TableView，因此没有继续展开。</p>
-<p>最后附上工程地址：<a href="https://github.com/scorpiozj/ParallalScroll/tree/master/PallaraxScroll">ParallalScroll</a></p></body></html>
+<p>而相应action中的操作，需要秉承 <code>MVC</code> 的原则，不要直接去修改 <code>View</code> 。</p>
+<h2>容器类 VC</h2>
+<p>一个项目中往往会有多个 VC，在 MVC 法则下，这些VC都是通过 Controller 联系在一起。为了方便管理VC， iOS中有一类管理 VC 的 VC，即我们熟悉的 UINavigationController, UITabBarController, UISplitViewController。记得iOS的文档中这些VC称作 Container ，因此这里翻译成容器类控制器。 课程中介绍了这几类 VC的 特性，这里不多说了。</p>
+<h2>Swift</h2>
+<p>swift特有的语法特性，本节没有涉及。有个需要注意的地方是，变量初始化的时候， <code>didSet</code> 并不会触发；只有在后期有变化时，才会进入 <code>didSet</code> 。</p></body></html>
             </div><!-- /.entry-content -->
             
             <!-- Neighbor -->
             <div class="pagination">
       <ul>
-        <li class="prev"><a href="http://icocoa.tk/guan-yu-oauth20de-xie-xu-ji-lu.html">← Previous : 关于OAuth2.0的些许记录</a></li>
+        <li class="prev"><a href="http://icocoa.tk/swiftshi-xian-scrollviewzhong-cai-dan-lan-de-zhu-liu.html">← Previous : Swift：实现ScrollView中菜单栏的驻留</a></li>
         
-        <li class="next"><a href="http://icocoa.tk/stanford-ios10-bi-ji-l5-gestures-multi-mvc.html">Stanford iOS10 笔记-L5 Gestures, Multi-MVC:Next →</a></li>
+        <li class="next"><a href="http://icocoa.tk/pmpxue-xi-xin-de.html">PMP学习心得:Next →</a></li>
       </ul>
     </div>
 
